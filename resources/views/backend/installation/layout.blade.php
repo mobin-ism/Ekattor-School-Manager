@@ -7,7 +7,7 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('backend/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}">
     @include('backend.layout.styles')
 </head>
 
@@ -15,43 +15,40 @@
 
 <!-- Begin page -->
 <div class="wrapper">
-
-    @include('backend.admin.navigation')
-
-    <!-- ============================================================== -->
     <!-- Start Page Content here -->
-    <!-- ============================================================== -->
-
-    <div class="content-page">
+    <div class="content-page" style="margin-left: 0px;">
         <div class="content">
-
-            @include('backend.layout.header')
-
             <!-- Start Content-->
             <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title">Ekattor School Management System -Laravel Version</h4>
+                        </div>
+                    </div>
+                </div>
 
-                @yield('content')
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                    @yield('content')
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+                    </div> <!-- end col-->
+                </div> <!-- end row -->
 
             </div>
             <!-- container -->
-
         </div>
         <!-- content -->
-
         @include('backend.layout.footer')
 
     </div>
-
-    <!-- ============================================================== -->
     <!-- End Page content -->
-    <!-- ============================================================== -->
-
-
 </div>
 <!-- END wrapper -->
-@include('backend.admin.right_navigation')
 @include('backend.layout.scripts')
-@include('backend.layout.modal')
 @yield('scripts')
 </body>
 </html>

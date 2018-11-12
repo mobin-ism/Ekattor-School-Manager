@@ -13,6 +13,8 @@
 
 Route::get('/', function () {
     return view('backend.admin.dashboard');
-});
-Route::get('install/{id?}', 'Installation@install');
-Route::post('/database_installation', 'Installation@database_installation')->name('install');
+})->name('dashboard');
+Auth::routes();
+
+Route::resource('session_manager', 'SessionManagerController');
+

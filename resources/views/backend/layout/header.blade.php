@@ -45,7 +45,7 @@
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <div class="notify-icon">
-                                <img src="{{asset('images/users/avatar-2.jpg')}}" class="img-fluid rounded-circle" alt="" /> </div>
+                                <img src="{{asset('backend/images/users/avatar-2.jpg')}}" class="img-fluid rounded-circle" alt="" /> </div>
                             <p class="notify-details">Cristina Pride</p>
                             <p class="text-muted mb-0 user-msg">
                                 <small>Hi, How are you? What about our next meeting</small>
@@ -65,7 +65,7 @@
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <div class="notify-icon">
-                                <img src="{{asset('images/users/avatar-4.jpg')}}" class="img-fluid rounded-circle" alt="" /> </div>
+                                <img src="{{asset('backend/images/users/avatar-4.jpg')}}" class="img-fluid rounded-circle" alt="" /> </div>
                             <p class="notify-details">Karen Robinson</p>
                             <p class="text-muted mb-0 user-msg">
                                 <small>Wow ! this admin looks good and awesome design</small>
@@ -96,7 +96,7 @@
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                    aria-expanded="false">
                             <span class="account-user-avatar">
-                                <img src="{{asset('images/users/avatar-1.jpg')}}" alt="user-image" class="rounded-circle">
+                                <img src="{{asset('backend/images/users/avatar-1.jpg')}}" alt="user-image" class="rounded-circle">
                             </span>
                     <span>
                                 <span class="account-user-name">Dominic Keller</span>

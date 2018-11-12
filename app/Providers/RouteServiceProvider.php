@@ -24,7 +24,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-
         parent::boot();
     }
 
@@ -37,9 +36,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
+        $this->mapWebRoutes(); // Web Route is being used for managin the applicatoin
 
-        //
+        //$this->mapInstallRoutes(); // Install route is being used for managing the installation process
     }
 
     /**
@@ -49,11 +48,19 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     protected function mapWebRoutes()
     {
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+    }
+
+    protected function mapInstallRoutes()
+    {
+        Route::middleware('install')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/install.php'));
     }
 
     /**

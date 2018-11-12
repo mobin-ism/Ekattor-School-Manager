@@ -1,1 +1,0 @@
-ekattor-school-manager-laravel
