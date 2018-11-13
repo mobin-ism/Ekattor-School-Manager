@@ -49,9 +49,11 @@
 
 </div>
 <!-- END wrapper -->
+
 @include('backend.admin.right_navigation')
 @include('backend.layout.scripts')
 @include('backend.layout.modal')
+@include('backend.layout.ajax_form')
 @yield('scripts')
 </body>
 </html>

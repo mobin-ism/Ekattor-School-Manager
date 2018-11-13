@@ -1,5 +1,6 @@
 @extends('backend.layout.layout')
 @section('content')
+
     <!-- start page title -->
     <div class="row">
         <div class="col-12">

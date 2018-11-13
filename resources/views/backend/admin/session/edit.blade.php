@@ -1,4 +1,4 @@
-<form method="POST" class="d-block" action="{{ route('session_manager.update', $session->id) }}">
+<form method="POST" class="d-block ajaxForm" action="{{ route('session_manager.update', $session->id) }}">
     @csrf
     @method('PATCH')
     <div class="form-row">
@@ -13,4 +13,11 @@
         </div>
     </div>
 </form>
+
+<script>
+    $(".ajaxForm").submit(function(e) {
+        var form = $(this);
+        ajaxSubmit(e, form, 'session_content');
+    });
+</script>
 

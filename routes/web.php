@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('backend.admin.dashboard');
-})->name('dashboard');
-Auth::routes();
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', function () {
+        return view('backend.admin.dashboard');
+    })->name('dashboard');
+    Route::resource('session_manager', 'SessionManagerController');
+});
 
-Route::resource('session_manager', 'SessionManagerController');
+Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 

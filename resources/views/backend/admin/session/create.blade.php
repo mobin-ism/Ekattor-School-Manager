@@ -1,4 +1,4 @@
-<form method="POST" class="d-block" action="{{ route('session_manager.store') }}">
+<form method="POST" class="d-block ajaxForm" action="{{ route('session_manager.store') }}">
     @csrf
     <div class="form-row">
         <div class="form-group col-md-12">
@@ -12,3 +12,10 @@
         </div>
     </div>
 </form>
+
+<script>
+    $(".ajaxForm").submit(function(e) {
+        var form = $(this);
+        ajaxSubmit(e, form, 'session_content');
+    });
+</script>
