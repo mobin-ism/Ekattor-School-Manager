@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.20)
 # Database: laravel_ekattor
-# Generation Time: 2018-11-13 12:16:53 +0000
+# Generation Time: 2018-11-14 12:49:05 +0000
 # ************************************************************
 
 
@@ -18,6 +18,32 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table classes
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `classes`;
+
+CREATE TABLE `classes` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `classes` WRITE;
+/*!40000 ALTER TABLE `classes` DISABLE KEYS */;
+
+INSERT INTO `classes` (`id`, `name`, `school_id`, `created_at`, `updated_at`)
+VALUES
+	(1,'Tyler Lambert',1,'2018-11-14 09:57:21','2018-11-14 09:57:21'),
+	(2,'Class 10',1,'2018-11-14 10:09:36','2018-11-14 10:09:36');
+
+/*!40000 ALTER TABLE `classes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table menus
@@ -123,6 +149,35 @@ CREATE TABLE `password_resets` (
 
 
 
+# Dump of table sections
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `sections`;
+
+CREATE TABLE `sections` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `class_id` int(11) DEFAULT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `sections` WRITE;
+/*!40000 ALTER TABLE `sections` DISABLE KEYS */;
+
+INSERT INTO `sections` (`id`, `name`, `class_id`, `school_id`, `created_at`, `updated_at`)
+VALUES
+	(23,'D',2,1,'2018-11-14 10:09:36','2018-11-14 10:09:36'),
+	(24,'D',2,1,'2018-11-14 10:09:36','2018-11-14 10:09:36'),
+	(25,'D',2,1,'2018-11-14 10:09:36','2018-11-14 10:09:36'),
+	(30,'D',2,1,'2018-11-14 10:09:36','2018-11-14 10:09:36');
+
+/*!40000 ALTER TABLE `sections` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table sessions
 # ------------------------------------------------------------
 
@@ -133,17 +188,22 @@ CREATE TABLE `sessions` (
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `school_id` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT '0',
-  `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
 
-INSERT INTO `sessions` (`id`, `name`, `school_id`, `status`, `updated_at`, `created_at`)
+INSERT INTO `sessions` (`id`, `name`, `school_id`, `status`, `created_at`, `updated_at`)
 VALUES
-	(52,'2017-2020',1,0,'2018-11-13 01:26:39','2018-11-13 01:26:39');
+	(52,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39'),
+	(53,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39'),
+	(54,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39'),
+	(55,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39'),
+	(56,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39'),
+	(57,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39');
 
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -174,7 +234,7 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`, `role`, `address`, `phone`, `remember_token`)
 VALUES
-	(1,'Admin','admin@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm',NULL,NULL,NULL,NULL,NULL,'mj8HGJVcpfKotodiFf6Z1dVLbZ25QqTp8ZCE5DLw1QA7l5rfPkFKGnNcU5a6');
+	(1,'Admin','admin@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm',NULL,NULL,NULL,NULL,NULL,'0zOS8LF2D30PA7YFfNFRcOWUqs2uuB84SaXzTtZjOhBU7QLXFVRV2HPeJzlz');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

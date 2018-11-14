@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Session</h4>
+                <h4 class="page-title">Class</h4>
             </div>
         </div>
     </div>
@@ -14,10 +14,10 @@
         <div class="col-xl-10 offset-xl-1">
             <div class="card">
                 <div class="card-body">
-                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('session_manager.create') }}')"> <i class="mdi mdi-plus"></i> Add Session</button>
-                    <h4 class="header-title mt-3">Session List</h4>
-                    <div class="table-responsive-sm" id = "session_content">
-                        @include('backend.admin.session.list')
+                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('class.create') }}')"> <i class="mdi mdi-plus"></i>Add Class</button>
+                    <h4 class="header-title mt-3">Class List</h4>
+                    <div class="table-responsive-sm" id = "class_content">
+                        @include('backend.admin.class.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->
             </div> <!-- end card -->

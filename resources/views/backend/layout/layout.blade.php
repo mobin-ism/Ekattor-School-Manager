@@ -16,7 +16,7 @@
 <!-- Begin page -->
 <div class="wrapper">
 
-    @include('backend.admin.navigation')
+    @include('backend.admin.navigation.navigation')
 
     <!-- ============================================================== -->
     <!-- Start Page Content here -->
@@ -50,7 +50,7 @@
 </div>
 <!-- END wrapper -->
 
-@include('backend.admin.right_navigation')
+@include('backend.admin.navigation.right_navigation')
 @include('backend.layout.scripts')
 @include('backend.layout.modal')
 @include('backend.layout.ajax_form')

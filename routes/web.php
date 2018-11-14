@@ -13,9 +13,12 @@
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', function () {
-        return view('backend.admin.dashboard');
+        return view('backend.admin.dashboard.dashboard');
     })->name('dashboard');
     Route::resource('session_manager', 'SessionManagerController');
+    Route::resource('class', 'ClassController');
+    Route::resource('section', 'SectionController');
+    Route::get('/section/destroy/{sectionId}', 'SectionController@destroy')->name('section.destroy');
 });
 
 Auth::routes();

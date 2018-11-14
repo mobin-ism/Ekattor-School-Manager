@@ -1,5 +1,5 @@
 <?php
 
-function hello() {
-    return 'hello world';
+function hello($a) {
+    return __('web.$a');
 }

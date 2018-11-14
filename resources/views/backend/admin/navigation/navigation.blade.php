@@ -43,7 +43,7 @@
                     <ul class="side-nav-second-level" aria-expanded="false">
                         @foreach (\App\Menu::where('parent', $menu->id)->get() as $sub_menu)
                             <li>
-                                @if ($sub_menu->name == 'session_manager')
+                                @if ($sub_menu->name == 'session_manager' || $sub_menu->name == 'class')
                                     <a href="{{ route($sub_menu->name.'.index') }}">{{ ucfirst(str_replace('_', ' ', $sub_menu->name)) }}</a>
                                 @else
                                     <a href="#">{{ ucfirst(str_replace('_', ' ', $sub_menu->name)) }}</a>

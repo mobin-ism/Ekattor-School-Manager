@@ -2,7 +2,7 @@
     function ajaxSubmit(e, form, idToLoad) {
         e.preventDefault();
         var action = form.attr('action');
-
+        console.log(form.serializeArray());
         (form.attr('class') === 'ajaxDeleteForm') ? $('#alert-modal').modal('toggle') : $('#right-modal').modal('toggle');
 
         $.ajax({

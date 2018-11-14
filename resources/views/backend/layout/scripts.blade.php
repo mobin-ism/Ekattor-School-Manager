@@ -6,7 +6,7 @@
     <script src="{{asset('backend/js/pages/demo.dashboard.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-    @if(\Session::has('success_message'))
+    {{-- @if(\Session::has('success_message'))
         <script type="text/javascript">
         	toastr.success('{{ \Session::get('success_message') }}');
         </script>
@@ -14,6 +14,18 @@
 
     @if(\Session::has('error_message'))
         <script type="text/javascript">
-        	toastr.success('{{ \Session::get('error_message') }}');
+        	toastr.error('{{ \Session::get('error_message') }}');
         </script>
-    @endif
+    @endif --}}
+
+    @foreach (session('flash_notification', collect())->toArray() as $message)
+        @if($message['level'] == 'success')
+            <script type="text/javascript">
+                toastr.success('{{ $message['message'] }}');
+            </script>
+        @else
+            <script type="text/javascript">
+                toastr.error('{{ $message['message'] }}');
+            </script>
+        @endif
+    @endforeach

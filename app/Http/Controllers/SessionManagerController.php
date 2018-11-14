@@ -14,6 +14,7 @@ class SessionManagerController extends Controller
      */
     public function index()
     {
+        
         return view('backend.admin.session.index');
     }
 
@@ -41,13 +42,13 @@ class SessionManagerController extends Controller
         if($session->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.session.session')->render(),
+                'view' => view('backend.admin.session.list')->render(),
                 'notification' =>"Session Added Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.session.session')->render(),
+                'view' => view('backend.admin.session.list')->render(),
                 'notification' =>"An Error Occured When Adding Session"
             );
         }
@@ -93,13 +94,13 @@ class SessionManagerController extends Controller
         if($session->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.session.session')->render(),
+                'view' => view('backend.admin.session.list')->render(),
                 'notification' =>"Session Updated Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.session.session')->render(),
+                'view' => view('backend.admin.session.list')->render(),
                 'notification' =>"An Error Occured When Updating Session"
             );
         }
@@ -117,13 +118,13 @@ class SessionManagerController extends Controller
         if(Session::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.session.session')->render(),
+                'view' => view('backend.admin.session.list')->render(),
                 'notification' =>"Session Deleted Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.session.session')->render(),
+                'view' => view('backend.admin.session.list')->render(),
                 'notification' =>"An Error Occured When Deleting Session"
             );
         }
