@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Section;
+use App\Classes;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -67,9 +68,23 @@ class SectionController extends Controller
      * @param  \App\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Section $section)
+    public function update(Request $request, $class_id)
     {
-        //
+
+        foreach(array_combine($request->name, $request->section_id) as $name => $section_id){
+            if($name) {
+                $section = $section_id ? Section::find($section_id) : new Section;
+                $section->name = $name;
+                $section->class_id = $class_id;
+                $section->save();
+            }
+        }
+
+        return array(
+            'status' => true,
+            'view' => view('backend.admin.class.list')->render(),
+            'notification' => 'Damn!!'
+        );
     }
 
     /**

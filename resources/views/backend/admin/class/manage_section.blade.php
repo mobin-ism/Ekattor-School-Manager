@@ -2,41 +2,30 @@
     @csrf
     @method('PATCH')
 
-    {{-- <div class="form-row">
-        <div class="form-group col-md-12">
-            <label for="name">Class name</label>
-            <input type="text" class="form-control" id="name" name = "name">
-            <small id="name_help" class="form-text text-muted">Provide Class Name.</small>
-        </div>
-
-        <div class="form-group  col-md-12">
-            <button class="btn btn-block btn-primary" type="submit">Create Class</button>
-        </div>
-    </div> --}}
-
-    <div style="width: 100%;" id = "section_area">
+    <div id = "section_area">
         @foreach ($classes->sections as $key => $section)
-            <div class="form-row" style="width: 100%;">
-                <div class="form-group col-md-10">
-                    <input type="hidden" name = "section_ids[]" value="{{ $section->id }}">
-                    <input type="text" class="form-control" name = "name[]" value="{{ $section->name }}">
-                </div>
-                <div class="form-group col-md-2">
-                    <a href="javascript: void(0);" class="btn btn-icon btn-danger" style="color: white;" onclick="deleteSection('{{ route('section.destroy', $section->id) }}', this)"><i class="mdi mdi-window-close"></i></a>
-                </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <input type="hidden" class="form-control" name = "section_id[]" value="{{ $section->id }}">
+                <input type="text" class="form-control" id="name" name = "name[]" value="{{ $section->name }}">
             </div>
+            <div class="form-group col-md-12">
+                <button class="btn btn-block btn-danger" type="button" onclick="deleteSection('{{ route('section.destroy', $section->id) }}', this)">Delete Section {{ $section->name }}</button>
+            </div>
+        </div>
         @endforeach
     </div>
-    <div class="w-100"  id = "blank_section">
-        <div class="form-row w-100">
-                <div class="form-group col-md-10">
-                    <input type="hidden" name = "section_ids[]" value="">
-                    <input type="text" class="form-control" name = "name[]" value="">
-                </div>
-                <div class="form-group col-md-2 pull-right">
-                    <a href="javascript: void(0);" class="btn btn-sm btn-icon btn-success" style="color: white;" onclick="removeSection(this)"><i class="mdi mdi-window-close"></i></a>
-                </div>
+
+    <div id = "blank_section">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <input type="hidden" class="form-control" name = "section_id[]" value="">
+                <input type="text" class="form-control" name = "name[]" value="">
             </div>
+            <div class="form-group col-md-12">
+                <button class="btn btn-block btn-danger" type="button" onclick="removeSection(this)">Delete This Section</button>
+            </div>
+        </div>
     </div>
 
     <div class="row no-gutters">
@@ -77,5 +66,10 @@
     function removeSection(elem) {
         $(elem).closest('.form-row').remove();
     }
+
+    $(".ajaxForm").submit(function(e) {
+        var form = $(this);
+        ajaxSubmit(e, form, 'class_content');
+    });
 </script>
 

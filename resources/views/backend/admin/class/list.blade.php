@@ -18,9 +18,11 @@
                 </ul>
             </td>
             <td>
-                <button type="button" class="btn btn-icon btn-info" onclick="showAjaxModal('{{ route('class.show', $class->id) }}')"> Manage Section </button>
-                <button type="button" class="btn btn-icon btn-warning" onclick="showAjaxModal('{{ route('class.edit', $class->id) }}')"> <i class="mdi mdi-wrench"></i> </button>
-                <button type="button" class="btn btn-icon btn-danger" onclick="confirm_modal('{{ route('class.destroy', $class->id) }}', 'class_content' )"> <i class="mdi mdi-window-close"></i> </button>
+                <div class="btn-group mb-2">
+                    <button type="button" class="btn btn-icon btn-info" style="margin-right:5px;" onclick="showAjaxModal('{{ route('class.show', $class->id) }}')"> <i class="dripicons-checklist"></i> </button>
+                    <button type="button" class="btn btn-icon btn-warning" style="margin-right:5px;" onclick="showAjaxModal('{{ route('class.edit', $class->id) }}')"> <i class="mdi mdi-wrench"></i> </button>
+                    <button type="button" class="btn btn-icon btn-danger" style="margin-right:5px;" onclick="confirm_modal('{{ route('class.destroy', $class->id) }}', 'class_content' )"> <i class="mdi mdi-window-close"></i> </button>
+                </div>
             </td>
         </tr>
     @endforeach

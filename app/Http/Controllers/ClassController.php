@@ -77,9 +77,10 @@ class ClassController extends Controller
      * @param  \App\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Classes $classes)
+    public function edit($id)
     {
-        //
+        $classes = Classes::find($id);
+        return view('backend.admin.class.edit', compact('classes'));
     }
 
     /**
@@ -89,9 +90,26 @@ class ClassController extends Controller
      * @param  \App\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Classes $classes)
+    public function update(Request $request, $id)
     {
-        //
+        $classes = Classes::find($id);
+        $classes->name = $request->name;
+        $classes->school_id = 1;
+
+        if($classes->save()){
+            $data = array(
+                'status' => true,
+                'view' => view('backend.admin.class.list')->render(),
+                'notification' =>"Class Updated Successfully"
+            );
+        }else {
+            $data = array(
+                'status' => false,
+                'view' => view('backend.admin.class.list')->render(),
+                'notification' =>"An Error Occured When Updating Class"
+            );
+        }
+        return $data;
     }
 
     /**
@@ -100,9 +118,22 @@ class ClassController extends Controller
      * @param  \App\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Classes $classes)
+    public function destroy($id)
     {
-        //
+        if(Classes::destroy($id)){
+            $data = array(
+                'status' => true,
+                'view' => view('backend.admin.class.list')->render(),
+                'notification' =>"Class Deleted Successfully"
+            );
+        }else {
+            $data = array(
+                'status' => false,
+                'view' => view('backend.admin.class.list')->render(),
+                'notification' =>"An Error Occured When Deleting Class"
+            );
+        }
+        return $data;
     }
 
     public function createSection($class_id = "") {

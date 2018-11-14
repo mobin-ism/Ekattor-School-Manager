@@ -18,8 +18,10 @@
                 @endif
             </td>
             <td>
-                <button type="button" class="btn btn-icon btn-warning" onclick="showAjaxModal('{{ route('session_manager.edit', $session->id) }}')"> <i class="mdi mdi-wrench"></i> </button>
-                <button type="button" class="btn btn-icon btn-danger" onclick="confirm_modal('{{ route('session_manager.destroy', $session->id) }}', 'session_content' )"> <i class="mdi mdi-window-close"></i> </button>
+                <div class="btn-group mb-2">
+                    <button type="button" class="btn btn-icon btn-warning" style="margin-right:5px;" onclick="showAjaxModal('{{ route('session_manager.edit', $session->id) }}')"> <i class="mdi mdi-wrench"></i> </button>
+                    <button type="button" class="btn btn-icon btn-danger" style="margin-right:5px;" onclick="confirm_modal('{{ route('session_manager.destroy', $session->id) }}', 'session_content' )"> <i class="mdi mdi-window-close"></i> </button>
+                </div>
             </td>
         </tr>
     @endforeach
