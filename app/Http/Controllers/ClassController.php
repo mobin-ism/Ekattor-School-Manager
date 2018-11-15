@@ -68,7 +68,7 @@ class ClassController extends Controller
     public function show($class_id)
     {
         $classes = Classes::find($class_id);
-        return view('backend.admin.class.manage_section', compact('classes'));
+        return view('backend.admin.class.section', compact('classes'));
     }
 
     /**

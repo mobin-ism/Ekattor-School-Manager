@@ -14,7 +14,7 @@ class SessionManagerController extends Controller
      */
     public function index()
     {
-        
+
         return view('backend.admin.session.index');
     }
 
@@ -36,10 +36,11 @@ class SessionManagerController extends Controller
      */
     public function store(Request $request)
     {
-        $session = new Session;
-        $session->name = $request->session_title;
-        $session->school_id = 1;
-        if($session->save()){
+        if(count(Session::where('name', $request->session_title)->get()) == 0){
+            $session = new Session;
+            $session->name = $request->session_title;
+            $session->school_id = 1;
+            $session->save();
             $data = array(
                 'status' => true,
                 'view' => view('backend.admin.session.list')->render(),

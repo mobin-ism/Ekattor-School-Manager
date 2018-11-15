@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.20)
 # Database: laravel_ekattor
-# Generation Time: 2018-11-14 12:49:05 +0000
+# Generation Time: 2018-11-15 12:00:53 +0000
 # ************************************************************
 
 
@@ -39,10 +39,34 @@ LOCK TABLES `classes` WRITE;
 
 INSERT INTO `classes` (`id`, `name`, `school_id`, `created_at`, `updated_at`)
 VALUES
-	(1,'Tyler Lambert',1,'2018-11-14 09:57:21','2018-11-14 09:57:21'),
-	(2,'Class 10',1,'2018-11-14 10:09:36','2018-11-14 10:09:36');
+	(1,'Class One',1,'2018-11-14 09:57:21','2018-11-15 07:22:22'),
+	(2,'Class Ten',1,'2018-11-14 10:09:36','2018-11-15 06:39:44'),
+	(3,'Class Two',1,'2018-11-15 06:24:42','2018-11-15 06:24:42'),
+	(15,'Class Four',1,'2018-11-15 07:28:24','2018-11-15 07:28:24');
 
 /*!40000 ALTER TABLE `classes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table departments
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `departments`;
+
+CREATE TABLE `departments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `departments` WRITE;
+/*!40000 ALTER TABLE `departments` DISABLE KEYS */;
+
+INSERT INTO `departments` (`id`, `name`)
+VALUES
+	(1,'Physics');
+
+/*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -149,6 +173,30 @@ CREATE TABLE `password_resets` (
 
 
 
+# Dump of table roles
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `roles`;
+
+CREATE TABLE `roles` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+
+INSERT INTO `roles` (`id`, `name`)
+VALUES
+	(1,'admin'),
+	(2,'sub_admin'),
+	(3,'teacher');
+
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table sections
 # ------------------------------------------------------------
 
@@ -169,10 +217,21 @@ LOCK TABLES `sections` WRITE;
 
 INSERT INTO `sections` (`id`, `name`, `class_id`, `school_id`, `created_at`, `updated_at`)
 VALUES
-	(23,'D',2,1,'2018-11-14 10:09:36','2018-11-14 10:09:36'),
-	(24,'D',2,1,'2018-11-14 10:09:36','2018-11-14 10:09:36'),
-	(25,'D',2,1,'2018-11-14 10:09:36','2018-11-14 10:09:36'),
-	(30,'D',2,1,'2018-11-14 10:09:36','2018-11-14 10:09:36');
+	(23,'A',2,1,'2018-11-14 10:09:36','2018-11-15 06:22:15'),
+	(32,'A',1,1,'2018-11-15 06:22:32','2018-11-15 07:28:11'),
+	(33,'A',3,1,'2018-11-15 06:24:42','2018-11-15 06:24:42'),
+	(34,'A',4,1,'2018-11-15 06:51:48','2018-11-15 06:51:48'),
+	(35,'A',5,1,'2018-11-15 06:53:15','2018-11-15 06:53:15'),
+	(36,'A',6,1,'2018-11-15 06:53:20','2018-11-15 06:53:20'),
+	(37,'A',7,1,'2018-11-15 06:53:48','2018-11-15 06:53:48'),
+	(38,'A',8,1,'2018-11-15 06:55:59','2018-11-15 06:55:59'),
+	(39,'A',9,1,'2018-11-15 06:57:18','2018-11-15 06:57:18'),
+	(40,'A',10,1,'2018-11-15 06:57:51','2018-11-15 06:57:51'),
+	(41,'A',11,1,'2018-11-15 06:58:08','2018-11-15 06:58:08'),
+	(42,'A',12,1,'2018-11-15 06:58:43','2018-11-15 06:58:43'),
+	(43,'A',13,1,'2018-11-15 07:01:33','2018-11-15 07:01:33'),
+	(44,'A',14,1,'2018-11-15 07:02:08','2018-11-15 07:02:08'),
+	(46,'A',15,1,'2018-11-15 07:28:24','2018-11-15 07:28:24');
 
 /*!40000 ALTER TABLE `sections` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -190,7 +249,8 @@ CREATE TABLE `sessions` (
   `status` int(11) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 LOCK TABLES `sessions` WRITE;
@@ -198,14 +258,39 @@ LOCK TABLES `sessions` WRITE;
 
 INSERT INTO `sessions` (`id`, `name`, `school_id`, `status`, `created_at`, `updated_at`)
 VALUES
-	(52,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39'),
-	(53,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39'),
-	(54,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39'),
-	(55,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39'),
-	(56,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39'),
-	(57,'2017-2020',1,0,'2018-11-13 07:26:39','2018-11-13 07:26:39');
+	(1,'2017-2018',1,0,'2018-11-15 09:39:09','2018-11-15 09:39:09');
 
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table teachers
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `teachers`;
+
+CREATE TABLE `teachers` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `department_id` int(11) DEFAULT NULL,
+  `designation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `teachers` WRITE;
+/*!40000 ALTER TABLE `teachers` DISABLE KEYS */;
+
+INSERT INTO `teachers` (`id`, `user_id`, `department_id`, `designation`, `school_id`, `created_at`, `updated_at`)
+VALUES
+	(12,14,1,'Ab iusto quod vitae minim quidem praesentium aut tempore',1,'2018-11-15 11:47:53','2018-11-15 11:47:53'),
+	(13,15,1,'Eum ipsum qui sequi voluptas voluptatem molestias est voluptatem',1,'2018-11-15 11:48:06','2018-11-15 11:48:06'),
+	(14,16,1,'Qui in ut sint laborum ut possimus repellendus Quo veniam voluptatem unde esse ad est inventore earum aut',1,'2018-11-15 11:48:12','2018-11-15 11:48:12'),
+	(15,17,1,'Reprehenderit doloribus id recusandae Molestias',1,'2018-11-15 11:48:17','2018-11-15 11:48:17');
+
+/*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -219,22 +304,32 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
   `role` int(11) DEFAULT NULL,
   `address` longtext COLLATE utf8mb4_unicode_ci,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `birthday` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blood_group` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `authentication_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
+  UNIQUE KEY `users_email_unique` (`email`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`, `role`, `address`, `phone`, `remember_token`)
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phone`, `remember_token`, `birthday`, `gender`, `blood_group`, `school_id`, `authentication_key`, `created_at`, `updated_at`)
 VALUES
-	(1,'Admin','admin@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm',NULL,NULL,NULL,NULL,NULL,'0zOS8LF2D30PA7YFfNFRcOWUqs2uuB84SaXzTtZjOhBU7QLXFVRV2HPeJzlz');
+	(1,'Admin','admin@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm',1,NULL,NULL,'vtnWJjTDfIchFG4jYgM3awNbS7czaMNP3GzAs4ol6Au14D6p8cd9LfKyVpBn',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(14,'Oscar Padilla','teacher@example.com','$2y$10$JPdPD6ikGWSggP/Hhlom2e3MD9aUzDcbbwN6Uk0pxIT33/1QTyYXG',3,'Culpa velit officia eaque sit','+478-85-8909980',NULL,NULL,'female','b-',NULL,NULL,'2018-11-15 11:47:53','2018-11-15 11:47:53'),
+	(15,'Mili Hasan ?','teacher2@example.com','$2y$10$zovGAwMnDpd.bcen6Cwr/OdS.pf93Fo/MTiWLEYyMkKfmXEPwJPt.',3,'Inventore iste vel nihil praesentium in quo exercitation odit est modi recusandae Aut sunt rerum est do porro dicta','+772-78-8452846',NULL,NULL,'female','a+',NULL,NULL,'2018-11-15 11:48:06','2018-11-15 11:57:04'),
+	(16,'Zachery Davis','teacher3@example.com','$2y$10$BQnpqSneg/n7Kwv8pAP2VulckrCwbDdQ6CUnPboQN0qgc4RTNwxfa',3,'Aut labore ut id enim qui fugiat assumenda soluta molestias enim et facere dolor nesciunt asperiores consequatur Quidem','+259-76-6790239',NULL,NULL,'others','a-',NULL,NULL,'2018-11-15 11:48:12','2018-11-15 11:48:12'),
+	(17,'Leo Spence','teacher4@example.com','$2y$10$w8.39SzK.NsSQYcnjJvkgu1GFS7eLTcC6LWuWye/g4df6G49GrCIy',3,'Cumque et id quod expedita maiores ea consequatur commodi','+643-57-5777424',NULL,NULL,'female','b+',NULL,NULL,'2018-11-15 11:48:17','2018-11-15 11:48:17');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

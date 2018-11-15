@@ -7,7 +7,7 @@
         <div class="form-row">
             <div class="form-group col-md-12">
                 <input type="hidden" class="form-control" name = "section_id[]" value="{{ $section->id }}">
-                <input type="text" class="form-control" id="name" name = "name[]" value="{{ $section->name }}">
+                <input type="text" class="form-control" id="name" name = "name[]" value="{{ $section->name }}" required>
             </div>
             <div class="form-group col-md-12">
                 <button class="btn btn-block btn-danger" type="button" onclick="deleteSection('{{ route('section.destroy', $section->id) }}', this)">Delete Section {{ $section->name }}</button>
@@ -30,7 +30,7 @@
 
     <div class="row no-gutters">
         <div class="form-group  col-md-12 p-0">
-            <button class="btn btn-block btn-success" type="button" onclick="appendSection()">Add Section</button>
+            <button class="btn btn-block btn-success" type="button" onclick="appendSection()">Add New Section</button>
         </div>
         <div class="form-group  col-md-12 p-0">
             <button class="btn btn-block btn-primary" type="submit">Update</button>
@@ -40,6 +40,7 @@
 
 <script>
 
+    $(".ajaxForm").validate({ }); // Jquery form validation initialization
     var blank_section_field = $('#blank_section').html();
 
     $(document).ready(function() {
@@ -51,9 +52,14 @@
             type : 'GET',
             url  : deleteUrl,
             success : function(response) {
-                $(elem).parent().parent().remove();
-                toastr.success('Section Deleted');
-                $('#class_content').html(response);
+                console.log(response.status);
+                if(response.status === true){
+                    toastr.success(response.notification);
+                    $(elem).parent().parent().remove();
+                }else {
+                    toastr.error(response.notification);
+                }
+                $('#class_content').html(response.view);
             }
         });
 

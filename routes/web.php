@@ -18,6 +18,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('session_manager', 'SessionManagerController');
     Route::resource('class', 'ClassController');
     Route::resource('section', 'SectionController');
+    Route::resource('teacher', 'TeacherController');
     Route::get('/section/destroy/{sectionId}', 'SectionController@destroy')->name('section.destroy');
 });
 

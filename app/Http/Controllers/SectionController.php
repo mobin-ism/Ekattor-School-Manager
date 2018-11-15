@@ -76,6 +76,7 @@ class SectionController extends Controller
                 $section = $section_id ? Section::find($section_id) : new Section;
                 $section->name = $name;
                 $section->class_id = $class_id;
+                $section->school_id = 1;
                 $section->save();
             }
         }
@@ -83,7 +84,7 @@ class SectionController extends Controller
         return array(
             'status' => true,
             'view' => view('backend.admin.class.list')->render(),
-            'notification' => 'Damn!!'
+            'notification' => 'Section Updated Successfully'
         );
     }
 
@@ -95,7 +96,22 @@ class SectionController extends Controller
      */
     public function destroy($section_id)
     {
-        Section::destroy($section_id);
-        return view('backend.admin.class.list');
+        $selected_section = Section::find($section_id);
+        $class_id = $selected_section->class_id;
+        $sections_for_that_class = Section::where('class_id', $class_id)->get();
+        if(sizeof($sections_for_that_class) == 1){
+            return array(
+                'status' => false,
+                'view' => view('backend.admin.class.list')->render(),
+                'notification' => 'Every Class Should Have At least One Section'
+            );
+        }else {
+            Section::destroy($section_id);
+            return array(
+                'status' => true,
+                'view' => view('backend.admin.class.list')->render(),
+                'notification' => 'Section Deleted Successfully'
+            );
+        }
     }
 }

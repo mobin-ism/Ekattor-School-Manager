@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Hyper - Responsive Bootstrap 4 Admin Dashboard</title>
+        <title>School Management System</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -13,6 +13,7 @@
         <!-- App css -->
         <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('backend/css/main.css') }}" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -47,6 +48,9 @@
                                 <a href="pages-recoverpw-2.html" class="text-muted float-right"><small>Forgot your password?</small></a>
                                 <label for="password">Password</label>
                                 <input class="form-control" type="password" required="" id="password" placeholder="Enter your password" name="password">
+                                @if ($errors->has('email'))
+                                <span class = "error"> {{ $errors->first('email') }} </span>
+                            @endif
                             </div>
                             <div class="form-group mb-0 text-center">
                                 <button class="btn btn-primary btn-block" type="submit"><i class="mdi mdi-login"></i> Log In </button>
