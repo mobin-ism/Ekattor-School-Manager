@@ -15,8 +15,7 @@ class TeacherPermissionController extends Controller
      */
     public function index()
     {
-        $teachers = \App\Teacher::where('school_id', 1)->get();
-        return view('backend.admin.teacher_permission.index', compact('teachers'));
+        return view('backend.admin.teacher_permission.index');
     }
 
     /**
@@ -72,9 +71,36 @@ class TeacherPermissionController extends Controller
      * @param  \App\TeacherPermission  $teacherPermission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TeacherPermission $teacherPermission)
+    public function update(TeacherPermission $teacherPermission)
     {
-        //
+
+
+    }
+
+    public function assign_permission() {
+      $class_id = $_POST['class_id'];
+      $section_id = $_POST['section_id'];
+      $isChecked = $_POST['isChecked'];
+      $taskName_teacherID = $_POST['task_teacherId'];
+      $array = explode('-', $taskName_teacherID);
+      $task = $array[0];
+      $teacher_id = $array[1];
+
+      $condition = ['class_id' => $class_id, 'section_id' => $section_id, 'teacher_id' => $teacher_id];
+      $query = TeacherPermission::where($condition)->get();
+      if(count($query) > 0) {
+        $teacher_permission = TeacherPermission::find($query[0]->id);
+        $teacher_permission->$task = $isChecked;
+
+      }else {
+        $teacher_permission = new TeacherPermission;
+        $teacher_permission->class_id = $class_id;
+        $teacher_permission->section_id = $section_id;
+        $teacher_permission->teacher_id = $teacher_id;
+        $teacher_permission->$task = $isChecked;
+      }
+
+      $teacher_permission->save();
     }
 
     /**

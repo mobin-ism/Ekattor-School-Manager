@@ -29,9 +29,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('accountant', 'AccountantController');
     Route::resource('librarian', 'LibrarianController');
     Route::resource('permission', 'TeacherPermissionController');
+    Route::post('assign_permission', 'TeacherPermissionController@assign_permission')->name('permission.assign');
 
 });
 
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-

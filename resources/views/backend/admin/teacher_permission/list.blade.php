@@ -16,27 +16,32 @@
             </tr>
         </thead>
         <tbody>
-                @foreach ($teachers as $teacher)
-                <tr>
-                    <td>{{ $teacher->user->name }}</td>
-                    @foreach ($columns as $column)
-                    @php
-                        if ($column == 'class_id' || $column == 'section_id' || $column == 'created_at' || $column == 'updated_at' || $column == 'teacher_id' || $column == 'id')
-                            continue;
-                    @endphp
-                    <td>
-                            {{-- <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="{{ $attribute }}_switch_{{ $teacher->id }}">
-                                <label class="custom-control-label" for="{{ $attribute }}_switch_{{ $teacher->id }}">&nbsp;</label>
-                            </div> --}}
-                        {{-- <input type="checkbox" id="{{ $attribute }}_switch_{{ $teacher->id }}" data-switch="none"/>
-                        <label for="{{ $attribute }}_switch_{{ $teacher->id }}" data-on-label="" data-off-label=""></label> --}}
-
-                        <input type="checkbox" id="{{ $column }}_switch_{{ $teacher->id }}" data-switch="info"/>
-                        <label for="{{ $column }}_switch_{{ $teacher->id }}" data-on-label="On" data-off-label="Off"></label>
-                    </td>
+                @if (isset($teachers))
+                    @foreach ($teachers as $teacher)
+                    <tr>
+                        <td>{{ $teacher->user->name }}</td>
+                        @foreach ($columns as $column)
+                        @php
+                            if ($column == 'class_id' || $column == 'section_id' || $column == 'created_at' || $column == 'updated_at' || $column == 'teacher_id' || $column == 'id')
+                                continue;
+                        @endphp
+                        <td>
+                                {{-- <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="{{ $attribute }}_switch_{{ $teacher->id }}">
+                                    <label class="custom-control-label" for="{{ $attribute }}_switch_{{ $teacher->id }}">&nbsp;</label>
+                                </div> --}}
+                            <meta name="csrf-token" content="{{ csrf_token() }}" />
+                            <input type="checkbox" class="permission_switch" id="{{ $column }}-{{ $teacher->id }}" data-switch="info" onchange="togglePermission(this.id, '{{$class_id}}', '{{$section_id}}')"/>
+                            <label for="{{ $column }}-{{ $teacher->id }}" data-on-label="On" data-off-label="Off"></label>
+                        </td>
+                        @endforeach
+                    </tr>
                     @endforeach
-                </tr>
-                @endforeach
+                @else
+                    <tr>
+                        <td colspan = {{ count($columns) }}>Select class and section</td>
+                    </tr>
+                @endif
+
         </tbody>
     </table>
