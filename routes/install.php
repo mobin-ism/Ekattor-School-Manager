@@ -16,6 +16,8 @@ Route::get('/step3/{error?}', 'Installation@step3')->name('step3');
 Route::get('/step4', 'Installation@step4')->name('step4');
 Route::get('/step5', 'Installation@step5')->name('step5');
 Route::get('/step6', 'Installation@step6')->name('step6');
+Route::get('/proceedToLogin', 'Installation@proceedToLogin')->name('redirect');
 
 Route::post('/database_installation', 'Installation@database_installation')->name('install.db');
 Route::get('import_sql', 'Installation@import_sql')->name('import_sql');
+Route::post('system_settings', 'Installation@system_settings')->name('system_settings');

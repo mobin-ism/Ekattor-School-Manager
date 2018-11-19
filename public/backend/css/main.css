@@ -2,3 +2,14 @@
     color: #ef5350;
     border-color: #ef5350;
  }
+
+ .modal-right {
+    min-width: 400px;
+    width: 400px;
+}
+@media (max-width: 576px){
+    .modal-right {
+        min-width: calc(100vw - 40px);
+        width: calc(100vw - 40px);
+    }
+}

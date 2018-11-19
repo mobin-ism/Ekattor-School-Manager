@@ -5,12 +5,12 @@
     <div id = "section_area">
         @foreach ($classes->sections as $key => $section)
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-10">
                 <input type="hidden" class="form-control" name = "section_id[]" value="{{ $section->id }}">
                 <input type="text" class="form-control" id="name" name = "name[]" value="{{ $section->name }}" required>
             </div>
-            <div class="form-group col-md-12">
-                <button class="btn btn-block btn-danger" type="button" onclick="deleteSection('{{ route('section.destroy', $section->id) }}', this)">Delete Section {{ $section->name }}</button>
+            <div class="form-group col-2">
+                <button class="btn btn-icon btn-danger" type="button" onclick="deleteSection('{{ route('section.destroy', $section->id) }}', this)"><i class="mdi mdi-window-close"></i></button>
             </div>
         </div>
         @endforeach
@@ -18,12 +18,12 @@
 
     <div id = "blank_section">
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-10">
                 <input type="hidden" class="form-control" name = "section_id[]" value="">
                 <input type="text" class="form-control" name = "name[]" value="">
             </div>
-            <div class="form-group col-md-12">
-                <button class="btn btn-block btn-danger" type="button" onclick="removeSection(this)">Delete This Section</button>
+            <div class="form-group col-2">
+                <button class="btn btn-icon btn-danger" type="button" onclick="removeSection(this)"><i class="mdi mdi-window-close"></i></button>
             </div>
         </div>
     </div>

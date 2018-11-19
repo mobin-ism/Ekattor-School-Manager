@@ -1,4 +1,3 @@
-
     <!-- Topbar Start -->
     <div class="navbar-custom">
         <ul class="list-unstyled topbar-right-menu float-right mb-0">
@@ -99,8 +98,8 @@
                                 <img src="{{asset('backend/images/users/avatar-1.jpg')}}" alt="user-image" class="rounded-circle">
                             </span>
                     <span>
-                                <span class="account-user-name">Dominic Keller</span>
-                                <span class="account-position">Founder</span>
+                                <span class="account-user-name">{{ Auth::user()->name }}</span>
+                                <span class="account-position">{{ ucfirst(\App\Role::find(1)->name) }}</span>
                             </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">

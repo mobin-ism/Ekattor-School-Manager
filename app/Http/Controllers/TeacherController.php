@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use App\User;
+use App\TeacherPermission;
 use Illuminate\Http\Request;
 use Hash;
 
@@ -37,13 +38,14 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all()  );
+
         if(count(User::where('email', $request->email)->get()) == 0) {
             $user = new User;
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->role = 3;
+            $user->school_id = 1;
             $user->phone = $request->phone;
             $user->address = $request->address;
             // $user->birthday = strtotime($request->birthday);
@@ -51,11 +53,13 @@ class TeacherController extends Controller
             $user->blood_group = $request->blood_group;
             if($user->save()) {
                 $teacher = new Teacher;
-                $teacher->department_id = 1;
+                $teacher->department_id = $request->department;
                 $teacher->designation = $request->designation;
                 $teacher->user_id = $user->id;
                 $teacher->school_id = 1;
                 $teacher->save();
+
+                $this->add_to_teacher_permission($teacher->id);
 
                 $data = array(
                     'status' => true,
@@ -80,9 +84,9 @@ class TeacherController extends Controller
      * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
+    public function show($department_id)
     {
-        //
+        return view('backend.admin.teacher.list', compact('department_id'));
     }
 
     /**
@@ -117,7 +121,7 @@ class TeacherController extends Controller
             $user->gender = $request->gender;
             $user->blood_group = $request->blood_group;
             if($user->save()) {
-                $teacher->department_id = 1;
+                $teacher->department_id = $request->department;
                 $teacher->designation = $request->designation;
                 $teacher->school_id = 1;
                 $teacher->save();
@@ -155,5 +159,20 @@ class TeacherController extends Controller
             'view' => view('backend.admin.teacher.list')->render(),
             'notification' =>"Teacher has been deleted successfully"
         );
+    }
+
+
+    // Add to teacher_permission table
+    public function add_to_teacher_permission($teacher_id) {
+        $teacher_permission = new TeacherPermission;
+        $teacher_permission->teacher_id = $teacher_id;
+        $teacher_permission->save();
+    }
+
+    public function assigned_permissions($teacher_id) {
+        $teacher_details = Teacher::find($teacher_id);
+        $teacher_permission = new TeacherPermission;
+        $permissions = $teacher_permission::where('teacher_id', $teacher_id)->get();
+        return view('backend.admin.teacher.permission', compact('permissions', 'teacher_details'));
     }
 }

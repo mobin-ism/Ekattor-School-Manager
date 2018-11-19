@@ -17,9 +17,19 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('dashboard');
     Route::resource('session_manager', 'SessionManagerController');
     Route::resource('class', 'ClassController');
+
     Route::resource('section', 'SectionController');
-    Route::resource('teacher', 'TeacherController');
     Route::get('/section/destroy/{sectionId}', 'SectionController@destroy')->name('section.destroy');
+
+    Route::resource('teacher', 'TeacherController');
+    Route::get('teacher_permission/{teacher_id}', 'TeacherController@assigned_permissions')->name('teacher.permission');
+
+    Route::resource('department', 'DepartmentController');
+    Route::resource('parent', 'ParentController');
+    Route::resource('accountant', 'AccountantController');
+    Route::resource('librarian', 'LibrarianController');
+    Route::resource('permission', 'TeacherPermissionController');
+
 });
 
 Auth::routes();

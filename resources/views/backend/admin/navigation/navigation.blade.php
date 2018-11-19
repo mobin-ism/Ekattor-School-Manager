@@ -33,7 +33,7 @@
                     </ul>
                 </li>
 
-                @foreach (\App\Menu::where('parent', 0)->get() as $menu)
+                @foreach (\App\Menu::where('parent', 0)->where('status', 1)->get() as $menu)
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
                         <i class="dripicons-browser"></i>
@@ -41,9 +41,9 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="side-nav-second-level" aria-expanded="false">
-                        @foreach (\App\Menu::where('parent', $menu->id)->get() as $sub_menu)
+                        @foreach (\App\Menu::where('parent', $menu->id)->where('status', 1)->get() as $sub_menu)
                             <li>
-                                @if ($sub_menu->name == 'session_manager' || $sub_menu->name == 'class' || $sub_menu->name == 'teacher')
+                                @if ($sub_menu->name == 'session_manager' || $sub_menu->name == 'class' || $sub_menu->name == 'teacher' || $sub_menu->name == 'department' || $sub_menu->name == 'parent' || $sub_menu->name == 'accountant' || $sub_menu->name == 'librarian')
                                     <a href="{{ route($sub_menu->name.'.index') }}">{{ ucfirst(str_replace('_', ' ', $sub_menu->name)) }}</a>
                                 @else
                                     <a href="#">{{ ucfirst(str_replace('_', ' ', $sub_menu->name)) }}</a>

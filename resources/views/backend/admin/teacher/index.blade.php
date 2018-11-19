@@ -16,6 +16,14 @@
                 <div class="card-body">
                     <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('teacher.create') }}')"> <i class="mdi mdi-plus"></i> Add New Teacher</button>
                     <h4 class="header-title mt-3">Teacher List</h4>
+                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
+                        <select class="form-control col-md-4" name="department_id" id="" onchange="departmentWiseFilter(this.value)">
+                            <option value="all">All Department</option>
+                            @foreach (App\Department::where('school_id', 1)->get() as $department)
+                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="table-responsive-sm" id = "teacher_content">
                         @include('backend.admin.teacher.list')
                     </div> <!-- end table-responsive-->
@@ -23,4 +31,21 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function departmentWiseFilter(department_id) {
+            var url = '{{ route("teacher.show", "department_id") }}';
+            url = url.replace('department_id', department_id);
+
+            $.ajax({
+                type : 'GET',
+                url: url,
+                success : function(response) {
+                    $('#teacher_content').html(response);
+                }
+            });
+        }
+    </script>
 @endsection

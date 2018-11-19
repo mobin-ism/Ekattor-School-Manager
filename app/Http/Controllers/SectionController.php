@@ -45,9 +45,10 @@ class SectionController extends Controller
      * @param  \App\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function show(Section $section)
+    public function show($class_id)
     {
-        //
+        $sections = Section::where('class_id', $class_id)->get();
+        return view('backend.admin.section.list', compact('sections'));
     }
 
     /**

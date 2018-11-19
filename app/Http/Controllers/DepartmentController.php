@@ -14,7 +14,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.admin.department.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.admin.department.create');
     }
 
     /**
@@ -35,7 +35,23 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $department = new Department();
+        $department->name = $request->name;
+        $department->school_id = 1;
+        if($department->save()){
+            $data = array(
+                'status' => true,
+                'view' => view('backend.admin.department.list')->render(),
+                'notification' =>"Department Added Successfully"
+            );
+        }else {
+            $data = array(
+                'status' => false,
+                'view' => view('backend.admin.department.list')->render(),
+                'notification' =>"An Error Occured When Adding Department"
+            );
+        }
+        return $data;
     }
 
     /**
@@ -46,7 +62,8 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
+
+
     }
 
     /**
@@ -55,9 +72,10 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function edit(Department $department)
+    public function edit($id)
     {
-        //
+        $department = Department::find($id);
+        return view('backend.admin.department.edit', compact('department'));
     }
 
     /**
@@ -67,9 +85,25 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(Request $request, $id)
     {
-        //
+        $department = Department::find($id);
+        $department->name = $request->name;
+        $department->school_id = 1;
+        if($department->save()){
+            $data = array(
+                'status' => true,
+                'view' => view('backend.admin.department.list')->render(),
+                'notification' =>"Department Updated Successfully"
+            );
+        }else {
+            $data = array(
+                'status' => false,
+                'view' => view('backend.admin.department.list')->render(),
+                'notification' =>"An Error Occured When Updating Department"
+            );
+        }
+        return $data;
     }
 
     /**
@@ -78,8 +112,21 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy($id)
     {
-        //
+        if(Department::destroy($id)){
+            $data = array(
+                'status' => true,
+                'view' => view('backend.admin.department.list')->render(),
+                'notification' =>"Department Deleted Successfully"
+            );
+        }else {
+            $data = array(
+                'status' => false,
+                'view' => view('backend.admin.department.list')->render(),
+                'notification' =>"An Error Occured When Deleting Department"
+            );
+        }
+        return $data;
     }
 }

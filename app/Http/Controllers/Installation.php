@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Artisan;
 use DB;
+use App\User;
+use App\Setting;
+use App\Branch;
+use Hash;
 class Installation extends Controller
 {
     public function step0() {
@@ -43,6 +47,26 @@ class Installation extends Controller
         return view('backend.installation.step6');
     }
 
+    public function system_settings(Request $request) {
+        $settings = new Setting;
+        $branch = new Branch;
+        $user = new User;
+
+        $branch->name = $request->school_name;
+        $branch->save();
+
+        $settings->system_name = $request->system_name;
+        $settings->system_email = $request->system_email;
+        $settings->selected_branch = $branch->id;
+        $settings->save();
+
+        $user->name = $request->admin_name;
+        $user->email = $request->admin_email;
+        $user->password = Hash::make($request->admin_password);
+        $user->save();
+
+        return redirect('step6');
+    }
     public function database_installation(Request $request) {
 
         if(self::check_database_connection($request->DB_HOST, $request->DB_DATABASE, $request->DB_USERNAME, $request->DB_PASSWORD)) {
@@ -76,5 +100,9 @@ class Installation extends Controller
         }else {
             return false;
         }
+    }
+
+    function proceedToLogin() {
+
     }
 }
