@@ -1,5 +1,6 @@
 <?php
-
-function hello($a) {
-    return __('web.$a');
+use App\Setting;
+function get_settings($type) {
+    $settings = Setting::first();
+    return $settings[$type];
 }

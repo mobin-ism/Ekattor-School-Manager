@@ -16,6 +16,7 @@
     <script src="{{ asset('backend/js/vendor/dataTables.keyTable.min.js') }}"></script>
     <script src="{{ asset('backend/js/vendor/dataTables.select.min.js') }}"></script>
     <script src="{{ asset('backend/js/pages/demo.datatable-init.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/demo.form-wizard.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>

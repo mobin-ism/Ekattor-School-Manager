@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.20)
 # Database: laravel_ekattor
-# Generation Time: 2018-11-19 12:46:52 +0000
+# Generation Time: 2018-11-20 12:03:36 +0000
 # ************************************************************
 
 
@@ -106,6 +106,36 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table enrolls
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `enrolls`;
+
+CREATE TABLE `enrolls` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `student_id` int(11) DEFAULT NULL,
+  `class_id` int(11) DEFAULT NULL,
+  `section_id` int(11) DEFAULT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `session` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `enrolls` WRITE;
+/*!40000 ALTER TABLE `enrolls` DISABLE KEYS */;
+
+INSERT INTO `enrolls` (`id`, `student_id`, `class_id`, `section_id`, `school_id`, `session`, `created_at`, `updated_at`)
+VALUES
+	(1,1,1,48,1,'2018-2019','2018-11-20 10:49:25','2018-11-20 10:49:25'),
+	(2,2,1,48,1,'2018-2019','2018-11-20 10:50:51','2018-11-20 10:50:51'),
+	(3,3,1,48,1,'2018-2019','2018-11-20 10:53:45','2018-11-20 10:53:45');
+
+/*!40000 ALTER TABLE `enrolls` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table menus
 # ------------------------------------------------------------
 
@@ -166,7 +196,8 @@ VALUES
 	(39,'payment_settings',36,1,NULL),
 	(40,'language_settings',36,1,NULL),
 	(41,'session_manager',31,1,NULL),
-	(42,'department',11,1,NULL);
+	(42,'department',11,1,NULL),
+	(43,'admission',3,1,NULL);
 
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -330,9 +361,38 @@ LOCK TABLES `settings` WRITE;
 
 INSERT INTO `settings` (`id`, `system_name`, `system_email`, `selected_branch`, `running_session`, `updated_at`, `created_at`)
 VALUES
-	(1,'Nathan Bryan','xotetocah@mailinator.com',1,'','2018-11-17 19:20:01','2018-11-17 19:20:01');
+	(1,'Nathan Bryan','xotetocah@mailinator.com',1,'2018-2019','2018-11-17 19:20:01','2018-11-17 19:20:01');
 
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table students
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `students`;
+
+CREATE TABLE `students` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `students` WRITE;
+/*!40000 ALTER TABLE `students` DISABLE KEYS */;
+
+INSERT INTO `students` (`id`, `code`, `user_id`, `parent_id`, `school_id`, `created_at`, `updated_at`)
+VALUES
+	(1,'5fa9179',41,24,1,'2018-11-20 10:49:25','2018-11-20 10:49:25'),
+	(2,'b9218b3',42,24,1,'2018-11-20 10:50:51','2018-11-20 10:50:51'),
+	(3,'31cccb9',43,24,1,'2018-11-20 10:53:45','2018-11-20 10:53:45');
+
+/*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -360,7 +420,12 @@ LOCK TABLES `teacher_permissions` WRITE;
 
 INSERT INTO `teacher_permissions` (`id`, `class_id`, `section_id`, `teacher_id`, `marks`, `assignment`, `attendance`, `online_exam`, `created_at`, `updated_at`)
 VALUES
-	(1,1,49,18,1,0,0,0,'2018-11-19 07:51:54','2018-11-19 07:51:54');
+	(1,1,49,18,1,1,1,0,'2018-11-19 07:51:54','2018-11-20 04:38:20'),
+	(2,1,49,12,0,0,0,0,'2018-11-20 04:38:15','2018-11-20 05:12:46'),
+	(3,1,48,18,1,0,1,0,'2018-11-20 04:39:26','2018-11-20 04:39:27'),
+	(4,15,46,15,1,1,1,0,'2018-11-20 04:41:49','2018-11-20 04:41:54'),
+	(5,1,48,12,1,1,1,1,'2018-11-20 05:12:00','2018-11-20 06:33:51'),
+	(6,1,48,13,0,0,0,0,'2018-11-20 11:50:29','2018-11-20 11:50:36');
 
 /*!40000 ALTER TABLE `teacher_permissions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -448,7 +513,15 @@ VALUES
 	(32,'Sylvester Reid','mylekoxel@mailinator.com','$2y$10$ILYRA.FAgbBHVQXVVs0lZ.BmbNsLzGLEweMsuDDeC6hADflCvibby',6,'Consequuntur cum soluta dolor expedita omnis dolor voluptas numquam sunt ipsa libero','+868-89-8240384',NULL,NULL,'female','b+',1,NULL,'2018-11-18 19:31:14','2018-11-18 19:31:14'),
 	(33,'Christian Solomon','teacher5@example.com','$2y$10$37uT81i2vwDFqTkSyc7xVe6McQc/RrfawWnNDP6ButLorcvRgberS',3,'Qui molestias hic necessitatibus nostrud aliqua Rerum ex labore nobis alias voluptate commodi maiores unde sunt cupiditate proident','+451-17-1271774',NULL,NULL,'female','b-',1,NULL,'2018-11-19 07:47:35','2018-11-19 07:47:35'),
 	(34,'Duncan Simpson','asdasdsa@example.com','$2y$10$T6umwBevumJ/FnQw96hrrOGoefBj10CzAAoKCH8wpfk2Yd7n/Z5z6',3,'Qui sit consectetur error excepturi cillum aut facere at ut nobis nobis illo maiores sint consequatur Voluptatibus','+882-88-6861634',NULL,NULL,'others','o-',1,NULL,'2018-11-19 07:49:50','2018-11-19 07:49:50'),
-	(35,'Larissa Bright','asd@example.com','$2y$10$EGCN9TTHpTSyTjsKr29fsOLw3L.0Hc9FEySpicZLoJthjb2p8l.lW',3,'Ex sed officia dolor aliquam voluptatem quo explicabo','+863-33-9865989',NULL,NULL,'female','o-',1,NULL,'2018-11-19 07:51:54','2018-11-19 07:51:54');
+	(35,'Larissa Bright','asd@example.com','$2y$10$EGCN9TTHpTSyTjsKr29fsOLw3L.0Hc9FEySpicZLoJthjb2p8l.lW',3,'Ex sed officia dolor aliquam voluptatem quo explicabo','+863-33-9865989',NULL,NULL,'female','o-',1,NULL,'2018-11-19 07:51:54','2018-11-19 07:51:54'),
+	(36,'Wyoming Shaw','student@example.com','$2y$10$ul9.4Kz7JiGnNsCpvDEpie6YrEVTEL7HwHOrN6Sl9Dr/7hgDPGuRy',5,'Et est culpa placeat ducimus anim soluta officiis reprehenderit fuga Nulla amet lorem','+882-98-2545194',NULL,'1542672000','others',NULL,1,NULL,'2018-11-20 09:05:35','2018-11-20 09:05:35'),
+	(37,'Darius Floyd','sup@example.com','$2y$10$9p4e1uIkJWouCMsOV38zDOyoCFKGVDwlHMw4/MqH1Pta3PQ1AQkYq',5,'Et obcaecati rem omnis quaerat nobis tempor quod quis repellendus In facilis duis','+437-45-8555475',NULL,'0','others',NULL,1,NULL,'2018-11-20 09:06:02','2018-11-20 09:06:02'),
+	(38,'Nola Griffin','student2@example.com','$2y$10$QkCmZ9.abveQOBzryooctOBslOJJqPfiQIjOExuh7v7tA0bHtrm5q',5,'42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex','7766275331',NULL,'1542672000','male',NULL,1,NULL,'2018-11-20 09:46:08','2018-11-20 09:46:08'),
+	(39,'Ashton Lowe','student3@example.com','$2y$10$20lpSmWGM9IQYnGeXYTyVOy3IsOxo4HWdrmgnXnAh/1ST03l2VQxq',5,'asd','asd',NULL,'1542672000','male',NULL,1,NULL,'2018-11-20 10:13:44','2018-11-20 10:13:44'),
+	(40,'Keelie Romero','admiasdn@example.com','$2y$10$B7H.GBk/6jqoGgznF/Rbn.PJIvU2j0dZZgSntP7XroHIHJjV6xKS6',5,'Sapiente velit sapiente praesentium consequuntur rerum a corporis rem mollit','+312-32-7770306',NULL,'1542672000','female',NULL,1,NULL,'2018-11-20 10:31:52','2018-11-20 10:31:52'),
+	(41,'Student One','student_1@example.com','$2y$10$1lBfXE0sFWIvP3y1mg49geTw0CxRXXXKzz3obi32VO7R2df3l41R.',5,'42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex','7766275331',NULL,'1542672000','male',NULL,1,NULL,'2018-11-20 10:49:25','2018-11-20 10:49:25'),
+	(42,'Student Two','student_2@example.com','$2y$10$c4kVwD8jx/NbOJIq74/B..ff3DdEECNO/gqQPgootVlIz6qFDKTuW',5,'Billing Address 1\r\nBilling Address 2','7766275331',NULL,'1542672000','male',NULL,1,NULL,'2018-11-20 10:50:51','2018-11-20 10:50:51'),
+	(43,'Student Three','student_3@example.com','$2y$10$6G2ah4B8xLRrNTONAFAPO.qQo96WxWpK1iZgKHFMUp6yu0z9uu2jK',5,'42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex','7766275331',NULL,'1542672000','male',NULL,1,NULL,'2018-11-20 10:53:45','2018-11-20 10:53:45');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

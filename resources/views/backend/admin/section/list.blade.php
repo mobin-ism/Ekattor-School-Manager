@@ -1,4 +1,4 @@
-<select class="form-control" name="section_id" id="section_id" onchange="getPermissionList(this.value)">
+<select class="form-control" name="section_id" id="section_id" onchange="onChangeSection(this.value)">
     @if (count($sections) == 0)
         <option value="">Select A Class First</option>
     @else

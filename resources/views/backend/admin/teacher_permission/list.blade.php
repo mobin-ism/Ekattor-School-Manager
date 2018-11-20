@@ -31,7 +31,16 @@
                                     <label class="custom-control-label" for="{{ $attribute }}_switch_{{ $teacher->id }}">&nbsp;</label>
                                 </div> --}}
                             <meta name="csrf-token" content="{{ csrf_token() }}" />
-                            <input type="checkbox" class="permission_switch" id="{{ $column }}-{{ $teacher->id }}" data-switch="info" onchange="togglePermission(this.id, '{{$class_id}}', '{{$section_id}}')"/>
+                            @php
+                                $previous_permissions = \App\TeacherPermission::where(['class_id' => $class_id, 'section_id' => $section_id, 'teacher_id' => $teacher->id])->first();
+                            @endphp
+
+                            @if($previous_permissions[$column] == 1)
+                                <input type="checkbox" class="permission_switch" id="{{ $column }}-{{ $teacher->id }}" data-switch="info" onchange="togglePermission(this.id, '{{$class_id}}', '{{$section_id}}')" checked/>
+                            @else
+                                <input type="checkbox" class="permission_switch" id="{{ $column }}-{{ $teacher->id }}" data-switch="info" onchange="togglePermission(this.id, '{{$class_id}}', '{{$section_id}}')"/>
+                            @endif
+
                             <label for="{{ $column }}-{{ $teacher->id }}" data-on-label="On" data-off-label="Off"></label>
                         </td>
                         @endforeach

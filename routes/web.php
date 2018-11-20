@@ -31,6 +31,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('permission', 'TeacherPermissionController');
     Route::post('assign_permission', 'TeacherPermissionController@assign_permission')->name('permission.assign');
 
+    Route::resource('student', 'StudentController');
+    Route::get('student_profile/{student}', 'StudentController@profile')->name('student.profile');
+
 });
 
 Auth::routes();

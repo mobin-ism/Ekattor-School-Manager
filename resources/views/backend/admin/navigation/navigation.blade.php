@@ -43,8 +43,10 @@
                     <ul class="side-nav-second-level" aria-expanded="false">
                         @foreach (\App\Menu::where('parent', $menu->id)->where('status', 1)->get() as $sub_menu)
                             <li>
-                                @if ($sub_menu->name == 'session_manager' || $sub_menu->name == 'class' || $sub_menu->name == 'teacher' || $sub_menu->name == 'department' || $sub_menu->name == 'parent' || $sub_menu->name == 'accountant' || $sub_menu->name == 'librarian')
+                                @if ($sub_menu->name == 'session_manager' || $sub_menu->name == 'class' || $sub_menu->name == 'teacher' || $sub_menu->name == 'department' || $sub_menu->name == 'parent' || $sub_menu->name == 'accountant' || $sub_menu->name == 'librarian' || $sub_menu->name == 'student')
                                     <a href="{{ route($sub_menu->name.'.index') }}">{{ ucfirst(str_replace('_', ' ', $sub_menu->name)) }}</a>
+                                @elseif ($sub_menu->name == 'admission')
+                                    <a href="{{ route('student.create') }}">{{ ucfirst(str_replace('_', ' ', $sub_menu->name)) }}</a>
                                 @else
                                     <a href="#">{{ ucfirst(str_replace('_', ' ', $sub_menu->name)) }}</a>
                                 @endif

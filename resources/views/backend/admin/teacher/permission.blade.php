@@ -38,5 +38,8 @@
     </tbody>
 </table>
 @endforeach
+@if (count($permissions) == 0)
+    <p class = "text-center">No permission assigned yet</p>
+@endif
 <a href="{{ route('permission.index') }}" class="btn btn-info btn-block">Update Permissions</a>
 

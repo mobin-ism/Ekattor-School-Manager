@@ -16,6 +16,18 @@
       }
     });
     }
+
+    function showLargeAjaxModal(url)
+    {
+        jQuery('#large-modal').modal('show', {backdrop: 'true'});
+        $.ajax({
+            url: url,
+            success: function(response)
+            {
+                jQuery('#large-modal .modal-body').html(response);
+            }
+        });
+    }
     </script>
 
     <!-- Right modal content -->
@@ -35,7 +47,20 @@
     </div><!-- /.modal -->
 
 
-
+    <!--  Large Modal -->
+    <div class="modal fade" id="large-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">{{ get_settings('system_name') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
     <script type="text/javascript">
     function confirm_modal(delete_url, div_to_reload)

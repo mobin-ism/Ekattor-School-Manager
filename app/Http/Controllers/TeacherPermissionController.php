@@ -73,8 +73,7 @@ class TeacherPermissionController extends Controller
      */
     public function update(TeacherPermission $teacherPermission)
     {
-
-
+        
     }
 
     public function assign_permission() {
