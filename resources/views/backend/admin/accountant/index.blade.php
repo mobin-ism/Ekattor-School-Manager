@@ -1,4 +1,4 @@
-@extends('backend.layout.layout')
+@extends('backend.layout.main')
 @section('content')
     <!-- start page title -->
     <div class="row">
@@ -14,7 +14,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('accountant.create') }}')"> <i class="mdi mdi-plus"></i> Add New Accountant</button>
+                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('accountant.create') }}', 'Create Accountant')"> <i class="mdi mdi-plus"></i> Add New Accountant</button>
                     <h4 class="header-title mt-3">Accountant List</h4>
                     <div class="table-responsive-sm" id = "accountant_content">
                         @include('backend.admin.accountant.list')

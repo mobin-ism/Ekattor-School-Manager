@@ -1,4 +1,4 @@
-@extends('backend.layout.layout')
+@extends('backend.layout.main')
 @section('content')
     <!-- start page title -->
     <div class="row">
@@ -14,7 +14,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('teacher.create') }}')"> <i class="mdi mdi-plus"></i> Add New Teacher</button>
+                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('teacher.create') }}', 'Create New Teacher')"> <i class="mdi mdi-plus"></i> Add New Teacher</button>
                     <h4 class="header-title mt-3">Teacher List</h4>
                     <div class="row justify-content-md-center" style="margin-bottom: 10px;">
                         <select class="form-control col-md-4" name="department_id" id="" onchange="departmentWiseFilter(this.value)">

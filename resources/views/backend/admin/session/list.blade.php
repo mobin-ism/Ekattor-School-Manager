@@ -1,5 +1,5 @@
-<table class="table table-hover table-centered mb-0">
-    <thead>
+<table class="table table-striped table-centered mb-0">
+    <thead class="thead-dark">
     <tr>
         <th>Name</th>
         <th>Status</th>
@@ -19,8 +19,8 @@
             </td>
             <td>
                 <div class="btn-group mb-2">
-                    <button type="button" class="btn btn-icon btn-warning" style="margin-right:5px;" onclick="showAjaxModal('{{ route('session_manager.edit', $session->id) }}')"> <i class="mdi mdi-wrench"></i> </button>
-                    <button type="button" class="btn btn-icon btn-danger" style="margin-right:5px;" onclick="confirm_modal('{{ route('session_manager.destroy', $session->id) }}', 'session_content' )"> <i class="mdi mdi-window-close"></i> </button>
+                    <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('session_manager.edit', $session->id) }}', 'Update Session')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Session info"> <i class="mdi mdi-wrench"></i> </button>
+                    <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('session_manager.destroy', $session->id) }}', 'session_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Session"> <i class="mdi mdi-window-close"></i> </button>
                 </div>
             </td>
         </tr>

@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    function showAjaxModal(url)
+    function showAjaxModal(url, header)
     {
     // SHOWING AJAX PRELOADER IMAGE
     //jQuery('#right-modal .modal-body').html('<div style="text-align:center;margin-top:200px;"><img src="assets/images/preloader.gif" style="height:25px;" /></div>');
@@ -13,6 +13,7 @@
       success: function(response)
       {
         jQuery('#right-modal .modal-body').html(response);
+        jQuery('#right-modal .modal-title').html(header);
       }
     });
     }
@@ -35,7 +36,7 @@
         <div class="modal-dialog modal-right">
             <div class="modal-content">
 
-                <div class="modal-header border-0">
+                <div class="modal-header border-1">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title"></h4>
                 </div>

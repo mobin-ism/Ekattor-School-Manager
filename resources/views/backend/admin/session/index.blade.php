@@ -1,4 +1,4 @@
-@extends('backend.layout.layout')
+@extends('backend.layout.main')
 @section('content')
     <!-- start page title -->
     <div class="row">
@@ -14,7 +14,7 @@
         <div class="col-xl-10 offset-xl-1">
             <div class="card">
                 <div class="card-body">
-                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('session_manager.create') }}')"> <i class="mdi mdi-plus"></i> Add Session</button>
+                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('session_manager.create') }}', 'Create New Session')"> <i class="mdi mdi-plus"></i> Add Session</button>
                     <h4 class="header-title mt-3">Session List</h4>
                     <div class="table-responsive-sm" id = "session_content">
                         @include('backend.admin.session.list')

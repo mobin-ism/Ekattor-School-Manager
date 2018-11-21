@@ -1,5 +1,5 @@
-<table class="table table-hover table-centered mb-0">
-    <thead>
+<table class="table table-striped table-centered mb-0">
+    <thead class="thead-dark">
         <tr>
             <th>Name</th>
             <th>Email</th>
@@ -16,8 +16,8 @@
                     <td> {{ $accountant->email }} </td>
                     <td>
                         <div class="btn-group mb-2">
-                            <button type="button" class="btn btn-icon btn-warning" style="margin-right:5px;" onclick="showAjaxModal('{{ route('accountant.edit', $accountant->id) }}')"> <i class="mdi mdi-wrench"></i> </button>
-                            <button type="button" class="btn btn-icon btn-danger" style="margin-right:5px;" onclick="confirm_modal('{{ route('accountant.destroy', $accountant->id) }}', 'accountant_content' )"> <i class="mdi mdi-window-close"></i> </button>
+                            <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('accountant.edit', $accountant->id) }}', 'Update Accountant')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Accountant info"> <i class="mdi mdi-wrench"></i> </button>
+                            <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('accountant.destroy', $accountant->id) }}', 'accountant_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Accountant"> <i class="mdi mdi-window-close"></i> </button>
                         </div>
                     </td>
                 </tr>

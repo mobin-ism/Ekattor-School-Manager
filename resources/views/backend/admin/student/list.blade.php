@@ -1,6 +1,5 @@
-
-<table class="table table-hover table-centered mb-0">
-        <thead>
+<table class="table table-striped table-centered mb-0">
+    <thead class="thead-dark">
             <tr>
                 <th>Code</th>
                 <th>Photo</th>
@@ -17,9 +16,12 @@
                             <td>{{ $student->student->user->name }}</td>
                             <td>
                                 <div class="btn-group mb-2">
-                                    <button type="button" class="btn btn-icon btn-info" style="margin-right:5px;" onclick="showLargeAjaxModal('{{ route('student.profile', $student->student->id) }}')"> <i class="dripicons-checklist"></i> </button>
-                                    <button type="button" class="btn btn-icon btn-warning" style="margin-right:5px;" onclick="showAjaxModal('{{ route('teacher.edit', $student->id) }}')"> <i class="mdi mdi-wrench"></i> </button>
-                                    <button type="button" class="btn btn-icon btn-danger" style="margin-right:5px;" onclick="confirm_modal('{{ route('teacher.destroy', $student->id) }}', 'teacher_content' )"> <i class="mdi mdi-window-close"></i> </button>
+
+                                    <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showLargeAjaxModal('{{ route('student.profile', $student->student->id) }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Student Profile"> <i class="dripicons-checklist"></i> </button>
+
+                                    <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('teacher.edit', $student->id) }}', 'Update Teacher')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Student"> <i class="mdi mdi-wrench"></i> </button>
+
+                                    <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('teacher.destroy', $student->id) }}', 'teacher_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Student"> <i class="mdi mdi-window-close"></i> </button>
                                 </div>
                             </td>
                         </tr>

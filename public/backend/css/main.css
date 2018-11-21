@@ -13,3 +13,35 @@
         width: calc(100vw - 40px);
     }
 }
+
+.title_icon {
+	font-size: 25px;
+    vertical-align: middle;
+}
+
+.pagination .page-link {
+  border-radius: 30px !important;
+  margin: 0 3px;
+  border: none;
+}
+
+.page-link:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #313a46;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+

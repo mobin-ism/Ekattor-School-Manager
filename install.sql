@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.20)
 # Database: laravel_ekattor
-# Generation Time: 2018-11-20 12:03:36 +0000
+# Generation Time: 2018-11-21 11:22:47 +0000
 # ************************************************************
 
 
@@ -18,6 +18,21 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table addons
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `addons`;
+
+CREATE TABLE `addons` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `unique_identifier` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 # Dump of table branches
@@ -145,6 +160,7 @@ CREATE TABLE `menus` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `parent` int(11) DEFAULT NULL,
+  `sort_order` int(11) NOT NULL,
   `status` int(11) DEFAULT '1',
   `icon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -153,51 +169,49 @@ CREATE TABLE `menus` (
 LOCK TABLES `menus` WRITE;
 /*!40000 ALTER TABLE `menus` DISABLE KEYS */;
 
-INSERT INTO `menus` (`id`, `name`, `parent`, `status`, `icon`)
+INSERT INTO `menus` (`id`, `name`, `parent`, `sort_order`, `status`, `icon`)
 VALUES
-	(1,'navigation',0,1,NULL),
-	(2,'dashboard',1,1,NULL),
-	(3,'users',0,1,NULL),
-	(4,'admin',3,1,NULL),
-	(5,'student',3,1,NULL),
-	(6,'teacher',3,1,NULL),
-	(7,'parent',3,1,NULL),
-	(8,'librarian',3,1,NULL),
-	(9,'accountant',3,1,NULL),
-	(10,'driver',3,1,NULL),
-	(11,'academic',0,1,NULL),
-	(12,'class',11,1,NULL),
-	(13,'section',11,0,NULL),
-	(14,'class_room',11,1,NULL),
-	(15,'syllabus',11,1,NULL),
-	(16,'subject',11,1,NULL),
-	(17,'class_routine',11,1,NULL),
-	(18,'daily_attendance',11,1,NULL),
-	(19,'noticeboard',11,1,NULL),
-	(20,'student_promotion',11,1,NULL),
-	(21,'exam',0,1,NULL),
-	(22,'exam_list',21,1,NULL),
-	(23,'exam_grades',21,1,NULL),
-	(24,'marks',21,1,NULL),
-	(25,'tabulation_sheet',21,1,NULL),
-	(26,'send_sms',21,1,NULL),
-	(27,'accounts',0,1,NULL),
-	(28,'create_fee',27,1,NULL),
-	(29,'fee_report',27,1,NULL),
-	(30,'staff_payroll',27,1,NULL),
-	(31,'back_office',0,1,NULL),
-	(32,'library',31,1,NULL),
-	(33,'transport',31,1,NULL),
-	(34,'hostel',31,1,NULL),
-	(35,'school_website',31,1,NULL),
-	(36,'settings',0,1,NULL),
-	(37,'system_settings',36,1,NULL),
-	(38,'sms_settings',36,1,NULL),
-	(39,'payment_settings',36,1,NULL),
-	(40,'language_settings',36,1,NULL),
-	(41,'session_manager',31,1,NULL),
-	(42,'department',11,1,NULL),
-	(43,'admission',3,1,NULL);
+	(3,'users',0,0,1,'dripicons-user'),
+	(4,'admin',3,10,1,NULL),
+	(5,'student',3,15,1,NULL),
+	(6,'teacher',3,25,1,NULL),
+	(7,'parent',3,30,1,NULL),
+	(8,'librarian',3,35,1,NULL),
+	(9,'accountant',3,40,1,NULL),
+	(10,'driver',3,45,1,NULL),
+	(11,'academic',0,0,1,'dripicons-store'),
+	(12,'class',11,0,1,NULL),
+	(13,'section',11,0,0,NULL),
+	(14,'class_room',11,0,1,NULL),
+	(15,'syllabus',11,0,1,NULL),
+	(16,'subject',11,0,1,NULL),
+	(17,'class_routine',11,0,1,NULL),
+	(18,'daily_attendance',11,0,1,NULL),
+	(19,'noticeboard',11,0,1,NULL),
+	(20,'student_promotion',11,0,1,NULL),
+	(21,'exam',0,0,1,'dripicons-music'),
+	(22,'exam_list',21,0,1,NULL),
+	(23,'exam_grades',21,0,1,NULL),
+	(24,'marks',21,0,1,NULL),
+	(25,'tabulation_sheet',21,0,1,NULL),
+	(26,'send_sms',21,0,1,NULL),
+	(27,'accounts',0,0,1,'dripicons-jewel'),
+	(28,'create_fee',27,0,1,NULL),
+	(29,'fee_report',27,0,1,NULL),
+	(30,'staff_payroll',27,0,1,NULL),
+	(31,'back_office',0,0,1,'dripicons-cutlery'),
+	(32,'library',31,0,1,NULL),
+	(33,'transport',31,0,1,NULL),
+	(34,'hostel',31,0,1,NULL),
+	(35,'school_website',31,0,1,NULL),
+	(36,'settings',0,0,1,'dripicons-basketball'),
+	(37,'system_settings',36,0,1,NULL),
+	(38,'sms_settings',36,0,1,NULL),
+	(39,'payment_settings',36,0,1,NULL),
+	(40,'language_settings',36,0,1,NULL),
+	(41,'session_manager',31,0,1,NULL),
+	(42,'department',11,0,1,NULL),
+	(43,'admission',3,20,1,NULL);
 
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -236,7 +250,7 @@ CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`)
+  KEY `password_resets_email_index` (`email`(191))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
@@ -452,13 +466,13 @@ LOCK TABLES `teachers` WRITE;
 
 INSERT INTO `teachers` (`id`, `user_id`, `department_id`, `designation`, `school_id`, `created_at`, `updated_at`)
 VALUES
-	(12,14,1,'Ab iusto quod vitae minim quidem praesentium aut tempore',1,'2018-11-15 11:47:53','2018-11-15 11:47:53'),
-	(13,15,2,'Eum ipsum qui sequi voluptas voluptatem molestias est voluptatem',1,'2018-11-15 11:48:06','2018-11-17 19:48:13'),
-	(14,16,1,'Qui in ut sint laborum ut possimus repellendus Quo veniam voluptatem unde esse ad est inventore earum aut',1,'2018-11-15 11:48:12','2018-11-15 11:48:12'),
-	(15,17,1,'Reprehenderit doloribus id recusandae Molestias',1,'2018-11-15 11:48:17','2018-11-15 11:48:17'),
-	(16,33,1,'Est quaerat impedit quis laboriosam architecto ut accusamus hic facere dolorem ut amet et quis excepturi nihil hic',1,'2018-11-19 07:47:35','2018-11-19 07:47:35'),
-	(17,34,4,'Dolorem similique rerum impedit qui nulla similique iste illum nesciunt mollitia eligendi consequuntur architecto odio in qui dolor',1,'2018-11-19 07:49:50','2018-11-19 07:49:50'),
-	(18,35,6,'Quis qui elit veniam quod repellendus Culpa debitis non minus',1,'2018-11-19 07:51:54','2018-11-19 07:51:54');
+	(12,14,1,'professor',1,'2018-11-15 11:47:53','2018-11-21 05:06:44'),
+	(13,15,2,'professor',1,'2018-11-15 11:48:06','2018-11-21 05:06:49'),
+	(14,16,1,'professor',1,'2018-11-15 11:48:12','2018-11-21 05:06:52'),
+	(15,17,1,'professor',1,'2018-11-15 11:48:17','2018-11-21 05:06:56'),
+	(16,33,1,'professor',1,'2018-11-19 07:47:35','2018-11-21 05:06:59'),
+	(17,34,4,'professor',1,'2018-11-19 07:49:50','2018-11-21 05:07:03'),
+	(18,35,6,'professor',1,'2018-11-19 07:51:54','2018-11-21 05:07:06');
 
 /*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -470,7 +484,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -485,9 +499,7 @@ CREATE TABLE `users` (
   `authentication_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`),
-  UNIQUE KEY `email` (`email`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 LOCK TABLES `users` WRITE;
@@ -495,8 +507,8 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phone`, `remember_token`, `birthday`, `gender`, `blood_group`, `school_id`, `authentication_key`, `created_at`, `updated_at`)
 VALUES
-	(1,'Mr. Admin','admin@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm',1,NULL,NULL,'qmCVAjOyQ6XJY16PK8ZZgbyGUccTNncg9acz0gBBxLm1fqcizh6nRVDaESGY',NULL,NULL,NULL,1,NULL,NULL,NULL),
-	(14,'Oscar Padilla','teacher@example.com','$2y$10$JPdPD6ikGWSggP/Hhlom2e3MD9aUzDcbbwN6Uk0pxIT33/1QTyYXG',3,'Culpa velit officia eaque sit','+478-85-8909980',NULL,NULL,'female','b-',NULL,NULL,'2018-11-15 11:47:53','2018-11-15 11:47:53'),
+	(1,'Mr. Admin','admin@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm',1,NULL,NULL,'3Q6dOLh7IcIDq8pv0FgyqtcF1sHFRMdVbKmZQ8EsVpfwl1maJDq0EqPsNuLZ',NULL,NULL,NULL,1,NULL,NULL,NULL),
+	(14,'Oscar Padilla2','teacher@example.com','$2y$10$JPdPD6ikGWSggP/Hhlom2e3MD9aUzDcbbwN6Uk0pxIT33/1QTyYXG',3,'Culpa velit officia eaque sit','+478-85-8909980',NULL,NULL,'female','b-',NULL,NULL,'2018-11-15 11:47:53','2018-11-21 04:53:12'),
 	(15,'Mili Hasan','teacher2@example.com','$2y$10$zovGAwMnDpd.bcen6Cwr/OdS.pf93Fo/MTiWLEYyMkKfmXEPwJPt.',3,'Inventore iste vel nihil praesentium in quo exercitation odit est modi recusandae Aut sunt rerum est do porro dicta','+772-78-8452846',NULL,NULL,'female','a+',NULL,NULL,'2018-11-15 11:48:06','2018-11-19 07:52:37'),
 	(16,'Zachery Davis','teacher3@example.com','$2y$10$BQnpqSneg/n7Kwv8pAP2VulckrCwbDdQ6CUnPboQN0qgc4RTNwxfa',3,'Aut labore ut id enim qui fugiat assumenda soluta molestias enim et facere dolor nesciunt asperiores consequatur Quidem','+259-76-6790239',NULL,NULL,'others','a-',NULL,NULL,'2018-11-15 11:48:12','2018-11-15 11:48:12'),
 	(17,'Leo Spence','teacher4@example.com','$2y$10$w8.39SzK.NsSQYcnjJvkgu1GFS7eLTcC6LWuWye/g4df6G49GrCIy',3,'Cumque et id quod expedita maiores ea consequatur commodi','+643-57-5777424',NULL,NULL,'female','b+',NULL,NULL,'2018-11-15 11:48:17','2018-11-15 11:48:17'),

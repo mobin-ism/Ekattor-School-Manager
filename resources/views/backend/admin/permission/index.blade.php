@@ -1,4 +1,4 @@
-@extends('backend.layout.layout')
+@extends('backend.layout.main')
 @section('content')
     <!-- start page title -->
     <div class="row">
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="table-responsive-sm" id = "teacher_permission_content">
-                        @include('backend.admin.teacher_permission.list')
+                        @include('backend.admin.permission.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->
             </div> <!-- end card -->

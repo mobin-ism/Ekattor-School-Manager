@@ -1,5 +1,5 @@
-<table class="table table-hover table-centered mb-0">
-    <thead>
+<table class="table table-striped table-centered mb-0">
+    <thead class="thead-dark">
         <tr>
             <th>Name</th>
             <th>Email</th>
@@ -16,8 +16,8 @@
                     <td> {{ $librarian->email }} </td>
                     <td>
                         <div class="btn-group mb-2">
-                            <button type="button" class="btn btn-icon btn-warning" style="margin-right:5px;" onclick="showAjaxModal('{{ route('librarian.edit', $librarian->id) }}')"> <i class="mdi mdi-wrench"></i> </button>
-                            <button type="button" class="btn btn-icon btn-danger" style="margin-right:5px;" onclick="confirm_modal('{{ route('librarian.destroy', $librarian->id) }}', 'librarian_content' )"> <i class="mdi mdi-window-close"></i> </button>
+                            <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('librarian.edit', $librarian->id) }}', 'Update Librarian')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Librarian info"> <i class="mdi mdi-wrench"></i> </button>
+                            <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('librarian.destroy', $librarian->id) }}', 'librarian_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Librarian"> <i class="mdi mdi-window-close"></i> </button>
                         </div>
                     </td>
                 </tr>

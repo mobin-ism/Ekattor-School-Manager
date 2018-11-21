@@ -15,7 +15,7 @@ class TeacherPermissionController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.teacher_permission.index');
+        return view('backend.admin.permission.index');
     }
 
     /**
@@ -50,7 +50,7 @@ class TeacherPermissionController extends Controller
 
         $class_id = Section::find($section_id)->class_id;
         $teachers = \App\Teacher::where('school_id', 1)->get();
-        return view('backend.admin.teacher_permission.list', compact('class_id', 'section_id', 'teachers'));
+        return view('backend.admin.permission.list', compact('class_id', 'section_id', 'teachers'));
     }
 
     /**
@@ -61,7 +61,7 @@ class TeacherPermissionController extends Controller
      */
     public function edit(TeacherPermission $teacherPermission)
     {
-        return view('backend.admin.teacher_permission.edit');
+        return view('backend.admin.permission.edit');
     }
 
     /**
@@ -73,7 +73,7 @@ class TeacherPermissionController extends Controller
      */
     public function update(TeacherPermission $teacherPermission)
     {
-        
+
     }
 
     public function assign_permission() {
