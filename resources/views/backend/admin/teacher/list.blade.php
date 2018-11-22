@@ -12,7 +12,7 @@
         if(isset($department_id) && $department_id > 0){
             $teachers = \App\Teacher::where('school_id', 1)->where('department_id', $department_id)->paginate(10);
         }else {
-            $teachers = \App\Teacher::where('school_id', 1)->paginate(2);
+            $teachers = \App\Teacher::where('school_id', 1)->paginate(10);
         }
 
         @endphp
@@ -45,4 +45,4 @@
         <div class="col">
             {{ $teachers->links() }}
         </div>
-    </div>
+</div>

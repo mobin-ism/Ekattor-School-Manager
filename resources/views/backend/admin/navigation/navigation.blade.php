@@ -36,14 +36,14 @@
                 @foreach (\App\Menu::where('parent', 0)->where('status', 1)->get() as $menu)
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="dripicons-browser"></i>
+                        <i class="{{ $menu->icon }}"></i>
                         <span> {{ ucfirst(str_replace('_', ' ', $menu->name)) }} </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="side-nav-second-level" aria-expanded="false">
                         @foreach (\App\Menu::where('parent', $menu->id)->where('status', 1)->orderBy('sort_order', 'ASC')->get() as $sub_menu)
                             <li>
-                                @if ($sub_menu->name == 'session_manager' || $sub_menu->name == 'class' || $sub_menu->name == 'teacher' || $sub_menu->name == 'department' || $sub_menu->name == 'parent' || $sub_menu->name == 'accountant' || $sub_menu->name == 'librarian' || $sub_menu->name == 'student')
+                                @if ($sub_menu->name == 'session_manager' || $sub_menu->name == 'class' || $sub_menu->name == 'teacher' || $sub_menu->name == 'department' || $sub_menu->name == 'parent' || $sub_menu->name == 'accountant' || $sub_menu->name == 'librarian' || $sub_menu->name == 'student' || $sub_menu->name == 'addon_manager')
                                     <a href="{{ route($sub_menu->name.'.index') }}">{{ ucfirst(str_replace('_', ' ', $sub_menu->name)) }}</a>
                                 @elseif ($sub_menu->name == 'admission')
                                     <a href="{{ route('student.create') }}">{{ ucfirst(str_replace('_', ' ', $sub_menu->name)) }}</a>

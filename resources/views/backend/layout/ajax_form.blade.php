@@ -3,8 +3,10 @@
 
         if(form.valid()) {
             e.preventDefault();
+
+            console.log(form.serializeArray());
             var action = form.attr('action');
-            (form.attr('class') === 'ajaxDeleteForm') ? $('#alert-modal').modal('toggle') : $('#right-modal').modal('toggle');
+            (form.attr('class') === 'ajaxDeleteForm') ? $('#alert-modal').modal('toggle') : $('#right-modal').modal('hide');
 
             $.ajax({
                 type: "POST",

@@ -39,33 +39,33 @@
 
                                 <div class="tab-pane" id="first">
                                         <div class="row">
-                                        <form method="POST" class="col-12 ajaxForm" action="{{ route('student.store') }}" id = "single_admission">
+                                        <form method="POST" class="col-12 ajaxForm" action="{{ route('student.store') }}">
                                             @csrf
                                             <div class="col-12">
                                                 <div class="form-group row mb-3">
                                                     <label class="col-md-3 col-form-label" for="email">Email</label>
                                                     <div class="col-md-9">
-                                                        <input type="email" class="form-control" id="email" name="email" value="" required>
+                                                        <input type="email" class="form-control {{ $errors->has('email') ? 'error' : '' }}" id="email" name="email" value="{{ old('email') }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row mb-3">
                                                     <label class="col-md-3 col-form-label" for="password"> Password</label>
                                                     <div class="col-md-9">
-                                                        <input type="password" id="password" name="password" class="form-control"  value="" required>
+                                                        <input type="password" id="password" name="password" class="form-control {{ $errors->has('password') ? 'error' : '' }}"  value="{{ old('password') }}">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label" for="name"> Name</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="name" name="name" class="form-control"  value="" required>
+                                                            <input type="text" id="name" name="name" class="form-control {{ $errors->has('name') ? 'error' : '' }}"  value="{{ old('name') }}">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label" for="parent_id"> Parent</label>
                                                         <div class="col-md-9">
-                                                            <select id="parent_id" name="parent_id" class="form-control" required >
+                                                            <select id="parent_id" name="parent_id" class="form-control {{ $errors->has('parent_id') ? 'error' : '' }}" >
                                                                 <option value="">Select A Parent</option>
                                                                 @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 4)->get() as $parent)
                                                                     <option value="{{ $parent->id }}">{{ $parent->name }}</option>
@@ -77,7 +77,7 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label" for="class_id"> Class</label>
                                                         <div class="col-md-9">
-                                                            <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
+                                                            <select name="class_id" id="class_id" class="form-control {{ $errors->has('class_id') ? 'error' : '' }}" onchange="classWiseSection(this.value)" >
                                                                 <option value="">Class</option>
                                                                 @foreach (App\Classes::where('school_id', 1)->get() as $class)
                                                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
@@ -89,7 +89,7 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label" for="section_id"> Section</label>
                                                         <div class="col-md-9" id = "section_content">
-                                                            <select name="section_id" id="section_id" class="form-control" required >
+                                                            <select name="section_id" id="section_id" class="form-control {{ $errors->has('section_id') ? 'error' : '' }}"  >
                                                                 <option value="">Select A Class First</option>
                                                             </select>
                                                         </div>
@@ -98,21 +98,21 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label" for="code">Student Code</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="code" name="code" class="form-control"  value="{{ substr(md5(uniqid(rand(), true)), 0, 7) }}" readonly required >
+                                                            <input type="text" id="code" name="code" class="form-control {{ $errors->has('code') ? 'error' : '' }}"  value="{{ substr(md5(uniqid(rand(), true)), 0, 7) }}" >
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label" for="birthdatepicker">Birthday</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control date" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" name = "birthday"   value="" required>
+                                                            <input type="text" class="form-control date {{ $errors->has('birthday') ? 'error' : '' }}" id="birthdatepicker" data-toggle="date-picker" data-single-date-picker="true" name = "birthday"   value="{{ old('birthday') }}">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label" for="gender">Gender</label>
                                                         <div class="col-md-9">
-                                                            <select name="gender" id="gender" class="form-control" required>
+                                                            <select name="gender" id="gender" class="form-control {{ $errors->has('gender') ? 'error' : '' }}" >
                                                                 <option value="">Select gender</option>
                                                                 <option value="male">Male</option>
                                                                 <option value="female">Female</option>
@@ -124,14 +124,14 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label" for="example-textarea"> Address </label>
                                                         <div class="col-md-9">
-                                                            <textarea class="form-control" id="example-textarea" rows="5" name = "address" ></textarea>
+                                                            <textarea class="form-control {{ $errors->has('address') ? 'error' : '' }}" id="example-textarea" rows="5" name = "address" >{{ old('address') }}</textarea>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label" for="phone"> Phone</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="phone" name="phone" class="form-control"  value="" required>
+                                                            <input type="text" id="phone" name="phone" class="form-control {{ $errors->has('phone') ? 'error' : '' }}"  value="{{ old('phone') }}">
                                                         </div>
                                                     </div>
 
@@ -199,8 +199,7 @@
         }
 
         $(".ajaxForm").validate({});
-        $("#single_admission").submit(function(e) {
-
+        $(".ajaxForm").submit(function(e) {
             var form = $(this);
             ajaxSubmit(e, form, 'teacher_content');
         });

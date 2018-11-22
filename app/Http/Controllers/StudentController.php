@@ -39,19 +39,19 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = request()->validate([
-                'name'       => 'required',
-                'email'      => 'required',
-                'password'   => 'required',
-                'parent_id'  => 'required',
-                'address'    => 'required',
-                'phone'      => 'required',
-                'birthday'   => 'required',
-                'code'       => 'required',
-                'class_id'   => 'required',
-                'section_id' => 'required',
-                'gender'     => 'required'
-            ]);
+        // $validated = request()->validate([
+        //         'name'       => 'required',
+        //         'email'      => 'required',
+        //         'password'   => 'required',
+        //         'parent_id'  => 'required',
+        //         'address'    => 'required',
+        //         'phone'      => 'required',
+        //         'birthday'   => 'required',
+        //         'code'       => 'required',
+        //         'class_id'   => 'required',
+        //         'section_id' => 'required',
+        //         'gender'     => 'required'
+        //     ]);
 
         if(count(User::where('email', $request->email)->get()) == 0) {
             $user = new User;
