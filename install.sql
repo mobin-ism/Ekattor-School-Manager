@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.20)
+# Host: localhost (MySQL 5.7.23)
 # Database: laravel_ekattor
-# Generation Time: 2018-11-21 11:22:47 +0000
+# Generation Time: 2018-11-24 18:56:15 +0000
 # ************************************************************
 
 
@@ -30,6 +30,9 @@ CREATE TABLE `addons` (
   `name` varchar(255) NOT NULL,
   `unique_identifier` varchar(255) NOT NULL,
   `status` int(11) NOT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -211,7 +214,8 @@ VALUES
 	(40,'language_settings',36,0,1,NULL),
 	(41,'session_manager',31,0,1,NULL),
 	(42,'department',11,0,1,NULL),
-	(43,'admission',3,20,1,NULL);
+	(43,'admission',3,20,1,NULL),
+	(44,'addon_manager',31,0,1,NULL);
 
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -239,6 +243,23 @@ VALUES
 
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Dump of table parent
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `parent`;
+
+CREATE TABLE `parent` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 
 # Dump of table password_resets
@@ -439,7 +460,8 @@ VALUES
 	(3,1,48,18,1,0,1,0,'2018-11-20 04:39:26','2018-11-20 04:39:27'),
 	(4,15,46,15,1,1,1,0,'2018-11-20 04:41:49','2018-11-20 04:41:54'),
 	(5,1,48,12,1,1,1,1,'2018-11-20 05:12:00','2018-11-20 06:33:51'),
-	(6,1,48,13,0,0,0,0,'2018-11-20 11:50:29','2018-11-20 11:50:36');
+	(6,1,48,13,0,0,0,0,'2018-11-20 11:50:29','2018-11-20 11:50:36'),
+	(7,NULL,NULL,19,0,0,0,0,'2018-11-24 12:19:55','2018-11-24 12:19:55');
 
 /*!40000 ALTER TABLE `teacher_permissions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -472,7 +494,8 @@ VALUES
 	(15,17,1,'professor',1,'2018-11-15 11:48:17','2018-11-21 05:06:56'),
 	(16,33,1,'professor',1,'2018-11-19 07:47:35','2018-11-21 05:06:59'),
 	(17,34,4,'professor',1,'2018-11-19 07:49:50','2018-11-21 05:07:03'),
-	(18,35,6,'professor',1,'2018-11-19 07:51:54','2018-11-21 05:07:06');
+	(18,35,6,'professor',1,'2018-11-19 07:51:54','2018-11-21 05:07:06'),
+	(19,44,2,'Amet sed',1,'2018-11-24 12:19:55','2018-11-24 12:19:55');
 
 /*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -507,7 +530,7 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phone`, `remember_token`, `birthday`, `gender`, `blood_group`, `school_id`, `authentication_key`, `created_at`, `updated_at`)
 VALUES
-	(1,'Mr. Admin','admin@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm',1,NULL,NULL,'3Q6dOLh7IcIDq8pv0FgyqtcF1sHFRMdVbKmZQ8EsVpfwl1maJDq0EqPsNuLZ',NULL,NULL,NULL,1,NULL,NULL,NULL),
+	(1,'Mr. Admin','admin@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm',1,NULL,NULL,'SLfh0PCDqDy9hEeMq5ePtq7FgCeJczKiO4TZxpOX31zJPu1OGMQeHKCIWOAD',NULL,NULL,NULL,1,NULL,NULL,NULL),
 	(14,'Oscar Padilla2','teacher@example.com','$2y$10$JPdPD6ikGWSggP/Hhlom2e3MD9aUzDcbbwN6Uk0pxIT33/1QTyYXG',3,'Culpa velit officia eaque sit','+478-85-8909980',NULL,NULL,'female','b-',NULL,NULL,'2018-11-15 11:47:53','2018-11-21 04:53:12'),
 	(15,'Mili Hasan','teacher2@example.com','$2y$10$zovGAwMnDpd.bcen6Cwr/OdS.pf93Fo/MTiWLEYyMkKfmXEPwJPt.',3,'Inventore iste vel nihil praesentium in quo exercitation odit est modi recusandae Aut sunt rerum est do porro dicta','+772-78-8452846',NULL,NULL,'female','a+',NULL,NULL,'2018-11-15 11:48:06','2018-11-19 07:52:37'),
 	(16,'Zachery Davis','teacher3@example.com','$2y$10$BQnpqSneg/n7Kwv8pAP2VulckrCwbDdQ6CUnPboQN0qgc4RTNwxfa',3,'Aut labore ut id enim qui fugiat assumenda soluta molestias enim et facere dolor nesciunt asperiores consequatur Quidem','+259-76-6790239',NULL,NULL,'others','a-',NULL,NULL,'2018-11-15 11:48:12','2018-11-15 11:48:12'),
@@ -533,7 +556,8 @@ VALUES
 	(40,'Keelie Romero','admiasdn@example.com','$2y$10$B7H.GBk/6jqoGgznF/Rbn.PJIvU2j0dZZgSntP7XroHIHJjV6xKS6',5,'Sapiente velit sapiente praesentium consequuntur rerum a corporis rem mollit','+312-32-7770306',NULL,'1542672000','female',NULL,1,NULL,'2018-11-20 10:31:52','2018-11-20 10:31:52'),
 	(41,'Student One','student_1@example.com','$2y$10$1lBfXE0sFWIvP3y1mg49geTw0CxRXXXKzz3obi32VO7R2df3l41R.',5,'42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex','7766275331',NULL,'1542672000','male',NULL,1,NULL,'2018-11-20 10:49:25','2018-11-20 10:49:25'),
 	(42,'Student Two','student_2@example.com','$2y$10$c4kVwD8jx/NbOJIq74/B..ff3DdEECNO/gqQPgootVlIz6qFDKTuW',5,'Billing Address 1\r\nBilling Address 2','7766275331',NULL,'1542672000','male',NULL,1,NULL,'2018-11-20 10:50:51','2018-11-20 10:50:51'),
-	(43,'Student Three','student_3@example.com','$2y$10$6G2ah4B8xLRrNTONAFAPO.qQo96WxWpK1iZgKHFMUp6yu0z9uu2jK',5,'42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex','7766275331',NULL,'1542672000','male',NULL,1,NULL,'2018-11-20 10:53:45','2018-11-20 10:53:45');
+	(43,'Student Three','student_3@example.com','$2y$10$6G2ah4B8xLRrNTONAFAPO.qQo96WxWpK1iZgKHFMUp6yu0z9uu2jK',5,'42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex','7766275331',NULL,'1542672000','male',NULL,1,NULL,'2018-11-20 10:53:45','2018-11-20 10:53:45'),
+	(44,'Xerxes Tillman','mezir@mailinator.com','$2y$10$BdE.BFOenTetDIOjt/tsGO43wZ011ibwkszaCP9NfWZ0n9.rUJYfy',3,'Dolor debitis quasi aut eligendi porro sit illum exercitationem','+226-83-9392705',NULL,NULL,'female','b-',1,NULL,'2018-11-24 12:19:55','2018-11-24 12:19:55');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
