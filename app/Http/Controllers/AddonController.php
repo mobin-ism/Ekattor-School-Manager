@@ -37,7 +37,6 @@ class AddonController extends Controller
      */
     public function store(Request $request)
     {
-
         if ($request->hasFile('addon_zip')) {
             // Create update directory.
             $dir = 'addons';
@@ -61,39 +60,47 @@ class AddonController extends Controller
             $str = file_get_contents('./addons/' . $unzipped_file_name . '/update_config.json');
             $json = json_decode($str, true);
 
-            // Run sql modifications
-            $sql_path = './addons/' . $unzipped_file_name . '/update.sql';
-            DB::unprepared(file_get_contents($sql_path));
 
-            // // Create new directories.
-            // if (!empty($json['directory'])) {
-            //     foreach ($json['directory'] as $directory) {
-            //         if (!is_dir($directory['name']))
-            //             mkdir($directory['name'], 0777, true);
-            //     }
-            // }
+            $addon = new Addon;
+            if(count($addon::where('unique_identifier', $json['unique_identifier'])->get()) == 0){
+                $addon->name = $json['name'];
+                $addon->unique_identifier = $json['unique_identifier'];
+                $addon->status = 1;
+                $addon->school_id = get_settings('selected_branch');
+                $addon->save();
 
-            // // Create/Replace new files.
-            // if (!empty($json['files'])) {
-            //     foreach ($json['files'] as $file)
-            //         copy($file['root_directory'], $file['update_directory']);
-            // }
+                // Run sql modifications
+                $sql_path = './addons/' . $unzipped_file_name . '/sql/update.sql';
+                if(file_exists($sql_path)){
+                    DB::unprepared(file_get_contents($sql_path));
+                }
 
-            $data = array(
-                'status' => true,
-                'view' => $request->file('addon_zip')->getClientOriginalName(),
-                'notification' =>"Addon installed Successfully"
-            );
+                // Create new directories.
+                if (!empty($json['directory'])) {
+                    foreach ($json['directory'] as $directory) {
+                        if (!is_dir(base_path($directory['name']))){
+                            mkdir(base_path($directory['name']), 0777, true);
+                        }else {
+                            echo "erro on creating directory";
+                        }
+                    }
+                }
 
-        }else {
-            $data = array(
-                'status' => false,
-                'view' => view('backend.admin.addon.list')->render(),
-                'notification' =>"File name is null"
-            );
+                // Create/Replace new files.
+                if (!empty($json['files'])) {
+                    foreach ($json['files'] as $file)
+                        copy($file['root_directory'], base_path($file['update_directory']));
+                }
+
+                flash('Addon installed Successfully')->success();
+                return redirect()->route('addon_manager.index');
+
+            }else {
+
+                flash('This addon is already installed')->error();
+                return redirect()->route('addon_manager.index');
+            }
         }
-
-        return $data;
     }
 
     /**
@@ -136,7 +143,7 @@ class AddonController extends Controller
      * @param  \App\Addon  $addon
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Addon $addon)
+    public function destroy($id)
     {
         //
     }
