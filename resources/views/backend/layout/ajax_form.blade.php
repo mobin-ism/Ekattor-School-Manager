@@ -15,7 +15,10 @@
                 success: function(response)
                 {
                     (response.status === true) ? toastr.success(response.notification) : toastr.error(response.notification);
-                    $("#"+idToLoad).html(response.view);
+                    if(response.view !== ""){
+                        $("#"+idToLoad).html(response.view);
+                    }
+                    form.trigger("reset");
                 }
             });
         }else {

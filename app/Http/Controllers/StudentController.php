@@ -28,7 +28,20 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.student.create');
+        $type = 'single';
+        return view('backend.admin.student.create', compact('type'));
+    }
+
+    public function bulk_student_create()
+    {
+        $type = 'bulk';
+        return view('backend.admin.student.create', compact('type'));
+    }
+
+    public function excel_student_create()
+    {
+        $type = 'excel';
+        return view('backend.admin.student.create', compact('type'));
     }
 
     /**
@@ -69,7 +82,7 @@ class StudentController extends Controller
             $user_id = $user->id;
             $student = new Student;
             $student->user_id = $user_id;
-            $student->code = $request->code;
+            $student->code = substr(md5(uniqid(rand(), true)), 0, 7);
             $student->parent_id = $request->parent_id;
             $student->school_id = get_settings('selected_branch');
             $student->save();
@@ -83,12 +96,132 @@ class StudentController extends Controller
             $enroll->session = get_settings('running_session');
             $enroll->save();
 
-            flash('Student Added Successfully')->success();
+            $data = array(
+                'status' => true,
+                'view' => "",
+                'notification' =>"Student Added Successfully"
+            );
         }else {
-            flash('Email Duplication')->error();
+            $data = array(
+                'status' => false,
+                'view' => "",
+                'notification' =>"Email Duplication"
+            );
         }
 
-        return redirect('student/create');
+        return $data;
+    }
+
+
+    public function bulk_student_store(Request $request) {
+        foreach($request->name as $key=> $row) {
+            if($row != ""){
+                if(count(User::where('email', $request->email[$key])->get()) == 0) {
+                    $user = new User;
+                    $user->name = $request->name[$key];
+                    $user->email = $request->email[$key];
+                    $user->password = Hash::make($request->password[$key]);
+                    $user->role = 5;
+                    $user->phone = $request->phone[$key];
+                    $user->gender = $request->gender[$key];
+                    $user->school_id = get_settings('selected_branch');
+                    $user->save();
+
+                    $user_id = $user->id;
+                    $student = new Student;
+                    $student->user_id = $user_id;
+                    $student->code = substr(md5(uniqid(rand(), true)), 0, 7);
+                    $student->parent_id = $request->parent_id[$key];
+                    $student->school_id = get_settings('selected_branch');
+                    $student->save();
+                    $student_id = $student->id;
+
+                    $enroll = new Enroll;
+                    $enroll->student_id = $student_id;
+                    $enroll->class_id = $request->class_id;
+                    $enroll->section_id = $request->section_id;
+                    $enroll->school_id = get_settings('selected_branch');
+                    $enroll->session = get_settings('running_session');
+                    $enroll->save();
+                }
+                else{
+                    flash($request->email[$key].' already exist')->error();
+                }
+            }
+        }
+        flash('Success')->success();
+        return back();
+    }
+
+    public function excel_student_store(Request $request) {
+        if($request->class_id > 0 && $request->section_id > 0) {
+
+            if ($request->hasFile('csv_file')) {
+
+                $request->file('csv_file')->move('csv', 'bulk_student.csv');
+                $csv = array_map('str_getcsv', file(asset('csv/bulk_student.csv')));
+                $count = 1;
+                $array_size = sizeof($csv);
+
+             foreach ($csv as $row) {
+                  if ($count == 1) {
+                      $count++;
+                      continue;
+                  }
+                  $password = $row[3];
+
+                  $name      = $row[0];
+                  $email     = $row[1];
+                  $password  = Hash::make($row[2]);
+                  $phone     = $row[3];
+                  $parent_id = $row[4];
+                  $gender    = strtolower($row[5]);
+
+                  if(count(User::where('email', $email)->get()) == 0) {
+                    $user = new User;
+                    $user->name = $name;
+                    $user->email = $email;
+                    $user->password = Hash::make($password);
+                    $user->role = 5;
+                    $user->phone = $phone;
+                    $user->gender = $gender;
+                    $user->school_id = get_settings('selected_branch');
+                    $user->save();
+
+                    $user_id = $user->id;
+                    $student = new Student;
+                    $student->user_id = $user_id;
+                    $student->code = substr(md5(uniqid(rand(), true)), 0, 7);
+                    $student->parent_id = $parent_id;
+                    $student->school_id = get_settings('selected_branch');
+                    $student->save();
+                    $student_id = $student->id;
+
+                    $enroll = new Enroll;
+                    $enroll->student_id = $student_id;
+                    $enroll->class_id = $request->class_id;
+                    $enroll->section_id = $request->section_id;
+                    $enroll->school_id = get_settings('selected_branch');
+                    $enroll->session = get_settings('running_session');
+                    $enroll->save();
+                }
+                else{
+                    flash($email.' already exist')->error();
+                }
+              }
+            }
+        }else {
+            flash('You must have selcted Class and Section')->error();
+        }
+        return back();
+
+    }
+
+    public function generate_csv_file() {
+        $file   = fopen("csv/bulk_student.csv", "w");
+        $line   = array('StudentName', 'Email', 'Password', 'Phone', 'ParentID', 'Gender');
+        fputcsv($file, $line, ',');
+        echo $file_path = asset('csv/bulk_student.csv');
     }
 
     /**

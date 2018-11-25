@@ -1,0 +1,6 @@
+StudentName,Email,Password,Phone,ParentID,Gender
+Admin,admin@example.com,1234,1234,1,male
+Admin2,admin2@example.com,1234,1234,1,male
+Admin3,adminsad2@example.com,1234,1234,1,male
+Admin3,admin3@example.com,1234,1234,1,male
+Admin3,admin003@example.com,1234,1234,1,male
