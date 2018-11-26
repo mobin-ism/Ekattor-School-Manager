@@ -42,7 +42,7 @@ class LibrarianController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->role = 6;
+            $user->role = "librarian";
             $user->school_id = 1;
             $user->phone = $request->phone;
             $user->address = $request->address;

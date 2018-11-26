@@ -32,13 +32,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('permission', 'TeacherPermissionController');
     Route::post('assign_permission', 'TeacherPermissionController@assign_permission')->name('permission.assign');
 
-    Route::resource('student', 'StudentController');
-    Route::get('student/add/bulk', 'StudentController@bulk_student_create')->name('student.bulk');
-    Route::get('student/add/excel', 'StudentController@excel_student_create')->name('student.excel');
-    Route::post('student/store/bulk', 'StudentController@bulk_student_store')->name('student.store.bulk');
-    Route::post('student/store/excel', 'StudentController@excel_student_store')->name('student.store.excel');
-    Route::get('student_profile/{student}', 'StudentController@profile')->name('student.profile');
-    Route::get('generate_csv_file', 'StudentController@generate_csv_file')->name('student.generate.csv');
+    Route::resource('role', 'RoleController');
+    Route::get('accessibility/{role}', 'RoleController@editAccessibility')->name('accessibility.edit');
+    Route::post('accessibility/{role}', 'RoleController@updateAccessibility')->name('accessibility.update');
 });
 
 Auth::routes();

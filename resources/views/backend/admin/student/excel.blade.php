@@ -26,6 +26,16 @@
             <a href="" download="bulk_student.csv" style="display: none;" id = "bulk">Download</a>
         </div>
 
+        {{-- <div class="form-group mb-0">
+            <label>Custom file input</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile04">
+                    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                </div>
+            </div>
+        </div> --}}
+
         <div class="col-12">
             <div class="form-group row mb-3">
                 <label class="col-md-3 col-form-label" for="name"> Upload CSV</label>

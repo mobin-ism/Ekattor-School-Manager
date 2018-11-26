@@ -32,7 +32,7 @@
                     <div class="form-group col">
                         <select name="parent_id[]" class="form-control" required >
                             <option value="">Select Parent</option>
-                            @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 4)->get() as $parent)
+                            @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
                                 <option value="{{ $parent->id }}">{{ $parent->name }}</option>
                             @endforeach
                         </select>
@@ -74,7 +74,7 @@
                     <div class="form-group col">
                         <select name="parent_id[]" class="form-control">
                             <option value="">Select Parent</option>
-                            @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 4)->get() as $parent)
+                            @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
                                 <option value="{{ $parent->id }}">{{ $parent->name }}</option>
                             @endforeach
                         </select>

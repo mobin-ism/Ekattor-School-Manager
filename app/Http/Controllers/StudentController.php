@@ -71,7 +71,7 @@ class StudentController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->role = 5;
+            $user->role = "student";
             $user->address = $request->address;
             $user->phone = $request->phone;
             $user->birthday = strtotime($request->birthday);
@@ -121,7 +121,7 @@ class StudentController extends Controller
                     $user->name = $request->name[$key];
                     $user->email = $request->email[$key];
                     $user->password = Hash::make($request->password[$key]);
-                    $user->role = 5;
+                    $user->role = "student";
                     $user->phone = $request->phone[$key];
                     $user->gender = $request->gender[$key];
                     $user->school_id = get_settings('selected_branch');
@@ -182,7 +182,7 @@ class StudentController extends Controller
                     $user->name = $name;
                     $user->email = $email;
                     $user->password = Hash::make($password);
-                    $user->role = 5;
+                    $user->role = "student";
                     $user->phone = $phone;
                     $user->gender = $gender;
                     $user->school_id = get_settings('selected_branch');

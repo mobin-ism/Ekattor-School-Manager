@@ -99,7 +99,7 @@
                             </span>
                     <span>
                                 <span class="account-user-name">{{ Auth::user()->name }}</span>
-                                <span class="account-position">{{ ucfirst(\App\Role::find(1)->name) }}</span>
+                                <span class="account-position">{{ ucfirst(Auth::user()->role) }}</span>
                             </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">

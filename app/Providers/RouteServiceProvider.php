@@ -40,6 +40,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapAddonRoutes(); // Addon Route is being used for managin the Addons
 
+        $this->mapStudentRoutes(); // Addon Route is being used for managin the Student
+
         //$this->mapInstallRoutes(); // Install route is being used for managing the installation process
     }
 
@@ -70,6 +72,13 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('addon')
              ->namespace($this->namespace)
              ->group(base_path('routes/addon.php'));
+    }
+
+    protected function mapStudentRoutes()
+    {
+        Route::middleware('student')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/student.php'));
     }
 
     /**

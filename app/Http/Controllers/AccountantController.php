@@ -42,7 +42,7 @@ class AccountantController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->role = 5;
+            $user->role = "accountant";
             $user->school_id = 1;
             $user->phone = $request->phone;
             $user->address = $request->address;

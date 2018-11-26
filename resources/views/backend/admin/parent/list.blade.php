@@ -8,7 +8,7 @@
         </thead>
             <tbody>
             @php
-            $parents = \App\User::where('school_id', 1)->where('role', 4)->paginate(10);
+            $parents = \App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->paginate(10);
             @endphp
                 @foreach ( $parents as $parent)
                     <tr>

@@ -44,7 +44,7 @@ class TeacherController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->role = 3;
+            $user->role = "teacher";
             $user->school_id = 1;
             $user->phone = $request->phone;
             $user->address = $request->address;
@@ -115,7 +115,7 @@ class TeacherController extends Controller
             $user = User::find($teacher->user_id);
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->role = 3;
+            $user->role = "teacher";
             $user->phone = $request->phone;
             $user->address = $request->address;
             $user->gender = $request->gender;

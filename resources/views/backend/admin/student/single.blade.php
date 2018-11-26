@@ -28,7 +28,7 @@
                 <div class="col-md-9">
                     <select id="parent_id" name="parent_id" class="form-control" required >
                         <option value="">Select A Parent</option>
-                        @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 4)->get() as $parent)
+                        @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
                             <option value="{{ $parent->id }}">{{ $parent->name }}</option>
                         @endforeach
                     </select>

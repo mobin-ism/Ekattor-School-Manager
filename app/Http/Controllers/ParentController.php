@@ -42,7 +42,7 @@ class ParentController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->role = 4;
+            $user->role = "parent";
             $user->school_id = 1;
             $user->phone = $request->phone;
             $user->address = $request->address;
