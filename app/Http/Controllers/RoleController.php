@@ -85,10 +85,19 @@ class RoleController extends Controller
 
     public function editAccessibility($role) {
         $accessibilites = Role::where('school_id', get_settings('selected_branch'))->pluck($role);
-        return view('backend.admin.role.accessibility', compact('accessibilites'));
+        return view('backend.admin.role.accessibility', compact('accessibilites', 'role'));
     }
 
-    public function updateAccessibility($role) {
-
+    public function updateAccessibility(Request $request, $role) {
+        $row = Role::where('school_id', get_settings('selected_branch'))->first();
+        $accessibilites = Role::find($row->id);
+        $accessibilites->$role = json_encode($request->accessibility);
+        $accessibilites->save();
+        $data = array(
+            'status' => true,
+            'view' => view('backend.admin.role.list')->render(),
+            'notification' =>"Successfully updated user role accessibilities"
+        );
+        return $data;
     }
 }

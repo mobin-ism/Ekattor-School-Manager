@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.20)
+# Host: localhost (MySQL 5.7.23)
 # Database: laravel_ekattor
-# Generation Time: 2018-11-26 12:05:39 +0000
+# Generation Time: 2018-11-26 19:29:52 +0000
 # ************************************************************
 
 
@@ -290,8 +290,8 @@ CREATE TABLE `roles` (
   `student` longtext COLLATE utf8_unicode_ci,
   `parent` longtext COLLATE utf8_unicode_ci,
   `accountant` longtext COLLATE utf8_unicode_ci,
-  `librarian` int(11) DEFAULT NULL,
-  `driver` int(11) DEFAULT NULL,
+  `librarian` longtext COLLATE utf8_unicode_ci,
+  `driver` longtext COLLATE utf8_unicode_ci,
   `school_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -303,7 +303,9 @@ LOCK TABLES `roles` WRITE;
 
 INSERT INTO `roles` (`id`, `admin`, `teacher`, `student`, `parent`, `accountant`, `librarian`, `driver`, `school_id`, `created_at`, `updated_at`)
 VALUES
-	(1,'dahkjdhkashdaasddadasd',NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL);
+	(1,'',NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,NULL),
+	(2,'[\"6\",\"49\",\"7\",\"8\",\"10\",\"17\",\"12\",\"42\",\"16\",\"45\",\"46\",\"25\",\"20\",\"28\",\"54\",\"33\",\"57\",\"58\",\"53\",\"37\",\"39\"]','[\"5\",\"6\",\"49\",\"7\",\"9\",\"8\",\"4\",\"18\",\"17\",\"15\",\"12\",\"14\",\"42\",\"45\",\"19\",\"22\",\"48\",\"20\",\"28\",\"29\",\"30\",\"54\",\"55\",\"33\",\"57\",\"41\",\"37\",\"38\"]',NULL,NULL,NULL,NULL,'[\"5\",\"43\",\"49\",\"7\",\"51\",\"17\",\"15\",\"12\",\"14\",\"45\",\"46\",\"19\",\"24\",\"23\",\"28\",\"29\",\"30\",\"55\",\"33\",\"44\"]',1,NULL,'2018-11-26 19:29:29'),
+	(3,'',NULL,NULL,NULL,NULL,NULL,NULL,3,NULL,NULL);
 
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;

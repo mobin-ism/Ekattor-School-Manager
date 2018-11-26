@@ -16,7 +16,6 @@
         @endphp
             <tr>
                 <td>{{ ucfirst(str_replace('_', ' ', $role)) }}</td>
-
                 <td>
                     <div class="btn-group mb-2">
                         <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('accessibility.edit', $role) }}', 'Update User Role Accessibility')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update User Role Accessibility"> <i class="mdi mdi-wrench"></i> </button>

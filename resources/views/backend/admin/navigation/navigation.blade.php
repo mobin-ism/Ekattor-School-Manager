@@ -16,7 +16,7 @@
             <!--- Sidemenu -->
             <ul class="metismenu side-nav side-nav-light">
 
-                <li class="side-nav-title side-nav-item">Quick Access</li>
+                {{-- <li class="side-nav-title side-nav-item">Quick Access</li>
                 <li class="side-nav-item">
                     <a href="javascript: void(0);" class="side-nav-link">
                             <i class="fab fa-500px"></i>
@@ -31,7 +31,7 @@
                             <a href="layouts-boxed-horizontal.html">Exam Manager</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
                 <li class="side-nav-title side-nav-item">Navigation</li>
                 <li class="side-nav-item">
@@ -74,25 +74,6 @@
                     </ul>
                 </li>
                 @endforeach
-                <li class="side-nav-item">
-                    <a href="javascript: void(0);" class="side-nav-link">
-                        <i class="dripicons-view-apps"></i>
-                        <span> Apps </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul class="side-nav-second-level" aria-expanded="false">
-                        <li class="side-nav-item">
-                            <a href="javascript: void(0);" aria-expanded="false">Projects
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <ul class="side-nav-third-level" aria-expanded="false">
-                                <li>
-                                    <a href="apps-projects-list.html">List</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
             </ul>
             <!-- End Sidebar -->
             <div class="clearfix"></div>

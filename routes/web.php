@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('role', 'RoleController');
     Route::get('accessibility/{role}', 'RoleController@editAccessibility')->name('accessibility.edit');
-    Route::post('accessibility/{role}', 'RoleController@updateAccessibility')->name('accessibility.update');
+    Route::patch('accessibility/{role}', 'RoleController@updateAccessibility')->name('accessibility.update');
 });
 
 Auth::routes();

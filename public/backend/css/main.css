@@ -45,3 +45,6 @@
     border-bottom-right-radius: .25rem;
 }
 
+.no-style {
+    list-style-type: none;
+}
