@@ -16,7 +16,7 @@
 <!-- Begin page -->
 <div class="wrapper">
 
-    @include('backend.admin.navigation.navigation')
+    @include('backend.'.Auth::user()->role.'.navigation.navigation')
 
     <!-- ============================================================== -->
     <!-- Start Page Content here -->

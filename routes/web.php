@@ -13,7 +13,7 @@
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', function () {
-        return view('backend.admin.dashboard.dashboard');
+        return view('backend.'.Auth::user()->role.'.dashboard.dashboard');
     })->name('dashboard');
 
     Route::resource('session_manager', 'SessionManagerController');
