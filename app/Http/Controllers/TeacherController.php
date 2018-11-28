@@ -59,7 +59,7 @@ class TeacherController extends Controller
                 $teacher->school_id = 1;
                 $teacher->save();
 
-                $this->add_to_teacher_permission($teacher->id);
+                //$this->add_to_teacher_permission($teacher->id);
 
                 $data = array(
                     'status' => true,

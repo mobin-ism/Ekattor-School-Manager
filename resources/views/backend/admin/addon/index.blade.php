@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Manage Addons</h4>
+                <h4 class="page-title"> <i class="mdi mdi-power-plug title_icon"></i> Manage Addons</h4>
             </div>
         </div>
     </div>

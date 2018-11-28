@@ -18,7 +18,7 @@
                 <td>{{ ucfirst(str_replace('_', ' ', $role)) }}</td>
                 <td>
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('accessibility.edit', $role) }}', 'Update User Role Accessibility')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update User Role Accessibility"> <i class="mdi mdi-file-tree"></i> </button>
+                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('accessibility.edit', $role) }}', 'Update {{ ucfirst(str_replace('_', ' ', $role)) }} Role Accessibility')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update User Role Accessibility"> <i class="mdi mdi-file-tree"></i> </button>
                     </div>
                 </td>
             </tr>

@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box">
-            <h4 class="page-title">Student Admission Form</h4>
+            <h4 class="page-title"> <i class="mdi mdi-account-multiple-plus title_icon"></i> Student Admission Form</h4>
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 <table class="table table-striped table-centered mb-0">
         <thead class="thead-dark">
             <tr>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Option</th>
@@ -12,6 +13,7 @@
             @endphp
                 @foreach ( $parents as $parent)
                     <tr>
+                        <td> {{ $parent->id }} </td>
                         <td> {{ $parent->name }} </td>
                         <td> {{ $parent->email }} </td>
                         <td>

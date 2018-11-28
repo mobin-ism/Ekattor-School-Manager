@@ -131,7 +131,7 @@ class StudentController extends Controller
                     $student = new Student;
                     $student->user_id = $user_id;
                     $student->code = substr(md5(uniqid(rand(), true)), 0, 7);
-                    $student->parent_id = $request->parent_id[$key];
+                    // $student->parent_id = $request->parent_id[$key];
                     $student->school_id = get_settings('selected_branch');
                     $student->save();
                     $student_id = $student->id;

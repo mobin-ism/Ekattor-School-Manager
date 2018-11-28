@@ -2,41 +2,41 @@
 
 @foreach ($permissions as $permission)
 <table class="table table-hover table-centered mb-0" style="margin-bottom: 50px !important; background-color: #FAFAFA;">
-    @php
-        $attributes = array_keys($permission->getAttributes());
-    @endphp
+        @php
+            $attributes = array_keys($permission->getAttributes());
+        @endphp
 
-    <tbody>
-        @foreach ($attributes as $key => $attribute)
-            @php
-                if ($attribute == 'created_at' || $attribute == 'updated_at' || $attribute == 'teacher_id' || $attribute == 'id')
-                    continue;
-            @endphp
-            <tr>
-                @if ($attribute == 'class_id')
-                    <td style="font-weight: bold;">Class</td>
-                    <td style="font-weight: bold;">
-                        {{ \App\Classes::find($permission[$attribute])->name }}
-                    </td>
-                @elseif ($attribute == 'section_id')
-                    <td style="font-weight: bold;">Section</td>
-                    <td style="font-weight: bold;">
-                        {{ \App\Section::find($permission[$attribute])->name }}
-                    </td>
-                @else
-                    <td style="font-weight: bold;">{{ ucfirst(str_replace('_', ' ', $attribute)) }}</td>
-                    <td style="font-weight: bold;">
-                        @if ($permission[$attribute] == 1)
-                            <i class="fas fa-circle" style="color: green;"></i>
-                        @else
-                            <i class="fas fa-circle" style="color: red;"></i>
-                        @endif
-                    </td>
-                @endif
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+        <tbody>
+            @foreach ($attributes as $key => $attribute)
+                @php
+                    if ($attribute == 'created_at' || $attribute == 'updated_at' || $attribute == 'teacher_id' || $attribute == 'id')
+                        continue;
+                @endphp
+                <tr>
+                    @if ($attribute == 'class_id')
+                        <td style="font-weight: bold;">Class</td>
+                        <td style="font-weight: bold;">
+                            {{ \App\Classes::find($permission[$attribute])->name }}
+                        </td>
+                    @elseif ($attribute == 'section_id')
+                        <td style="font-weight: bold;">Section</td>
+                        <td style="font-weight: bold;">
+                            {{ \App\Section::find($permission[$attribute])->name }}
+                        </td>
+                    @else
+                        <td style="font-weight: bold;">{{ ucfirst(str_replace('_', ' ', $attribute)) }}</td>
+                        <td style="font-weight: bold;">
+                            @if ($permission[$attribute] == 1)
+                                <i class="fas fa-circle" style="color: green;"></i>
+                            @else
+                                <i class="fas fa-circle" style="color: red;"></i>
+                            @endif
+                        </td>
+                    @endif
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 @endforeach
 @if (count($permissions) == 0)
     <p class = "text-center">No permission assigned yet</p>
