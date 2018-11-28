@@ -34,7 +34,7 @@
                         </li>
                     </ul>
 
-                    @include('backend.admin.student.'.$type)
+                    @include('backend.'.Auth::user()->role.'.student.'.$type)
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
         </div> <!-- end col -->

@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="table-responsive-sm" id = "student_content">
-                        @include('backend.admin.student.list')
+                        @include('backend.'.Auth::user()->role.'.student.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->
             </div> <!-- end card -->

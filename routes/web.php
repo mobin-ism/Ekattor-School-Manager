@@ -35,6 +35,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('role', 'RoleController');
     Route::get('accessibility/{role}', 'RoleController@editAccessibility')->name('accessibility.edit');
     Route::patch('accessibility/{role}', 'RoleController@updateAccessibility')->name('accessibility.update');
+
+    Route::get('system_settings', 'SettingsController@system')->name('system.settings');
+    Route::get('sms_settings', 'SettingsController@sms')->name('sms.settings');
+    Route::get('payment_settings', 'SettingsController@payment')->name('payment.settings');
+    Route::get('language_settings', 'SettingsController@language')->name('language.settings');
 });
 
 Auth::routes();

@@ -17,7 +17,7 @@
                     <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('librarian.create') }}', 'Create Librarian')"> <i class="mdi mdi-plus"></i> Add New Librarian</button>
                     <h4 class="header-title mt-3">Librarian List</h4>
                     <div class="table-responsive-sm" id = "librarian_content">
-                        @include('backend.admin.librarian.list')
+                        @include('backend.'.Auth::user()->role.'.librarian.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->
             </div> <!-- end card -->

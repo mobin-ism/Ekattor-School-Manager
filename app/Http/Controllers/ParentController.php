@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Parents;
 use App\User;
 use Hash;
+use Auth;
 use Illuminate\Http\Request;
 
 class ParentController extends Controller
@@ -16,7 +17,7 @@ class ParentController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.parent.index');
+        return view('backend.'.Auth::user()->role.'.parent.index');
     }
 
     /**
@@ -26,7 +27,7 @@ class ParentController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.parent.create');
+        return view('backend.'.Auth::user()->role.'.parent.create');
     }
 
     /**
@@ -51,14 +52,14 @@ class ParentController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.admin.parent.list')->render(),
+                    'view' => view('backend.'.Auth::user()->role.'.parent.list')->render(),
                     'notification' =>"Parent Added Successfully"
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.parent.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.parent.list')->render(),
                 'notification' =>"Email Duplication"
             );
         }
@@ -75,7 +76,7 @@ class ParentController extends Controller
     public function show(Parent $parent, $id)
     {
         $user = User::find($id);
-        return view('backend.admin.parent.children', compact('user'));
+        return view('backend.'.Auth::user()->role.'.parent.children', compact('user'));
     }
 
     /**
@@ -87,7 +88,7 @@ class ParentController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('backend.admin.parent.edit', compact('user'));
+        return view('backend.'.Auth::user()->role.'.parent.edit', compact('user'));
     }
 
     /**
@@ -111,14 +112,14 @@ class ParentController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.admin.parent.list')->render(),
+                    'view' => view('backend.'.Auth::user()->role.'.parent.list')->render(),
                     'notification' =>"Parent Updated Successfully"
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.parent.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.parent.list')->render(),
                 'notification' =>"Email Duplication"
             );
         }
@@ -137,7 +138,7 @@ class ParentController extends Controller
         $user->delete();
         return array(
             'status' => true,
-            'view' => view('backend.admin.parent.list')->render(),
+            'view' => view('backend.'.Auth::user()->role.'.parent.list')->render(),
             'notification' =>"Parent has been deleted successfully"
         );
     }

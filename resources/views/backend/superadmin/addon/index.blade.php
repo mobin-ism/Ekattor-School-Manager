@@ -17,7 +17,7 @@
                     <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('addon_manager.create') }}', 'Add New Addon')"> <i class="mdi mdi-plus"></i> Add New Addon</button>
                     <h4 class="header-title mt-3">Installed Addons</h4>
                     <div class="table-responsive-sm" id = "addon_content">
-                        @include('backend.admin.addon.list')
+                        @include('backend.'.Auth::user()->role.'.addon.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->
             </div> <!-- end card -->

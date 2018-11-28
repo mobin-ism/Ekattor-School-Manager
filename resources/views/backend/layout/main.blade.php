@@ -50,7 +50,7 @@
 </div>
 <!-- END wrapper -->
 
-@include('backend.admin.navigation.right_navigation')
+@include('backend.'.Auth::user()->role.'.navigation.right_navigation')
 @include('backend.layout.scripts')
 @include('backend.layout.modal')
 @include('backend.layout.ajax_form')

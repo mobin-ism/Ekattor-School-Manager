@@ -7,6 +7,7 @@ use App\User;
 use App\TeacherPermission;
 use Illuminate\Http\Request;
 use Hash;
+use Auth;
 
 class TeacherController extends Controller
 {
@@ -17,7 +18,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.teacher.index');
+        return view('backend.'.Auth::user()->role.'.teacher.index');
     }
 
     /**
@@ -27,7 +28,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.teacher.create');
+        return view('backend.'.Auth::user()->role.'.teacher.create');
     }
 
     /**
@@ -63,14 +64,14 @@ class TeacherController extends Controller
 
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.admin.teacher.list')->render(),
+                    'view' => view('backend.'.Auth::user()->role.'.teacher.list')->render(),
                     'notification' =>"Teacher Added Successfully"
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.teacher.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.teacher.list')->render(),
                 'notification' =>"Email Duplication"
             );
         }
@@ -86,7 +87,7 @@ class TeacherController extends Controller
      */
     public function show($department_id)
     {
-        return view('backend.admin.teacher.list', compact('department_id'));
+        return view('backend.'.Auth::user()->role.'.teacher.list', compact('department_id'));
     }
 
     /**
@@ -98,7 +99,7 @@ class TeacherController extends Controller
     public function edit($id)
     {
         $teacher = Teacher::find($id);
-        return view('backend.admin.teacher.edit', compact('teacher'));
+        return view('backend.'.Auth::user()->role.'.teacher.edit', compact('teacher'));
     }
 
     /**
@@ -128,14 +129,14 @@ class TeacherController extends Controller
 
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.admin.teacher.list')->render(),
+                    'view' => view('backend.'.Auth::user()->role.'.teacher.list')->render(),
                     'notification' =>"Teacher Updated Successfully"
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.teacher.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.teacher.list')->render(),
                 'notification' =>"Email Duplication"
             );
         }
@@ -156,7 +157,7 @@ class TeacherController extends Controller
         $teacher->user->delete();
         return array(
             'status' => true,
-            'view' => view('backend.admin.teacher.list')->render(),
+            'view' => view('backend.'.Auth::user()->role.'.teacher.list')->render(),
             'notification' =>"Teacher has been deleted successfully"
         );
     }
@@ -173,6 +174,6 @@ class TeacherController extends Controller
         $teacher_details = Teacher::find($teacher_id);
         $teacher_permission = new TeacherPermission;
         $permissions = $teacher_permission::where('teacher_id', $teacher_id)->get();
-        return view('backend.admin.teacher.permission', compact('permissions', 'teacher_details'));
+        return view('backend.'.Auth::user()->role.'.teacher.permission', compact('permissions', 'teacher_details'));
     }
 }

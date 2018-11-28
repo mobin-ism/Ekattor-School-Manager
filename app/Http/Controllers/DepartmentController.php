@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use Illuminate\Http\Request;
+use Auth;
 
 class DepartmentController extends Controller
 {
@@ -14,7 +15,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.department.index');
+        return view('backend.'.Auth::user()->role.'.department.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.department.create');
+        return view('backend.'.Auth::user()->role.'.department.create');
     }
 
     /**
@@ -41,13 +42,13 @@ class DepartmentController extends Controller
         if($department->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.department.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.department.list')->render(),
                 'notification' =>"Department Added Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.department.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.department.list')->render(),
                 'notification' =>"An Error Occured When Adding Department"
             );
         }
@@ -75,7 +76,7 @@ class DepartmentController extends Controller
     public function edit($id)
     {
         $department = Department::find($id);
-        return view('backend.admin.department.edit', compact('department'));
+        return view('backend.'.Auth::user()->role.'.department.edit', compact('department'));
     }
 
     /**
@@ -93,13 +94,13 @@ class DepartmentController extends Controller
         if($department->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.department.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.department.list')->render(),
                 'notification' =>"Department Updated Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.department.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.department.list')->render(),
                 'notification' =>"An Error Occured When Updating Department"
             );
         }
@@ -117,13 +118,13 @@ class DepartmentController extends Controller
         if(Department::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.department.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.department.list')->render(),
                 'notification' =>"Department Deleted Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.department.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.department.list')->render(),
                 'notification' =>"An Error Occured When Deleting Department"
             );
         }

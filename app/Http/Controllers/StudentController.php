@@ -7,6 +7,7 @@ use App\Section;
 use App\Enroll;
 use App\User;
 use Hash;
+use Auth;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -18,7 +19,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.student.index');
+        return view('backend.'.Auth::user()->role.'.student.index');
     }
 
     /**
@@ -29,19 +30,19 @@ class StudentController extends Controller
     public function create()
     {
         $type = 'single';
-        return view('backend.admin.student.create', compact('type'));
+        return view('backend.'.Auth::user()->role.'.student.create', compact('type'));
     }
 
     public function bulk_student_create()
     {
         $type = 'bulk';
-        return view('backend.admin.student.create', compact('type'));
+        return view('backend.'.Auth::user()->role.'.student.create', compact('type'));
     }
 
     public function excel_student_create()
     {
         $type = 'excel';
-        return view('backend.admin.student.create', compact('type'));
+        return view('backend.'.Auth::user()->role.'.student.create', compact('type'));
     }
 
     /**
@@ -237,7 +238,7 @@ class StudentController extends Controller
         $running_session = get_settings('running_session');
         $school_id = get_settings('selected_branch');
         $students = Enroll::where(['section_id' => $section_id, 'class_id' => $class_id, 'session' => $running_session, 'school_id' => $school_id])->get();
-        return view('backend.admin.student.list', compact('students'));
+        return view('backend.'.Auth::user()->role.'.student.list', compact('students'));
     }
 
     /**
@@ -276,6 +277,6 @@ class StudentController extends Controller
 
     function profile($student_id) {
         $student_details = Student::find($student_id)->first();
-        return view('backend.admin.student.profile', compact('student_details'));
+        return view('backend.'.Auth::user()->role.'.student.profile', compact('student_details'));
     }
 }

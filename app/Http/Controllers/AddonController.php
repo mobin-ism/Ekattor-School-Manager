@@ -6,6 +6,7 @@ use App\Addon;
 use Illuminate\Http\Request;
 use ZipArchive;
 use DB;
+use Auth;
 
 class AddonController extends Controller
 {
@@ -16,7 +17,7 @@ class AddonController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.addon.index');
+        return view('backend.'.Auth::user()->role.'.addon.index');
     }
 
     /**
@@ -26,7 +27,7 @@ class AddonController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.addon.add');
+        return view('backend.'.Auth::user()->role.'.addon.add');
     }
 
     /**

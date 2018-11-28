@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\TeacherPermission;
 use App\Section;
 use Illuminate\Http\Request;
+use Auth;
 
 class TeacherPermissionController extends Controller
 {
@@ -15,7 +16,7 @@ class TeacherPermissionController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.permission.index');
+        return view('backend.'.Auth::user()->role.'.permission.index');
     }
 
     /**
@@ -50,7 +51,7 @@ class TeacherPermissionController extends Controller
 
         $class_id = Section::find($section_id)->class_id;
         $teachers = \App\Teacher::where('school_id', 1)->get();
-        return view('backend.admin.permission.list', compact('class_id', 'section_id', 'teachers'));
+        return view('backend.'.Auth::user()->role.'.permission.list', compact('class_id', 'section_id', 'teachers'));
     }
 
     /**
@@ -61,7 +62,7 @@ class TeacherPermissionController extends Controller
      */
     public function edit(TeacherPermission $teacherPermission)
     {
-        return view('backend.admin.permission.edit');
+        return view('backend.'.Auth::user()->role.'.permission.edit');
     }
 
     /**

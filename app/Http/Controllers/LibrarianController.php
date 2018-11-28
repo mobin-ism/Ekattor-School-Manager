@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Librarian;
 use App\User;
 use Hash;
+use Auth;
 use Illuminate\Http\Request;
 
 class LibrarianController extends Controller
@@ -16,7 +17,7 @@ class LibrarianController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.librarian.index');
+        return view('backend.'.Auth::user()->role.'.librarian.index');
     }
 
     /**
@@ -26,7 +27,7 @@ class LibrarianController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.librarian.create');
+        return view('backend.'.Auth::user()->role.'.librarian.create');
     }
 
     /**
@@ -51,14 +52,14 @@ class LibrarianController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.admin.librarian.list')->render(),
+                    'view' => view('backend.'.Auth::user()->role.'.librarian.list')->render(),
                     'notification' =>"Librarian Added Successfully"
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.librarian.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.librarian.list')->render(),
                 'notification' =>"Email Duplication"
             );
         }
@@ -86,7 +87,7 @@ class LibrarianController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('backend.admin.librarian.edit', compact('user'));
+        return view('backend.'.Auth::user()->role.'.librarian.edit', compact('user'));
     }
 
     /**
@@ -110,14 +111,14 @@ class LibrarianController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.admin.librarian.list')->render(),
+                    'view' => view('backend.'.Auth::user()->role.'.librarian.list')->render(),
                     'notification' =>"Librarian Updated Successfully"
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.librarian.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.librarian.list')->render(),
                 'notification' =>"Email Duplication"
             );
         }
@@ -136,7 +137,7 @@ class LibrarianController extends Controller
         $user->delete();
         return array(
             'status' => true,
-            'view' => view('backend.admin.librarian.list')->render(),
+            'view' => view('backend.'.Auth::user()->role.'.librarian.list')->render(),
             'notification' =>"Librarian has been deleted successfully"
         );
     }

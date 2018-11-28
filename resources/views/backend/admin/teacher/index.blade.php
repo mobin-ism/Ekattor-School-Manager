@@ -25,7 +25,7 @@
                         </select>
                     </div>
                     <div class="table-responsive-sm" id = "teacher_content">
-                        @include('backend.admin.teacher.list')
+                        @include('backend.'.Auth::user()->role.'.teacher.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->
             </div> <!-- end card -->

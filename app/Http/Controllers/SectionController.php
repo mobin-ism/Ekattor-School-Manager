@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Section;
 use App\Classes;
 use Illuminate\Http\Request;
+use Auth;
 
 class SectionController extends Controller
 {
@@ -48,7 +49,7 @@ class SectionController extends Controller
     public function show($class_id)
     {
         $sections = Section::where('class_id', $class_id)->get();
-        return view('backend.admin.section.list', compact('sections'));
+        return view('backend.'.Auth::user()->role.'.section.list', compact('sections'));
     }
 
     /**
@@ -84,7 +85,7 @@ class SectionController extends Controller
 
         return array(
             'status' => true,
-            'view' => view('backend.admin.class.list')->render(),
+            'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
             'notification' => 'Section Updated Successfully'
         );
     }
@@ -103,14 +104,14 @@ class SectionController extends Controller
         if(sizeof($sections_for_that_class) == 1){
             return array(
                 'status' => false,
-                'view' => view('backend.admin.class.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
                 'notification' => 'Every Class Should Have At least One Section'
             );
         }else {
             Section::destroy($section_id);
             return array(
                 'status' => true,
-                'view' => view('backend.admin.class.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
                 'notification' => 'Section Deleted Successfully'
             );
         }

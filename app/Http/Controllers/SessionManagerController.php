@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Session;
 use Illuminate\Http\Request;
+use Auth;
 
 class SessionManagerController extends Controller
 {
@@ -15,7 +16,7 @@ class SessionManagerController extends Controller
     public function index()
     {
 
-        return view('backend.admin.session.index');
+        return view('backend.'.Auth::user()->role.'.session.index');
     }
 
     /**
@@ -25,7 +26,7 @@ class SessionManagerController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.session.create');
+        return view('backend.'.Auth::user()->role.'.session.create');
     }
 
     /**
@@ -43,13 +44,13 @@ class SessionManagerController extends Controller
             $session->save();
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.session.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
                 'notification' =>"Session Added Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.session.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
                 'notification' =>"An Error Occured When Adding Session"
             );
         }
@@ -76,7 +77,7 @@ class SessionManagerController extends Controller
     public function edit($id)
     {
         $session = Session::find($id);
-        return view('backend.admin.session.edit', compact('session'));
+        return view('backend.'.Auth::user()->role.'.session.edit', compact('session'));
     }
 
     /**
@@ -95,13 +96,13 @@ class SessionManagerController extends Controller
         if($session->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.session.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
                 'notification' =>"Session Updated Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.session.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
                 'notification' =>"An Error Occured When Updating Session"
             );
         }
@@ -119,13 +120,13 @@ class SessionManagerController extends Controller
         if(Session::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.session.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
                 'notification' =>"Session Deleted Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.session.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
                 'notification' =>"An Error Occured When Deleting Session"
             );
         }

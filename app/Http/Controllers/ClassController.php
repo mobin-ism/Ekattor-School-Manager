@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Classes;
 use App\Section;
 use Illuminate\Http\Request;
+use Auth;
 
 class ClassController extends Controller
 {
@@ -15,7 +16,7 @@ class ClassController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.class.index');
+        return view('backend.'.Auth::user()->role.'.class.index');
     }
 
     /**
@@ -25,7 +26,7 @@ class ClassController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.class.create');
+        return view('backend.'.Auth::user()->role.'.class.create');
     }
 
     /**
@@ -46,13 +47,13 @@ class ClassController extends Controller
             $this->createSection($class->id);
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.class.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
                 'notification' =>"Class Added Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.class.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
                 'notification' =>"An Error Occured When Adding Class"
             );
         }
@@ -68,7 +69,7 @@ class ClassController extends Controller
     public function show($class_id)
     {
         $classes = Classes::find($class_id);
-        return view('backend.admin.class.section', compact('classes'));
+        return view('backend.'.Auth::user()->role.'.class.section', compact('classes'));
     }
 
     /**
@@ -80,7 +81,7 @@ class ClassController extends Controller
     public function edit($id)
     {
         $classes = Classes::find($id);
-        return view('backend.admin.class.edit', compact('classes'));
+        return view('backend.'.Auth::user()->role.'.class.edit', compact('classes'));
     }
 
     /**
@@ -99,13 +100,13 @@ class ClassController extends Controller
         if($classes->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.class.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
                 'notification' =>"Class Updated Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.class.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
                 'notification' =>"An Error Occured When Updating Class"
             );
         }
@@ -123,13 +124,13 @@ class ClassController extends Controller
         if(Classes::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.admin.class.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
                 'notification' =>"Class Deleted Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.class.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
                 'notification' =>"An Error Occured When Deleting Class"
             );
         }

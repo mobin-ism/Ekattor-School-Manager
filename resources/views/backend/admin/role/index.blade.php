@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <h4 class="header-title mt-3">User Role List</h4>
                     <div class="table-responsive-sm" id = "role_content">
-                        @include('backend.admin.role.list')
+                        @include('backend.'.Auth::user()->role.'.role.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->
             </div> <!-- end card -->

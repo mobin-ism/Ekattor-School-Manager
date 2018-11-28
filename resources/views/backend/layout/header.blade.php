@@ -5,7 +5,7 @@
                 <i class="mdi mdi-menu"></i>
             </button>
             <div class="h5 d-none d-lg-block">
-                <span class="font-weight-normal">Running Session:</span> {{ get_settings('running_session') }} {{ school_id() }}
+                <span class="font-weight-normal">Running Session:</span> {{ get_settings('running_session') }}
             </div>
         </div>
         <div class="col-lg-6 font-weight-bold h4 d-none d-lg-block">

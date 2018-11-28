@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="table-responsive-sm" id = "teacher_permission_content">
-                        @include('backend.admin.permission.list')
+                        @include('backend.'.Auth::user()->role.'.permission.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->
             </div> <!-- end card -->

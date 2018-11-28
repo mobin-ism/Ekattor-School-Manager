@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Accountant;
 use App\User;
 use Hash;
+use Auth;
 use Illuminate\Http\Request;
 
 class AccountantController extends Controller
@@ -16,7 +17,7 @@ class AccountantController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.accountant.index');
+        return view('backend.'.Auth::user()->role.'.accountant.index');
     }
 
     /**
@@ -26,7 +27,7 @@ class AccountantController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.accountant.create');
+        return view('backend.'.Auth::user()->role.'.accountant.create');
     }
 
     /**
@@ -51,14 +52,14 @@ class AccountantController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.admin.accountant.list')->render(),
+                    'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
                     'notification' =>"Accountant Added Successfully"
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.accountant.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
                 'notification' =>"Email Duplication"
             );
         }
@@ -86,7 +87,7 @@ class AccountantController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('backend.admin.accountant.edit', compact('user'));
+        return view('backend.'.Auth::user()->role.'.accountant.edit', compact('user'));
     }
 
     /**
@@ -110,14 +111,14 @@ class AccountantController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.admin.accountant.list')->render(),
+                    'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
                     'notification' =>"Accountant Updated Successfully"
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.admin.accountant.list')->render(),
+                'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
                 'notification' =>"Email Duplication"
             );
         }
@@ -136,7 +137,7 @@ class AccountantController extends Controller
         $user->delete();
         return array(
             'status' => true,
-            'view' => view('backend.admin.accountant.list')->render(),
+            'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
             'notification' =>"accountant has been deleted successfully"
         );
     }

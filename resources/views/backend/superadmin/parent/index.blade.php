@@ -17,7 +17,7 @@
                     <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('parent.create') }}', 'Create Parent')"> <i class="mdi mdi-plus"></i> Add New Parent</button>
                     <h4 class="header-title mt-3">Parent List</h4>
                     <div class="table-responsive-sm" id = "parent_content">
-                        @include('backend.admin.parent.list')
+                        @include('backend.'.Auth::user()->role.'.parent.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->
             </div> <!-- end card -->

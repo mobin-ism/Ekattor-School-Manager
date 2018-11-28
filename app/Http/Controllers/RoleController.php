@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use Illuminate\Http\Request;
+use Auth;
 
 class RoleController extends Controller
 {
@@ -14,7 +15,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.role.index');
+        return view('backend.'.Auth::user()->role.'.role.index');
     }
 
     /**
@@ -85,7 +86,7 @@ class RoleController extends Controller
 
     public function editAccessibility($role) {
         $accessibilites = Role::where('school_id', get_settings('selected_branch'))->pluck($role)->first();
-        return view('backend.admin.role.accessibility', compact('accessibilites', 'role'));
+        return view('backend.'.Auth::user()->role.'.role.accessibility', compact('accessibilites', 'role'));
     }
 
     public function updateAccessibility(Request $request, $role) {
@@ -101,7 +102,7 @@ class RoleController extends Controller
         $accessibilites->save();
         $data = array(
             'status' => true,
-            'view' => view('backend.admin.role.list')->render(),
+            'view' => view('backend.'.Auth::user()->role.'.role.list')->render(),
             'notification' =>"Successfully updated user role accessibilities"
         );
         return $data;
