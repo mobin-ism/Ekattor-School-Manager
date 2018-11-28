@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.20)
 # Database: laravel_ekattor
-# Generation Time: 2018-11-28 08:14:09 +0000
+# Generation Time: 2018-11-28 12:03:33 +0000
 # ************************************************************
 
 
@@ -197,10 +197,10 @@ VALUES
 	(34,'hostel',NULL,31,0,1,NULL),
 	(35,'school_website',NULL,31,0,1,NULL),
 	(36,'settings',NULL,0,0,1,'dripicons-basketball'),
-	(37,'system_settings',NULL,36,0,1,NULL),
-	(38,'sms_settings',NULL,36,0,1,NULL),
-	(39,'payment_settings',NULL,36,0,1,NULL),
-	(40,'language_settings',NULL,36,0,1,NULL),
+	(37,'system_settings','system.settings',36,10,1,NULL),
+	(38,'sms_settings','sms.settings',36,40,1,NULL),
+	(39,'payment_settings','payment.settings',36,20,1,NULL),
+	(40,'language_settings','language.settings',36,30,1,NULL),
 	(41,'session_manager','session_manager.index',31,0,1,NULL),
 	(42,'department','department.index',11,70,1,NULL),
 	(43,'admission','student.create',3,20,1,NULL),
@@ -349,7 +349,8 @@ VALUES
 	(48,'A',1,1,'2018-11-19 06:58:53','2018-11-19 06:59:15'),
 	(49,'B',1,1,'2018-11-19 06:59:00','2018-11-19 06:59:15'),
 	(51,'A',17,1,'2018-11-19 09:11:32','2018-11-19 09:11:32'),
-	(53,'C',1,1,'2018-11-19 12:15:11','2018-11-19 12:15:11');
+	(54,'D',1,1,'2018-11-28 09:26:02','2018-11-28 09:26:02'),
+	(55,'A',16,1,'2018-11-28 09:26:12','2018-11-28 09:26:12');
 
 /*!40000 ALTER TABLE `sections` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -516,7 +517,7 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phone`, `remember_token`, `birthday`, `gender`, `blood_group`, `school_id`, `authentication_key`, `created_at`, `updated_at`)
 VALUES
-	(1,'Mr. Admin','admin@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm','superadmin',NULL,NULL,'4Zi5o7P0fvlDqhjeaI5swEJ0HwS2pTqJdWEj06ym2ojrvwX6sYMHQFuhX9sS',NULL,NULL,NULL,0,NULL,NULL,NULL),
+	(1,'Mr. Admin','admin@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm','superadmin',NULL,NULL,'T1BtBTrJnGBTxEBwGjBaNivOz4cOXSzZ165p59kJz5BZgBpG2YKlikIVlZb8',NULL,NULL,NULL,0,NULL,NULL,NULL),
 	(3,'Scarlet Patterson','parent@example.com','$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm','parent','Sit quod et eiusmod asperiores consequat Rerum qui eius nesciunt quia corporis expedita exercitationem dolorem qui','+641-30-5228192','d6lkEluPfHGvkMQbixkMmbA41QNDORCEhgYpiNNtkdorUHTEyRWjTX63JlrN',NULL,'others','a-',1,NULL,'2018-11-26 10:15:26','2018-11-26 10:15:26'),
 	(7,'Maite Carr','teacher1@example.com','$2y$10$59wEfxAnEukVm8vNAvCId.z3nRnI1by7Bu4k15ql./gmP9KApZtQ2','teacher','Amet quibusdam aut necessitatibus illo consectetur consequatur impedit lorem atque neque id voluptas harum maiores sequi qui laboris minus','+326-35-8982049',NULL,NULL,'others','b+',1,NULL,'2018-11-28 06:24:26','2018-11-28 06:24:26'),
 	(8,'Pamela Rosa','teacher2@example.com','$2y$10$9wdGlizUMy3sw5WgfqnPROItnPGce.MESgvqmzIwblhyMm/oTHsiu','teacher','Voluptas maiores est et quae eligendi temporibus fugiat architecto dolor quia error dicta est provident atque voluptas dolore','+437-77-1377404',NULL,NULL,'female','b+',1,NULL,'2018-11-28 06:24:39','2018-11-28 06:24:39'),
