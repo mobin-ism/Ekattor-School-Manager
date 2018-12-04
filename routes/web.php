@@ -40,6 +40,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('sms_settings', 'SettingsController@sms')->name('sms.settings');
     Route::get('payment_settings', 'SettingsController@payment')->name('payment.settings');
     Route::get('language_settings', 'SettingsController@language')->name('language.settings');
+
+    Route::resource('daily_attendance', 'DailyAttendanceController');
+    Route::post('show_attendance', 'DailyAttendanceController@show')->name('daily_attendance.show_attendance');
 });
 
 Auth::routes();

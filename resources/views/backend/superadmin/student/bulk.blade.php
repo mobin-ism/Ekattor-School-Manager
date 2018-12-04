@@ -29,14 +29,14 @@
                     <div class="form-group col">
                         <input type="password" name="password[]" class="form-control"  value="" placeholder="Password" required>
                     </div>
-                    <div class="form-group col">
+                    {{-- <div class="form-group col">
                         <select name="parent_id[]" class="form-control" required >
                             <option value="">Select Parent</option>
                             @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
                                 <option value="{{ $parent->id }}">{{ $parent->name }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="form-group col">
                         <select name="gender[]" class="form-control" required>
                             <option value="">Select Gender</option>
@@ -71,14 +71,14 @@
                     <div class="form-group col">
                         <input type="password" name="password[]" class="form-control"  value="" placeholder="Password">
                     </div>
-                    <div class="form-group col">
+                    {{-- <div class="form-group col">
                         <select name="parent_id[]" class="form-control">
                             <option value="">Select Parent</option>
                             @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
                                 <option value="{{ $parent->id }}">{{ $parent->name }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="form-group col">
                         <select name="gender[]" class="form-control">
                             <option value="">Select Gender</option>

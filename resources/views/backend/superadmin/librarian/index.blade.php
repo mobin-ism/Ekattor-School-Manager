@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Librarian</h4>
+                <h4 class="page-title"><i class="mdi mdi-account-circle title_icon"></i> Librarian</h4>
             </div>
         </div>
     </div>
