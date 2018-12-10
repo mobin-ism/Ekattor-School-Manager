@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Session;
+use App\Setting;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -128,6 +129,28 @@ class SessionManagerController extends Controller
                 'status' => false,
                 'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
                 'notification' =>"An Error Occured When Deleting Session"
+            );
+        }
+        return $data;
+    }
+
+    public function active($id)
+    {
+        $session = Session::find($id);
+        $setting = Setting::find(1);
+        $setting->running_session = $session->name;
+
+        if($setting->save()){
+            $data = array(
+                'status' => true,
+                'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
+                'notification' =>"Session Activated Successfully"
+            );
+        }else {
+            $data = array(
+                'status' => false,
+                'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
+                'notification' =>"An Error Occured When Activating Session"
             );
         }
         return $data;

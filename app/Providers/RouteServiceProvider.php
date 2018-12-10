@@ -42,6 +42,12 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapStudentRoutes(); // Addon Route is being used for managin the Student
 
+        $this->mapSettingsRoutes(); // Settings Route is being used for managin the Settings
+
+        $this->mapAccountingRoutes(); // Accounting Route is being used for managin the Accounting staffs
+
+        $this->mapMultiSchoolRoutes(); // Multi School Route is being used for managin the Multi School staffs
+
         //$this->mapInstallRoutes(); // Install route is being used for managing the installation process
     }
 
@@ -79,6 +85,27 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('student')
              ->namespace($this->namespace)
              ->group(base_path('routes/student.php'));
+    }
+
+    protected function mapSettingsRoutes()
+    {
+        Route::middleware('settings')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/settings.php'));
+    }
+
+    protected function mapAccountingRoutes()
+    {
+        Route::middleware('settings')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/accounting.php'));
+    }
+
+    protected function mapMultiSchoolRoutes()
+    {
+        Route::middleware('school')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/school.php'));
     }
 
     /**

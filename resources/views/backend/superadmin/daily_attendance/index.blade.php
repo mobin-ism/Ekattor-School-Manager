@@ -27,13 +27,13 @@
     <!-- end page title -->
 
     <div class="row ">
-        <div class="col-xl-10 offset-xl-1">
+        <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <button type="button" class="btn btn-icon btn-success" style="float: right; margin-bottom: 15px;" onclick="showAjaxModal('{{ route('class.create') }}', 'Take Attendance')"> <i class="mdi mdi-plus"></i>Take Attendance</button>
+                    <button type="button" class="btn btn-icon btn-success" style="float: right; margin-bottom: 15px;" onclick="showAjaxModal('{{ route('daily_attendance.create') }}', 'Take Attendance')"> <i class="mdi mdi-plus"></i>Take Attendance</button>
 
-                    <div class="row col-12">
-                        <div class="form-group col">
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-3">
                             <select name="month" id="month" class="form-control">
                                 <option value="">Select Month</option>
                                 @foreach ($month_array as $key=>$value)
@@ -41,7 +41,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col">
+                        <div class="form-group col-md-3">
                             <select name="year" id="year" class="form-control">
                                 <option value="">Select Year</option>
                                 @for ($i = 2016; $i <= 2118; $i++)
@@ -49,7 +49,7 @@
                                 @endfor
                             </select>
                         </div>
-                        <div class="form-group col">
+                        <div class="form-group col-md-3">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
                                 <option value="all">Select Class</option>
                                 @foreach (App\Classes::where('school_id', 1)->get() as $class)
@@ -57,14 +57,14 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div id = "section_content" class="form-group col">
+                        <div id = "section_content" class="form-group col-md-3">
                             <select class="form-control" name="section_id" id="section_id">
                                 <option value="all">Select Class First</option>
                             </select>
                         </div>
                     </div>
 
-                    <h4 class="header-title mt-3">Daily Attendance</h4>
+
                     <div class="table-responsive-sm" id = "daily_attendance_content">
                         @include('backend.'.Auth::user()->role.'.daily_attendance.list')
                     </div> <!-- end table-responsive-->
@@ -95,15 +95,12 @@
             var month = $('#month').val();
             var year = $('#year').val();
 
-            console.log(month);
-            console.log(year);
             $.ajax({
                 type : 'POST',
                 url: url,
                 data : { section_id : section_id, month : month, year : year, _token : '{{ @csrf_token() }}' },
                 success : function(response) {
                     $('#daily_attendance_content').html(response);
-                    console.log(response);
                 }
             });
           }

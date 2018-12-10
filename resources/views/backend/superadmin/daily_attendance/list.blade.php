@@ -1,48 +1,60 @@
+
 @if (isset($month) && isset($year))
-    {{ $month }}
-    {{ $year }}
-@else
-hello
-@endif
-<table class="table table-striped table-centered mb-0">
+    @php
+        $number_of_days = cal_days_in_month(CAL_GREGORIAN, date('m', strtotime($month)), $year);
+        $class_name = App\Classes::find($class_id)->pluck('name')->first();
+        $section_name = App\Section::find($section_id)->pluck('name')->first();
+    @endphp
+
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <div class="card text-white bg-secondary">
+                <div class="card-body">
+                    <div class="toll-free-box text-center">
+                        <h4> <i class="mdi mdi-chart-bar"></i>Attendance Report</h4>
+                        <h5>Class: {{ $class_name }}</h5>
+                        <h5>Section: {{ $section_name }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped table-centered table-bordered mb-0 table-responsive">
         <thead class="thead-dark">
-                <tr>
-                    <th>Code</th>
-                    <th>Photo</th>
-                    <th>Name</th>
-                    <th>Option</th>
-                </tr>
-            </thead>
-                <tbody>
-                    @if (isset($students))
-                        @foreach ($students as $student)
-                            <tr>
-                                    <td>{{ $student->student->code }}</td>
-                                <td></td>
-                                <td>{{ $student->student->user->name }}</td>
-                                <td>
-                                    <div class="btn-group mb-2">
-
-                                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showLargeAjaxModal('{{ route('student.profile', $student->student->id) }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Student Profile"> <i class="dripicons-checklist"></i> </button>
-
-                                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('teacher.edit', $student->id) }}', 'Update Teacher')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Student"> <i class="mdi mdi-wrench"></i> </button>
-
-                                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('teacher.destroy', $student->id) }}', 'teacher_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Student"> <i class="mdi mdi-window-close"></i> </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                        @if (count($students) == 0)
-                            <tr>
-                                <td colspan="4">No data found</td>
-                            </tr>
-                        @endif
-                    @else
+            <tr>
+                <th width = "40px">Student <i class="mdi mdi-arrow-down"></i> Date <i class="mdi mdi-arrow-right"></i></th>
+                @for ($i = 1; $i <= $number_of_days; $i++)
+                    <th>{{$i}}</th>
+                @endfor
+            </tr>
+        </thead>
+        <tbody>
+            @if (isset($students))
+                @foreach ($students as $student)
                     <tr>
-                            <td colspan="4">No data found</td>
-                        </tr>
-                    @endif
-                </tbody>
-            </table>
+                        <td>{{ $student->student->user->name }}</td>
+                        @for ($i = 1; $i <= $number_of_days; $i++)
+                            @if (App\DailyAttendance::where('school_id', school_id())->where('class_id', $class_id)->where('section_id', $section_id)->where('student_id', $student->student_id)->where('timestamp', strtotime($i.'-'.$month.'-'.$year))->pluck('status')->first())
+                                <td><i class="fas fa-circle" style="color: green;"></i></td>
+                            @else
+                                <td><i class="fas fa-circle" style="color: red;"></i></td>
+                            @endif
+                        @endfor
+                    </tr>
+                @endforeach
+                @if (count($students) == 0)
+                    <tr>
+                        <td colspan="{{ $number_of_days+1 }}">No data found</td>
+                    </tr>
+                @endif
+            @else
+            <tr>
+                <td colspan="{{ $number_of_days+1 }}">No data found</td>
+            </tr>
+            @endif
+        </tbody>
+    </table>
+@endif
 
 

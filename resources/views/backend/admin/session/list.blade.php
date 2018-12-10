@@ -7,7 +7,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (App\Session::where('school_id', 1)->get() as $session)
+    @foreach (App\Session::where('school_id', school_id())->get() as $session)
         <tr>
             <td>{{ $session->name }}</td>
             <td>

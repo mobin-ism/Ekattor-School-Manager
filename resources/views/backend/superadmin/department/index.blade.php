@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Department</h4>
+                <h4 class="page-title"> <i class="mdi mdi-content-paste title_icon"></i> Department</h4>
             </div>
         </div>
     </div>

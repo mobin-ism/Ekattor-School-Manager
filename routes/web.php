@@ -17,6 +17,8 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('dashboard');
 
     Route::resource('session_manager', 'SessionManagerController');
+    Route::delete('session_activate/{id}', 'SessionManagerController@active')->name('session.active');
+
     Route::resource('class', 'ClassController');
 
     Route::resource('section', 'SectionController');
@@ -36,13 +38,28 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('accessibility/{role}', 'RoleController@editAccessibility')->name('accessibility.edit');
     Route::patch('accessibility/{role}', 'RoleController@updateAccessibility')->name('accessibility.update');
 
-    Route::get('system_settings', 'SettingsController@system')->name('system.settings');
-    Route::get('sms_settings', 'SettingsController@sms')->name('sms.settings');
-    Route::get('payment_settings', 'SettingsController@payment')->name('payment.settings');
-    Route::get('language_settings', 'SettingsController@language')->name('language.settings');
-
     Route::resource('daily_attendance', 'DailyAttendanceController');
     Route::post('show_attendance', 'DailyAttendanceController@show')->name('daily_attendance.show_attendance');
+    Route::post('student_list', 'DailyAttendanceController@students')->name('daily_attendance.students');
+
+    Route::resource('subject', 'SubjectController');
+
+    Route::resource('routine', 'RoutineController');
+    Route::get('get_subject/{class_id}', 'RoutineController@subject')->name('routine.subject');
+
+    Route::resource('room', 'ClassRoomController');
+
+    Route::resource('book', 'BookController');
+    Route::resource('book_issue', 'BookIssueController');
+    Route::get('student_list/{class_id}', 'BookIssueController@student')->name('book_issue.student');
+    Route::delete('return_book/{book_id}', 'BookIssueController@return')->name('book_issue.return');
+
+    Route::resource('exam', 'ExamController');
+    Route::resource('grade', 'GradeController');
+
+    Route::resource('expense_category', 'ExpenseCategoryController');
+    Route::resource('expense', 'ExpenseController');
+
 });
 
 Auth::routes();
