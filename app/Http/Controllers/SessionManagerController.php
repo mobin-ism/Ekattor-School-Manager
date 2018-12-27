@@ -138,7 +138,7 @@ class SessionManagerController extends Controller
     {
         $session = Session::find($id);
         $setting = Setting::find(1);
-        $setting->running_session = $session->name;
+        $setting->running_session = $session->id;
 
         if($setting->save()){
             $data = array(

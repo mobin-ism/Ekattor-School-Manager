@@ -17,7 +17,7 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('dashboard');
 
     Route::resource('session_manager', 'SessionManagerController');
-    Route::delete('session_activate/{id}', 'SessionManagerController@active')->name('session.active');
+    Route::get('session_activate/{id}', 'SessionManagerController@active')->name('session.active');
 
     Route::resource('class', 'ClassController');
 

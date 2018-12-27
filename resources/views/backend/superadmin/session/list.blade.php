@@ -11,7 +11,7 @@
         <tr>
             <td>{{ $session->name }}</td>
             <td>
-                @if ($session->name == get_settings('running_session'))
+                @if ($session->id == get_settings('running_session'))
                     <i class="mdi mdi-circle text-success"></i> Active
                 @else
                     <i class="mdi mdi-circle text-disable"></i> Deactive
@@ -20,7 +20,6 @@
             <td>
                 <div class="btn-group mb-2">
                     <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('session_manager.edit', $session->id) }}', 'Update Session')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Session info"> <i class="mdi mdi-wrench"></i> </button>
-                    <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('session.active', $session->id) }}', 'session_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mark as Active Session"> <i class="mdi mdi-checkbox-marked-circle"></i> </button>
                     <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('session_manager.destroy', $session->id) }}', 'session_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Session"> <i class="mdi mdi-window-close"></i> </button>
                 </div>
             </td>

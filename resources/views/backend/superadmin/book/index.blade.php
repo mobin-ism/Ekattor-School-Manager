@@ -14,11 +14,17 @@
         <div class="col-xl-10 offset-xl-1">
             <div class="card">
                 <div class="card-body">
-                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('book.create') }}', 'Add Books')"> <i class="mdi mdi-plus"></i> Add Book</button>
-                    <h4 class="header-title mt-3">Book List</h4>
-                    <div class="table-responsive-sm" id = "book_content">
-                        @include('backend.'.Auth::user()->role.'.book.list')
-                    </div> <!-- end table-responsive-->
+                    @if (sizeof(App\Book::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->get()) > 0)
+                        <button type="button" class="btn btn-icon btn-success mb-1" style="float: right;" onclick="showAjaxModal('{{ route('book.create') }}', 'Add Books')"> <i class="mdi mdi-plus"></i> Add Book</button>
+                        <div class="table-responsive-sm" id = "book_content">
+                            @include('backend.'.Auth::user()->role.'.book.list')
+                        </div> <!-- end table-responsive-->
+                    @else
+                        <div style="text-align: center;">
+                            <img src="{{ asset('backend/images/empty_box.png') }}" alt="" height="150" width="200" style="text-align: center;  opacity: 0.8;">
+                            <p>Oops No Data Found...<a href="#" onclick="showAjaxModal('{{ route('book.create') }}', 'Add Books')" style="color: #757575; font-weight: 800;">Click here.</a></p> 
+                        </div>
+                    @endif
                 </div> <!-- end card body-->
             </div> <!-- end card -->
         </div><!-- end col-->

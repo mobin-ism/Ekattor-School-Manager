@@ -4,9 +4,6 @@
             <button class="button-menu-mobile open-left disable-btn">
                 <i class="mdi mdi-menu"></i>
             </button>
-            <div class="h5 d-none d-lg-block">
-                <span class="font-weight-normal">Running Session:</span> {{ get_settings('running_session') }}
-            </div>
         </div>
         <div class="col-lg-6 font-weight-bold h4 d-none d-lg-block">
             {{ get_settings('system_name') }}
@@ -16,13 +13,13 @@
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                         aria-expanded="false">
-                                <span class="account-user-avatar">
-                                    <img src="{{asset('backend/images/users/avatar-1.jpg')}}" alt="user-image" class="rounded-circle">
-                                </span>
+                        <span class="account-user-avatar">
+                            <img src="{{asset('backend/images/users/avatar-1.jpg')}}" alt="user-image" class="rounded-circle">
+                        </span>
                         <span>
-                                    <span class="account-user-name">{{ Auth::user()->name }}</span>
-                                    <span class="account-position">{{ ucfirst(Auth::user()->role) }}</span>
-                                </span>
+                            <span class="account-user-name">{{ Auth::user()->name }}</span>
+                            <span class="account-position">{{ ucfirst(Auth::user()->role) }}</span>
+                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
                         <!-- item-->
