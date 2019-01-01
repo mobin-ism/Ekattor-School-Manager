@@ -11,13 +11,12 @@
     <!-- end page title -->
 
     <div class="row ">
-        <div class="col-xl-10 offset-xl-1">
+        <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
                     <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('subject.create') }}', 'Add New Subject')"> <i class="mdi mdi-plus"></i>Add Subject</button>
-                    <h4 class="header-title mt-3">Subject List</h4>
-                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
-                        <div class="col-md-4">
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-3">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSubject(this.value)">
                                 <option value="all">All Class</option>
                                 @foreach (App\Classes::where('school_id', 1)->get() as $class)
@@ -26,7 +25,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="table-responsive-sm" id = "subject_content">
+                    <div id = "subject_content">
                         @include('backend.'.Auth::user()->role.'.subject.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->

@@ -55,6 +55,11 @@
             @endif
         </tbody>
     </table>
+@else
+    <div style="text-align: center;">
+        <img src="{{ asset('backend/images/empty_box.png') }}" alt="" height="150" width="200" style="text-align: center;  opacity: 0.8;">
+        <p>Oops No Data Found... <a href="#" style="color: #757575; font-weight: 800;" onclick="showAjaxModal('{{ route('daily_attendance.create') }}', 'Take Attendance')">Take Attendance</a> </p>
+    </div>
 @endif
 
 

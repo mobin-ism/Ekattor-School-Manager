@@ -1,15 +1,19 @@
-<table class="table table-striped table-centered mb-0">
-        <thead class="thead-dark">
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Option</th>
-            </tr>
-        </thead>
+@php
+    $parents = \App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->paginate(10);
+@endphp
+
+@if (count($parents) > 0)
+    <button type="button" class="btn btn-icon btn-success mb-1" style="float: right;" onclick="showAjaxModal('{{ route('parent.create') }}', 'Create Parent')"> <i class="mdi mdi-plus"></i> Add New Parent</button>
+    <div class="table-responsive-sm">
+        <table class="table table-striped table-centered mb-0">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
             <tbody>
-            @php
-            $parents = \App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->paginate(10);
-            @endphp
                 @foreach ( $parents as $parent)
                     <tr>
                         <td> {{ $parent->name }} </td>
@@ -23,19 +27,19 @@
                         </td>
                     </tr>
                 @endforeach
-                @if (count($parents) == 0)
-                    <tr>
-                        <td colspan="4">No Data Found</td>
-                    </tr>
-                @endif
             </tbody>
         </table>
 
-        {{-- <div class="row justify-content-md-center"> --}}
         <div class="row">
-            {{-- <div class="col-auto"> --}}
             <div class="col">
                     {{ $parents->links() }}
             </div>
         </div>
+    </div>
+@else
+    <div style="text-align: center;">
+        <img src="{{ asset('backend/images/empty_box.png') }}" alt="" height="150" width="200" style="text-align: center;  opacity: 0.8;">
+        <p>Oops No Data Found...<a href="#" onclick="showAjaxModal('{{ route('parent.create') }}', 'Add New Parent')" style="color: #757575; font-weight: 800;">Click here.</a></p>
+    </div>
+@endif
 

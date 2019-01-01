@@ -50,6 +50,8 @@ class RoutineController extends Controller
         $routine->starting_minute = $request->starting_minute;
         $routine->ending_minute = $request->ending_minute;
         $routine->day = $request->day;
+        $routine->room_id = $request->class_room_id;
+        $routine->teacher_id = $request->teacher_id;
         $routine->session = get_settings('running_session');
         $routine->school_id = school_id();
         if($routine->save()){
@@ -113,6 +115,8 @@ class RoutineController extends Controller
         $routine->ending_minute = $request->ending_minute;
         $routine->day = $request->day;
         $routine->session = get_settings('running_session');
+        $routine->room_id = $request->class_room_id;
+        $routine->teacher_id = $request->teacher_id;
         $routine->school_id = school_id();
         if($routine->save()){
             $data = array(

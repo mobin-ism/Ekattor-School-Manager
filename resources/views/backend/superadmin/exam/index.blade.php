@@ -14,9 +14,7 @@
         <div class="col-xl-10 offset-xl-1">
             <div class="card">
                 <div class="card-body">
-                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('exam.create') }}', 'Create New Exam')"> <i class="mdi mdi-plus"></i> Add Exam</button>
-                    <h4 class="header-title mt-3">Exam List</h4>
-                    <div class="table-responsive-sm" id = "exam_content">
+                    <div id = "exam_content">
                         @include('backend.'.Auth::user()->role.'.exam.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->

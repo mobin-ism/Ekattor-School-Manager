@@ -11,18 +11,17 @@
     <!-- end page title -->
 
     <div class="row ">
-        <div class="col-xl-10 offset-xl-1">
+        <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
                     <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('expense.create') }}', 'Create New Expense')"> <i class="mdi mdi-plus"></i> Add Expense</button>
-                    <h4 class="header-title mt-3">Expense List</h4>
-                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
-                        <div class="col-md-4">
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-3">
                             <input type="text" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
                             {{-- <input type="text" class="form-control date" id="date" data-toggle="date-picker" data-single-date-picker="true" name = "date" value="" required> --}}
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <select class="form-control" name="expense_category_id" id="expense_category_id" onchange="error()">
                                 <option value="all">Expense Category</option>
                                 @foreach (App\ExpenseCategory::where(['school_id' => school_id(), 'session' => get_settings('running_session')])->get() as $expense_category)
@@ -31,7 +30,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="table-responsive-sm" id = "expense_content">
+                    <div id = "expense_content">
                         @include('backend.'.Auth::user()->role.'.expense.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->

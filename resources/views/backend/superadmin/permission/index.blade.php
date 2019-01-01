@@ -14,8 +14,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title mt-3">Permissions</h4>
-                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
+                    <div class="row" style="margin-bottom: 10px;">
                         <div class="col-md-4">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
                                 <option value="all">Class</option>
@@ -31,8 +30,7 @@
                             </select>
                         </div>
                     </div>
-
-                    <div class="table-responsive-sm" id = "teacher_permission_content">
+                    <div id = "teacher_permission_content">
                         @include('backend.'.Auth::user()->role.'.permission.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->

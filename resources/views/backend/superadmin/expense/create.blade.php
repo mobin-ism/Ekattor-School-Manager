@@ -15,7 +15,7 @@
 
     <div class="form-group col-md-12">
         <label for="expense_category_id">Expense Category</label>
-        <select class="form-control" name="expense_category_id" id="expense_category_id">
+        <select class="form-control" name="expense_category_id" id="expense_category_id" required>
             <option value="">Select An Expense Category</option>
             @foreach (App\ExpenseCategory::where(['school_id' => school_id(), 'session' => get_settings('running_session')])->get() as $expense_category)
                 <option value="{{ $expense_category->id }}">{{ $expense_category->name }}</option>

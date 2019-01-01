@@ -7,7 +7,10 @@
                     @foreach (App\Routine::where(['class_id' => $class_id, 'section_id' => $section_id, 'session' => get_settings('running_session'), 'school_id' => school_id(), 'day' => 'saturday'])->get() as $routine)
                         <div class="btn-group text-left">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            {{ \App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }} ({{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }})
+                            <p style="margin-bottom: 0px;"><i class="mdi mdi-book-open-variant"></i> {{ \App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }}</p>
+                            <p style="margin-bottom: 0px;"><i class="mdi mdi-clock"></i> {{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }}</p>
+                            <p style="margin-bottom: 0px;"><i class="mdi mdi-account"></i> {{ App\Teacher::find($routine->teacher_id)->user->name }} </p>
+                            <p style="margin-bottom: 0px;"><i class="mdi mdi-home-automation"></i> {{ App\ClassRoom::find($routine->room_id)->name }}</p>
                             <span class="caret"></span>
                             </button>
                             <div class="dropdown-menu">
@@ -24,7 +27,10 @@
                     @foreach (App\Routine::where(['class_id' => $class_id, 'section_id' => $section_id, 'session' => get_settings('running_session'), 'school_id' => school_id(), 'day' => 'sunday'])->get() as $routine)
                         <div class="btn-group text-left">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            {{ \App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }} ({{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }})
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-book-open-variant"></i> {{ \App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-clock"></i> {{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-account"></i> {{ App\Teacher::find($routine->teacher_id)->user->name }} </p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-home-automation"></i> {{ App\ClassRoom::find($routine->room_id)->name }}</p>
                             <span class="caret"></span>
                             </button>
                             <div class="dropdown-menu">
@@ -41,7 +47,10 @@
                     @foreach (App\Routine::where(['class_id' => $class_id, 'section_id' => $section_id, 'session' => get_settings('running_session'), 'school_id' => school_id(), 'day' => 'monday'])->get() as $routine)
                         <div class="btn-group text-left">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            {{ App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }} ({{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }})
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-book-open-variant"></i> {{ \App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-clock"></i> {{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-account"></i> {{ App\Teacher::find($routine->teacher_id)->user->name }} </p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-home-automation"></i> {{ App\ClassRoom::find($routine->room_id)->name }}</p>
                             <span class="caret"></span>
                             </button>
                             <div class="dropdown-menu">
@@ -58,7 +67,10 @@
                     @foreach (App\Routine::where(['class_id' => $class_id, 'section_id' => $section_id, 'session' => get_settings('running_session'), 'school_id' => school_id(), 'day' => 'tuesday'])->get() as $routine)
                         <div class="btn-group text-left">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            {{ App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }} ({{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }})
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-book-open-variant"></i> {{ \App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-clock"></i> {{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-account"></i> {{ App\Teacher::find($routine->teacher_id)->user->name }} </p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-home-automation"></i> {{ App\ClassRoom::find($routine->room_id)->name }}</p>
                             <span class="caret"></span>
                             </button>
                             <div class="dropdown-menu">
@@ -75,7 +87,10 @@
                     @foreach (App\Routine::where(['class_id' => $class_id, 'section_id' => $section_id, 'session' => get_settings('running_session'), 'school_id' => school_id(), 'day' => 'wednesday'])->get() as $routine)
                         <div class="btn-group text-left">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            {{ App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }} ({{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }})
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-book-open-variant"></i> {{ \App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-clock"></i> {{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-account"></i> {{ App\Teacher::find($routine->teacher_id)->user->name }} </p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-home-automation"></i> {{ App\ClassRoom::find($routine->room_id)->name }}</p>
                             <span class="caret"></span>
                             </button>
                             <div class="dropdown-menu">
@@ -92,7 +107,10 @@
                     @foreach (App\Routine::where(['class_id' => $class_id, 'section_id' => $section_id, 'session' => get_settings('running_session'), 'school_id' => school_id(), 'day' => 'thursday'])->get() as $routine)
                         <div class="btn-group text-left">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            {{ App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }} ({{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }})
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-book-open-variant"></i> {{ \App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-clock"></i> {{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-account"></i> {{ App\Teacher::find($routine->teacher_id)->user->name }} </p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-home-automation"></i> {{ App\ClassRoom::find($routine->room_id)->name }}</p>
                             <span class="caret"></span>
                             </button>
                             <div class="dropdown-menu">
@@ -109,7 +127,10 @@
                     @foreach (App\Routine::where(['class_id' => $class_id, 'section_id' => $section_id, 'session' => get_settings('running_session'), 'school_id' => school_id(), 'day' => 'friday'])->get() as $routine)
                         <div class="btn-group text-left">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            {{ App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }} ({{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }})
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-book-open-variant"></i> {{ \App\Subject::where('id', $routine->subject_id)->pluck('name')->first() }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-clock"></i> {{ $routine->starting_hour.':'.$routine->starting_minute.' - '.$routine->ending_hour.':'.$routine->ending_minute }}</p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-account"></i> {{ App\Teacher::find($routine->teacher_id)->user->name }} </p>
+                                <p style="margin-bottom: 0px;"><i class="mdi mdi-home-automation"></i> {{ App\ClassRoom::find($routine->room_id)->name }}</p>
                             <span class="caret"></span>
                             </button>
                             <div class="dropdown-menu">
@@ -122,5 +143,15 @@
             </tr>
         </tbody>
     </table>
+@else
+    <div style="text-align: center;">
+        <img src="{{ asset('backend/images/empty_box.png') }}" alt="" height="150" width="200" style="text-align: center;  opacity: 0.8;">
+        <p>Oops No Data Found...<a href="#" onclick="showAjaxModal('{{ route('routine.create') }}', 'Add Routine')" style="color: #757575; font-weight: 800;">Click here...</a></p>
+    </div>
 @endif
 
+<style>
+    .dropdown-toggle::after{
+        display: none;
+    }
+</style>

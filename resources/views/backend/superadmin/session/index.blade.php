@@ -11,25 +11,10 @@
     <!-- end page title -->
 
     <div class="row ">
-        <div class="col-xl-10 offset-xl-1">
+        <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row justify-content-md-center" style = "margin-bottom: 10px;">
-                        <div class="col-4">
-                            <select class="form-control select2" data-toggle="select2" id = "session_dropdown">
-                                <option value = "0">Session List</option>
-                                @foreach (App\Session::where('school_id', school_id())->get() as $session)
-                                    <option value="{{ $session->id }}" @if($session->id == get_settings('running_session')) selected @endif>{{ $session->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-2">
-                            <button type="button" class="btn btn-icon btn-secondary" style="float: right;" onclick="makeSessionActive()"> <i class="mdi mdi-check"></i> Activate</button>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('session_manager.create') }}', 'Create New Session')"> <i class="mdi mdi-plus"></i> Add Session</button>
-                    <h4 class="header-title mt-3">Session List</h4>
-                    <div class="table-responsive-sm" id = "session_content" style = "margin-top: 25px;">
+                    <div id = "session_content">
                         @include('backend.'.Auth::user()->role.'.session.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->

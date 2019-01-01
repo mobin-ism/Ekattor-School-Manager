@@ -14,9 +14,7 @@
         <div class="col-xl-10 offset-xl-1">
             <div class="card">
                 <div class="card-body">
-                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('expense_category.create') }}', 'Create New Exam')"> <i class="mdi mdi-plus"></i> Add Expense Category</button>
-                    <h4 class="header-title mt-3">Expense Category List</h4>
-                    <div class="table-responsive-sm" id = "expense_category_content">
+                    <div id = "expense_category_content">
                         @include('backend.'.Auth::user()->role.'.expense_category.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->

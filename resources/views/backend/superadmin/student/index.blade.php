@@ -14,9 +14,8 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title mt-3">Student List</h4>
-                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
-                        <div class="col-md-4">
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-3">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
                                 <option value="all">Class</option>
                                 @foreach (App\Classes::where('school_id', 1)->get() as $class)
@@ -24,15 +23,14 @@
                                 @endforeach
                             </select>
                         </div>
-
-                        <div id = "section_content" class="col-md-4">
+                        <div id = "section_content" class="col-md-3">
                             <select class="form-control" name="section_id" id="section_id">
                                 <option value="all">Select Class First</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="table-responsive-sm" id = "student_content">
+                    <div id = "student_content">
                         @include('backend.'.Auth::user()->role.'.student.list')
                     </div> <!-- end table-responsive-->
                 </div> <!-- end card body-->

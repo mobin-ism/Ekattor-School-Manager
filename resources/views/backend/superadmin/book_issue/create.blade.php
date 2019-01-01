@@ -68,4 +68,4 @@
             }
     </script>
 
-     <script src="{{ asset('backend/js/app.min.js') }}"></script> 
+     <script src="{{ asset('backend/js/app.min.js') }}"></script>
