@@ -11,6 +11,7 @@
 |
 */
     Route::get('system_settings', 'SettingsController@system')->name('system.settings');
+    Route::patch('system_update', 'SettingsController@system_update')->name('system.update');
     Route::get('sms_settings', 'SettingsController@sms')->name('sms.settings');
     Route::get('payment_settings', 'SettingsController@payment')->name('payment.settings');
     Route::get('language_settings', 'SettingsController@language')->name('language.settings');

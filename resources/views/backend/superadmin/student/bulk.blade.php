@@ -17,88 +17,92 @@
             </div>
         </div>
         <br>
-        <div class="row" id = "first-row">
-            <div class="col-11">
-                <div class="row">
-                    <div class="form-group col">
-                        <input type="text" name="name[]" class="form-control"  value="" placeholder="Name" required>
-                    </div>
-                    <div class="form-group col">
-                        <input type="email" name="email[]" class="form-control"  value="" placeholder="Email" required>
-                    </div>
-                    <div class="form-group col">
-                        <input type="password" name="password[]" class="form-control"  value="" placeholder="Password" required>
-                    </div>
-                    {{-- <div class="form-group col">
-                        <select name="parent_id[]" class="form-control" required >
-                            <option value="">Select Parent</option>
-                            @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
-                                <option value="{{ $parent->id }}">{{ $parent->name }}</option>
-                            @endforeach
-                        </select>
-                    </div> --}}
-                    <div class="form-group col">
-                        <select name="gender[]" class="form-control" required>
-                            <option value="">Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="others">Others</option>
-                        </select>
-                    </div>
-                    <div class="form-group col">
-                        <input type="text" name="phone[]" class="form-control"  value="" placeholder="Phone" required>
+        <div id = "first-row">
+            <div class="row">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="form-group col">
+                            <input type="text" name="name[]" class="form-control"  value="" placeholder="Name" required>
+                        </div>
+                        <div class="form-group col">
+                            <input type="email" name="email[]" class="form-control"  value="" placeholder="Email" required>
+                        </div>
+                        <div class="form-group col">
+                            <input type="password" name="password[]" class="form-control"  value="" placeholder="Password" required>
+                        </div>
+                        {{-- <div class="form-group col">
+                            <select name="parent_id[]" class="form-control" required >
+                                <option value="">Select Parent</option>
+                                @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
+                                    <option value="{{ $parent->id }}">{{ $parent->name }}</option>
+                                @endforeach
+                            </select>
+                        </div> --}}
+                        <div class="form-group col">
+                            <select name="gender[]" class="form-control" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <input type="text" name="phone[]" class="form-control"  value="" placeholder="Phone" required>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-1">
-                <div class="row">
-                    <div class="form-group col">
-                        <button type="button" class="btn btn-icon btn-success" onclick="appendRow()"> <i class="mdi mdi-plus"></i> </button>
+                <div class="col-1">
+                    <div class="row">
+                        <div class="form-group col">
+                            <button type="button" class="btn btn-icon btn-success" onclick="appendRow()"> <i class="mdi mdi-plus"></i> </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row student-row" id = "blank-row" style="display: none;">
-            <div class="col-11">
-                <div class="row">
-                    <div class="form-group col">
-                        <input type="text" name="name[]" class="form-control"  value="" placeholder="Name">
-                    </div>
-                    <div class="form-group col">
-                        <input type="email" name="email[]" class="form-control"  value="" placeholder="Email">
-                    </div>
-                    <div class="form-group col">
-                        <input type="password" name="password[]" class="form-control"  value="" placeholder="Password">
-                    </div>
-                    {{-- <div class="form-group col">
-                        <select name="parent_id[]" class="form-control">
-                            <option value="">Select Parent</option>
-                            @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
-                                <option value="{{ $parent->id }}">{{ $parent->name }}</option>
-                            @endforeach
-                        </select>
-                    </div> --}}
-                    <div class="form-group col">
-                        <select name="gender[]" class="form-control">
-                            <option value="">Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="others">Others</option>
-                        </select>
-                    </div>
-                    <div class="form-group col">
-                        <input type="text" name="phone[]" class="form-control"  value="" placeholder="Phone">
-                    </div>
-                </div>
-            </div>
-            <div class="col-1">
-                <div class="row">
-                    <div class="form-group col">
-                        <button type="button" class="btn btn-icon btn-danger"> <i class="mdi mdi-window-close" onclick="removeRow(this)"></i> </button>
+        <div id = "blank-row" style="display: none;">
+            <div class="row student-row">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="form-group col">
+                            <input type="text" name="name[]" class="form-control"  value="" placeholder="Name">
+                        </div>
+                        <div class="form-group col">
+                            <input type="email" name="email[]" class="form-control"  value="" placeholder="Email">
+                        </div>
+                        <div class="form-group col">
+                            <input type="password" name="password[]" class="form-control"  value="" placeholder="Password">
+                        </div>
+                        {{-- <div class="form-group col">
+                            <select name="parent_id[]" class="form-control">
+                                <option value="">Select Parent</option>
+                                @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
+                                    <option value="{{ $parent->id }}">{{ $parent->name }}</option>
+                                @endforeach
+                            </select>
+                        </div> --}}
+                        <div class="form-group col">
+                            <select name="gender[]" class="form-control">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <input type="text" name="phone[]" class="form-control"  value="" placeholder="Phone">
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-1">
+                    <div class="row">
+                        <div class="form-group col">
+                            <button type="button" class="btn btn-icon btn-danger" onclick="removeRow(this)"> <i class="mdi mdi-window-close"></i> </button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </div>
 
         <div class="text-center">
