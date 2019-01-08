@@ -16,7 +16,7 @@
             <ul class="metismenu side-nav side-nav-light">
                 <li class="side-nav-title side-nav-item">Navigation</li>
                 <li class="side-nav-item">
-                    <a href="{{ route('dashboard') }}" class="side-nav-link">
+                    <a href="{{ route('dashboard') }}" class="side-nav-link @if(Request::route()->getName() == 'dashboard') active @endif">
                         <i class="dripicons-meter"></i>
                         <span> Dashboard </span>
                     </a>

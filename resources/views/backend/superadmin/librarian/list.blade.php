@@ -4,7 +4,7 @@
 @if (count($librarians) > 0)
     <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('librarian.create') }}', 'Create Librarian')"> <i class="mdi mdi-plus"></i> Add New Librarian</button>
     <div class="table-responsive-sm">
-        <table class="table table-striped table-centered mb-0">
+        <table class="table table-striped table-centered mb-0 colorfulTable">
             <thead class="thead-dark">
                 <tr>
                     <th>Name</th>
@@ -27,7 +27,7 @@
                     @endforeach
                 </tbody>
             </table>
-
+            <p style="margin-top: 20px;"><small>Total {{ count($librarians) }} entries found. </small></p>
             {{-- <div class="row justify-content-md-center"> --}}
             <div class="row">
                 {{-- <div class="col-auto"> --}}

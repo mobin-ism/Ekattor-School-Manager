@@ -44,6 +44,27 @@ class SettingsController extends Controller
         }
         return $data;
     }
+
+    public function logo_update(Request $request) {
+        if ($request->hasFile('logo')) {
+            $dir  = 'backend/images';
+            $logo = $request->file('logo');
+            $logo->move($dir, 'logo-dark.png');
+            $data = array(
+                'status' => true,
+                'view' => view('backend.'.Auth::user()->role.'.settings.system', compact('settings_type'))->render(),
+                'notification' =>"System Updated Successfully"
+            );
+        }else {
+            $data = array(
+                'status' => false,
+                'view' => view('backend.'.Auth::user()->role.'.settings.system', compact('settings_type'))->render(),
+                'notification' =>"An Error Occured When Updating System"
+            );
+        }
+        return $data;
+    }
+
     public function payment()
     {
         //

@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">System Settings</h4>
-                <form method="POST" class="col-12 ajaxForm" action="{{ route('system.update') }}" id = "system_settings">
+                <form method="POST" class="col-12 systemAjaxForm" action="{{ route('system.update') }}" id = "system_settings">
                     @csrf
                     @method('PATCH')
                     <div class="col-12">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-secondary col-md-4 col-sm-12" onclick="some()">Update System Settings</button>
+                            <button type="submit" class="btn btn-secondary col-md-4 col-sm-12" onclick="updateSystemInfo()">Update System Settings</button>
                         </div>
                     </div>
                 </form>
@@ -50,7 +50,29 @@
     <div class="col-md-5">
         <div class="card">
             <div class="card-body">
-                <h4 class="header-title">Input Types</h4>                    
+                <h4 class="header-title">System Logo</h4>    
+                <form method="POST" class="col-12 systemLogoAjaxForm" action="{{ route('logo.update') }}" id = "system_settings" enctype="multipart/form-data">
+                {{-- <form method="POST" class="col-12" action="{{ route('logo.update') }}" id = "system_settings" enctype="multipart/form-data"> --}}
+                    @csrf
+                    <div class="col-12">
+                        <div class="form-group row mb-3">
+                            <label class="col-md-3 col-form-label"> Current Logo</label>
+                            <div class="col-md-9">
+                                <img src="{{asset('backend/images/logo-dark.png')}}" alt="" height="16">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label class="col-md-3 col-form-label" for="example-fileinput"> Update System Logo</label>
+                            <div class="col-md-9">
+                                <input type="file" id="example-fileinput" name="logo" class="form-control-file">
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-secondary col-md-4 col-sm-12" onclick="updateSystemLogo()">Update System Settings</button>
+                            {{-- <button type="submit" class="btn btn-secondary col-md-4 col-sm-12">Update System Settings</button> --}}
+                        </div>
+                    </div>
+                </form>     
             </div> <!-- end card body-->
         </div> <!-- end card -->
     </div>

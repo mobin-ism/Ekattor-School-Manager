@@ -6,11 +6,14 @@
 
             var action = form.attr('action');
             (form.attr('class') === 'ajaxDeleteForm') ? $('#alert-modal').modal('toggle') : $('#right-modal').modal('hide');
-
+            var form2 = e.target;
+            var data = new FormData(form2);
             $.ajax({
                 type: "POST",
                 url: action,
-                data: form.serializeArray(), // serializes the form's elements.
+                processData: false,
+                contentType: false,
+                data: data,
                 success: function(response)
                 {
                     (response.status === true) ? toastr.success(response.notification) : toastr.error(response.notification);

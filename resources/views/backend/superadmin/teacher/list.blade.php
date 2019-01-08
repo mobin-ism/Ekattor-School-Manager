@@ -7,7 +7,7 @@
 @endphp
 @if (count($teachers) > 0)
 <div class="table-responsive-sm">
-    <table class="table table-striped table-centered mb-0">
+    <table class="table table-striped table-centered mb-0 colorfulTable">
         <thead class="thead-dark">
             <tr>
                 <th>Name</th>
@@ -36,6 +36,7 @@
             @endforeach
         </tbody>
     </table>
+    <p style="margin-top: 20px;"><small>Total {{ count($teachers) }} entries found. </small></p>
 
     <div class="row" style="float:right; margin-top: 10px;">
         <div class="col">

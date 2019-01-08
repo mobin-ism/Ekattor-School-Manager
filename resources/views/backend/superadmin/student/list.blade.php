@@ -1,6 +1,6 @@
 @if (isset($students) && count($students) > 0)
     <div class="table-responsive-sm">
-        <table class="table table-striped table-centered mb-0">
+        <table class="table table-striped table-centered mb-0 colorfulTable">
             <thead class="thead-dark">
                     <tr>
                         <th>Code</th>
@@ -29,6 +29,7 @@
                 @endforeach
             </tbody>
         </table>
+        <p style="margin-top: 20px;"><small>Total {{ count($students) }} entries found. </small></p>
     </div>
 @else
     <div style="text-align: center;">

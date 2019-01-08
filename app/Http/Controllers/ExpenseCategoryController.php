@@ -36,6 +36,7 @@ class ExpenseCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // return dd($request->all());
         $expense_category = new ExpenseCategory;
         $expense_category->name = $request->name;
         $expense_category->school_id = school_id();

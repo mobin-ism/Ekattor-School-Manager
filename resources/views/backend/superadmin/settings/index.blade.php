@@ -31,9 +31,17 @@
 
 @section('scripts')
     <script>            
-            function some() {
-                $(".ajaxForm").validate({});
-                $(".ajaxForm").submit(function(e) {
+            function updateSystemInfo() {
+                $(".systemAjaxForm").validate({});
+                $(".systemAjaxForm").submit(function(e) {
+                    var form = $(this);
+                    ajaxSubmit(e, form, 'settings_content');
+                });
+            }
+
+            function updateSystemLogo() {
+                $(".systemLogoAjaxForm").validate({});
+                $(".systemLogoAjaxForm").submit(function(e) {
                     var form = $(this);
                     ajaxSubmit(e, form, 'settings_content');
                 });

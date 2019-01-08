@@ -1,6 +1,5 @@
 <form method="POST" class="d-block ajaxForm" action="{{ route('expense_category.store') }}">
     @csrf
-
     <div class="form-group col-md-12">
         <label for="name">Expense Category Name</label>
         <input type="text" class="form-control" id="name" name = "name" required>
