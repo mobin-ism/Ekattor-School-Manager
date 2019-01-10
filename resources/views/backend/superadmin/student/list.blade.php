@@ -13,7 +13,7 @@
                 @foreach ($students as $student)
                     <tr>
                             <td>{{ $student->student->code }}</td>
-                        <td></td>
+                        <td><img src="{{ asset('backend/images/student_image/'.$student->id.'.jpg') }}" height="50" width="50" alt=""></td>
                         <td>{{ $student->student->user->name }}</td>
                         <td>
                             <div class="btn-group mb-2">

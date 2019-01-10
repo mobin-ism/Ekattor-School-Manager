@@ -89,6 +89,13 @@
                 </div>
             </div>
 
+            <div class="form-group row mb-3">
+                <label class="col-md-3 col-form-label" for="example-fileinput"> Student Profile Image</label>
+                <div class="col-md-9">
+                    <input type="file" id="example-fileinput" name="student_image" class="form-control-file">
+                </div>
+            </div>
+
             <div class="text-center">
                 <button type="submit" class="btn btn-secondary col-md-4 col-sm-12">Save Student</button>
             </div>

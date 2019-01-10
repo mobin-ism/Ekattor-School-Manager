@@ -97,6 +97,12 @@ class StudentController extends Controller
             $enroll->session = get_settings('running_session');
             $enroll->save();
 
+            if ($request->hasFile('student_image')) {
+                $dir  = 'backend/images/student_image';
+                $student_image = $request->file('student_image');
+                $student_image->move($dir, $student_id.".jpg");
+            }
+
             $data = array(
                 'status' => true,
                 'view' => "",
