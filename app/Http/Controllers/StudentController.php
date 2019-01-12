@@ -253,9 +253,10 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+        $students = Student::find($id);
+        return view('backend.'.Auth::user()->role.'.student.edit', compact('students'));
     }
 
     /**
@@ -265,9 +266,55 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+        $students = Student::find($id);
+        $user    = User::find($student->user_id);
+        $query   = Enroll::where(array('student_id' => $id, 'session' => get_settings('running_session')))->first();
+        $enroll  = Enroll::find($query->id);
+        if(count(User::where('email', $request->email)->where('id', '!=', $student->user->id)->get()) == 0) {
+
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->role = "student";
+            $user->address = $request->address;
+            $user->phone = $request->phone;
+            $user->birthday = strtotime($request->birthday);
+            $user->gender = $request->gender;
+            $user->school_id = get_settings('selected_branch');
+            $user->save();
+
+            $student->parent_id = $request->parent_id;
+            $student->school_id = get_settings('selected_branch');
+            $student->save();
+
+            $enroll->class_id = $request->class_id;
+            $enroll->section_id = $request->section_id;
+            $enroll->school_id = get_settings('selected_branch');
+            $enroll->session = get_settings('running_session');
+            $enroll->save();
+
+            if ($request->hasFile('student_image')) {
+                $dir  = 'backend/images/student_image';
+                $student_image = $request->file('student_image');
+                $student_image->move($dir, $student_id.".jpg");
+            }
+
+            $data = array(
+                'status' => true,
+                'view' => "",
+                'notification' =>"Student Updated Successfully"
+            );
+        }else {
+            $data = array(
+                'status' => false,
+                'view' => "",
+                'notification' =>"Email Duplication"
+            );
+        }
+
+        return $data;
     }
 
     /**
