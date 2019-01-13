@@ -18,7 +18,7 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         return view('backend.'.Auth::user()->role.'.student.index');
     }
 
@@ -255,8 +255,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $students = Student::find($id);
-        return view('backend.'.Auth::user()->role.'.student.edit', compact('students'));
+        $student = Student::find($id);
+        return view('backend.'.Auth::user()->role.'.student.edit', compact('student'));
     }
 
     /**
@@ -269,7 +269,6 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $student = Student::find($id);
-        $students = Student::find($id);
         $user    = User::find($student->user_id);
         $query   = Enroll::where(array('student_id' => $id, 'session' => get_settings('running_session')))->first();
         $enroll  = Enroll::find($query->id);
@@ -298,18 +297,19 @@ class StudentController extends Controller
             if ($request->hasFile('student_image')) {
                 $dir  = 'backend/images/student_image';
                 $student_image = $request->file('student_image');
-                $student_image->move($dir, $student_id.".jpg");
+                $student_image->move($dir, $id.".jpg");
             }
-
+            
+            $student = Student::find($id);
             $data = array(
                 'status' => true,
-                'view' => "",
+                'view' => view('backend.'.Auth::user()->role.'.student.update', compact('student'))->render(),
                 'notification' =>"Student Updated Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
+                'view' => view('backend.'.Auth::user()->role.'.student.update', compact('student'))->render(),
                 'notification' =>"Email Duplication"
             );
         }

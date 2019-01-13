@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 02, 2019 at 10:41 AM
+-- Generation Time: Jan 13, 2019 at 12:25 PM
 -- Server version: 8.0.12
 -- PHP Version: 7.2.13
 
@@ -248,7 +248,11 @@ CREATE TABLE `enrolls` (
 
 INSERT INTO `enrolls` (`id`, `student_id`, `class_id`, `section_id`, `school_id`, `session`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 48, 1, '5', '2018-12-05 01:37:59', '2018-12-05 01:37:59'),
-(2, 2, 1, 48, 1, '5', '2018-12-05 01:37:59', '2018-12-05 01:37:59');
+(2, 2, 1, 48, 1, '5', '2018-12-05 01:37:59', '2018-12-05 01:37:59'),
+(3, 3, 15, 46, 1, '5', '2019-01-08 06:17:12', '2019-01-13 00:21:42'),
+(4, 4, 2, 23, 1, '5', '2019-01-10 02:19:03', '2019-01-10 02:19:03'),
+(5, 5, 1, 49, 1, '5', '2019-01-10 02:44:18', '2019-01-10 02:44:18'),
+(6, 6, 1, 48, 1, '5', '2019-01-10 03:27:07', '2019-01-10 03:27:07');
 
 -- --------------------------------------------------------
 
@@ -316,7 +320,8 @@ CREATE TABLE `expense_categories` (
 INSERT INTO `expense_categories` (`id`, `name`, `school_id`, `session`, `created_at`, `updated_at`) VALUES
 (2, 'Basic Expense', 1, '5', '2018-12-10 03:13:56', '2018-12-10 03:19:15'),
 (3, 'Test Expense', 1, '5', '2018-12-10 04:26:19', '2018-12-10 04:26:19'),
-(4, 'Furniture Expense', 1, '5', '2018-12-10 04:26:39', '2018-12-10 04:26:39');
+(4, 'Furniture Expense', 1, '5', '2018-12-10 04:26:39', '2018-12-10 04:26:39'),
+(6, 'New', 1, '5', '2019-01-08 05:44:25', '2019-01-08 06:01:50');
 
 -- --------------------------------------------------------
 
@@ -383,72 +388,73 @@ CREATE TABLE `menus` (
   `parent` int(11) DEFAULT NULL,
   `sort_order` int(11) NOT NULL,
   `status` int(11) DEFAULT '1',
-  `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+  `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL,
+  `updated_at` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `menus`
 --
 
-INSERT INTO `menus` (`id`, `displayed_name`, `route_name`, `parent`, `sort_order`, `status`, `icon`) VALUES
-(3, 'users', NULL, 0, 0, 1, 'dripicons-user'),
-(4, 'admin', '', 3, 90, 1, NULL),
-(5, 'student', 'student.index', 3, 10, 1, NULL),
-(6, 'teacher', 'teacher.index', 3, 30, 1, NULL),
-(7, 'parent', 'parent.index', 3, 50, 1, NULL),
-(8, 'librarian', 'librarian.index', 3, 70, 1, NULL),
-(9, 'accountant', 'accountant.index', 3, 60, 1, NULL),
-(10, 'driver', NULL, 3, 80, 1, NULL),
-(11, 'academic', NULL, 0, 0, 1, 'dripicons-store'),
-(12, 'class', 'class.index', 11, 40, 1, NULL),
-(13, 'section', NULL, 11, 50, 0, NULL),
-(14, 'class_room', 'room.index', 11, 60, 1, NULL),
-(15, 'syllabus', NULL, 11, 30, 1, NULL),
-(16, 'subject', 'subject.index', 11, 80, 1, NULL),
-(17, 'class_routine', 'routine.index', 11, 20, 1, NULL),
-(18, 'daily_attendance', 'daily_attendance.index', 11, 10, 1, NULL),
-(19, 'noticeboard', NULL, 11, 110, 0, NULL),
-(20, 'promotion', NULL, 21, 70, 1, NULL),
-(21, 'exam', NULL, 0, 0, 1, 'dripicons-music'),
-(22, 'exam', 'exam.index', 21, 20, 1, NULL),
-(23, 'grades', 'grade.index', 21, 30, 1, NULL),
-(24, 'marks', NULL, 21, 10, 1, NULL),
-(25, 'tabulation_sheet', NULL, 21, 40, 1, NULL),
-(27, 'accounting', NULL, 0, 0, 1, 'dripicons-jewel'),
-(28, 'student_fee_manager', 'invoice.index', 27, 10, 1, NULL),
-(29, 'student_fee_report', NULL, 27, 20, 1, NULL),
-(30, 'income_expense_manager', 'expense.index', 27, 40, 1, NULL),
-(31, 'back_office', NULL, 0, 0, 1, 'dripicons-cutlery'),
-(32, 'library', NULL, 31, 0, 1, NULL),
-(33, 'transport', NULL, 31, 0, 1, NULL),
-(34, 'hostel', NULL, 31, 0, 1, NULL),
-(35, 'school_website', NULL, 31, 0, 1, NULL),
-(36, 'settings', NULL, 0, 0, 1, 'dripicons-basketball'),
-(37, 'system_settings', 'system.settings', 36, 10, 1, NULL),
-(38, 'sms_settings', 'sms.settings', 36, 40, 1, NULL),
-(39, 'payment_settings', 'payment.settings', 36, 20, 1, NULL),
-(40, 'language_settings', 'language.settings', 36, 30, 1, NULL),
-(41, 'session_manager', 'session_manager.index', 31, 0, 1, NULL),
-(42, 'department', 'department.index', 11, 70, 1, NULL),
-(43, 'admission', 'student.create', 3, 20, 1, NULL),
-(44, 'addon_manager', 'addon_manager.index', 31, 0, 1, NULL),
-(45, 'assignment', NULL, 11, 90, 1, NULL),
-(46, 'event_calender', NULL, 11, 100, 1, NULL),
-(47, 'online_exam', NULL, 21, 50, 1, NULL),
-(48, 'certificate', NULL, 21, 60, 1, NULL),
-(49, 'teacher_permission', 'permission.index', 3, 40, 1, NULL),
-(50, 'messaging', NULL, 3, 110, 1, NULL),
-(51, 'role_permission', 'role.index', 3, 100, 1, NULL),
-(53, 'form_builder', NULL, 35, 0, 1, NULL),
-(54, 'book_list_manager', 'book.index', 32, 0, 1, NULL),
-(55, 'book_issue_report', 'book_issue.index', 32, 0, 1, NULL),
-(56, NULL, NULL, NULL, 0, 1, NULL),
-(57, 'room_manager', NULL, 34, 0, 1, NULL),
-(58, 'student_report', NULL, 34, 0, 1, NULL),
-(59, 'multi_school_manager', 'school.index', 31, 0, 1, NULL),
-(60, 'ex', NULL, NULL, 0, 1, NULL),
-(61, 'income_expense_category', NULL, NULL, 0, 1, NULL),
-(62, 'expense_category', 'expense_category.index', 27, 30, 1, NULL);
+INSERT INTO `menus` (`id`, `displayed_name`, `route_name`, `parent`, `sort_order`, `status`, `icon`, `created_at`, `updated_at`) VALUES
+(3, 'users', NULL, 0, 0, 1, 'dripicons-user', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'admin', '', 3, 90, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'student', 'student.index', 3, 10, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'teacher', 'teacher.index', 3, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'parent', 'parent.index', 3, 50, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 'librarian', 'librarian.index', 3, 70, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 'accountant', 'accountant.index', 3, 60, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 'driver', NULL, 3, 80, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, 'academic', NULL, 0, 0, 1, 'dripicons-store', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'class', 'class.index', 11, 40, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 'section', NULL, 11, 50, 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 'class_room', 'room.index', 11, 60, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(15, 'syllabus', NULL, 11, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(16, 'subject', 'subject.index', 11, 80, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(17, 'class_routine', 'routine.index', 11, 20, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 'daily_attendance', 'daily_attendance.index', 11, 10, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(19, 'noticeboard', NULL, 11, 110, 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 'promotion', NULL, 21, 70, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, 'exam', NULL, 0, 0, 1, 'dripicons-music', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, 'exam', 'exam.index', 21, 20, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, 'grades', 'grade.index', 21, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(24, 'marks', NULL, 21, 10, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(25, 'tabulation_sheet', NULL, 21, 40, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(27, 'accounting', NULL, 0, 0, 1, 'dripicons-jewel', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(28, 'student_fee_manager', 'invoice.index', 27, 10, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(29, 'student_fee_report', NULL, 27, 20, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(30, 'income_expense_manager', 'expense.index', 27, 40, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(31, 'back_office', NULL, 0, 0, 1, 'dripicons-cutlery', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(32, 'library', NULL, 31, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(33, 'transport', NULL, 31, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(34, 'hostel', NULL, 31, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(35, 'school_website', NULL, 31, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(36, 'settings', NULL, 0, 0, 1, 'dripicons-basketball', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(37, 'system_settings', 'system.settings', 36, 10, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(38, 'sms_settings', 'sms.settings', 36, 40, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(39, 'payment_settings', 'payment.settings', 36, 20, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(40, 'language_settings', 'language.settings', 36, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(41, 'session_manager', 'session_manager.index', 31, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(42, 'department', 'department.index', 11, 70, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(43, 'admission', 'student.create', 3, 20, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(44, 'addon_manager', 'addon_manager.index', 31, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(45, 'assignment', NULL, 11, 90, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(46, 'event_calender', NULL, 11, 100, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(47, 'online_exam', NULL, 21, 50, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(48, 'certificate', NULL, 21, 60, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(49, 'teacher_permission', 'permission.index', 3, 40, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(50, 'messaging', NULL, 3, 110, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(51, 'role_permission', 'role.index', 3, 100, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(53, 'form_builder', NULL, 35, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(54, 'book_list_manager', 'book.index', 32, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(55, 'book_issue_report', 'book_issue.index', 32, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(57, 'room_manager', NULL, 34, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(58, 'student_report', NULL, 34, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(59, 'multi_school_manager', 'school.index', 31, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(60, 'ex', NULL, NULL, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(61, 'income_expense_category', NULL, NULL, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(62, 'expense_category', 'expense_category.index', 27, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -683,7 +689,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `system_name`, `system_email`, `selected_branch`, `running_session`, `phone`, `purchase_code`, `address`, `updated_at`, `created_at`) VALUES
-(1, 'Ekattor Govt. Hight School', 'xotetocah@mailinator.com', 1, '5', '12321321312313121', '2132112123412312321sadsad ad asd ad asd sad adad ad', 'Dhakaasd sad sad asd ad', '2019-01-02 04:38:27', '2018-11-17 13:20:01');
+(1, 'Ekattor Govt. Hight School', 'xotetocah@mailinator.com', 1, '5', '1234567890', '12345678910', 'Dhaka', '2019-01-02 23:06:15', '2018-11-17 13:20:01');
 
 -- --------------------------------------------------------
 
@@ -707,8 +713,12 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `code`, `user_id`, `parent_id`, `school_id`, `created_at`, `updated_at`) VALUES
-(1, '5767c70', 10, NULL, 1, '2018-12-05 01:37:59', '2018-12-05 01:37:59'),
-(2, 'aaadade', 11, NULL, 1, '2018-12-05 01:37:59', '2018-12-05 01:37:59');
+(1, '5767c70', 10, 16, 1, '2018-12-05 01:37:59', '2019-01-13 00:19:53'),
+(2, 'aaadade', 11, NULL, 1, '2018-12-05 01:37:59', '2018-12-05 01:37:59'),
+(3, '335af2d', 18, 17, 1, '2019-01-08 06:17:12', '2019-01-13 00:21:42'),
+(4, 'c090f91', 23, 3, 1, '2019-01-10 02:19:03', '2019-01-10 02:19:03'),
+(5, '3228208', 24, 3, 1, '2019-01-10 02:44:18', '2019-01-10 02:44:18'),
+(6, '29543c2', 25, 15, 1, '2019-01-10 03:27:07', '2019-01-10 03:27:07');
 
 -- --------------------------------------------------------
 
@@ -750,8 +760,8 @@ CREATE TABLE `teachers` (
 
 INSERT INTO `teachers` (`id`, `user_id`, `department_id`, `designation`, `school_id`, `created_at`, `updated_at`) VALUES
 (5, 7, 5, 'Ast. Prof', 1, '2018-11-28 00:24:26', '2018-11-28 00:36:11'),
-(6, 8, 4, 'Proffesor', 1, '2018-11-28 00:24:39', '2018-11-28 00:24:39'),
-(7, 12, 1, 'Quaerat in voluptatem', 1, '2018-12-10 01:21:56', '2018-12-10 01:21:56'),
+(6, 8, 2, 'Proffesor', 1, '2018-11-28 00:24:39', '2019-01-13 02:09:54'),
+(7, 12, 2, 'Quaerat in voluptatem', 1, '2018-12-10 01:21:56', '2019-01-13 02:07:57'),
 (8, 13, 6, 'Quaerat in voluptatem', 1, '2018-12-10 01:22:46', '2018-12-10 01:22:46'),
 (9, 14, 7, 'Et veniam commodi dignissimos quisquam nisi nisi laudantium pariatur Quasi in cum vitae aperiam quis eum eum consequatur distinctio Cillum', 1, '2019-01-02 04:20:18', '2019-01-02 04:20:18');
 
@@ -781,7 +791,7 @@ CREATE TABLE `teacher_permissions` (
 
 INSERT INTO `teacher_permissions` (`id`, `class_id`, `section_id`, `teacher_id`, `marks`, `assignment`, `attendance`, `online_exam`, `created_at`, `updated_at`) VALUES
 (1, 1, 48, 5, 1, 1, 1, 0, '2018-11-28 00:25:28', '2018-11-28 00:25:40'),
-(2, 1, 48, 6, 1, 0, 0, 0, '2018-11-28 00:25:37', '2019-01-02 04:21:15'),
+(2, 1, 48, 6, 1, 0, 0, 0, '2018-11-28 00:25:37', '2019-01-13 02:38:22'),
 (3, 1, 48, 7, 0, 0, 1, 0, '2019-01-02 04:21:12', '2019-01-02 04:21:16');
 
 -- --------------------------------------------------------
@@ -818,13 +828,22 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phon
 (3, 'Scarlet Patterson', 'parent@example.com', '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'parent', 'Sit quod et eiusmod asperiores consequat Rerum qui eius nesciunt quia corporis expedita exercitationem dolorem qui', '+641-30-5228192', 'd6lkEluPfHGvkMQbixkMmbA41QNDORCEhgYpiNNtkdorUHTEyRWjTX63JlrN', NULL, 'others', 'a-', 1, NULL, '2018-11-26 04:15:26', '2018-11-26 04:15:26'),
 (7, 'Maite Carr', 'teacher1@example.com', '$2y$10$59wEfxAnEukVm8vNAvCId.z3nRnI1by7Bu4k15ql./gmP9KApZtQ2', 'teacher', 'Amet quibusdam aut necessitatibus illo consectetur consequatur impedit lorem atque neque id voluptas harum maiores sequi qui laboris minus', '+326-35-8982049', NULL, NULL, 'others', 'b+', 1, NULL, '2018-11-28 00:24:26', '2018-11-28 00:24:26'),
 (8, 'Pamela Rosa', 'teacher2@example.com', '$2y$10$9wdGlizUMy3sw5WgfqnPROItnPGce.MESgvqmzIwblhyMm/oTHsiu', 'teacher', 'Voluptas maiores est et quae eligendi temporibus fugiat architecto dolor quia error dicta est provident atque voluptas dolore', '+437-77-1377404', NULL, NULL, 'female', 'b+', 1, NULL, '2018-11-28 00:24:39', '2018-11-28 00:24:39'),
-(9, 'Gareth Beard', 'librarian@example.com', '$2y$10$HrUvQ/D8tIUGnDrNUYp8Z.qqu6n8lg/9pNp6GiAF0E/4/UuQa8tAS', 'librarian', 'Quidem aute aut dolor voluptate', '+964-90-5697529', NULL, NULL, 'others', 'b+', 1, NULL, '2018-11-28 02:13:41', '2018-11-28 02:13:41'),
-(10, 'Student One', 'student1@example.com', '$2y$10$yjmRh4OnODFCrhdoaLRtsusSx7dpRioa4xC.JCpSNraz4TzWGbzo2', 'student', NULL, '1234', NULL, NULL, 'male', NULL, 1, NULL, '2018-12-05 01:37:59', '2018-12-05 01:37:59'),
+(10, 'Sadek Khan', 'sadek@example.com', '$2y$10$yjmRh4OnODFCrhdoaLRtsusSx7dpRioa4xC.JCpSNraz4TzWGbzo2', 'student', 'Dhaka Bangladesh', '01921040960', NULL, '1548374400', 'female', NULL, 1, NULL, '2018-12-05 01:37:59', '2019-01-13 00:19:52'),
 (11, 'Student Two', 'student2@exampl.eocm', '$2y$10$OmLzzua3nHYTXfyiRV3s8OKu8mZM7mXrAmwzWYHd1dFZzcQJG2LD2', 'student', NULL, '21312', NULL, NULL, 'female', NULL, 1, NULL, '2018-12-05 01:37:59', '2018-12-05 01:37:59'),
 (12, 'Nola Griffin', 'nolass@example.com', '$2y$10$RY5JPPeH2PBBU41KHlCem.3rP3ITczCcHIyMGpeuw/SFzVbzrafpK', 'teacher', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, NULL, 'male', 'a+', 1, NULL, '2018-12-10 01:21:56', '2018-12-10 01:21:56'),
 (13, 'Nola Griffin', 'susdsadsap@example.com', '$2y$10$9f2ohnmciMn8vDh4EBF43u4JnrmDZJLLkRqLKlNlTdQdlVAY5oBUS', 'teacher', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, NULL, 'male', 'a+', 1, NULL, '2018-12-10 01:22:46', '2018-12-10 01:22:46'),
 (14, 'Cadman Martin', 'hupofid@mailinator.net', '$2y$10$rwixudv2Y3chwblA2NXes.DmkV1zkxR.OZk//7Fumno3/RAUXkyPu', 'teacher', 'Reprehenderit animi iusto occaecat quos adipisicing impedit perferendis qui autem', '+347-21-8407481', NULL, NULL, 'others', 'a-', 1, NULL, '2019-01-02 04:20:18', '2019-01-02 04:20:18'),
-(15, 'Hiroko Underwood', 'fydidyqe@mailinator.com', '$2y$10$zwqsW99YQYpJCDWIQehcMe33V0rCZKx99TvOabbParKI0ysAuvK9i', 'parent', 'Blanditiis dolore excepturi officiis consequat Et non doloremque eiusmod hic duis dicta odit sequi pariatur Sint consectetur molestiae', '+296-29-1352382', NULL, NULL, 'male', 'ab-', 1, NULL, '2019-01-02 04:35:29', '2019-01-02 04:35:29');
+(15, 'Hiroko Underwood', 'fydidyqe@mailinator.com', '$2y$10$zwqsW99YQYpJCDWIQehcMe33V0rCZKx99TvOabbParKI0ysAuvK9i', 'parent', 'Blanditiis dolore excepturi officiis consequat Et non doloremque eiusmod hic duis dicta odit sequi pariatur Sint consectetur molestiae', '+296-29-1352382', NULL, NULL, 'male', 'ab-', 1, NULL, '2019-01-02 04:35:29', '2019-01-02 04:35:29'),
+(16, 'Ruth Becker', 'ducojumafi@mailinator.net', '$2y$10$TH01zLYSwqz4kSi5be6B7udSbJLu6OsSEh0Cqov0SfXgc9lzXpPw2', 'parent', 'Consequatur velit nulla occaecat eaque voluptatem deleniti sapiente laboriosam reiciendis ut tempore totam eos aut aut', '+625-31-7022063', NULL, NULL, 'male', 'ab+', 1, NULL, '2019-01-02 23:59:54', '2019-01-02 23:59:54'),
+(17, 'Kim Howard', 'valikev@mailinator.com', '$2y$10$UOGVM/2qB0E8pCjtIDw2BuHnOLQZ5AxM9LdkKXUh1mKbgJh6M2vOq', 'parent', 'Est perferendis praesentium nobis placeat dolorem debitis tenetur incidunt sint', '+712-25-3401230', NULL, NULL, 'others', 'ab-', 1, NULL, '2019-01-03 00:24:03', '2019-01-03 00:24:03'),
+(18, 'Aunok Khan', 'aunok@example.coms', '$2y$10$zbfmPeMpVI9MgcSGIvZ7Zu6xL3GQK200QzFrshpCbzro9qD3124.K', 'student', 'Uttara', '985478412', NULL, '580003200', 'others', NULL, 1, NULL, '2019-01-08 06:17:12', '2019-01-13 00:21:42'),
+(19, 'Kaye Jordan', 'fodyxoz@mailinator.com', '$2y$10$JywtbBQpdeXBhSFYxLVcBOZu3VwdVErAjvFJZa/G7daIkFuxgSf3.', 'student', 'Fuga Modi tempore tempora sed quae quisquam tempore dicta', '+841-61-7896240', NULL, '1547078400', 'female', NULL, 1, NULL, '2019-01-10 02:11:38', '2019-01-10 02:11:38'),
+(20, 'Nola Griffin', 'juk@example.com', '$2y$10$MDTTRZqWryTtPV7y60NtQ.8f4nfQ6en.Eyq3ALKTq0sQIAl6eCwMK', 'student', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, '1547078400', 'male', NULL, 1, NULL, '2019-01-10 02:14:12', '2019-01-10 02:14:12'),
+(21, 'Nola Griffin', 'rere@example.com', '$2y$10$SNeSRZBcIqYmFo1G6kTa5OvQfMBFIzNFK1aJKDy0eNot3dXM3jrkq', 'student', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, '1547078400', 'male', NULL, 1, NULL, '2019-01-10 02:15:10', '2019-01-10 02:15:10'),
+(22, 'Test', 'hello@example.com', '$2y$10$rU4xVljFDSOwDv20wvuneewkZgwL3sy5DMO22WpA/nHIHTloinYda', 'student', 'asd', '23', NULL, '1547078400', 'male', NULL, 1, NULL, '2019-01-10 02:17:43', '2019-01-10 02:17:43'),
+(23, 'Testing', 'jol@example.com', '$2y$10$M9zjLaAjLdY1fi0RDLwNb.zrQpBCjfVMr/rjir6SZaE4J2nA5nswK', 'student', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, '1547078400', 'male', NULL, 1, NULL, '2019-01-10 02:19:03', '2019-01-10 02:19:03'),
+(24, 'Mehedi Hasan', 'mehedi@example.com', '$2y$10$C42YL1j0yJNO3EqgTalPpOyO7FyzHp5GQStRKHzRm3cnVLSiUMmSa', 'student', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, '1547510400', 'female', NULL, 1, NULL, '2019-01-10 02:44:18', '2019-01-10 02:44:18'),
+(25, 'Hell Yeah', 'hell@example.com', '$2y$10$bxP5JJNkU6W5DcmiBComo.ghDLJ5Swy9Z7JSTrBwr/9Me.djOclOO', 'student', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, '1547078400', 'male', NULL, 1, NULL, '2019-01-10 03:27:07', '2019-01-10 03:27:07');
 
 --
 -- Indexes for dumped tables
@@ -1061,7 +1080,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `enrolls`
 --
 ALTER TABLE `enrolls`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `exams`
@@ -1079,7 +1098,7 @@ ALTER TABLE `expenses`
 -- AUTO_INCREMENT for table `expense_categories`
 --
 ALTER TABLE `expense_categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `grades`
@@ -1097,7 +1116,7 @@ ALTER TABLE `invoices`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1151,7 +1170,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -1175,7 +1194,7 @@ ALTER TABLE `teacher_permissions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

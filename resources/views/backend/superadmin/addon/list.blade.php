@@ -19,8 +19,12 @@
             </td>
             <td>
                 <div class="btn-group mb-2">
-                    <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('addon_manager.destroy', $addon->id) }}', 'addon_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Disable addon"> <i class="mdi mdi-link-variant-off"></i> </button>
-
+                    @if ($addon->status == 1)
+                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('addon_manager.destroy', $addon->id) }}', 'addon_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Disable addon"> <i class="mdi mdi-link-variant-off"></i> </button>    
+                    @else
+                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('addon_manager.destroy', $addon->id) }}', 'addon_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Enable addon"> <i class="mdi mdi-link-variant-off"></i> </button>
+                    @endif
+                    
                     <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('addon_manager.destroy', $addon->id) }}', 'addon_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete addon"> <i class="mdi mdi-window-close"></i> </button>
                 </div>
             </td>

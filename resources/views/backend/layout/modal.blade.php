@@ -87,7 +87,7 @@
                                 @method('DELETE')
 
                                 <button type="button" class="btn btn-info my-2" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-danger my-2">Continue</button>
+                                <button type="submit" class="btn btn-danger my-2" onclick="check()">Continue</button>
                             </form>
                         </div>
                     </div>
@@ -102,4 +102,18 @@
         var div_to_load = $('#div_to_reload').val();
         ajaxSubmit(e, form, div_to_load);
     });
+
+
+    function check() {
+        var div_to_load = $("#div_to_reload").val();
+        if (div_to_load == "addon_content") {
+            jQuery('#alert-modal').modal('hide');
+            setTimeout(
+            function() 
+            {
+                location.reload();
+            }, 1000);
+            
+        }
+    }
 </script>
