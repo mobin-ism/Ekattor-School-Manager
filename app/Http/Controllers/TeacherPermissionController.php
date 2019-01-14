@@ -15,8 +15,9 @@ class TeacherPermissionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.permission.index');
+    {   
+        $title = "Teacher's Permission";
+        return view('backend.'.Auth::user()->role.'.permission.index', compact('title'));
     }
 
     /**

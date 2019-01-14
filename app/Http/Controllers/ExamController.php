@@ -14,8 +14,9 @@ class ExamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.exam.index');
+    {   
+        $title = "Exam";
+        return view('backend.'.Auth::user()->role.'.exam.index', compact('title'));
     }
 
     /**

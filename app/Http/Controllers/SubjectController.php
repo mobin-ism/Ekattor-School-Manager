@@ -15,8 +15,9 @@ class SubjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.subject.index');
+    {   
+        $title = "Subject";
+        return view('backend.'.Auth::user()->role.'.subject.index', compact('title'));
     }
 
     /**

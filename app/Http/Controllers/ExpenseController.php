@@ -14,8 +14,9 @@ class ExpenseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.expense.index');
+    {   
+        $title = "Expense";
+        return view('backend.'.Auth::user()->role.'.expense.index', compact('title'));
     }
 
     /**

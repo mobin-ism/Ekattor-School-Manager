@@ -14,8 +14,9 @@ class DepartmentController extends Controller
  * @return \Illuminate\Http\Response
  */
     public function index()
-    {
-        return view('backend.' . Auth::user()->role . '.department.index');
+    {   
+        $title = "Department";
+        return view('backend.' . Auth::user()->role . '.department.index', compact('title'));
     }
 
 /**

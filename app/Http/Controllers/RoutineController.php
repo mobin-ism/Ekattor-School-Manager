@@ -17,8 +17,9 @@ class RoutineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.routine.index');
+    {   
+        $title = "Class Routine";
+        return view('backend.'.Auth::user()->role.'.routine.index', compact('title'));
     }
 
     /**

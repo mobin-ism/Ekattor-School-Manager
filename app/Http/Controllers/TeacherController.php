@@ -17,8 +17,9 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.teacher.index');
+    {   
+        $title = "Teacher";
+        return view('backend.'.Auth::user()->role.'.teacher.index', compact('title'));
     }
 
     /**

@@ -1,14 +1,14 @@
 <div class="navbar-custom">
-    <div class="row align-items-lg-center">
-        <div class="col-lg-3 col-6">
+    <div class="row align-items-md-center">
+        <div class="col-lg-3 col-6 d-md-none">
             <button class="button-menu-mobile open-left disable-btn">
                 <i class="mdi mdi-menu"></i>
             </button>
         </div>
-        <div class="col-lg-6 font-weight-bold h4 d-none d-lg-block">
+        <div class="col-md-8 font-weight-bold h4 d-none d-md-block" id = "school_name">
             {{ get_settings('system_name') }}
         </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-md-4 col-6">
             <ul class="list-unstyled topbar-right-menu float-right mb-0">
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"

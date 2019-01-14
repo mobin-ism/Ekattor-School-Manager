@@ -31,12 +31,13 @@
 
 @section('scripts')
     <script>            
-            function updateSystemInfo() {
+            function updateSystemInfo(system_name) {
                 $(".systemAjaxForm").validate({});
                 $(".systemAjaxForm").submit(function(e) {
                     var form = $(this);
                     ajaxSubmit(e, form, 'settings_content');
                 });
+                $('#school_name').text(system_name);
             }
 
             function updateSystemLogo() {

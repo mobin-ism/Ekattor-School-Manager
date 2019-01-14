@@ -14,8 +14,9 @@ class GradeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.grade.index');
+    {   
+        $title = "Exam Grade";
+        return view('backend.'.Auth::user()->role.'.grade.index', compact('title'));
     }
 
     /**

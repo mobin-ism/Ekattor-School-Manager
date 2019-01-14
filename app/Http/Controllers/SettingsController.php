@@ -15,8 +15,9 @@ class SettingsController extends Controller
      */
     public function system()
     {   
+        $title = "System Settings";
         $settings_type = "system";
-        return view('backend.'.Auth::user()->role.'.settings.index', compact('settings_type'));
+        return view('backend.'.Auth::user()->role.'.settings.index', compact('settings_type', 'title'));
     }
     public function system_update(Request $request)
     {   
@@ -53,7 +54,7 @@ class SettingsController extends Controller
             $data = array(
                 'status' => true,
                 'view' => view('backend.'.Auth::user()->role.'.settings.system', compact('settings_type'))->render(),
-                'notification' =>"System Updated Successfully"
+                'notification' =>"Please reload the browser to load the image"
             );
         }else {
             $data = array(

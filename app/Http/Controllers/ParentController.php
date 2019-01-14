@@ -16,8 +16,9 @@ class ParentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.parent.index');
+    {   
+        $title = "Parent";
+        return view('backend.'.Auth::user()->role.'.parent.index', compact('title'));
     }
 
     /**

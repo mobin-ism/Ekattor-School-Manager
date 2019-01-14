@@ -16,8 +16,8 @@ class SessionManagerController extends Controller
      */
     public function index()
     {
-
-        return view('backend.'.Auth::user()->role.'.session.index');
+        $title = "Session Manager";
+        return view('backend.'.Auth::user()->role.'.session.index', compact('title'));
     }
 
     /**

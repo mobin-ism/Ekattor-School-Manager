@@ -1,6 +1,9 @@
 @extends('backend.layout.main')
 @section('content')
-
+@php
+    $title = "Dashboard | ".get_settings('system_title');
+@endphp
+<title>{{ $title }}</title>
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -25,7 +28,7 @@
                         </a>
                     </form>
                 </div>
-                <h4 class="page-title">Dashboard</h4>
+                <h4 class="page-title"> <i class="mdi mdi-view-dashboard title_icon"></i> Dashboard</h4>
             </div>
         </div>
     </div>

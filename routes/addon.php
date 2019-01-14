@@ -10,3 +10,4 @@
 |
 */
 Route::resource('addon_manager', 'AddonController');
+Route::resource('alumni', 'AlumniController');

@@ -17,8 +17,8 @@ class AddonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.addon.index');
+    {   $title = "Addon Manager";
+        return view('backend.'.Auth::user()->role.'.addon.index', compact('title'));
     }
 
     /**

@@ -3,7 +3,7 @@
         <div class="row justify-content-md-center">
             <div class="col-md-4">
                 <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
-                    <option value="">Class</option>
+                    <option value="">Select A Class</option>
                     @foreach (App\Classes::where('school_id', 1)->get() as $class)
                         <option value="{{ $class->id }}">{{ $class->name }}</option>
                     @endforeach
@@ -11,14 +11,14 @@
             </div>
             <div class="col-md-4" id = "section_content">
                 <select name="section_id" id="section_id" class="form-control" required >
-                    <option value="">Select A Class First</option>
+                    <option value="">Select A Section</option>
                 </select>
             </div>
         </div>
         <br>
         <div class="col-12">
             <div class="form-group row mb-3">
-                <label class="col-md-3 col-form-label" for="name"> Name</label>
+                <label class="col-md-3 col-form-label" for="name"></label>
                 <div class="col-md-9">
                     <button type="button" class="btn btn-primary" name="generate_csv" id="generate_csv">Generate CSV File</button>
                 </div>
@@ -71,30 +71,24 @@
         }
 
         $(".ajaxForm").validate({});
-        // $("#bulk_admission").submit(function(e) {
+        $("#csv_admission").submit(function(e) {
 
-        //     var form = $(this);
-        //     ajaxSubmit(e, form, 'teacher_content');
-        // });
+            var form = $(this);
+            ajaxSubmit(e, form, 'student_content');
+        });
 
         $("#generate_csv").click(function(){
-            var class_id 	= $('#class_id').val();
-            var section_id 	= $('#section_id').val();
             var url = '{{ route("student.generate.csv") }}';
 
-            if(class_id == '' || section_id == '')
-                toastr.error("Please make sure that Class and Section is selected");
-            else {
-                $.ajax({
-                    url: url,
-                    success: function(response) {
-                        toastr.success("File generated");
-                        $("#bulk").attr('href', response);
-                        jQuery('#bulk')[0].click();
-                        console.log(response);
-                    }
-                });
-            }
+            $.ajax({
+                url: url,
+                success: function(response) {
+                    toastr.success("File generated");
+                    $("#bulk").attr('href', response);
+                    jQuery('#bulk')[0].click();
+                    console.log(response);
+                }
+            });
         });
     </script>
 @endsection

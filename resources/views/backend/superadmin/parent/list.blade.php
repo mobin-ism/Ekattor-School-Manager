@@ -8,6 +8,7 @@
         <table class="table table-striped table-centered mb-0 colorfulTable">
             <thead class="thead-dark">
                 <tr>
+                    <th>Parent Id</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Option</th>
@@ -16,6 +17,7 @@
             <tbody>
                 @foreach ( $parents as $parent)
                     <tr>
+                        <td> {{ $parent->id }} </td>
                         <td> {{ $parent->name }} </td>
                         <td> {{ $parent->email }} </td>
                         <td>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 13, 2019 at 12:25 PM
+-- Generation Time: Jan 14, 2019 at 12:01 PM
 -- Server version: 8.0.12
 -- PHP Version: 7.2.13
 
@@ -39,6 +39,31 @@ CREATE TABLE `addons` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `addons`
+--
+
+INSERT INTO `addons` (`id`, `name`, `unique_identifier`, `status`, `school_id`, `created_at`, `updated_at`) VALUES
+(1, 'alumni', 'alumni', 1, 1, '2019-01-14 04:16:54', '2019-01-14 04:17:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alumnis`
+--
+
+DROP TABLE IF EXISTS `alumnis`;
+CREATE TABLE `alumnis` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `session` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `school_id` int(11) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +81,13 @@ CREATE TABLE `books` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`id`, `name`, `author`, `copies`, `school_id`, `session`, `created_at`, `updated_at`) VALUES
+(9, 'jsp', 'jon doe', 5, 1, '5', '2019-01-14 05:27:07', '2019-01-14 05:27:07');
 
 -- --------------------------------------------------------
 
@@ -76,6 +108,13 @@ CREATE TABLE `book_issues` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `book_issues`
+--
+
+INSERT INTO `book_issues` (`id`, `book_id`, `class_id`, `student_id`, `issue_date`, `status`, `school_id`, `session`, `created_at`, `updated_at`) VALUES
+(6, 9, 1, 1, '1547424000', 1, 1, '5', '2019-01-14 05:27:31', '2019-01-14 05:27:52');
 
 -- --------------------------------------------------------
 
@@ -195,7 +234,13 @@ INSERT INTO `daily_attendances` (`id`, `timestamp`, `class_id`, `section_id`, `s
 (21, '1544659200', 1, 48, 1, NULL, 1, '2018-12-06 03:23:22', '2018-12-06 03:23:22'),
 (22, '1544659200', 1, 48, 2, NULL, 1, '2018-12-06 03:23:22', '2018-12-06 03:23:22'),
 (23, '1545868800', 1, 48, 1, 1, 1, '2018-12-06 03:23:37', '2018-12-06 03:23:40'),
-(24, '1545868800', 1, 48, 2, 1, 1, '2018-12-06 03:23:37', '2018-12-06 03:23:40');
+(24, '1545868800', 1, 48, 2, 1, 1, '2018-12-06 03:23:37', '2018-12-06 03:23:40'),
+(25, '1547424000', 1, 48, 1, 1, 1, '2019-01-14 01:31:09', '2019-01-14 01:31:21'),
+(26, '1547424000', 1, 48, 2, 1, 1, '2019-01-14 01:31:09', '2019-01-14 01:31:21'),
+(27, '1547424000', 1, 48, 6, 1, 1, '2019-01-14 01:31:09', '2019-01-14 01:31:21'),
+(28, '0', 1, 49, 5, NULL, 1, '2019-01-14 01:31:30', '2019-01-14 01:31:30'),
+(29, '0', 1, 48, 6, NULL, 1, '2019-01-14 01:31:31', '2019-01-14 01:31:31'),
+(30, '1547424000', 2, 23, 4, NULL, 1, '2019-01-14 04:32:04', '2019-01-14 04:32:04');
 
 -- --------------------------------------------------------
 
@@ -252,7 +297,16 @@ INSERT INTO `enrolls` (`id`, `student_id`, `class_id`, `section_id`, `school_id`
 (3, 3, 15, 46, 1, '5', '2019-01-08 06:17:12', '2019-01-13 00:21:42'),
 (4, 4, 2, 23, 1, '5', '2019-01-10 02:19:03', '2019-01-10 02:19:03'),
 (5, 5, 1, 49, 1, '5', '2019-01-10 02:44:18', '2019-01-10 02:44:18'),
-(6, 6, 1, 48, 1, '5', '2019-01-10 03:27:07', '2019-01-10 03:27:07');
+(6, 6, 1, 48, 1, '5', '2019-01-10 03:27:07', '2019-01-10 03:27:07'),
+(7, 7, 1, 49, 1, '5', '2019-01-14 02:25:55', '2019-01-14 02:25:55'),
+(8, 8, 1, 49, 1, '5', '2019-01-14 02:25:56', '2019-01-14 02:25:56'),
+(9, 9, 1, 49, 1, '5', '2019-01-14 02:25:56', '2019-01-14 02:25:56'),
+(10, 10, 1, 54, 1, '5', '2019-01-14 02:29:45', '2019-01-14 02:29:45'),
+(11, 11, 1, 54, 1, '5', '2019-01-14 02:29:45', '2019-01-14 02:29:45'),
+(12, 12, 15, 46, 1, '5', '2019-01-14 02:31:24', '2019-01-14 02:31:24'),
+(13, 13, 15, 46, 1, '5', '2019-01-14 02:31:24', '2019-01-14 02:31:24'),
+(14, 14, 3, 33, 1, '5', '2019-01-14 02:35:19', '2019-01-14 02:35:19'),
+(15, 15, 3, 33, 1, '5', '2019-01-14 02:35:19', '2019-01-14 02:35:19');
 
 -- --------------------------------------------------------
 
@@ -270,6 +324,13 @@ CREATE TABLE `exams` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `exams`
+--
+
+INSERT INTO `exams` (`id`, `name`, `date`, `school_id`, `session`, `created_at`, `updated_at`) VALUES
+(5, '1st semester', '1547424000', 1, '5', '2019-01-14 04:47:59', '2019-01-14 04:47:59');
 
 -- --------------------------------------------------------
 
@@ -399,13 +460,13 @@ CREATE TABLE `menus` (
 
 INSERT INTO `menus` (`id`, `displayed_name`, `route_name`, `parent`, `sort_order`, `status`, `icon`, `created_at`, `updated_at`) VALUES
 (3, 'users', NULL, 0, 0, 1, 'dripicons-user', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'admin', '', 3, 90, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'admin', '', 3, 90, 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (5, 'student', 'student.index', 3, 10, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (6, 'teacher', 'teacher.index', 3, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (7, 'parent', 'parent.index', 3, 50, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (8, 'librarian', 'librarian.index', 3, 70, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (9, 'accountant', 'accountant.index', 3, 60, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(10, 'driver', NULL, 3, 80, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 'driver', NULL, 3, 80, 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (11, 'academic', NULL, 0, 0, 1, 'dripicons-store', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (12, 'class', 'class.index', 11, 40, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (13, 'section', NULL, 11, 50, 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -444,8 +505,8 @@ INSERT INTO `menus` (`id`, `displayed_name`, `route_name`, `parent`, `sort_order
 (47, 'online_exam', NULL, 21, 50, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (48, 'certificate', NULL, 21, 60, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (49, 'teacher_permission', 'permission.index', 3, 40, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(50, 'messaging', NULL, 3, 110, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(51, 'role_permission', 'role.index', 3, 100, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(50, 'messaging', NULL, 3, 110, 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(51, 'role_permission', 'role.index', 3, 100, 0, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (53, 'form_builder', NULL, 35, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (54, 'book_list_manager', 'book.index', 32, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (55, 'book_issue_report', 'book_issue.index', 32, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -454,7 +515,8 @@ INSERT INTO `menus` (`id`, `displayed_name`, `route_name`, `parent`, `sort_order
 (59, 'multi_school_manager', 'school.index', 31, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (60, 'ex', NULL, NULL, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (61, 'income_expense_category', NULL, NULL, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(62, 'expense_category', 'expense_category.index', 27, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(62, 'expense_category', 'expense_category.index', 27, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(78, 'alumni', 'alumni.index', 3, 91, 1, NULL, '2018-12-31 18:00:00', '2019-01-14 04:17:50');
 
 -- --------------------------------------------------------
 
@@ -674,6 +736,7 @@ DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
   `id` int(11) UNSIGNED NOT NULL,
   `system_name` varchar(255) DEFAULT NULL,
+  `system_title` varchar(255) DEFAULT NULL,
   `system_email` varchar(255) DEFAULT NULL,
   `selected_branch` int(11) DEFAULT NULL,
   `running_session` varchar(255) DEFAULT '',
@@ -688,8 +751,8 @@ CREATE TABLE `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `system_name`, `system_email`, `selected_branch`, `running_session`, `phone`, `purchase_code`, `address`, `updated_at`, `created_at`) VALUES
-(1, 'Ekattor Govt. Hight School', 'xotetocah@mailinator.com', 1, '5', '1234567890', '12345678910', 'Dhaka', '2019-01-02 23:06:15', '2018-11-17 13:20:01');
+INSERT INTO `settings` (`id`, `system_name`, `system_title`, `system_email`, `selected_branch`, `running_session`, `phone`, `purchase_code`, `address`, `updated_at`, `created_at`) VALUES
+(1, 'Ekattor Govt. Hight School', 'Ekattor Govt. Hight School', 'xotetocah@mailinator.com', 1, '5', '1234567890', '12345678910', 'Dhaka', '2019-01-14 02:01:09', '2018-11-17 13:20:01');
 
 -- --------------------------------------------------------
 
@@ -718,7 +781,16 @@ INSERT INTO `students` (`id`, `code`, `user_id`, `parent_id`, `school_id`, `crea
 (3, '335af2d', 18, 17, 1, '2019-01-08 06:17:12', '2019-01-13 00:21:42'),
 (4, 'c090f91', 23, 3, 1, '2019-01-10 02:19:03', '2019-01-10 02:19:03'),
 (5, '3228208', 24, 3, 1, '2019-01-10 02:44:18', '2019-01-10 02:44:18'),
-(6, '29543c2', 25, 15, 1, '2019-01-10 03:27:07', '2019-01-10 03:27:07');
+(6, '29543c2', 25, 15, 1, '2019-01-10 03:27:07', '2019-01-10 03:27:07'),
+(7, '73bf079', 26, 3, 1, '2019-01-14 02:25:55', '2019-01-14 02:25:55'),
+(8, '7987c1c', 27, 15, 1, '2019-01-14 02:25:56', '2019-01-14 02:25:56'),
+(9, '4340d0e', 28, 16, 1, '2019-01-14 02:25:56', '2019-01-14 02:25:56'),
+(10, '9498a6b', 29, 3, 1, '2019-01-14 02:29:45', '2019-01-14 02:29:45'),
+(11, '26eae55', 30, 15, 1, '2019-01-14 02:29:45', '2019-01-14 02:29:45'),
+(12, '592fe67', 31, 3, 1, '2019-01-14 02:31:24', '2019-01-14 02:31:24'),
+(13, '987ef36', 32, 15, 1, '2019-01-14 02:31:24', '2019-01-14 02:31:24'),
+(14, '6d26f2f', 33, 3, 1, '2019-01-14 02:35:19', '2019-01-14 02:35:19'),
+(15, 'e9508db', 34, 15, 1, '2019-01-14 02:35:19', '2019-01-14 02:35:19');
 
 -- --------------------------------------------------------
 
@@ -843,7 +915,16 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phon
 (22, 'Test', 'hello@example.com', '$2y$10$rU4xVljFDSOwDv20wvuneewkZgwL3sy5DMO22WpA/nHIHTloinYda', 'student', 'asd', '23', NULL, '1547078400', 'male', NULL, 1, NULL, '2019-01-10 02:17:43', '2019-01-10 02:17:43'),
 (23, 'Testing', 'jol@example.com', '$2y$10$M9zjLaAjLdY1fi0RDLwNb.zrQpBCjfVMr/rjir6SZaE4J2nA5nswK', 'student', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, '1547078400', 'male', NULL, 1, NULL, '2019-01-10 02:19:03', '2019-01-10 02:19:03'),
 (24, 'Mehedi Hasan', 'mehedi@example.com', '$2y$10$C42YL1j0yJNO3EqgTalPpOyO7FyzHp5GQStRKHzRm3cnVLSiUMmSa', 'student', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, '1547510400', 'female', NULL, 1, NULL, '2019-01-10 02:44:18', '2019-01-10 02:44:18'),
-(25, 'Hell Yeah', 'hell@example.com', '$2y$10$bxP5JJNkU6W5DcmiBComo.ghDLJ5Swy9Z7JSTrBwr/9Me.djOclOO', 'student', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, '1547078400', 'male', NULL, 1, NULL, '2019-01-10 03:27:07', '2019-01-10 03:27:07');
+(25, 'Hell Yeah', 'hell@example.com', '$2y$10$bxP5JJNkU6W5DcmiBComo.ghDLJ5Swy9Z7JSTrBwr/9Me.djOclOO', 'student', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, '1547078400', 'male', NULL, 1, NULL, '2019-01-10 03:27:07', '2019-01-10 03:27:07'),
+(26, 'Nayeem Hossain', 'nayeem@example.com', '$2y$10$qC8jddb/dIwlUAUDbaAjlOzkL0Twd6ozdXLnFzkchtXaNl0Sczm1u', 'student', NULL, '1234', NULL, NULL, 'male', NULL, 1, NULL, '2019-01-14 02:25:55', '2019-01-14 02:25:55'),
+(27, 'Santu Roy', 'san2@example.com', '$2y$10$NLucJJ8weznLoUQIduouoec1w6Qsm56vSaKeH6jRje2Xt22a/y7Du', 'student', NULL, '1234', NULL, NULL, 'male', NULL, 1, NULL, '2019-01-14 02:25:56', '2019-01-14 02:25:56'),
+(28, 'Mehedi Morshed', 'mehediiit@example.com', '$2y$10$RZVhPIH7Wg1OrxoRIMgJW.QCVB33710VjeJDsGwUbLnGHnr.nLSbW', 'student', NULL, '1234', NULL, NULL, 'male', NULL, 1, NULL, '2019-01-14 02:25:56', '2019-01-14 02:25:56'),
+(29, 'Joyonto Roy', 'joy@example.com', '$2y$10$fuf/uubLXiRD7Gtfl9NF/OUcDDzGqmtP88sFsIHfykp.X311ZO1Py', 'student', NULL, '1234', NULL, NULL, 'male', NULL, 1, NULL, '2019-01-14 02:29:45', '2019-01-14 02:29:45'),
+(30, 'Aunok Hassan', 'aun@example.com', '$2y$10$JbFO6Fdj3lVZy.R8NGjdne3VB9plY02LzJR3NhHWmz16iSA7.xVpe', 'student', NULL, '1234', NULL, NULL, 'male', NULL, 1, NULL, '2019-01-14 02:29:45', '2019-01-14 02:29:45'),
+(31, 'Ruma Begum', 'rumab@example.com', '$2y$10$0mqIASSW3DUzD1VM0TtkH.UCMPxaiU7J5HiJrLWj8fZmwtOqwiEq2', 'student', NULL, '1234', NULL, NULL, 'male', NULL, 1, NULL, '2019-01-14 02:31:24', '2019-01-14 02:31:24'),
+(32, 'Ruma Hossain', 'rumah@example.com', '$2y$10$/N9Q/lA40lQxNjmiAqsvl.DifXxc4oKagp2XHsa1Raf1AfNTyY.0S', 'student', NULL, '1234', NULL, NULL, 'male', NULL, 1, NULL, '2019-01-14 02:31:24', '2019-01-14 02:31:24'),
+(33, 'John Doe', 'john@example.com', '$2y$10$J7inZA.1tYsA7UtL6kq8c.0fC6u5SCjuo9X3OhgCSPYiYSdicVrFu', 'student', NULL, '1234', NULL, '0', 'male', NULL, 1, NULL, '2019-01-14 02:35:19', '2019-01-14 02:35:55'),
+(34, 'Jane Doe', 'jane@example.com', '$2y$10$9xTFrpJhgCcempl6SIGNSellCCzDeskbwRyM4pJkmnDPJCMv/022.', 'student', NULL, '1234', NULL, NULL, 'male', NULL, 1, NULL, '2019-01-14 02:35:19', '2019-01-14 02:35:19');
 
 --
 -- Indexes for dumped tables
@@ -853,6 +934,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phon
 -- Indexes for table `addons`
 --
 ALTER TABLE `addons`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `alumnis`
+--
+ALTER TABLE `alumnis`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1032,19 +1119,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `addons`
 --
 ALTER TABLE `addons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `alumnis`
+--
+ALTER TABLE `alumnis`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `book_issues`
 --
 ALTER TABLE `book_issues`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `branches`
@@ -1068,7 +1161,7 @@ ALTER TABLE `class_rooms`
 -- AUTO_INCREMENT for table `daily_attendances`
 --
 ALTER TABLE `daily_attendances`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -1080,13 +1173,13 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `enrolls`
 --
 ALTER TABLE `enrolls`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `exams`
 --
 ALTER TABLE `exams`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -1104,7 +1197,7 @@ ALTER TABLE `expense_categories`
 -- AUTO_INCREMENT for table `grades`
 --
 ALTER TABLE `grades`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `invoices`
@@ -1116,7 +1209,7 @@ ALTER TABLE `invoices`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1170,7 +1263,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -1194,7 +1287,7 @@ ALTER TABLE `teacher_permissions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

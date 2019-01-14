@@ -16,8 +16,9 @@ class DailyAttendanceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.daily_attendance.index');
+    {   
+        $title = "Daily Attendance";
+        return view('backend.'.Auth::user()->role.'.daily_attendance.index', compact('title'));
     }
 
     /**
@@ -71,7 +72,7 @@ class DailyAttendanceController extends Controller
      */
 
     public function show(Request $request) {
-
+        $title = "Daily Attendance";
         $section_id = $request->section_id;
         $section  = Section::find($section_id);
         $class_id = $section->class->id;
@@ -80,7 +81,7 @@ class DailyAttendanceController extends Controller
         $students = Enroll::where(['section_id' => $section_id, 'class_id' => $class_id, 'session' => $running_session, 'school_id' => $school_id])->get();
         $month = $request->month;
         $year = $request->year;
-        return view('backend.'.Auth::user()->role.'.daily_attendance.list', compact('students', 'class_id', 'section_id', 'month', 'year'));
+        return view('backend.'.Auth::user()->role.'.daily_attendance.list', compact('students', 'class_id', 'section_id', 'month', 'year', 'title'));
     }
 
 

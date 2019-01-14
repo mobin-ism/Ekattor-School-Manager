@@ -1,0 +1,46 @@
+{   
+    "name" : "alumni",
+    
+    "unique_identifier" : "alumni",
+
+    "directory" :
+    [
+        {
+          "name" : "resources/views/backend/superadmin/alumni"
+        }
+    ],
+    "sql_file"  : "",
+
+    "files"     :
+    [
+
+        {
+            "root_directory"    : "addons/alumni/views/index.blade.php",
+            "update_directory"  : "resources/views/backend/superadmin/alumni/index.blade.php"
+        },
+        {
+            "root_directory"    : "addons/alumni/views/create.blade.php",
+            "update_directory"  : "resources/views/backend/superadmin/alumni/create.blade.php"
+        },
+        {
+            "root_directory"    : "addons/alumni/views/edit.blade.php",
+            "update_directory"  : "resources/views/backend/superadmin/alumni/edit.blade.php"
+        },
+        {
+            "root_directory"    : "addons/alumni/views/list.blade.php",
+            "update_directory"  : "resources/views/backend/superadmin/alumni/list.blade.php"
+        },
+        {
+            "root_directory"    : "addons/alumni/controllers/AlumniController.php",
+            "update_directory"  : "app/Http/Controllers/AlumniController.php"
+        },
+        {
+            "root_directory"    : "addons/alumni/models/Alumni.php",
+            "update_directory"  : "app/Alumni.php"
+        },
+        {
+            "root_directory"    : "addons/alumni/routes/addon.php",
+            "update_directory"  : "routes/addon.php"
+        }
+    ]
+}

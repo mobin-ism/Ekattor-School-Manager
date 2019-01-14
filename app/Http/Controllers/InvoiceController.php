@@ -14,8 +14,9 @@ class InvoiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.invoice.index');
+    {   
+        $title = "Student Fee Manager";
+        return view('backend.'.Auth::user()->role.'.invoice.index', compact('title'));
     }
 
     /**

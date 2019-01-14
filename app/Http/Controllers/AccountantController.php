@@ -16,8 +16,9 @@ class AccountantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.accountant.index');
+    {   
+        $title = "Accountant";
+        return view('backend.'.Auth::user()->role.'.accountant.index', compact('title'));
     }
 
     /**

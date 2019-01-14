@@ -15,8 +15,9 @@ class ClassController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.'.Auth::user()->role.'.class.index');
+    {   
+        $title = "Class";
+        return view('backend.'.Auth::user()->role.'.class.index', compact('title'));
     }
 
     /**

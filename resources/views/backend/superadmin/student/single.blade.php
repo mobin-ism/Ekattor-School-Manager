@@ -124,7 +124,7 @@
         $("#single_admission").submit(function(e) {
 
             var form = $(this);
-            ajaxSubmit(e, form, 'teacher_content');
+            ajaxSubmit(e, form, 'student_content');
         });
     </script>
 @endsection

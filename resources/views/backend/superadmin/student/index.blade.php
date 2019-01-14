@@ -17,7 +17,7 @@
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col-md-3">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
-                                <option value="all">Class</option>
+                                <option value="all">Select A Class</option>
                                 @foreach (App\Classes::where('school_id', 1)->get() as $class)
                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                                 @endforeach
@@ -25,7 +25,7 @@
                         </div>
                         <div id = "section_content" class="col-md-3">
                             <select class="form-control" name="section_id" id="section_id">
-                                <option value="all">Select Class First</option>
+                                <option value="all">Select A Section</option>
                             </select>
                         </div>
                     </div>

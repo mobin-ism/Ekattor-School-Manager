@@ -19,7 +19,8 @@ class StudentController extends Controller
      */
     public function index()
     {   
-        return view('backend.'.Auth::user()->role.'.student.index');
+        $title = "Student List";
+        return view('backend.'.Auth::user()->role.'.student.index', compact('title'));
     }
 
     /**
@@ -28,21 +29,24 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
+        $title = "Student Admission";
         $type = 'single';
-        return view('backend.'.Auth::user()->role.'.student.create', compact('type'));
+        return view('backend.'.Auth::user()->role.'.student.create', compact('type', 'title'));
     }
 
     public function bulk_student_create()
-    {
+    {   
+        $title = "Student Admission";
         $type = 'bulk';
-        return view('backend.'.Auth::user()->role.'.student.create', compact('type'));
+        return view('backend.'.Auth::user()->role.'.student.create', compact('type', 'title'));
     }
 
     public function excel_student_create()
-    {
+    {   
+        $title = "Student Admission";
         $type = 'excel';
-        return view('backend.'.Auth::user()->role.'.student.create', compact('type'));
+        return view('backend.'.Auth::user()->role.'.student.create', compact('type', 'title'));
     }
 
     /**
@@ -217,10 +221,19 @@ class StudentController extends Controller
                 }
               }
             }
+        $data = array(
+            'status' => true,
+            'view' => "",
+            'notification' =>"Student Added Successfully"
+        );
         }else {
-            flash('You must have selcted Class and Section')->error();
+            $data = array(
+                'status' => false,
+                'view' => "",
+                'notification' =>"You must have to select class and section"
+            );
         }
-        return back();
+        return $data;
 
     }
 

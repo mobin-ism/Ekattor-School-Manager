@@ -10,8 +10,8 @@
 |
 */
     Route::resource('student', 'StudentController');
-    Route::get('student/add/bulk', 'StudentController@bulk_student_create')->name('student.bulk');
-    Route::get('student/add/excel', 'StudentController@excel_student_create')->name('student.excel');
+    Route::get('student/create/bulk', 'StudentController@bulk_student_create')->name('student.bulk');
+    Route::get('student/create/excel', 'StudentController@excel_student_create')->name('student.excel');
     Route::post('student/store/bulk', 'StudentController@bulk_student_store')->name('student.store.bulk');
     Route::post('student/store/excel', 'StudentController@excel_student_store')->name('student.store.excel');
     Route::get('student_profile/{student}', 'StudentController@profile')->name('student.profile');
