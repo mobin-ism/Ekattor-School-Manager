@@ -4,14 +4,16 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-database title_icon"></i> Expense Category</h4>
+                <h4 class="page-title"> <i class="mdi mdi-database title_icon"></i> Expense Category
+                    <button type="button" class="btn btn-icon btn-success mb-1 alignToTitle" onclick="showAjaxModal('{{ route('expense_category.create') }}', 'Create New Exam')"> <i class="mdi mdi-plus"></i> Add Expense Category</button>
+                </h4>
             </div>
         </div>
     </div>
     <!-- end page title -->
 
     <div class="row ">
-        <div class="col-xl-10 offset-xl-1">
+        <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
                     <div id = "expense_category_content">

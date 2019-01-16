@@ -1,4 +1,8 @@
+
 <script type="text/javascript">
+
+    var callBackFunction;
+
     function showAjaxModal(url, header)
     {
     // SHOWING AJAX PRELOADER IMAGE
@@ -64,10 +68,11 @@
         </div><!-- /.modal -->
 
     <script type="text/javascript">
-    function confirm_modal(delete_url, div_to_reload)
+
+    function confirm_modal(delete_url, param)
     {
         jQuery('#alert-modal').modal('show', {backdrop: 'static'});
-        jQuery('#div_to_reload').val(div_to_reload);
+        callBackFunction = param;
         document.getElementById('delete_form').setAttribute('action' , delete_url);
     }
     </script>
@@ -81,13 +86,12 @@
                             <i class="dripicons-information h1 text-info"></i>
                             <h4 class="mt-2">Heads up!</h4>
                             <p class="mt-3">Are you sure?</p>
-                            <input type="hidden" id = "div_to_reload" value="">
                             <form method="POST" class="ajaxDeleteForm" action="" id = "delete_form">
                                 @csrf
                                 @method('DELETE')
 
                                 <button type="button" class="btn btn-info my-2" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-danger my-2" onclick="check()">Continue</button>
+                                <button type="submit" class="btn btn-danger my-2" onclick="">Continue</button>
                             </form>
                         </div>
                     </div>
@@ -99,8 +103,7 @@
     jQuery(".ajaxDeleteForm").submit(function(e) {
 
         var form = $(this);
-        var div_to_load = $('#div_to_reload').val();
-        ajaxSubmit(e, form, div_to_load);
+        ajaxSubmit(e, form, callBackFunction);
     });
 
 
@@ -109,11 +112,10 @@
         if (div_to_load == "addon_content") {
             jQuery('#alert-modal').modal('hide');
             setTimeout(
-            function() 
+            function()
             {
                 location.reload();
             }, 1000);
-            
         }
     }
 </script>

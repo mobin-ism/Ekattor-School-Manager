@@ -14,8 +14,8 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div class="col-md-3">
+                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
                                 <option value="all">Select A Class</option>
                                 @foreach (App\Classes::where('school_id', 1)->get() as $class)
@@ -23,10 +23,13 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div id = "section_content" class="col-md-3">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                             <select class="form-control" name="section_id" id="section_id">
                                 <option value="all">Select A Section</option>
                             </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="classAndSectionWiseStudents()">Filter</button>
                         </div>
                     </div>
 
@@ -55,17 +58,22 @@
         }
 
         function onChangeSection(section_id) {
-          if(section_id > 0) {
-            var url = '{{ route("student.show", "section_id") }}';
-            url = url.replace('section_id', section_id);
-            $.ajax({
-                type : 'GET',
-                url: url,
-                success : function(response) {
-                    $('#student_content').html(response);
-                }
-            });
-          }
+
+        }
+
+        var classAndSectionWiseStudents = function () {
+            var section_id = $('#section_id').val();
+            if(section_id > 0) {
+                var url = '{{ route("student.show", "section_id") }}';
+                url = url.replace('section_id', section_id);
+                $.ajax({
+                    type : 'GET',
+                    url: url,
+                    success : function(response) {
+                        $('#student_content').html(response);
+                    }
+                });
+              }
         }
     </script>
 @endsection

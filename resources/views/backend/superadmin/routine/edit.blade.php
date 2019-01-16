@@ -167,7 +167,7 @@
         $(".ajaxForm").validate({}); // Jquery form validation initialization
         $(".ajaxForm").submit(function(e) {
             var form = $(this);
-            ajaxSubmit(e, form, 'routine_content');
+            ajaxSubmit(e, form, getClassRoutine);
         });
     </script>
 

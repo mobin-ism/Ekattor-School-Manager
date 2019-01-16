@@ -55,10 +55,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('return_book/{book_id}', 'BookIssueController@return')->name('book_issue.return');
 
     Route::resource('exam', 'ExamController');
+    Route::get('exam_list', 'ExamController@list')->name('exam.list');
     Route::resource('grade', 'GradeController');
 
     Route::resource('expense_category', 'ExpenseCategoryController');
     Route::resource('expense', 'ExpenseController');
+
+    Route::resource('syllabus', 'SyllabusController');
+    Route::get('download_syllabus/{file}', 'SyllabusController@download')->name('syllabus.download');
 
 });
 

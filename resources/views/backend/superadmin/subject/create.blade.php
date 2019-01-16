@@ -27,6 +27,6 @@
     $(".ajaxForm").validate({}); // Jquery form validation initialization
     $(".ajaxForm").submit(function(e) {
         var form = $(this);
-        ajaxSubmit(e, form, 'subject_content');
+        ajaxSubmit(e, form, classWiseSubject);
     });
 </script>

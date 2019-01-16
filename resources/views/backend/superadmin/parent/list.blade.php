@@ -3,7 +3,6 @@
 @endphp
 
 @if (count($parents) > 0)
-    <button type="button" class="btn btn-icon btn-success mb-1" style="float: right;" onclick="showAjaxModal('{{ route('parent.create') }}', 'Create Parent')"> <i class="mdi mdi-plus"></i> Add New Parent</button>
     <div class="table-responsive-sm">
         <table class="table table-striped table-centered mb-0 colorfulTable">
             <thead class="thead-dark">

@@ -2,7 +2,6 @@
     $accountants = \App\User::where('school_id', get_settings('selected_branch'))->where('role', 'accountant')->paginate(10);
 @endphp
 @if (count($accountants) > 0)
-    <button type="button" class="btn btn-icon btn-success mb-1" style="float: right;" onclick="showAjaxModal('{{ route('accountant.create') }}', 'Create Accountant')"> <i class="mdi mdi-plus"></i> Add New Accountant</button>
     <div class="table-responsive-sm">
         <table class="table table-striped table-centered mb-0 colorfulTable">
             <thead class="thead-dark">

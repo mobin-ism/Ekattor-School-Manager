@@ -51,3 +51,8 @@
 .colorfulTable {
     background-color: #fdfdfd;
 }
+
+.alignToTitle {
+    margin-top: 25px;
+    float: right;
+}

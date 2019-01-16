@@ -15,7 +15,7 @@ class BookIssueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $title = "Book Issue";
         return view('backend.'.Auth::user()->role.'.book_issue.index', compact('title'));
     }
@@ -59,8 +59,8 @@ class BookIssueController extends Controller
                 'notification' =>"An Error Occured When Issuing Book"
             );
         }
-        flash("Book Issued Successfully")->success();
-        return back();
+
+        return $data;
     }
 
     /**
@@ -116,8 +116,7 @@ class BookIssueController extends Controller
                 'notification' =>"An Error Occured When Issuing Book"
             );
         }
-        flash("Book Issued Successfully")->success();
-        return back();
+        return $data;
     }
 
     /**

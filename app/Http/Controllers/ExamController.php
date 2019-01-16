@@ -14,7 +14,7 @@ class ExamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $title = "Exam";
         return view('backend.'.Auth::user()->role.'.exam.index', compact('title'));
     }
@@ -39,9 +39,11 @@ class ExamController extends Controller
     {
         $exam = new Exam;
         $exam->name = $request->name;
-        $exam->date = strtotime($request->date);
+        $exam->starting_date = strtotime($request->starting_date);
+        $exam->ending_date = strtotime($request->ending_date);
         $exam->school_id = school_id();
         $exam->session = get_settings('running_session');
+
         if($exam->save()){
             $data = array(
                 'status' => true,
@@ -56,8 +58,6 @@ class ExamController extends Controller
             );
         }
         return $data;
-        // flash("Exam Added Successfully")->success();
-        // return back();
     }
 
     /**
@@ -69,6 +69,11 @@ class ExamController extends Controller
     public function show(Exam $exam)
     {
         //
+    }
+
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.exam.list')->render();
     }
 
     /**
@@ -94,7 +99,8 @@ class ExamController extends Controller
     {
         $exam = Exam::find($id);
         $exam->name = $request->name;
-        $exam->date = strtotime($request->date);
+        $exam->starting_date = strtotime($request->starting_date);
+        $exam->ending_date = strtotime($request->ending_date);
         $exam->school_id = school_id();
         $exam->session = get_settings('running_session');
         if($exam->save()){

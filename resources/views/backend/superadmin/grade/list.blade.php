@@ -2,7 +2,6 @@
     $grades = App\Grade::where(['school_id' => school_id(), 'session' => get_settings('running_session')])->get();
 @endphp
 @if (count($grades) > 0)
-    <button type="button" class="btn btn-icon btn-success mb-1" style="float: right;" onclick="showAjaxModal('{{ route('grade.create') }}', 'Create New Grade')"> <i class="mdi mdi-plus"></i> Add Grade</button>
     <div class="table-responsive-sm">
         <table class="table table-striped table-centered mb-0">
             <thead class="thead-dark">

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-book-open-page-variant title_icon"></i> Subject</h4>
+                <h4 class="page-title"> <i class="mdi mdi-book-open-page-variant title_icon"></i> Subject <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('subject.create') }}', 'Add New Subject')"> <i class="mdi mdi-plus"></i>Add Subject</button></h4>
             </div>
         </div>
     </div>
@@ -14,15 +14,17 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('subject.create') }}', 'Add New Subject')"> <i class="mdi mdi-plus"></i>Add Subject</button>
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div class="col-md-3">
-                            <select class="form-control" name="class_id" id="class_id" onchange="classWiseSubject(this.value)">
+                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                            <select class="form-control" name="class_id" id="class_id">
                                 <option value="all">All Class</option>
                                 @foreach (App\Classes::where('school_id', 1)->get() as $class)
                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="classWiseSubject()">Filter</button>
                         </div>
                     </div>
                     <div id = "subject_content">
@@ -36,7 +38,8 @@
 
 @section('scripts')
     <script>
-        function classWiseSubject(class_id) {
+        function classWiseSubject() {
+            var class_id = $('#class_id').val();
             var url = '{{ route("subject.show", "class_id") }}';
             url = url.replace('class_id', class_id);
             $.ajax({

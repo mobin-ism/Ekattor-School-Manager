@@ -46,26 +46,26 @@
     </form>
 
     <script>
+        $(document).ready(function() {
+            $('#issue_date').daterangepicker();
+        });
+
         $(".ajaxForm").validate({}); // Jquery form validation initialization
         $(".ajaxForm").submit(function(e) {
             var form = $(this);
             ajaxSubmit(e, form, 'book_issue_content');
         });
+
+        function classWiseStudent(class_id) {
+            var url = '{{ route("book_issue.student", "class_id") }}';
+            url = url.replace('class_id', class_id);
+
+            $.ajax({
+                type : 'GET',
+                url: url,
+                success : function(response) {
+                    $('#student_content').html(response);
+                }
+            });
+        }
     </script>
-
-    <script>
-            function classWiseStudent(class_id) {
-                var url = '{{ route("book_issue.student", "class_id") }}';
-                url = url.replace('class_id', class_id);
-
-                $.ajax({
-                    type : 'GET',
-                    url: url,
-                    success : function(response) {
-                        $('#student_content').html(response);
-                    }
-                });
-            }
-    </script>
-
-     <script src="{{ asset('backend/js/app.min.js') }}"></script>

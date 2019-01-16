@@ -12,8 +12,7 @@
     @include('backend.layout.styles')
 </head>
 
-<body>
-
+<body @if(Request::route()->getName() == 'daily_attendance.index') class="enlarged" data-keep-enlarged="true" @endif >
 <!-- Begin page -->
 <div class="wrapper">
 
@@ -32,7 +31,6 @@
             <div class="container-fluid">
 
                 @yield('content')
-
             </div>
             <!-- container -->
 

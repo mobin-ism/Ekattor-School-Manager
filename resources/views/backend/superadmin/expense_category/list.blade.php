@@ -2,7 +2,7 @@
     $expense_categories = App\ExpenseCategory::where('school_id', school_id())->where('session', get_settings('running_session'))->get();
 @endphp
 @if (count($expense_categories) > 0)
-<button type="button" class="btn btn-icon btn-success mb-1" style="float: right;" onclick="showAjaxModal('{{ route('expense_category.create') }}', 'Create New Exam')"> <i class="mdi mdi-plus"></i> Add Expense Category</button>
+
 <div class="table-responsive-sm">
     <table class="table table-striped table-centered mb-0">
         <thead class="thead-dark">

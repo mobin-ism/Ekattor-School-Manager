@@ -4,7 +4,9 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box ">
-                <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> Teacher <button type="button" class="btn btn-icon btn-success" style="float: right; margin-top: 25px;" onclick="showAjaxModal('{{ route('teacher.create') }}', 'Create New Teacher')"> <i class="mdi mdi-plus"></i> Add New Teacher</button></h4>
+                <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> Teacher
+                <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('teacher.create') }}', 'Create New Teacher')"> <i class="mdi mdi-plus"></i> Add New Teacher</button>
+                </h4>
             </div>
         </div>
     </div>
@@ -16,16 +18,16 @@
                 <div class="card-body">
                     <div style="margin-bottom: 10px;">
                         <div class="row justify-content-md-center">
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <select class="form-control" name="department_id" id="" onchange="departmentWiseFilter(this.value)">
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                                <select class="form-control select2" data-toggle="select2" name="department_id" id="department_id">
                                     <option value="all">All Department</option>
-                                    @foreach (App\Department::where('school_id', 1)->get() as $department)
+                                    @foreach (App\Department::where('school_id', get_settings('selected_branch'))->get() as $department)
                                         <option value="{{ $department->id }}">{{ $department->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-lg-1 col-md-12 col-sm-12">
-                                <button type="button" class="btn btn-icon btn-secondary form-control"> <i class="mdi mdi-table-search"></i></button>
+                            <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                                <button type="button" class="btn btn-icon btn-secondary form-control" onclick="departmentWiseFilter()">Filter</button>
                             </div>
                         </div>
                     </div>
@@ -37,7 +39,7 @@
         </div><!-- end col-->
     </div>
 
-    <div class="row ">
+    {{-- <div class="row ">
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
@@ -46,19 +48,20 @@
                             <div class="row justify-content-md-center">
                                 <div class="col-lg-3 mb-3 mb-lg-0"> <button type="button" class="btn btn-icon btn-secondary form-control"> <i class="mdi mdi-table-search"></i></button></div>
                                 <div class="col-lg-1 mb-3 mb-lg-0"> <button type="button" class="btn btn-icon btn-secondary form-control"> <i class="mdi mdi-table-search"></i></button></div>
-                            </div>   
+                            </div>
                         </div>
                         <div class="ml-auto col-lg-2 mb-3 mb-lg-0"> <button type="button" class="btn btn-icon btn-secondary form-control"> <i class="mdi mdi-table-search"></i> Add New Teacher</button></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 @section('scripts')
     <script>
-        function departmentWiseFilter(department_id) {
+        var departmentWiseFilter = function() {
+            var department_id = $('#department_id').val();
             var url = '{{ route("teacher.show", "department_id") }}';
             url = url.replace('department_id', department_id);
 

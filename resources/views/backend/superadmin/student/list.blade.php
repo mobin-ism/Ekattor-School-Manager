@@ -20,11 +20,11 @@
                         <td>
                             <div class="btn-group mb-2">
 
-                                {{-- <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showLargeAjaxModal('{{ route('student.profile', $student->student->id) }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Student Profile"> <i class="dripicons-checklist"></i> </button> --}}
+                                <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showLargeAjaxModal('{{ route('student.profile', $student->student->id) }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Student Profile"> <i class="dripicons-checklist"></i> </button>
 
                                 <a href="{{ route('student.edit', $student->id) }}" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Student"> <i class="mdi mdi-wrench"></i> </a>
 
-                                <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('teacher.destroy', $student->id) }}', 'teacher_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Student"> <i class="mdi mdi-window-close"></i> </button>
+                                <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('student.destroy', $student->id) }}', classAndSectionWiseStudents )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Student"> <i class="mdi mdi-window-close"></i> </button>
                             </div>
                         </td>
                     </tr>

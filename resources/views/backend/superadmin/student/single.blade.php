@@ -39,7 +39,7 @@
                 <label class="col-md-3 col-form-label" for="class_id"> Class</label>
                 <div class="col-md-9">
                     <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
-                        <option value="">Class</option>
+                        <option value="all">Select A Class</option>
                         @foreach (App\Classes::where('school_id', 1)->get() as $class)
                             <option value="{{ $class->id }}">{{ $class->name }}</option>
                         @endforeach
@@ -51,7 +51,7 @@
                 <label class="col-md-3 col-form-label" for="section_id"> Section</label>
                 <div class="col-md-9" id = "section_content">
                     <select name="section_id" id="section_id" class="form-control" required >
-                        <option value="">Select A Class First</option>
+                        <option value="">Select A Section</option>
                     </select>
                 </div>
             </div>
@@ -104,6 +104,11 @@
 @section('scripts')
     <script>
         function classWiseSection(class_id) {
+            if(class_id > 0) {
+
+            }else {
+                console.log(123);
+            }
             var url = '{{ route("section.show", "class_id") }}';
             url = url.replace('class_id', class_id);
 

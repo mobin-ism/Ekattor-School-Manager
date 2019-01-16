@@ -76,7 +76,7 @@
             <div class="form-group col-md-12">
                 <label for="phone">Address</label>
                 <textarea class="form-control" id="address" name = "address" rows="5" required></textarea>
-                <small id="" class="form-text text-muted">Provide Teacher's Address.</small>
+                <small id="" class="form-text text-muted">Provide Teachers Address.</small>
             </div>
 
             <div class="form-group  col-md-12">
@@ -89,7 +89,7 @@
         $(".ajaxForm").validate({});
         $(".ajaxForm").submit(function(e) {
             var form = $(this);
-            ajaxSubmit(e, form, 'teacher_content');
+            ajaxSubmit(e, form, departmentWiseFilter);
         });
     </script>
 

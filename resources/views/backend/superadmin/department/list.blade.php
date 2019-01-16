@@ -2,7 +2,6 @@
     $departments = App\Department::where('school_id', 1)->get();
 @endphp
 @if (count($departments) > 0)
-<button type="button" class="btn btn-icon btn-success mb-1" style="float: right;" onclick="showAjaxModal('{{ route('department.create') }}', 'Create Department')"> <i class="mdi mdi-plus"></i> Add New Department</button>
 <div class="table-responsive-sm">
         <table class="table table-striped table-centered mb-0">
                 <thead class="thead-dark">

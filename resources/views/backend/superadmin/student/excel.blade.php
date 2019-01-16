@@ -3,7 +3,7 @@
         <div class="row justify-content-md-center">
             <div class="col-md-4">
                 <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
-                    <option value="">Select A Class</option>
+                    <option value="all">Select A Class</option>
                     @foreach (App\Classes::where('school_id', 1)->get() as $class)
                         <option value="{{ $class->id }}">{{ $class->name }}</option>
                     @endforeach

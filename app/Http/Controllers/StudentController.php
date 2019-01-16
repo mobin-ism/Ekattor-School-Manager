@@ -18,7 +18,7 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $title = "Student List";
         return view('backend.'.Auth::user()->role.'.student.index', compact('title'));
     }
@@ -29,21 +29,21 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $title = "Student Admission";
         $type = 'single';
         return view('backend.'.Auth::user()->role.'.student.create', compact('type', 'title'));
     }
 
     public function bulk_student_create()
-    {   
+    {
         $title = "Student Admission";
         $type = 'bulk';
         return view('backend.'.Auth::user()->role.'.student.create', compact('type', 'title'));
     }
 
     public function excel_student_create()
-    {   
+    {
         $title = "Student Admission";
         $type = 'excel';
         return view('backend.'.Auth::user()->role.'.student.create', compact('type', 'title'));
@@ -253,7 +253,7 @@ class StudentController extends Controller
     public function show($section_id)
     {
         $section  = Section::find($section_id);
-        $class_id = $section->class->id;
+        $class_id = $section->class_id;
         $running_session = get_settings('running_session');
         $school_id = get_settings('selected_branch');
         $students = Enroll::where(['section_id' => $section_id, 'class_id' => $class_id, 'session' => $running_session, 'school_id' => $school_id])->get();
@@ -312,7 +312,7 @@ class StudentController extends Controller
                 $student_image = $request->file('student_image');
                 $student_image->move($dir, $id.".jpg");
             }
-            
+
             $student = Student::find($id);
             $data = array(
                 'status' => true,
@@ -336,13 +336,23 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+        $user = User::find($student->user->id);
+        $user->delete();
+        $enroll = Enroll::where(array('student_id' => $id, 'session' => get_settings('running_session')))->first();
+        $enroll->delete();
+        return array(
+            'status' => true,
+            'view' => "",
+            'notification' =>"Student has been deleted successfully"
+        );
     }
 
     function profile($student_id) {
-        $student_details = Student::find($student_id)->first();
+        $student_details = Student::find($student_id);
         return view('backend.'.Auth::user()->role.'.student.profile', compact('student_details'));
     }
 }

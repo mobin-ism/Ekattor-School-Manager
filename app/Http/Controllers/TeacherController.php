@@ -17,7 +17,7 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $title = "Teacher";
         return view('backend.'.Auth::user()->role.'.teacher.index', compact('title'));
     }
@@ -65,14 +65,14 @@ class TeacherController extends Controller
 
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.'.Auth::user()->role.'.teacher.list')->render(),
+                    'view' => "",
                     'notification' =>"Teacher Added Successfully"
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.teacher.list')->render(),
+                'view' => "",
                 'notification' =>"Email Duplication"
             );
         }

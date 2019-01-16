@@ -2,7 +2,6 @@
     $classes = App\Classes::where('school_id', 1)->get();
 @endphp
 @if (count($classes) > 0)
-    <button type="button" class="btn btn-icon btn-success mb-1" style="float: right;" onclick="showAjaxModal('{{ route('class.create') }}', 'Create Class')"> <i class="mdi mdi-plus"></i>Add Class</button>
     <div class="table-responsive-sm">
         <table class="table table-striped table-centered mb-0 colorfulTable">
             <thead class="thead-dark">

@@ -25,7 +25,7 @@
                             <div class="btn-group mb-2">
                                 <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('subject.edit', $subject->id) }}', 'Update subject')"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="Update subject"> <i class="mdi mdi-wrench"></i> </button>
-                                <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('subject.destroy', $subject->id) }}', 'subject_content' )"
+                                <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('subject.destroy', $subject->id) }}', classWiseSubject )"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete subject"> <i class="mdi mdi-window-close"></i> </button>
                             </div>
                         </td>

@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-account-search title_icon"></i> Daily Attendance</h4>
+                <h4 class="page-title"> <i class="mdi mdi-account-search title_icon"></i> Daily Attendance <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('daily_attendance.create') }}', 'Take Attendance')"> <i class="mdi mdi-plus"></i>Take Attendance</button></h4>
             </div>
         </div>
     </div>
@@ -30,10 +30,9 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <button type="button" class="btn btn-icon btn-success" style="float: right; margin-bottom: 15px;" onclick="showAjaxModal('{{ route('daily_attendance.create') }}', 'Take Attendance')"> <i class="mdi mdi-plus"></i>Take Attendance</button>
 
-                    <div class="row col-md-12">
-                        <div class="form-group col-md-3">
+                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
+                        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select name="month" id="month" class="form-control">
                                 <option value="">Select Month</option>
                                 @foreach ($month_array as $key=>$value)
@@ -41,7 +40,8 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
+
+                        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select name="year" id="year" class="form-control">
                                 <option value="">Select Year</option>
                                 @for ($i = 2016; $i <= 2118; $i++)
@@ -49,7 +49,8 @@
                                 @endfor
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
+
+                        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
                                 <option value="all">Select Class</option>
                                 @foreach (App\Classes::where('school_id', 1)->get() as $class)
@@ -57,17 +58,19 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div id = "section_content" class="form-group col-md-3">
+                        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                             <select class="form-control" name="section_id" id="section_id">
                                 <option value="all">Select Class First</option>
                             </select>
                         </div>
+                        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="getDailtyAttendance()">Filter</button>
+                        </div>
                     </div>
-
 
                     <div class="table-responsive-sm" id = "daily_attendance_content">
                         @include('backend.'.Auth::user()->role.'.daily_attendance.list')
-                    </div> <!-- end table-responsive-->
+                    </div>
                 </div> <!-- end card body-->
             </div> <!-- end card -->
         </div><!-- end col-->
@@ -88,22 +91,26 @@
                 }
             });
         }
-
         function onChangeSection(section_id) {
-          if(section_id > 0) {
-            var url = '{{ route("daily_attendance.show_attendance") }}';
-            var month = $('#month').val();
-            var year = $('#year').val();
 
-            $.ajax({
-                type : 'POST',
-                url: url,
-                data : { section_id : section_id, month : month, year : year, _token : '{{ @csrf_token() }}' },
-                success : function(response) {
-                    $('#daily_attendance_content').html(response);
-                }
-            });
-          }
+        }
+
+        var getDailtyAttendance = function () {
+            var section_id = $("#section_id").val();
+            if(section_id > 0) {
+                var url = '{{ route("daily_attendance.show_attendance") }}';
+                var month = $('#month').val();
+                var year = $('#year').val();
+
+                $.ajax({
+                    type : 'POST',
+                    url: url,
+                    data : { section_id : section_id, month : month, year : year, _token : '{{ @csrf_token() }}' },
+                    success : function(response) {
+                        $('#daily_attendance_content').html(response);
+                    }
+                });
+            }
         }
     </script>
 @endsection

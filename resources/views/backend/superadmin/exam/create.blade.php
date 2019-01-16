@@ -8,8 +8,13 @@
     </div>
 
     <div class="form-group col-md-12">
-        <label for="date">Exam Date</label>
-        <input type="text" class="form-control date" id="date" data-toggle="date-picker" data-single-date-picker="true" name = "date" value="" required>
+        <label for="starting_date">Exam Starting Date</label>
+        <input type="text" class="form-control date" id="starting_date" data-toggle="date-picker" data-single-date-picker="true" name = "starting_date" value="" required>
+        <small id="date_help" class="form-text text-muted">Provide Exam Date.</small>
+    </div>
+    <div class="form-group col-md-12">
+        <label for="ending_date">Exam Ending Date</label>
+        <input type="text" class="form-control date" id="ending_date" data-toggle="date-picker" data-single-date-picker="true" name = "ending_date" value="" required>
         <small id="date_help" class="form-text text-muted">Provide Exam Date.</small>
     </div>
 
@@ -20,12 +25,14 @@
 
 <script>
     $(document).ready(function() {
-        $('#date').daterangepicker();
+        $('#starting_date').daterangepicker();
+        $('#ending_date').daterangepicker();
     });
 
     $(".ajaxForm").validate({}); // Jquery form validation initialization
     $(".ajaxForm").submit(function(e) {
         var form = $(this);
-        ajaxSubmit(e, form, 'exam_content');
+        ajaxSubmit(e, form, showAllExams);
     });
+
 </script>

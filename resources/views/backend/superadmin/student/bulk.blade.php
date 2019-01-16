@@ -4,7 +4,7 @@
         <div class="row justify-content-md-center">
             <div class="col-md-4">
                 <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
-                    <option value="">Class</option>
+                    <option value="all">Select A Class</option>
                     @foreach (App\Classes::where('school_id', 1)->get() as $class)
                         <option value="{{ $class->id }}">{{ $class->name }}</option>
                     @endforeach
@@ -12,7 +12,7 @@
             </div>
             <div class="col-md-4" id = "section_content">
                 <select name="section_id" id="section_id" class="form-control" required >
-                    <option value="">Select A Class First</option>
+                    <option value="">Select A Section</option>
                 </select>
             </div>
         </div>
@@ -30,14 +30,6 @@
                         <div class="form-group col">
                             <input type="password" name="password[]" class="form-control"  value="" placeholder="Password" required>
                         </div>
-                        {{-- <div class="form-group col">
-                            <select name="parent_id[]" class="form-control" required >
-                                <option value="">Select Parent</option>
-                                @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
-                                    <option value="{{ $parent->id }}">{{ $parent->name }}</option>
-                                @endforeach
-                            </select>
-                        </div> --}}
                         <div class="form-group col">
                             <select name="gender[]" class="form-control" required>
                                 <option value="">Select Gender</option>
@@ -102,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
 
         <div class="text-center">

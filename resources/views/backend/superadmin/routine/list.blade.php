@@ -15,7 +15,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" onclick="showAjaxModal('{{ route('routine.edit', $routine->id) }}', 'Update Class Routine')">Edit</a>
-                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', 'routine_content' )">Delete</a>
+                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', getClassRoutine )">Delete</a>
                             </div>
                         </div>
                     @endforeach
@@ -35,7 +35,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" onclick="showAjaxModal('{{ route('routine.edit', $routine->id) }}', 'Update Class Routine')">Edit</a>
-                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', 'routine_content' )">Delete</a>
+                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', getClassRoutine )">Delete</a>
                             </div>
                         </div>
                     @endforeach
@@ -55,7 +55,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" onclick="showAjaxModal('{{ route('routine.edit', $routine->id) }}', 'Update Class Routine')">Edit</a>
-                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', 'routine_content' )">Delete</a>
+                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', getClassRoutine )">Delete</a>
                             </div>
                         </div>
                     @endforeach
@@ -75,7 +75,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" onclick="showAjaxModal('{{ route('routine.edit', $routine->id) }}', 'Update Class Routine')">Edit</a>
-                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', 'routine_content' )">Delete</a>
+                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', getClassRoutine )">Delete</a>
                             </div>
                         </div>
                     @endforeach
@@ -95,7 +95,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" onclick="showAjaxModal('{{ route('routine.edit', $routine->id) }}', 'Update Class Routine')">Edit</a>
-                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', 'routine_content' )">Delete</a>
+                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', getClassRoutine )">Delete</a>
                             </div>
                         </div>
                     @endforeach
@@ -115,7 +115,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" onclick="showAjaxModal('{{ route('routine.edit', $routine->id) }}', 'Update Class Routine')">Edit</a>
-                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', 'routine_content' )">Delete</a>
+                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', getClassRoutine )">Delete</a>
                             </div>
                         </div>
                     @endforeach
@@ -135,7 +135,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" onclick="showAjaxModal('{{ route('routine.edit', $routine->id) }}', 'Update Class Routine')">Edit</a>
-                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', 'routine_content' )">Delete</a>
+                                <a class="dropdown-item" onclick="confirm_modal('{{ route('routine.destroy', $routine->id) }}', getClassRoutine )">Delete</a>
                             </div>
                         </div>
                     @endforeach

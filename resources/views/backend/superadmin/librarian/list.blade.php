@@ -2,7 +2,6 @@
     $librarians = \App\User::where('school_id', get_settings('selected_branch'))->where('role', 'librarian')->paginate(10);
 @endphp
 @if (count($librarians) > 0)
-    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('librarian.create') }}', 'Create Librarian')"> <i class="mdi mdi-plus"></i> Add New Librarian</button>
     <div class="table-responsive-sm">
         <table class="table table-striped table-centered mb-0 colorfulTable">
             <thead class="thead-dark">

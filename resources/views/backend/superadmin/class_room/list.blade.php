@@ -2,7 +2,6 @@
     $rooms = App\ClassRoom::where('school_id', school_id())->get();
 @endphp
 @if(count($rooms) > 0)
-    <button type="button" class="btn btn-icon btn-success" style="float: right;" onclick="showAjaxModal('{{ route('room.create') }}', 'Create New Class Room')"> <i class="mdi mdi-plus"></i> Add Class Room</button>
     <div class="table-responsive-sm">
         <table class="table table-striped table-centered mb-0">
             <thead class="thead-dark">

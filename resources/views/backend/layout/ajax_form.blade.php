@@ -1,5 +1,5 @@
 <script>
-    function ajaxSubmit(e, form, idToLoad) {
+    function ajaxSubmit(e, form, callBackFunction) {
 
         if(form.valid()) {
             e.preventDefault();
@@ -17,9 +17,7 @@
                 success: function(response)
                 {
                     (response.status === true) ? toastr.success(response.notification) : toastr.error(response.notification);
-                    if(response.view !== ""){
-                        $("#"+idToLoad).html(response.view);
-                    }
+                    callBackFunction();
                     form.trigger("reset");
                 }
             });

@@ -84,6 +84,6 @@
         $(".ajaxForm").validate({});
         $(".ajaxForm").submit(function(e) {
             var form = $(this);
-            ajaxSubmit(e, form, 'teacher_content');
+            ajaxSubmit(e, form, departmentWiseFilter);
         });
     </script>

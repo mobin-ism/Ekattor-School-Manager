@@ -4,14 +4,14 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-margin title_icon"></i> Grade</h4>
+                <h4 class="page-title"> <i class="mdi mdi-spellcheck title_icon"></i> Grade <button type="button" class="btn btn-icon btn-success mb-1 alignToTitle" onclick="showAjaxModal('{{ route('grade.create') }}', 'Create New Grade')"> <i class="mdi mdi-plus"></i> Add Grade</button></h4>
             </div>
         </div>
     </div>
     <!-- end page title -->
 
     <div class="row ">
-        <div class="col-xl-10 offset-xl-1">
+        <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
                     <div id = "grade_content">
