@@ -79,6 +79,11 @@ class LibrarianController extends Controller
         //
     }
 
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.librarian.list')->render();
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="page-title-box">
                 <h4 class="page-title"> <i class="mdi mdi-power-plug title_icon"></i> Manage Addons
-                    <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('addon_manager.create') }}', 'Add New Addon')"> <i class="mdi mdi-plus"></i> Add New Addon</button>
+                    <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('addon_manager.create') }}', 'Add New Addon')"> <i class="mdi mdi-plus"></i> Add New Addon</button>
                 </h4>
             </div>
         </div>
@@ -24,4 +24,25 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        var showAllAddons = function () {
+            var url = '{{ route("addon_manager.list") }}';
+    
+            $.ajax({
+                type : 'GET',
+                url: url,
+                success : function(response) {
+                    $('#addon_content').html(response);
+                    setTimeout(
+                    function()
+                    {
+                        location.reload();
+                    }, 1000);
+                }
+            });
+        }
+    </script>
 @endsection

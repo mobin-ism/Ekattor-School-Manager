@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12">
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">System Settings</h4>
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-secondary col-md-4 col-sm-12" onclick="updateSystemInfo($('#system_name').val())">Update System Settings</button>
+                            <button type="submit" class="btn btn-secondary col-xl-8 col-lg-12 col-md-12 col-sm-12" onclick="updateSystemInfo($('#system_name').val())">Update System Settings</button>
                         </div>
                     </div>
                 </form>
@@ -54,12 +54,11 @@
             </div> <!-- end card body-->
         </div> <!-- end card -->
     </div>
-    <div class="col-md-5">
+    <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12">
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">System Logo</h4>    
                 <form method="POST" class="col-12 systemLogoAjaxForm" action="{{ route('logo.update') }}" id = "system_settings" enctype="multipart/form-data">
-                {{-- <form method="POST" class="col-12" action="{{ route('logo.update') }}" id = "system_settings" enctype="multipart/form-data"> --}}
                     @csrf
                     <div class="col-12">
                         <div class="form-group row mb-3">
@@ -75,8 +74,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-secondary col-md-4 col-sm-12" onclick="updateSystemLogo()">Update System Settings</button>
-                            {{-- <button type="submit" class="btn btn-secondary col-md-4 col-sm-12">Update System Settings</button> --}}
+                            <button type="submit" class="btn btn-secondary col-xl-8 col-lg-12 col-md-12 col-sm-12" onclick="updateSystemLogo()">Update System Settings</button>
                         </div>
                     </div>
                 </form>     

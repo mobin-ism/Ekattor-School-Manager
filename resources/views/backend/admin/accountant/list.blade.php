@@ -8,7 +8,7 @@
     </thead>
         <tbody>
         @php
-        $accountants = \App\User::where('school_id', get_settings('selected_branch'))->where('role', 'accountant')->paginate(10);
+        $accountants = \App\User::where('school_id', school_id())->where('role', 'accountant')->paginate(10);
         @endphp
             @foreach ( $accountants as $accountant)
                 <tr>

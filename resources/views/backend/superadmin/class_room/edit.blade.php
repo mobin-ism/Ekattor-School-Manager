@@ -18,6 +18,6 @@
         $(".ajaxForm").validate({});
         $(".ajaxForm").submit(function(e) {
             var form = $(this);
-            ajaxSubmit(e, form, 'room_content');
+            ajaxSubmit(e, form, showAllClassRooms);
         });
     </script>

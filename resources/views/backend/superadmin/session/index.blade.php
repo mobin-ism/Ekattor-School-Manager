@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="page-title-box">
                 <h4 class="page-title"> <i class="mdi mdi-calendar-range title_icon"></i> Session
-                    <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('session_manager.create') }}', 'Create New Session')"> <i class="mdi mdi-plus"></i> Add Session</button>
+                    <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('session_manager.create') }}', 'Create New Session')"> <i class="mdi mdi-plus"></i> Add Session</button>
                 </h4>
             </div>
         </div>

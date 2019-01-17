@@ -1,5 +1,5 @@
 @php
-    $accessibilites = \App\Role::where('school_id', get_settings('selected_branch'))->pluck(Auth::user()->role)->first();
+    $accessibilites = \App\Role::where('school_id', school_id())->pluck(Auth::user()->role)->first();
     if ($accessibilites) {
         $accessible = json_decode($accessibilites);
     }else {

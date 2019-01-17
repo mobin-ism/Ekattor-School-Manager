@@ -14,7 +14,7 @@
         <tr>
             <td>{{ $school->name }}</td>
             <td>
-                @if ($school->id == get_settings('selected_branch'))
+                @if ($school->id == school_id())
                     <i class="mdi mdi-circle text-success"></i> Active
                 @else
                     <i class="mdi mdi-circle text-disable"></i> Deactive

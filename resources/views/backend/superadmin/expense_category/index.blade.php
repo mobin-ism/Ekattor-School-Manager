@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="page-title-box">
                 <h4 class="page-title"> <i class="mdi mdi-database title_icon"></i> Expense Category
-                    <button type="button" class="btn btn-icon btn-success mb-1 alignToTitle" onclick="showAjaxModal('{{ route('expense_category.create') }}', 'Create New Exam')"> <i class="mdi mdi-plus"></i> Add Expense Category</button>
+                    <button type="button" class="btn btn-icon btn-success mb-1 btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('expense_category.create') }}', 'Create New Exam')"> <i class="mdi mdi-plus"></i> Add Expense Category</button>
                 </h4>
             </div>
         </div>
@@ -23,4 +23,20 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    var showAllExpenseCategories = function () {
+        var url = '{{ route("expense_category.list") }}';
+
+        $.ajax({
+            type : 'GET',
+            url: url,
+            success : function(response) {
+                $('#expense_category_content').html(response);
+            }
+        });
+    }
+</script>
 @endsection

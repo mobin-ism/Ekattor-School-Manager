@@ -2,7 +2,7 @@
         @csrf
 
         <div class="row justify-content-md-center">
-            <div class="col-md-4">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                 <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
                     <option value="all">Select A Class</option>
                     @foreach (App\Classes::where('school_id', 1)->get() as $class)
@@ -10,7 +10,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-4" id = "section_content">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                 <select name="section_id" id="section_id" class="form-control" required >
                     <option value="">Select A Section</option>
                 </select>
@@ -19,18 +19,18 @@
         <br>
         <div id = "first-row">
             <div class="row">
-                <div class="col-11">
-                    <div class="row">
-                        <div class="form-group col">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                    <div class="row justify-content-md-center">
+                        <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <input type="text" name="name[]" class="form-control"  value="" placeholder="Name" required>
                         </div>
-                        <div class="form-group col">
+                        <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <input type="email" name="email[]" class="form-control"  value="" placeholder="Email" required>
                         </div>
-                        <div class="form-group col">
+                        <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <input type="password" name="password[]" class="form-control"  value="" placeholder="Password" required>
                         </div>
-                        <div class="form-group col">
+                        <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <select name="gender[]" class="form-control" required>
                                 <option value="">Select Gender</option>
                                 <option value="male">Male</option>
@@ -38,13 +38,21 @@
                                 <option value="others">Others</option>
                             </select>
                         </div>
-                        <div class="form-group col">
+                        {{-- <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <input type="text" name="phone[]" class="form-control"  value="" placeholder="Phone" required>
+                        </div> --}}
+                        <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
+                            <select name="parent_id[]" class="form-control" required >
+                                <option value="">Select Parent</option>
+                                @foreach (\App\User::where('school_id', school_id())->where('role', 'parent')->get() as $parent)
+                                    <option value="{{ $parent->id }}">{{ $parent->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-1">
-                    <div class="row">
+                <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                    <div class="row justify-content-md-center">
                         <div class="form-group col">
                             <button type="button" class="btn btn-icon btn-success" onclick="appendRow()"> <i class="mdi mdi-plus"></i> </button>
                         </div>
@@ -55,26 +63,19 @@
 
         <div id = "blank-row" style="display: none;">
             <div class="row student-row">
-                <div class="col-11">
-                    <div class="row">
-                        <div class="form-group col">
+                <div class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                    <div class="row justify-content-md-center">
+                        <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <input type="text" name="name[]" class="form-control"  value="" placeholder="Name">
                         </div>
-                        <div class="form-group col">
+                        <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <input type="email" name="email[]" class="form-control"  value="" placeholder="Email">
                         </div>
-                        <div class="form-group col">
+                        <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <input type="password" name="password[]" class="form-control"  value="" placeholder="Password">
                         </div>
-                        {{-- <div class="form-group col">
-                            <select name="parent_id[]" class="form-control">
-                                <option value="">Select Parent</option>
-                                @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
-                                    <option value="{{ $parent->id }}">{{ $parent->name }}</option>
-                                @endforeach
-                            </select>
-                        </div> --}}
-                        <div class="form-group col">
+
+                        <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <select name="gender[]" class="form-control">
                                 <option value="">Select Gender</option>
                                 <option value="male">Male</option>
@@ -82,13 +83,21 @@
                                 <option value="others">Others</option>
                             </select>
                         </div>
-                        <div class="form-group col">
+                        {{-- <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <input type="text" name="phone[]" class="form-control"  value="" placeholder="Phone">
+                        </div> --}}
+                        <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
+                            <select name="parent_id[]" class="form-control" required >
+                                <option value="">Select Parent</option>
+                                @foreach (\App\User::where('school_id', school_id())->where('role', 'parent')->get() as $parent)
+                                    <option value="{{ $parent->id }}">{{ $parent->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-1">
-                    <div class="row">
+                <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                    <div class="row justify-content-md-center">
                         <div class="form-group col">
                             <button type="button" class="btn btn-icon btn-danger" onclick="removeRow(this)"> <i class="mdi mdi-window-close"></i> </button>
                         </div>
@@ -104,8 +113,9 @@
 
 @section('scripts')
     <script>
-        var blank_field = $('#blank-row').html();
+        var form;
 
+        var blank_field = $('#blank-row').html();
         function classWiseSection(class_id) {
             var url = '{{ route("section.show", "class_id") }}';
             url = url.replace('class_id', class_id);
@@ -124,11 +134,11 @@
         }
 
         $(".ajaxForm").validate({});
-        // $("#bulk_admission").submit(function(e) {
+        $("#bulk_admission").submit(function(e) {
 
-        //     var form = $(this);
-        //     ajaxSubmit(e, form, 'teacher_content');
-        // });
+            form = $(this);
+            ajaxSubmit(e, form, refreshForm);
+        });
 
         function appendRow() {
         $('#first-row').append(blank_field);
@@ -136,6 +146,10 @@
 
         function removeRow(elem) {
             $(elem).closest('.student-row').remove();
+        }
+
+        var refreshForm = function () {
+            form.trigger("reset");
         }
     </script>
 @endsection

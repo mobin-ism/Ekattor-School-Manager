@@ -18,7 +18,7 @@
                         <td>
                             <div class="btn-group mb-2">
                                 <button type="button" class="btn btn-icon btn-secondary" style="margin-right:5px;" onclick="showAjaxModal('{{ route('department.edit', $department->id) }}', 'Update Department')"> <i class="mdi mdi-wrench"></i> </button>
-                                <button type="button" class="btn btn-icon btn-dark" style="margin-right:5px;" onclick="confirm_modal('{{ route('department.destroy', $department->id) }}', 'department_content' )"> <i class="mdi mdi-window-close"></i> </button>
+                                <button type="button" class="btn btn-icon btn-dark" style="margin-right:5px;" onclick="confirm_modal('{{ route('department.destroy', $department->id) }}', showAllDepartments )"> <i class="mdi mdi-window-close"></i> </button>
                             </div>
                         </td>
                     </tr>

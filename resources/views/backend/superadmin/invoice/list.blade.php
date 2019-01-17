@@ -13,7 +13,10 @@
     </thead>
     <tbody>
         @php
-            $invoices = App\Invoice::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->paginate(10);
+            if(isset($total_amount)) 
+            $invoices = App\Invoice::where('total_amount', '>', '540')->where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->paginate(2);
+            else 
+            $invoices = App\Invoice::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->paginate(2);
         @endphp
     @foreach ($invoices as $invoice)
         <tr>
@@ -51,6 +54,7 @@
     @endif
     </tbody>
 </table>
+<p style="margin-top: 20px;"><small>Total {{ count($invoices) }} entries found. </small></p>
 
 <div class="row" style="float:right; margin-top: 10px;">
     <div class="col">

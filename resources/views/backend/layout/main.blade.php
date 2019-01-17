@@ -12,7 +12,7 @@
     @include('backend.layout.styles')
 </head>
 
-<body @if(Request::route()->getName() == 'daily_attendance.index') class="enlarged" data-keep-enlarged="true" @endif >
+<body @if(Request::route()->getName() == 'daily_attendance.index' || Request::route()->getName() == 'student.create' || Request::route()->getName() == 'student.bulk' || Request::route()->getName() == 'student.excel') class="enlarged" data-keep-enlarged="true" @endif >
 <!-- Begin page -->
 <div class="wrapper">
 

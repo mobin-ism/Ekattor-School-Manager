@@ -68,6 +68,6 @@
     $(".ajaxForm").validate({});
     $(".ajaxForm").submit(function(e) {
         var form = $(this);
-        ajaxSubmit(e, form, 'librarian_content');
+        ajaxSubmit(e, form, showAllLibrarians);
     });
 </script>

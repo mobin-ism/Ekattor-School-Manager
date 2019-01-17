@@ -17,6 +17,6 @@
     $(".ajaxForm").validate({});
     $(".ajaxForm").submit(function(e) {
         var form = $(this);
-        ajaxSubmit(e, form, 'addon_content');
+        ajaxSubmit(e, form, showAllAddons);
     });
 </script>

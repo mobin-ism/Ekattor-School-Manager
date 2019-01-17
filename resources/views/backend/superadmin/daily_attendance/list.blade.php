@@ -1,4 +1,3 @@
-
 @if (isset($month) && isset($year))
     @php
         $number_of_days = cal_days_in_month(CAL_GREGORIAN, date('m', strtotime($month)), $year);

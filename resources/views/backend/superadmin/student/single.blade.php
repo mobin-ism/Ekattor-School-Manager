@@ -28,7 +28,7 @@
                 <div class="col-md-9">
                     <select id="parent_id" name="parent_id" class="form-control" required >
                         <option value="">Select A Parent</option>
-                        @foreach (\App\User::where('school_id', get_settings('selected_branch'))->where('role', 'parent')->get() as $parent)
+                        @foreach (\App\User::where('school_id', school_id())->where('role', 'parent')->get() as $parent)
                             <option value="{{ $parent->id }}">{{ $parent->name }}</option>
                         @endforeach
                     </select>
@@ -103,6 +103,7 @@
 
 @section('scripts')
     <script>
+        var form;
         function classWiseSection(class_id) {
             if(class_id > 0) {
 
@@ -128,8 +129,13 @@
         $(".ajaxForm").validate({});
         $("#single_admission").submit(function(e) {
 
-            var form = $(this);
-            ajaxSubmit(e, form, 'student_content');
+            form = $(this);
+            ajaxSubmit(e, form, refreshForm);
         });
+
+        var refreshForm = function () {
+            form.trigger("reset");
+        }
+        
     </script>
 @endsection

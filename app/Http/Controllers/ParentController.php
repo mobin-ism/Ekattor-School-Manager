@@ -80,6 +80,11 @@ class ParentController extends Controller
         return view('backend.'.Auth::user()->role.'.parent.children', compact('user'));
     }
 
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.parent.list')->render();
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

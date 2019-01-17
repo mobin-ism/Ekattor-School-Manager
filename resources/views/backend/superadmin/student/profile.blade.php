@@ -1,5 +1,5 @@
 @php
-    $enroll_details = \App\Enroll::where(['student_id' => $student_details->id, 'session' => get_settings('running_session'), 'school_id' => get_settings('selected_branch')])->get();
+    $enroll_details = \App\Enroll::where(['student_id' => $student_details->id, 'session' => get_settings('running_session'), 'school_id' => school_id()])->get();
     $class_details = \App\Classes::find($enroll_details[0]->class_id);
     $section_details = \App\Section::find($enroll_details[0]->section_id);
     $parent_info = \App\User::find($student_details->parent_id);

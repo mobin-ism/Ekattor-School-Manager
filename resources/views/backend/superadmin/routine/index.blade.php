@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-calendar-today title_icon"></i> Class Routine <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('routine.create') }}', 'Add Routine')"> <i class="mdi mdi-plus"></i>Add Routine</button></h4>
+                <h4 class="page-title"> <i class="mdi mdi-calendar-today title_icon"></i> Class Routine 
+                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('routine.create') }}', 'Add Routine')"> <i class="mdi mdi-plus"></i>Add Routine</button></h4>
             </div>
         </div>
     </div>

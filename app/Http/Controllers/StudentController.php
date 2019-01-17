@@ -81,7 +81,7 @@ class StudentController extends Controller
             $user->phone = $request->phone;
             $user->birthday = strtotime($request->birthday);
             $user->gender = $request->gender;
-            $user->school_id = get_settings('selected_branch');
+            $user->school_id = school_id();
             $user->save();
 
             $user_id = $user->id;
@@ -89,7 +89,7 @@ class StudentController extends Controller
             $student->user_id = $user_id;
             $student->code = substr(md5(uniqid(rand(), true)), 0, 7);
             $student->parent_id = $request->parent_id;
-            $student->school_id = get_settings('selected_branch');
+            $student->school_id = school_id();
             $student->save();
             $student_id = $student->id;
 
@@ -97,7 +97,7 @@ class StudentController extends Controller
             $enroll->student_id = $student_id;
             $enroll->class_id = $request->class_id;
             $enroll->section_id = $request->section_id;
-            $enroll->school_id = get_settings('selected_branch');
+            $enroll->school_id = school_id();
             $enroll->session = get_settings('running_session');
             $enroll->save();
 
@@ -133,17 +133,17 @@ class StudentController extends Controller
                     $user->email = $request->email[$key];
                     $user->password = Hash::make($request->password[$key]);
                     $user->role = "student";
-                    $user->phone = $request->phone[$key];
+                    //$user->phone = $request->phone[$key];
                     $user->gender = $request->gender[$key];
-                    $user->school_id = get_settings('selected_branch');
+                    $user->school_id = school_id();
                     $user->save();
 
                     $user_id = $user->id;
                     $student = new Student;
                     $student->user_id = $user_id;
                     $student->code = substr(md5(uniqid(rand(), true)), 0, 7);
-                    // $student->parent_id = $request->parent_id[$key];
-                    $student->school_id = get_settings('selected_branch');
+                    $student->parent_id = $request->parent_id[$key];
+                    $student->school_id = school_id();
                     $student->save();
                     $student_id = $student->id;
 
@@ -151,7 +151,7 @@ class StudentController extends Controller
                     $enroll->student_id = $student_id;
                     $enroll->class_id = $request->class_id;
                     $enroll->section_id = $request->section_id;
-                    $enroll->school_id = get_settings('selected_branch');
+                    $enroll->school_id = school_id();
                     $enroll->session = get_settings('running_session');
                     $enroll->save();
                 }
@@ -160,8 +160,13 @@ class StudentController extends Controller
                 }
             }
         }
-        flash('Success')->success();
-        return back();
+
+        $data = array(
+            'status' => true,
+            'view' => "",
+            'notification' =>"Student Added Successfully"
+        );
+        return $data;
     }
 
     public function excel_student_store(Request $request) {
@@ -196,7 +201,7 @@ class StudentController extends Controller
                     $user->role = "student";
                     $user->phone = $phone;
                     $user->gender = $gender;
-                    $user->school_id = get_settings('selected_branch');
+                    $user->school_id = school_id();
                     $user->save();
 
                     $user_id = $user->id;
@@ -204,7 +209,7 @@ class StudentController extends Controller
                     $student->user_id = $user_id;
                     $student->code = substr(md5(uniqid(rand(), true)), 0, 7);
                     $student->parent_id = $parent_id;
-                    $student->school_id = get_settings('selected_branch');
+                    $student->school_id = school_id();
                     $student->save();
                     $student_id = $student->id;
 
@@ -212,7 +217,7 @@ class StudentController extends Controller
                     $enroll->student_id = $student_id;
                     $enroll->class_id = $request->class_id;
                     $enroll->section_id = $request->section_id;
-                    $enroll->school_id = get_settings('selected_branch');
+                    $enroll->school_id = school_id();
                     $enroll->session = get_settings('running_session');
                     $enroll->save();
                 }
@@ -255,7 +260,7 @@ class StudentController extends Controller
         $section  = Section::find($section_id);
         $class_id = $section->class_id;
         $running_session = get_settings('running_session');
-        $school_id = get_settings('selected_branch');
+        $school_id = school_id();
         $students = Enroll::where(['section_id' => $section_id, 'class_id' => $class_id, 'session' => $running_session, 'school_id' => $school_id])->get();
         return view('backend.'.Auth::user()->role.'.student.list', compact('students'));
     }
@@ -294,16 +299,16 @@ class StudentController extends Controller
             $user->phone = $request->phone;
             $user->birthday = strtotime($request->birthday);
             $user->gender = $request->gender;
-            $user->school_id = get_settings('selected_branch');
+            $user->school_id = school_id();
             $user->save();
 
             $student->parent_id = $request->parent_id;
-            $student->school_id = get_settings('selected_branch');
+            $student->school_id = school_id();
             $student->save();
 
             $enroll->class_id = $request->class_id;
             $enroll->section_id = $request->section_id;
-            $enroll->school_id = get_settings('selected_branch');
+            $enroll->school_id = school_id();
             $enroll->session = get_settings('running_session');
             $enroll->save();
 

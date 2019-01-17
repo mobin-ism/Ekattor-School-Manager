@@ -1,4 +1,4 @@
-@if (sizeof(App\Addon::where('school_id', get_settings('selected_branch'))->get()) > 0)
+@if (sizeof(App\Addon::where('school_id', school_id())->get()) > 0)
 <table class="table table-striped table-centered mb-0">
     <thead class="thead-dark">
     <tr>
@@ -8,7 +8,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (App\Addon::where('school_id', get_settings('selected_branch'))->get() as $addon)
+    @foreach (App\Addon::where('school_id', school_id())->get() as $addon)
         <tr>
             <td>{{ ucfirst(str_replace('_', ' ', $addon->name)) }}</td>
             <td>
@@ -21,17 +21,17 @@
             <td>
                 <div class="btn-group mb-2">
                     @if ($addon->status == 1)
-                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('addon_manager.destroy', $addon->id) }}', 'addon_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Disable addon"> <i class="mdi mdi-link-variant-off"></i> </button>
+                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('addon_manager.destroy', $addon->id) }}', showAllAddons )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Disable addon"> <i class="mdi mdi-link-variant-off"></i> </button>
                         <a href="{{ route($addon->unique_identifier.'.index') }}"  class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Go to addon"> <i class="mdi mdi-arrow-top-right"></i> </a>
                     @else
-                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('addon_manager.destroy', $addon->id) }}', 'addon_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Enable addon"> <i class="mdi mdi-link-variant-off"></i> </button>
+                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('addon_manager.destroy', $addon->id) }}', showAllAddons )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Enable addon"> <i class="mdi mdi-link-variant-off"></i> </button>
                     @endif
                 </div>
             </td>
         </tr>
     @endforeach
     </tbody>
-</tabl
+</table>
 @else
 <div style="text-align: center;">
         <img src="{{ asset('backend/images/empty_box.png') }}" alt="" height="150" width="200" style="text-align: center;  opacity: 0.8;">

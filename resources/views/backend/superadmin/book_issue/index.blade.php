@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="page-title-box">
                 <h4 class="page-title"> <i class="mdi mdi-book-open title_icon"></i> Books Issue
-                    <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('book_issue.create') }}', 'Issue A Book')"> <i class="mdi mdi-plus"></i> Issue Book</button>
+                    <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('book_issue.create') }}', 'Issue A Book')"> <i class="mdi mdi-plus"></i> Issue Book</button>
                 </h4>
             </div>
         </div>

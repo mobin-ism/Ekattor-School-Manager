@@ -7,7 +7,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (App\Addon::where('school_id', get_settings('selected_branch'))->get() as $addon)
+    @foreach (App\Addon::where('school_id', school_id())->get() as $addon)
         <tr>
             <td>{{ ucfirst(str_replace('_', ' ', $addon->name)) }}</td>
             <td>
@@ -26,7 +26,7 @@
             </td>
         </tr>
     @endforeach
-    @if (sizeof(App\Addon::where('school_id', get_settings('selected_branch'))->get()) == 0)
+    @if (sizeof(App\Addon::where('school_id', school_id())->get()) == 0)
         <tr>
             <td colspan="3"> No Data Found</td>
         </tr>

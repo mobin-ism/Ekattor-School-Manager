@@ -29,6 +29,6 @@
     $(".ajaxForm").validate({});
     $(".ajaxForm").submit(function(e) {
         var form = $(this);
-        ajaxSubmit(e, form, 'book_content');
+        ajaxSubmit(e, form, showAllBooks);
     });
 </script>

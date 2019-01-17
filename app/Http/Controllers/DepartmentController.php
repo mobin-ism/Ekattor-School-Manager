@@ -67,6 +67,11 @@ class DepartmentController extends Controller
 
     }
 
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.department.list')->render();
+    }
+
 /**
  * Show the form for editing the specified resource.
  *

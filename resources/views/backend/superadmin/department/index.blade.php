@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-content-paste title_icon"></i> Department <button type="button" class="btn btn-icon btn-success mb-1 alignToTitle" onclick="showAjaxModal('{{ route('department.create') }}', 'Create Department')"> <i class="mdi mdi-plus"></i> Add New Department</button></h4>
+                <h4 class="page-title"> <i class="mdi mdi-content-paste title_icon"></i> Department
+                <button type="button" class="btn btn-icon btn-success mb-1 btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('department.create') }}', 'Create Department')"> <i class="mdi mdi-plus"></i> Add New Department</button></h4>
             </div>
         </div>
     </div>
@@ -21,4 +22,20 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    var showAllDepartments = function () {
+        var url = '{{ route("department.list") }}';
+
+        $.ajax({
+            type : 'GET',
+            url: url,
+            success : function(response) {
+                $('#department_content').html(response);
+            }
+        });
+    }
+</script>
 @endsection

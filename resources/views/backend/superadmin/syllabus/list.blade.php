@@ -15,7 +15,7 @@
                 <td>{{ $syllabus->title }}</td>
 
                 <td>
-                    <a href="{{ asset('backend/files/syllabus/'.$syllabus->file) }}" download>Download</a>
+                    <a href="{{ asset('backend/files/syllabus/'.$syllabus->file) }}" class="btn btn-info" download ><i class="mdi mdi-cloud-download mr-1"></i> <span>Download</span></a>
                 </td>
                 <td>
                     {{ $syllabus->subject->name }}

@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-database title_icon"></i> Expense <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('expense.create') }}', 'Create New Expense')"> <i class="mdi mdi-plus"></i> Add Expense</button></h4>
+                <h4 class="page-title"> <i class="mdi mdi-database title_icon"></i> Expense
+                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('expense.create') }}', 'Create New Expense')"> <i class="mdi mdi-plus"></i> Add Expense</button></h4>
             </div>
         </div>
     </div>

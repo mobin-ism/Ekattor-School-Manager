@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="page-title-box">
                 <h4 class="page-title"> <i class=" mdi mdi-book-open-page-variant title_icon"></i> Books
-                    <button type="button" class="btn btn-icon btn-success mb-1 alignToTitle" onclick="showAjaxModal('{{ route('book.create') }}', 'Add Books')"> <i class="mdi mdi-plus"></i> Add Book</button>
+                    <button type="button" class="btn btn-icon btn-success btn-rounded mb-1 alignToTitle" onclick="showAjaxModal('{{ route('book.create') }}', 'Add Books')"> <i class="mdi mdi-plus"></i> Add Book</button>
                 </h4>
             </div>
         </div>
@@ -23,4 +23,20 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    var showAllBooks = function () {
+        var url = '{{ route("book.list") }}';
+
+        $.ajax({
+            type : 'GET',
+            url: url,
+            success : function(response) {
+                $('#book_content').html(response);
+            }
+        });
+    }
+</script>
 @endsection

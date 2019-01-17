@@ -71,6 +71,11 @@ class BookController extends Controller
         //
     }
 
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.book.list')->render();
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

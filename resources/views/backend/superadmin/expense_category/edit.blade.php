@@ -16,6 +16,6 @@
     $(".ajaxForm").validate({}); // Jquery form validation initialization
     $(".ajaxForm").submit(function(e) {
         var form = $(this);
-        ajaxSubmit(e, form, 'expense_category_content');
+        ajaxSubmit(e, form, showAllExpenseCategories);
     });
 </script>

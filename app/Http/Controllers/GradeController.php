@@ -72,6 +72,11 @@ class GradeController extends Controller
         //
     }
 
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.grade.list')->render();
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

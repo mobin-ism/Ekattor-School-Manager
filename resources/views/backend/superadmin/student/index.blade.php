@@ -4,7 +4,9 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-account-group title_icon"></i> Student</h4>
+                <h4 class="page-title"> <i class="mdi mdi-account-group title_icon"></i> Student
+                <a href="{{ route('student.create') }}" class="btn btn-icon btn-success btn-rounded alignToTitle"> <i class="mdi mdi-plus"></i> Add New Student</a>
+                </h4>
             </div>
         </div>
     </div>

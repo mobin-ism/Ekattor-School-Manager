@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Invoice;
+use App\Classes;
+use App\Section;
+use App\Enroll;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -69,8 +72,31 @@ class InvoiceController extends Controller
     }
 
     public function mass_invoice_store(Request $request)
-    {
-
+    {   
+        $section_id  = $request->section_id;
+        $class_id = $request->class_id;
+        $running_session = get_settings('running_session');
+        $school_id = school_id();
+        $students = Enroll::where(['section_id' => $section_id, 'class_id' => $class_id, 'session' => $running_session, 'school_id' => $school_id])->get();
+        foreach($students as $student) {
+            $invoice = new Invoice;
+            $invoice->title = $request->title;
+            $invoice->total_amount = $request->total_amount;
+            $invoice->paid_amount = $request->paid_amount;
+            $invoice->class_id = $class_id ;
+            $invoice->student_id = $student->student_id;
+            $invoice->status = $request->status;
+            $invoice->school_id = school_id();
+            $invoice->session = get_settings('running_session');
+            $invoice->save();
+        }
+        
+        $data = array(
+            'status' => true,
+            'view' => view('backend.'.Auth::user()->role.'.invoice.list')->render(),
+            'notification' =>"Invoice Added Successfully"
+        );
+        return $data;
     }
 
     /**
@@ -115,5 +141,13 @@ class InvoiceController extends Controller
     public function destroy(Invoice $invoice)
     {
         //
+    }
+
+    public function list(Request $request)
+    {   
+        $total_amount = 0;
+        return view('backend.'.Auth::user()->role.'.invoice.list', compact('total_amount'))->render();
+        // $date = explode('-', $request->date);
+        // echo strtotime($date[0]);
     }
 }

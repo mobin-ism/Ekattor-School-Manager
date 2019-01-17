@@ -73,6 +73,11 @@ class ClassController extends Controller
         return view('backend.'.Auth::user()->role.'.class.section', compact('classes'));
     }
 
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.class.list')->render();
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

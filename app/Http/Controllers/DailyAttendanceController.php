@@ -42,7 +42,7 @@ class DailyAttendanceController extends Controller
         $date = strtotime($request->date);
         $class_id = $request->class_id;
         $section_id = $request->section_id;
-        $school_id = get_settings('selected_branch');
+        $school_id = school_id();
         $entries = DailyAttendance::where('timestamp', $date)->where('class_id', $class_id)->where('section_id', $section_id)->where('school_id', $school_id)->get();
 
         foreach($entries as $entry) {
@@ -77,7 +77,7 @@ class DailyAttendanceController extends Controller
         $section  = Section::find($section_id);
         $class_id = $section->class->id;
         $running_session = get_settings('running_session');
-        $school_id = get_settings('selected_branch');
+        $school_id = school_id();
         $students = Enroll::where(['section_id' => $section_id, 'class_id' => $class_id, 'session' => $running_session, 'school_id' => $school_id])->get();
         $month = $request->month;
         $year = $request->year;
@@ -91,7 +91,7 @@ class DailyAttendanceController extends Controller
         $section  = Section::find($section_id);
         $class_id = $section->class->id;
         $running_session = get_settings('running_session');
-        $school_id = get_settings('selected_branch');
+        $school_id = school_id();
         $date = strtotime($request->date);
 
         $students = Enroll::where(['section_id' => $section_id, 'class_id' => $class_id, 'session' => $running_session, 'school_id' => $school_id])->get();

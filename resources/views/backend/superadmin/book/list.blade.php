@@ -29,13 +29,14 @@
                         <td>
                             <div class="btn-group mb-2">
                                 <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('book.edit', $book->id) }}', 'Update Book')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Book info"> <i class="mdi mdi-wrench"></i> </button>
-                                <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('book.destroy', $book->id) }}', 'book_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Book"> <i class="mdi mdi-window-close"></i> </button>
+                                <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('book.destroy', $book->id) }}', showAllBooks )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Book"> <i class="mdi mdi-window-close"></i> </button>
                             </div>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <p style="margin-top: 20px;"><small>Total {{ count($books) }} entries found. </small></p>
         <div class="row" style="float:right; margin-top: 10px;">
             <div class="col">
                 {{ $books->links() }}

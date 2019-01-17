@@ -105,17 +105,4 @@
         var form = $(this);
         ajaxSubmit(e, form, callBackFunction);
     });
-
-
-    function check() {
-        var div_to_load = $("#div_to_reload").val();
-        if (div_to_load == "addon_content") {
-            jQuery('#alert-modal').modal('hide');
-            setTimeout(
-            function()
-            {
-                location.reload();
-            }, 1000);
-        }
-    }
 </script>

@@ -14,20 +14,22 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div class="col-md-4">
+                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
-                                <option value="all">Class</option>
+                                <option value="all">Select A Class</option>
                                 @foreach (App\Classes::where('school_id', 1)->get() as $class)
                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-
-                        <div id = "section_content" class="col-md-4">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                             <select class="form-control" name="section_id" id="section_id">
-                                <option value="all">Select Class First</option>
+                                <option value="all">Select A Section</option>
                             </select>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
+                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="showTeachersPermission()">Filter</button>
                         </div>
                     </div>
                     <div id = "teacher_permission_content">
@@ -56,7 +58,12 @@
         }
 
         function onChangeSection(section_id) {
-          if(section_id > 0) {
+          
+        }
+
+        var showTeachersPermission = function () {
+            var section_id = $('#section_id').val();
+            if(section_id > 0) {
             var url = '{{ route("permission.show", "section_id") }}';
             url = url.replace('section_id', section_id);
             $.ajax({
@@ -67,7 +74,7 @@
                 }
             });
           }else {
-            $('.permission_switch').attr('disabled', true);
+            toastr.error('Select a section');
           }
         }
 

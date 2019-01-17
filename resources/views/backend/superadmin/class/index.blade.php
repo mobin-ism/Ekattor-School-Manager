@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"><i class="mdi mdi-book-open-page-variant title_icon"></i> Class <button type="button" class="btn btn-icon btn-success mb-1 alignToTitle" onclick="showAjaxModal('{{ route('class.create') }}', 'Create Class')"> <i class="mdi mdi-plus"></i>Add Class</button></h4>
+                <h4 class="page-title"><i class="mdi mdi-book-open-page-variant title_icon"></i> Class 
+                <button type="button" class="btn btn-icon btn-success btn-rounded mb-1 alignToTitle" onclick="showAjaxModal('{{ route('class.create') }}', 'Create Class')"> <i class="mdi mdi-plus"></i>Add Class</button></h4>
             </div>
         </div>
     </div>
@@ -21,4 +22,20 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    var showAllClasses = function () {
+        var url = '{{ route("class.list") }}';
+
+        $.ajax({
+            type : 'GET',
+            url: url,
+            success : function(response) {
+                $('#class_content').html(response);
+            }
+        });
+    }
+</script>
 @endsection

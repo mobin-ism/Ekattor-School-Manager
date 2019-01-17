@@ -79,6 +79,11 @@ class AccountantController extends Controller
         //
     }
 
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.accountant.list')->render();
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

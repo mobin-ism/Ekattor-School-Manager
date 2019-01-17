@@ -1,7 +1,7 @@
 <form method="POST" class="col-12 ajaxForm" action="{{ route('student.store.excel') }}" id = "csv_admission" enctype="multipart/form-data">
         @csrf
         <div class="row justify-content-md-center">
-            <div class="col-md-4">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                 <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
                     <option value="all">Select A Class</option>
                     @foreach (App\Classes::where('school_id', 1)->get() as $class)
@@ -9,7 +9,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-4" id = "section_content">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                 <select name="section_id" id="section_id" class="form-control" required >
                     <option value="">Select A Section</option>
                 </select>
@@ -53,6 +53,7 @@
 
 @section('scripts')
     <script>
+        var form;
         function classWiseSection(class_id) {
             var url = '{{ route("section.show", "class_id") }}';
             url = url.replace('class_id', class_id);
@@ -73,8 +74,8 @@
         $(".ajaxForm").validate({});
         $("#csv_admission").submit(function(e) {
 
-            var form = $(this);
-            ajaxSubmit(e, form, 'student_content');
+            form = $(this);
+            ajaxSubmit(e, form, refreshForm);
         });
 
         $("#generate_csv").click(function(){
@@ -90,5 +91,9 @@
                 }
             });
         });
+
+        var refreshForm = function () {
+            form.trigger("reset");
+        }
     </script>
 @endsection

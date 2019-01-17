@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-library title_icon"></i> Class Room <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('room.create') }}', 'Create New Class Room')"> <i class="mdi mdi-plus"></i> Add Class Room</button></h4>
+                <h4 class="page-title"> <i class="mdi mdi-library title_icon"></i> Class Room 
+                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('room.create') }}', 'Create New Class Room')"> <i class="mdi mdi-plus"></i> Add Class Room</button></h4>
             </div>
         </div>
     </div>
@@ -21,4 +22,20 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    var showAllClassRooms = function () {
+        var url = '{{ route("room.list") }}';
+
+        $.ajax({
+            type : 'GET',
+            url: url,
+            success : function(response) {
+                $('#room_content').html(response);
+            }
+        });
+    }
+</script>
 @endsection

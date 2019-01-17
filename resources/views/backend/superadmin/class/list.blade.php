@@ -26,7 +26,7 @@
                         <div class="btn-group mb-2">
                             <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('class.show', $class->id) }}', 'Sections')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Manage Sections"> <i class="dripicons-checklist"></i> </button>
                             <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('class.edit', $class->id) }}', 'Update Class')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Class info"> <i class="mdi mdi-wrench"></i> </button>
-                            <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('class.destroy', $class->id) }}', 'class_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Class"> <i class="mdi mdi-window-close"></i> </button>
+                            <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('class.destroy', $class->id) }}', showAllClasses )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Class"> <i class="mdi mdi-window-close"></i> </button>
                         </div>
                     </td>
                 </tr>

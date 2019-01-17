@@ -20,7 +20,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-account-search title_icon"></i> Daily Attendance <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('daily_attendance.create') }}', 'Take Attendance')"> <i class="mdi mdi-plus"></i>Take Attendance</button></h4>
+                <h4 class="page-title"> <i class="mdi mdi-account-search title_icon"></i> Daily Attendance
+                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('daily_attendance.create') }}', 'Take Attendance')"> <i class="mdi mdi-plus"></i>Take Attendance</button></h4>
             </div>
         </div>
     </div>

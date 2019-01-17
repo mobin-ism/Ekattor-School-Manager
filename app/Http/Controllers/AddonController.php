@@ -68,7 +68,7 @@ class AddonController extends Controller
                 $addon->name = $json['name'];
                 $addon->unique_identifier = $json['unique_identifier'];
                 $addon->status = 0;
-                $addon->school_id = get_settings('selected_branch');
+                $addon->school_id = school_id();
                 $addon->save();
 
                 // Create new directories.
@@ -131,6 +131,11 @@ class AddonController extends Controller
     public function show(Addon $addon)
     {
         //
+    }
+
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.addon.list')->render();
     }
 
     /**

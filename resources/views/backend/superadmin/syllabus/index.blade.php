@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="page-title-box">
                 <h4 class="page-title"> <i class="mdi mdi-chart-timeline title_icon"></i> Syllabus
-                <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('syllabus.create') }}', 'Add Syllabus')"> <i class="mdi mdi-plus"></i> Add New Syllabus</button>
+                <button type="button" class="btn btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('syllabus.create') }}', 'Add Syllabus')"> <i class="mdi mdi-plus"></i> Add New Syllabus</button>
                 </h4>
             </div>
         </div>

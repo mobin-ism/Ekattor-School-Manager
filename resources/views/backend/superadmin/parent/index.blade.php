@@ -4,7 +4,9 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> Parent <button type="button" class="btn btn-icon btn-success mb-1 alignToTitle" onclick="showAjaxModal('{{ route('parent.create') }}', 'Create Parent')"> <i class="mdi mdi-plus"></i> Add New Parent</button></h4>
+                <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> Parent 
+                <button type="button" class="btn btn-icon btn-success btn-rounded mb-1 alignToTitle" onclick="showAjaxModal('{{ route('parent.create') }}', 'Create Parent')"> <i class="mdi mdi-plus"></i> Add New Parent</button>
+            </h4>
             </div>
         </div>
     </div>
@@ -21,4 +23,20 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    var showAllParents = function () {
+        var url = '{{ route("parent.list") }}';
+
+        $.ajax({
+            type : 'GET',
+            url: url,
+            success : function(response) {
+                $('#parent_content').html(response);
+            }
+        });
+    }
+</script>
 @endsection

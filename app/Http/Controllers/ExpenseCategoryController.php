@@ -69,6 +69,11 @@ class ExpenseCategoryController extends Controller
         //
     }
 
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.expense_category.list')->render();
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

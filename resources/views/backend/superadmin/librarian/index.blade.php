@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"><i class="mdi mdi-account-circle title_icon"></i> Librarian <button type="button" class="btn btn-icon btn-success alignToTitle" onclick="showAjaxModal('{{ route('librarian.create') }}', 'Create Librarian')"> <i class="mdi mdi-plus"></i> Add New Librarian</button></h4>
+                <h4 class="page-title"><i class="mdi mdi-account-circle title_icon"></i> Librarian
+                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('librarian.create') }}', 'Create Librarian')"> <i class="mdi mdi-plus"></i> Add New Librarian</button></h4>
             </div>
         </div>
     </div>
@@ -21,4 +22,20 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    var showAllLibrarians = function () {
+        var url = '{{ route("librarian.list") }}';
+
+        $.ajax({
+            type : 'GET',
+            url: url,
+            success : function(response) {
+                $('#librarian_content').html(response);
+            }
+        });
+    }
+</script>
 @endsection
