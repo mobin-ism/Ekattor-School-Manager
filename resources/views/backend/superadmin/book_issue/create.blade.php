@@ -50,6 +50,8 @@
             $('#issue_date').daterangepicker();
         });
 
+
+
         $(".ajaxForm").validate({}); // Jquery form validation initialization
         $(".ajaxForm").submit(function(e) {
             var form = $(this);

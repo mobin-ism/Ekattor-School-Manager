@@ -17,9 +17,11 @@ class InvoiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $title = "Student Fee Manager";
-        return view('backend.'.Auth::user()->role.'.invoice.index', compact('title'));
+        $date_from = strtotime(date('d-M-Y', strtotime(' -30 day')).' 00:00:00');
+        $date_to   = strtotime(date('d-M-Y').' 23:59:59');
+        return view('backend.'.Auth::user()->role.'.invoice.index', compact('title', 'date_from', 'date_to'));
     }
 
     /**
@@ -58,13 +60,13 @@ class InvoiceController extends Controller
         if($invoice->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.invoice.list')->render(),
+                'view' => "",
                 'notification' =>"Invoice Added Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.invoice.list')->render(),
+                'view' => "",
                 'notification' =>"An Error Occured When Adding Invoice"
             );
         }
@@ -72,7 +74,7 @@ class InvoiceController extends Controller
     }
 
     public function mass_invoice_store(Request $request)
-    {   
+    {
         $section_id  = $request->section_id;
         $class_id = $request->class_id;
         $running_session = get_settings('running_session');
@@ -90,10 +92,10 @@ class InvoiceController extends Controller
             $invoice->session = get_settings('running_session');
             $invoice->save();
         }
-        
+
         $data = array(
             'status' => true,
-            'view' => view('backend.'.Auth::user()->role.'.invoice.list')->render(),
+            'view' => "",
             'notification' =>"Invoice Added Successfully"
         );
         return $data;
@@ -107,7 +109,9 @@ class InvoiceController extends Controller
      */
     public function single_invoice_edit($id)
     {
-        //
+        $invoice = Invoice::find($id);
+        return view('backend.'.Auth::user()->role.'.invoice.edit_single', compact('invoice'));
+
     }
 
     public function mass_invoice_edit($id)
@@ -124,7 +128,29 @@ class InvoiceController extends Controller
      */
     public function single_invoice_update(Request $request, $id)
     {
-        //
+        $invoice = Invoice::find($id);
+        $invoice->title = $request->title;
+        $invoice->total_amount = $request->total_amount;
+        $invoice->paid_amount = $request->paid_amount;
+        $invoice->class_id = $request->class_id;
+        $invoice->student_id = $request->student_id;
+        $invoice->status = $request->status;
+        $invoice->school_id = school_id();
+        $invoice->session = get_settings('running_session');
+        if($invoice->save()){
+            $data = array(
+                'status' => true,
+                'view' => "",
+                'notification' =>"Invoice Updated Successfully"
+            );
+        }else {
+            $data = array(
+                'status' => false,
+                'view' => "",
+                'notification' =>"An Error Occured When Updating Invoice"
+            );
+        }
+        return $data;
     }
 
     public function mass_invoice_update(Request $request, $id)
@@ -138,16 +164,22 @@ class InvoiceController extends Controller
      * @param  \App\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Invoice $invoice)
+    public function destroy($id)
     {
-        //
+        $invoice = Invoice::find($id);
+        $invoice->delete();
+        return array(
+            'status' => true,
+            'view' => "",
+            'notification' =>"Invoice has been deleted successfully"
+        );
     }
 
     public function list(Request $request)
-    {   
-        $total_amount = 0;
-        return view('backend.'.Auth::user()->role.'.invoice.list', compact('total_amount'))->render();
-        // $date = explode('-', $request->date);
-        // echo strtotime($date[0]);
+    {
+        $date = explode('-', $request->date);
+        $date_from = strtotime($date[0].' 00:00:00');
+        $date_to   = strtotime($date[1].' 23:59:59');
+        return view('backend.'.Auth::user()->role.'.invoice.list', compact('date_from', 'date_to'))->render();
     }
 }

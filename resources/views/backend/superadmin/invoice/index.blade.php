@@ -12,19 +12,18 @@
         </div>
     </div>
     <!-- end page title -->
-
     <div class="row ">
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title mt-3">Student Fee Report</h4>
-                    
+
                     <div class="row justify-content-md-center" style="margin-bottom: 10px;">
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <div class="form-group">
                                 <div id="reportrange" class="form-control" data-toggle="date-picker-range" data-target-display="#selectedValue"  data-cancel-class="btn-light">
                                     <i class="mdi mdi-calendar"></i>&nbsp;
-                                    <span id="selectedValue"></span> <i class="mdi mdi-menu-down"></i>
+                                    <span id="selectedValue"> {{ date('F d, Y', strtotime(' -30 day')).' - '.date('F d, Y') }} </span> <i class="mdi mdi-menu-down"></i>
                                 </div>
                             </div>
                         </div>
@@ -32,7 +31,7 @@
                             <button type="button" class="btn btn-icon btn-secondary form-control" onclick="showAllInvoices()">Filter</button>
                         </div>
                     </div>
-                    
+
                     <div class="table-responsive-sm" id = "invoice_content">
                         @include('backend.'.Auth::user()->role.'.invoice.list')
                     </div> <!-- end table-responsive-->
@@ -47,20 +46,14 @@
 <script>
     var showAllInvoices = function () {
         var url = '{{ route("invoice.list") }}';
-
+        console.log($('#selectedValue').text());
         $.ajax({
             type : 'GET',
             url: url,
             data : {date : $('#selectedValue').text()},
             success : function(response) {
                 $('#invoice_content').html(response);
-                $('.page-item').each(function(i, el){
-                    if($(el).find('a').attr('href')){
-                        var string = $(el).find('a').attr('href');
-                        string = string.replace("_list", "");
-                        $(el).find('a').attr('href', string);
-                    }
-                });
+                initDataTable("basic-datatable");
             }
         });
     }
