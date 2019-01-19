@@ -7,7 +7,7 @@
     </thead>
     <tbody>
 
-    @foreach (App\Department::where('school_id', 1)->get() as $department)
+    @foreach (App\Department::where('school_id', school_id())->get() as $department)
         <tr>
             <td>{{ $department->name }}</td>
             <td>
@@ -18,7 +18,7 @@
             </td>
         </tr>
     @endforeach
-    @if (sizeof(App\Department::where('school_id', 1)->get()) == 0)
+    @if (sizeof(App\Department::where('school_id', school_id())->get()) == 0)
         <tr>
             <td colspan="2"> No Data Found</td>
         </tr>

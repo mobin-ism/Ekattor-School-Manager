@@ -14,7 +14,11 @@
                     <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                         aria-expanded="false">
                         <span class="account-user-avatar">
-                            <img src="{{asset('backend/images/users/avatar-1.jpg')}}" alt="user-image" class="rounded-circle">
+                            @if (file_exists('backend/images/user_image/'.Auth::user()->id.'.jpg'))
+                                <img src="{{ asset('backend/images/user_image/'.Auth::user()->id.'.jpg') }}" alt="user-image" class="rounded-circle">
+                            @else
+                                <img src="{{ asset('backend/images/avatar.jpg') }}" alt="user-image" class="rounded-circle">
+                            @endif
                         </span>
                         <span>
                             <span class="account-user-name">{{ Auth::user()->name }}</span>
@@ -28,13 +32,13 @@
                         </div>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a href="{{ route('profile.index') }}" class="dropdown-item notify-item">
                             <i class="mdi mdi-account-circle"></i>
                             <span>My Account</span>
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a href="{{ route('system.settings') }}" class="dropdown-item notify-item">
                             <i class="mdi mdi-account-settings-variant"></i>
                             <span>Settings</span>
                         </a>
@@ -43,12 +47,6 @@
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <i class="mdi mdi-lifebuoy"></i>
                             <span>Support</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="mdi mdi-lock-outline"></i>
-                            <span>Lock Screen</span>
                         </a>
 
                         <!-- item-->

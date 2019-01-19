@@ -1,5 +1,5 @@
 @if (sizeof(App\Addon::where('school_id', school_id())->get()) > 0)
-<table class="table table-striped table-centered mb-0">
+<table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
     <thead class="thead-dark">
     <tr>
         <th>Name</th>

@@ -1,16 +1,16 @@
 @php
     if(isset($class_id) && $class_id > 0){
         if ($class_id == 'all')
-            $subjects = \App\Subject::where('school_id', school_id())->paginate(10);
+            $subjects = \App\Subject::where('school_id', school_id())->get();
         else
-            $subjects = \App\Subject::where('school_id', school_id())->where('class_id', $class_id)->paginate(10);
+            $subjects = \App\Subject::where('school_id', school_id())->where('class_id', $class_id)->get();
     }else {
-        $subjects = \App\Subject::where('school_id', school_id())->paginate(10);
+        $subjects = \App\Subject::where('school_id', school_id())->get();
     }
 @endphp
 @if (count($subjects) > 0)
     <div class="table-responsive-sm">
-        <table class="table table-striped table-centered mb-0">
+        <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
                 <tr>
                     <th>Name</th>
@@ -33,12 +33,6 @@
                 @endforeach
             </tbody>
         </table>
-
-        <div class="row" style="float:right; margin-top: 10px;">
-            <div class="col">
-                {{ $subjects->links() }}
-            </div>
-        </div>
     </div>
 @else
     <div style="text-align: center;">

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-calendar-today title_icon"></i> Class Routine 
+                <h4 class="page-title"> <i class="mdi mdi-calendar-today title_icon"></i> Class Routine
                 <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('routine.create') }}', 'Add Routine')"> <i class="mdi mdi-plus"></i>Add Routine</button></h4>
             </div>
         </div>
@@ -19,7 +19,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
                                 <option value="all">Class</option>
-                                @foreach (App\Classes::where('school_id', 1)->get() as $class)
+                                @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                                 @endforeach
                             </select>

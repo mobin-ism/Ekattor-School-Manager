@@ -15,7 +15,7 @@ class ClassController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $title = "Class";
         return view('backend.'.Auth::user()->role.'.class.index', compact('title'));
     }
@@ -41,7 +41,7 @@ class ClassController extends Controller
 
         $class = new Classes;
         $class->name = $request->name;
-        $class->school_id = 1;
+        $class->school_id = school_id();
 
 
         if($class->save()){
@@ -101,7 +101,7 @@ class ClassController extends Controller
     {
         $classes = Classes::find($id);
         $classes->name = $request->name;
-        $classes->school_id = 1;
+        $classes->school_id = school_id();
 
         if($classes->save()){
             $data = array(
@@ -146,7 +146,7 @@ class ClassController extends Controller
     public function createSection($class_id = "") {
             $section = new Section;
             $section->name = "A";
-            $section->school_id = 1;
+            $section->school_id = school_id();
             $section->class_id = $class_id;
             $section->save();
     }

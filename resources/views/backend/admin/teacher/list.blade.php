@@ -10,9 +10,9 @@
         <tbody>
         @php
         if(isset($department_id) && $department_id > 0){
-            $teachers = \App\Teacher::where('school_id', 1)->where('department_id', $department_id)->paginate(10);
+            $teachers = \App\Teacher::where('school_id', school_id())->where('department_id', $department_id)->get();
         }else {
-            $teachers = \App\Teacher::where('school_id', school_id())->paginate(10);
+            $teachers = \App\Teacher::where('school_id', school_id())->get();
         }
 
         @endphp

@@ -19,7 +19,7 @@
                     <div class="row justify-content-md-center" style="margin-bottom: 10px;">
                         <select class="form-control col-md-4" name="department_id" id="" onchange="departmentWiseFilter(this.value)">
                             <option value="all">All Department</option>
-                            @foreach (App\Department::where('school_id', 1)->get() as $department)
+                            @foreach (App\Department::where('school_id', school_id())->get() as $department)
                                 <option value="{{ $department->id }}">{{ $department->name }}</option>
                             @endforeach
                         </select>

@@ -40,7 +40,7 @@
                 <div class="col-md-9">
                     <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
                         <option value="all">Select A Class</option>
-                        @foreach (App\Classes::where('school_id', 1)->get() as $class)
+                        @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                             <option value="{{ $class->id }}">{{ $class->name }}</option>
                         @endforeach
                     </select>
@@ -136,6 +136,6 @@
         var refreshForm = function () {
             form.trigger("reset");
         }
-        
+
     </script>
 @endsection

@@ -46,7 +46,6 @@
 <script>
     var showAllInvoices = function () {
         var url = '{{ route("invoice.list") }}';
-        console.log($('#selectedValue').text());
         $.ajax({
             type : 'GET',
             url: url,

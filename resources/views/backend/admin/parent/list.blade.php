@@ -9,7 +9,7 @@
         </thead>
             <tbody>
             @php
-            $parents = \App\User::where('school_id', school_id())->where('role', 'parent')->paginate(10);
+            $parents = \App\User::where('school_id', school_id())->where('role', 'parent')->get();
             @endphp
                 @foreach ( $parents as $parent)
                     <tr>

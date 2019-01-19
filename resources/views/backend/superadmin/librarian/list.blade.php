@@ -1,9 +1,9 @@
 @php
-    $librarians = \App\User::where('school_id', school_id())->where('role', 'librarian')->paginate(10);
+    $librarians = \App\User::where('school_id', school_id())->where('role', 'librarian')->get();
 @endphp
 @if (count($librarians) > 0)
     <div class="table-responsive-sm">
-        <table class="table table-striped table-centered mb-0 colorfulTable">
+        <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
                 <tr>
                     <th>Name</th>
@@ -26,14 +26,6 @@
                     @endforeach
                 </tbody>
             </table>
-            <p style="margin-top: 20px;"><small>Total {{ count($librarians) }} entries found. </small></p>
-            {{-- <div class="row justify-content-md-center"> --}}
-            <div class="row">
-                {{-- <div class="col-auto"> --}}
-                <div class="col">
-                        {{ $librarians->links() }}
-                </div>
-            </div>
     </div>
 @else
     <div style="text-align: center;">

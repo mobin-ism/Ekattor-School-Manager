@@ -16,7 +16,7 @@ class LibrarianController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $title = "Librarian";
         return view('backend.'.Auth::user()->role.'.librarian.index', compact('title'));
     }
@@ -45,7 +45,7 @@ class LibrarianController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->role = "librarian";
-            $user->school_id = 1;
+            $user->school_id = school_id();
             $user->phone = $request->phone;
             $user->address = $request->address;
             $user->gender = $request->gender;
@@ -109,7 +109,7 @@ class LibrarianController extends Controller
         if(count(User::where('email', $request->email)->where('id', '!=', $user->id)->get()) == 0) {
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->school_id = 1;
+            $user->school_id = school_id();
             $user->phone = $request->phone;
             $user->address = $request->address;
             $user->gender = $request->gender;

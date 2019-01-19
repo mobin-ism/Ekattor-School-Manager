@@ -29,7 +29,7 @@
                 <label for="department">Department</label>
                 <select name="department" id="department" class="form-control" required>
                     <option value="">Please select a Department</option>
-                    @foreach (\App\Department::where('school_id', 1)->get() as $department)
+                    @foreach (\App\Department::where('school_id', school_id())->get() as $department)
                         <option value="{{ $department->id }}">{{ $department->name }}</option>
                     @endforeach
                 </select>

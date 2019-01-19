@@ -35,6 +35,7 @@
             url: url,
             success : function(response) {
                 $('#book_content').html(response);
+                initDataTable("basic-datatable");
             }
         });
     }

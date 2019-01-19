@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-grease-pencil title_icon"></i> Exam 
+                <h4 class="page-title"> <i class="mdi mdi-grease-pencil title_icon"></i> Exam
                 <button type="button" class="btn btn-icon btn-success mb-1 btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('exam.create') }}', 'Create New Exam')"> <i class="mdi mdi-plus"></i> Add Exam</button></h4>
             </div>
         </div>
@@ -34,6 +34,7 @@
             url: url,
             success : function(response) {
                 $('#exam_content').html(response);
+                initDataTable("basic-datatable");
             }
         });
     }

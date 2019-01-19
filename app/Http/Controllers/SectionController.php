@@ -78,7 +78,7 @@ class SectionController extends Controller
                 $section = $section_id ? Section::find($section_id) : new Section;
                 $section->name = $name;
                 $section->class_id = $class_id;
-                $section->school_id = 1;
+                $section->school_id = school_id();
                 $section->save();
             }
         }

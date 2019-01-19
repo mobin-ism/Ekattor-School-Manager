@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('department', 'DepartmentController');
     Route::get('department_list', 'DepartmentController@list')->name('department.list');
-    
+
     Route::resource('parent', 'ParentController');
     Route::get('parent_list', 'ParentController@list')->name('parent.list');
 
@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('booklist', 'BookController@list')->name('book.list');
 
     Route::resource('book_issue', 'BookIssueController');
+    Route::get('book_issue_list', 'BookIssueController@list')->name('book_issue.list');
+
     Route::get('student_list/{class_id}', 'BookIssueController@student')->name('book_issue.student');
     Route::delete('return_book/{book_id}', 'BookIssueController@return')->name('book_issue.return');
 
@@ -72,15 +74,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('grade', 'GradeController');
     Route::get('grade_list', 'GradeController@list')->name('grade.list');
 
-    Route::resource('expense_category', 'ExpenseCategoryController');
-    Route::get('expense_category_list', 'ExpenseCategoryController@list')->name('expense_category.list');
-
-    Route::resource('expense', 'ExpenseController');
-
     Route::resource('syllabus', 'SyllabusController');
     Route::get('download_syllabus/{file}', 'SyllabusController@download')->name('syllabus.download');
 
     Route::resource('event_calender', 'EventCalendarController');
+
+    Route::resource('profile', 'ProfileController');
 });
 
 Auth::routes();

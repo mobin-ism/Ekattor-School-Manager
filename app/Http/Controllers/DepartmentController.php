@@ -14,7 +14,7 @@ class DepartmentController extends Controller
  * @return \Illuminate\Http\Response
  */
     public function index()
-    {   
+    {
         $title = "Department";
         return view('backend.' . Auth::user()->role . '.department.index', compact('title'));
     }
@@ -39,7 +39,7 @@ class DepartmentController extends Controller
     {
         $department = new Department();
         $department->name = $request->name;
-        $department->school_id = 1;
+        $department->school_id = school_id();
         if ($department->save()) {
             $data = array(
                 'status' => true,
@@ -95,7 +95,7 @@ class DepartmentController extends Controller
     {
         $department = Department::find($id);
         $department->name = $request->name;
-        $department->school_id = 1;
+        $department->school_id = school_id();
         if ($department->save()) {
             $data = array(
                 'status' => true,

@@ -14,7 +14,7 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $title = "Book";
         return view('backend.'.Auth::user()->role.'.book.index', compact('title'));
     }

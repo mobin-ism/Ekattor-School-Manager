@@ -3,7 +3,7 @@
 @endphp
 @if(count($rooms) > 0)
     <div class="table-responsive-sm">
-        <table class="table table-striped table-centered mb-0">
+        <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
             <tr>
                 <th>Name</th>
@@ -24,7 +24,7 @@
             @endforeach
             </tbody>
         </table>
-</div>
+    </div>
 @else
     <div style="text-align: center;">
         <img src="{{ asset('backend/images/empty_box.png') }}" alt="" height="150" width="200" style="text-align: center;  opacity: 0.8;">

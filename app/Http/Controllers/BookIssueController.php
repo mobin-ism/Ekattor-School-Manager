@@ -16,8 +16,10 @@ class BookIssueController extends Controller
      */
     public function index()
     {
-        $title = "Book Issue";
-        return view('backend.'.Auth::user()->role.'.book_issue.index', compact('title'));
+        $title     = "Book Issue";
+        $date_from = strtotime(date('d-M-Y', strtotime(' -30 day')).' 00:00:00');
+        $date_to   = strtotime(date('d-M-Y').' 23:59:59');
+        return view('backend.'.Auth::user()->role.'.book_issue.index', compact('title', 'date_from', 'date_to'));
     }
 
     /**
@@ -49,13 +51,13 @@ class BookIssueController extends Controller
         if($book_issue->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.book_issue.list')->render(),
+                'view' => "",
                 'notification' =>"Book Issued Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.book_issue.list')->render(),
+                'view' => "",
                 'notification' =>"An Error Occured When Issuing Book"
             );
         }
@@ -106,13 +108,13 @@ class BookIssueController extends Controller
         if($book_issue->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.book_issue.list')->render(),
+                'view' => "",
                 'notification' =>"Book Issued Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.book_issue.list')->render(),
+                'view' => "",
                 'notification' =>"An Error Occured When Issuing Book"
             );
         }
@@ -130,13 +132,13 @@ class BookIssueController extends Controller
         if(BookIssue::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.book_issue.list')->render(),
+                'view' => "",
                 'notification' =>"Book Issue Info Deleted Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.book_issue.list')->render(),
+                'view' => "",
                 'notification' =>"An Error Occured When Deleting Book Issue Info"
             );
         }
@@ -150,13 +152,13 @@ class BookIssueController extends Controller
         if($book_issue->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.book_issue.list')->render(),
+                'view' => "",
                 'notification' =>"Book Returned Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.book_issue.list')->render(),
+                'view' => "",
                 'notification' =>"An Error Occured When Returning Book"
             );
         }
@@ -168,5 +170,13 @@ class BookIssueController extends Controller
         $school_id = school_id();
         $students = Enroll::where(['class_id' => $class_id, 'session' => $running_session, 'school_id' => $school_id])->get();
         return view('backend.'.Auth::user()->role.'.book_issue.student', compact('students'));
+    }
+
+    public function list(Request $request)
+    {
+        $date = explode('-', $request->date);
+        $date_from = strtotime($date[0].' 00:00:00');
+        $date_to   = strtotime($date[1].' 23:59:59');
+        return view('backend.'.Auth::user()->role.'.book_issue.list', compact('date_from', 'date_to'))->render();
     }
 }

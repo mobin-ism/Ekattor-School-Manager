@@ -35,6 +35,7 @@
             url: url,
             success : function(response) {
                 $('#expense_category_content').html(response);
+                initDataTable("basic-datatable");
             }
         });
     }

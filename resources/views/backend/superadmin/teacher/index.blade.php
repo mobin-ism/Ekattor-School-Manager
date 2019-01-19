@@ -52,6 +52,7 @@
                 url: url,
                 success : function(response) {
                     $('#teacher_content').html(response);
+                    initDataTable("basic-datatable");
                 }
             });
         }

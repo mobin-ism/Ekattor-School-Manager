@@ -1,13 +1,13 @@
 @php
     if(isset($department_id) && $department_id > 0){
-        $teachers = \App\Teacher::where('school_id', 1)->where('department_id', $department_id)->paginate(10);
+        $teachers = \App\Teacher::where('school_id', school_id())->where('department_id', $department_id)->get();
     }else {
-        $teachers = \App\Teacher::where('school_id', school_id())->paginate(10);
+        $teachers = \App\Teacher::where('school_id', school_id())->get();
     }
 @endphp
 @if (count($teachers) > 0)
 <div class="table-responsive-sm">
-    <table class="table table-striped table-centered mb-0 colorfulTable">
+    <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
         <thead class="thead-dark">
             <tr>
                 <th>Name</th>
@@ -36,13 +36,6 @@
             @endforeach
         </tbody>
     </table>
-    <p style="margin-top: 20px;"><small>Total {{ count($teachers) }} entries found. </small></p>
-
-    <div class="row" style="float:right; margin-top: 10px;">
-        <div class="col">
-            {{ $teachers->links() }}
-        </div>
-    </div>
 </div>
 @else
     <div style="text-align: center;">

@@ -25,7 +25,7 @@
             </td>
         </tr>
     @endforeach
-    @if (sizeof(App\Session::where('school_id', 1)->get()) == 0)
+    @if (sizeof(App\Session::where('school_id', school_id())->get()) == 0)
         <tr>
             <td colspan="3"> No Data Found</td>
         </tr>

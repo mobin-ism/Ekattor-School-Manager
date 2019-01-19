@@ -1,10 +1,10 @@
 @php
-    $parents = \App\User::where('school_id', school_id())->where('role', 'parent')->paginate(10);
+    $parents = \App\User::where('school_id', school_id())->where('role', 'parent')->get();
 @endphp
 
 @if (count($parents) > 0)
     <div class="table-responsive-sm">
-        <table class="table table-striped table-centered mb-0 colorfulTable">
+        <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
                 <tr>
                     <th>Parent Id</th>
@@ -30,13 +30,6 @@
                 @endforeach
             </tbody>
         </table>
-        <p style="margin-top: 20px;"><small>Total {{ count($parents) }} entries found. </small></p>
-
-        <div class="row">
-            <div class="col">
-                    {{ $parents->links() }}
-            </div>
-        </div>
     </div>
 @else
     <div style="text-align: center;">

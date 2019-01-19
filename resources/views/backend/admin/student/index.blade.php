@@ -19,7 +19,7 @@
                         <div class="col-md-4">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
                                 <option value="all">Class</option>
-                                @foreach (App\Classes::where('school_id', 1)->get() as $class)
+                                @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                                 @endforeach
                             </select>

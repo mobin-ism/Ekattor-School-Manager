@@ -18,7 +18,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
                                 <option value="all">Select A Class</option>
-                                @foreach (App\Classes::where('school_id', 1)->get() as $class)
+                                @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                                 @endforeach
                             </select>
@@ -58,7 +58,7 @@
         }
 
         function onChangeSection(section_id) {
-          
+
         }
 
         var showTeachersPermission = function () {

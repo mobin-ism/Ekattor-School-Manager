@@ -26,4 +26,9 @@ Route::patch('mass_invoice_update/{invoice_id}', 'InvoiceController@mass_invoice
 
 Route::delete('destroy/{invoice_id}', 'InvoiceController@destroy')->name('invoice.destroy');
 
+Route::resource('expense_category', 'ExpenseCategoryController');
+Route::get('expense_category_list', 'ExpenseCategoryController@list')->name('expense_category.list');
+
+Route::resource('expense', 'ExpenseController');
+Route::get('expenselist', 'ExpenseController@list')->name('expense.list');
 

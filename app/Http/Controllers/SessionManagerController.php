@@ -41,7 +41,7 @@ class SessionManagerController extends Controller
         if(count(Session::where('name', $request->session_title)->get()) == 0){
             $session = new Session;
             $session->name = $request->session_title;
-            $session->school_id = 1;
+            $session->school_id = school_id();
             $session->save();
             $data = array(
                 'status' => true,
@@ -92,7 +92,7 @@ class SessionManagerController extends Controller
     {
         $session = Session::find($id);
         $session->name = $request->session_title;
-        $session->school_id = 1;
+        $session->school_id = school_id();
 
         if($session->save()){
             $data = array(

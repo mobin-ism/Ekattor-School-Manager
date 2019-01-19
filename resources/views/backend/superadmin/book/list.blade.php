@@ -1,6 +1,9 @@
-@if (sizeof(App\Book::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->get()) > 0)
+@php
+    $books = App\Book::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->get();
+@endphp
+@if (sizeof($books) > 0)
     <div class="table-responsive-sm">
-        <table class="table table-striped table-centered mb-0">
+        <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
             <tr>
                 <th>Book Name</th>
@@ -11,9 +14,6 @@
             </tr>
             </thead>
             <tbody>
-                @php
-                    $books = App\Book::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->paginate(2);
-                @endphp
                 @foreach ($books as $book)
                     <tr>
                         <td>{{ $book->name }}</td>
@@ -36,12 +36,6 @@
                 @endforeach
             </tbody>
         </table>
-        <p style="margin-top: 20px;"><small>Total {{ count($books) }} entries found. </small></p>
-        <div class="row" style="float:right; margin-top: 10px;">
-            <div class="col">
-                {{ $books->links() }}
-            </div>
-        </div>
     </div> <!-- end table-responsive-->
 @else
     <div style="text-align: center;">

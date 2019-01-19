@@ -14,9 +14,11 @@ class ExpenseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $title = "Expense";
-        return view('backend.'.Auth::user()->role.'.expense.index', compact('title'));
+        $date_from = strtotime(date('d-M-Y', strtotime(' -30 day')).' 00:00:00');
+        $date_to   = strtotime(date('d-M-Y').' 23:59:59');
+        return view('backend.'.Auth::user()->role.'.expense.index', compact('title', 'date_from', 'date_to'));
     }
 
     /**
@@ -46,13 +48,13 @@ class ExpenseController extends Controller
         if($expense->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.expense.list')->render(),
+                'view' => "",
                 'notification' =>"Expense Added Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.expense.list')->render(),
+                'view' => "",
                 'notification' =>"An Error Occured When Adding Expense"
             );
         }
@@ -100,13 +102,13 @@ class ExpenseController extends Controller
         if($expense->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.expense.list')->render(),
+                'view' => "",
                 'notification' =>"Expense Updated Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.expense.list')->render(),
+                'view' => "",
                 'notification' =>"An Error Occured When Updating Expense"
             );
         }
@@ -124,16 +126,25 @@ class ExpenseController extends Controller
         if(Expense::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.expense.list')->render(),
+                'view' => "",
                 'notification' =>"Expense Deleted Successfully"
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.expense.list')->render(),
+                'view' => "",
                 'notification' =>"An Error Occured When Deleting Expense"
             );
         }
         return $data;
+    }
+
+    public function list(Request $request)
+    {
+        $date = explode('-', $request->date);
+        $date_from = strtotime($date[0].' 00:00:00');
+        $date_to   = strtotime($date[1].' 23:59:59');
+        $expense_category_id = $request->expense_category_id;
+        return view('backend.'.Auth::user()->role.'.expense.list', compact('date_from', 'date_to', 'expense_category_id'))->render();
     }
 }

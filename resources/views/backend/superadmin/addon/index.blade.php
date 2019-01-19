@@ -30,12 +30,13 @@
     <script>
         var showAllAddons = function () {
             var url = '{{ route("addon_manager.list") }}';
-    
+
             $.ajax({
                 type : 'GET',
                 url: url,
                 success : function(response) {
                     $('#addon_content').html(response);
+                    initDataTable("basic-datatable");
                     setTimeout(
                     function()
                     {

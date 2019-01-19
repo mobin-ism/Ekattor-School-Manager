@@ -8,7 +8,7 @@
     </thead>
         <tbody>
         @php
-        $librarians = \App\User::where('school_id', school_id())->where('role', 'librarian')->paginate(10);
+        $librarians = \App\User::where('school_id', school_id())->where('role', 'librarian')->get();
         @endphp
             @foreach ( $librarians as $librarian)
                 <tr>

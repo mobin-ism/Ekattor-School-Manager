@@ -34,6 +34,7 @@
             url: url,
             success : function(response) {
                 $('#grade_content').html(response);
+                initDataTable("basic-datatable");
             }
         });
     }

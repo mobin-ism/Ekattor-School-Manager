@@ -5,7 +5,7 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                 <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
                     <option value="all">Select A Class</option>
-                    @foreach (App\Classes::where('school_id', 1)->get() as $class)
+                    @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                         <option value="{{ $class->id }}">{{ $class->name }}</option>
                     @endforeach
                 </select>

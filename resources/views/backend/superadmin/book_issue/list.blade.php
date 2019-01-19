@@ -1,4 +1,8 @@
-<table class="table table-striped table-centered mb-0">
+@php
+    $book_issues = App\BookIssue::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->where('issue_date', '>=', $date_from)->where('issue_date', '<=', $date_to)->get();
+@endphp
+@if (sizeof($book_issues) > 0)
+<table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
         <thead class="thead-dark">
         <tr>
             <th>Book Name</th>
@@ -10,9 +14,6 @@
         </tr>
         </thead>
         <tbody>
-            @php
-                $book_issues = App\BookIssue::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->paginate(10);
-            @endphp
         @foreach ($book_issues as $book_issue)
             <tr>
                 <td>{{ $book_issue->book->name }}</td>
@@ -35,22 +36,17 @@
                 <td>
                     <div class="btn-group mb-2">
                         <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('book_issue.edit', $book_issue->id) }}', 'Update Book Issue Information')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Book Issue info"> <i class="mdi mdi-wrench"></i> </button>
-                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('book_issue.return', $book_issue->id) }}', 'book_issue_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Return this issued book"> <i class="mdi mdi-checkbox-marked-circle-outline"></i> </button>
-                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('book_issue.destroy', $book_issue->id) }}', 'book_issue_content' )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Book Issue Info"> <i class="mdi mdi-window-close"></i> </button>
+                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('book_issue.return', $book_issue->id) }}', showAllBookIssues )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Return this issued book"> <i class="mdi mdi-checkbox-marked-circle-outline"></i> </button>
+                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('book_issue.destroy', $book_issue->id) }}', showAllBookIssues )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Book Issue Info"> <i class="mdi mdi-window-close"></i> </button>
                     </div>
                 </td>
             </tr>
         @endforeach
-        @if (sizeof(App\BookIssue::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->get()) == 0)
-            <tr>
-                <td colspan="5"> No Data Found</td>
-            </tr>
-        @endif
         </tbody>
     </table>
-
-    <div class="row" style="float:right; margin-top: 10px;">
-        <div class="col">
-            {{ $book_issues->links() }}
-        </div>
+@else
+    <div style="text-align: center;">
+        <img src="{{ asset('backend/images/empty_box.png') }}" alt="" height="150" width="200" style="text-align: center;  opacity: 0.8;">
+        <p>Oops No Data Found...<a href="#" onclick="showAjaxModal('{{ route('book_issue.create') }}', 'Issue A Book')" style="color: #757575; font-weight: 800;">Click here.</a></p>
     </div>
+@endif

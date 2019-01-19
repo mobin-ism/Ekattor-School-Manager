@@ -1,5 +1,5 @@
 @if(isset($syllabuses) && count($syllabuses))
-    <table class="table table-striped table-centered mb-0">
+    <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
         <thead class="thead-dark">
         <tr>
             <th>Title</th>
@@ -32,12 +32,6 @@
         @endforeach
         </tbody>
     </table>
-
-    <div class="row" style="float:right; margin-top: 10px;">
-        <div class="col">
-            {{ $syllabuses->links() }}
-        </div>
-    </div>
 @else
     <div style="text-align: center;">
         <img src="{{ asset('backend/images/empty_box.png') }}" alt="" height="150" width="200" style="text-align: center;  opacity: 0.8;">

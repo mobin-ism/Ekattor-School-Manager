@@ -55,7 +55,7 @@
         $(".ajaxForm").validate({}); // Jquery form validation initialization
         $(".ajaxForm").submit(function(e) {
             var form = $(this);
-            ajaxSubmit(e, form, 'book_issue_content');
+            ajaxSubmit(e, form, showAllBookIssues);
         });
 
         function classWiseStudent(class_id) {

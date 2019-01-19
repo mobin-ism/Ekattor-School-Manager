@@ -3,7 +3,7 @@
 @endphp
 @if (count($grades) > 0)
     <div class="table-responsive-sm">
-        <table class="table table-striped table-centered mb-0">
+        <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
             <tr>
                 <th>Grade Name</th>

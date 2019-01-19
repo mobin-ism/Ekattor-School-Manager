@@ -9,7 +9,7 @@
             <label for="class">Class</label>
             <select name="class_id" id="class_id" class="form-control" required onchange="classWiseSection(this.value)">
                 <option value="">Class</option>
-                @foreach (App\Classes::where('school_id', 1)->get() as $class)
+                @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                     <option value="{{ $class->id }}" @if($class->id == $routine->class_id) selected @endif>{{ $class->name }}</option>
                 @endforeach
             </select>

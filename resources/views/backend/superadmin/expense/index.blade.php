@@ -17,12 +17,16 @@
                 <div class="card-body">
                     <div class="row justify-content-md-center" style="margin-bottom: 10px;">
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <input type="text" class="form-control date" id="singledaterange" data-toggle="date-picker" data-cancel-class="btn-warning">
-                            {{-- <input type="text" class="form-control date" id="date" data-toggle="date-picker" data-single-date-picker="true" name = "date" value="" required> --}}
+                            <div class="form-group">
+                                <div id="reportrange" class="form-control" data-toggle="date-picker-range" data-target-display="#selectedValue"  data-cancel-class="btn-light">
+                                    <i class="mdi mdi-calendar"></i>&nbsp;
+                                    <span id="selectedValue"> {{ date('F d, Y', strtotime(' -30 day')).' - '.date('F d, Y') }} </span>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <select class="form-control" name="expense_category_id" id="expense_category_id" onchange="error()">
+                            <select class="form-control" name="expense_category_id" id="expense_category_id">
                                 <option value="all">Expense Category</option>
                                 @foreach (App\ExpenseCategory::where(['school_id' => school_id(), 'session' => get_settings('running_session')])->get() as $expense_category)
                                     <option value="{{ $expense_category->id }}">{{ $expense_category->name }}</option>
@@ -31,7 +35,7 @@
                         </div>
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <button type="button" class="btn btn-icon btn-secondary form-control">Filter</button>
+                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="showAllExpenses()">Filter</button>
                         </div>
                     </div>
                     <div id = "expense_content">
@@ -45,8 +49,17 @@
 
 @section('scripts')
     <script>
-        function error() {
-            toastr.error('Havent done yet');
+        var showAllExpenses = function () {
+            var url = '{{ route("expense.list") }}';
+            $.ajax({
+                type : 'GET',
+                url: url,
+                data : {date : $('#selectedValue').text(), expense_category_id : $('#expense_category_id').val()},
+                success : function(response) {
+                    $('#expense_content').html(response);
+                    initDataTable("basic-datatable");
+                }
+            });
         }
     </script>
 @endsection

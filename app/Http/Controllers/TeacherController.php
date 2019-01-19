@@ -47,7 +47,7 @@ class TeacherController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->role = "teacher";
-            $user->school_id = 1;
+            $user->school_id = school_id();
             $user->phone = $request->phone;
             $user->address = $request->address;
             // $user->birthday = strtotime($request->birthday);
@@ -58,7 +58,7 @@ class TeacherController extends Controller
                 $teacher->department_id = $request->department;
                 $teacher->designation = $request->designation;
                 $teacher->user_id = $user->id;
-                $teacher->school_id = 1;
+                $teacher->school_id = school_id();
                 $teacher->save();
 
                 //$this->add_to_teacher_permission($teacher->id);
@@ -125,7 +125,7 @@ class TeacherController extends Controller
             if($user->save()) {
                 $teacher->department_id = $request->department;
                 $teacher->designation = $request->designation;
-                $teacher->school_id = 1;
+                $teacher->school_id = school_id();
                 $teacher->save();
 
                 $data = array(

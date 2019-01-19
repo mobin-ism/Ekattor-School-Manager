@@ -82,7 +82,7 @@ class SyllabusController extends Controller
         $class_id = $section->class_id;
         $running_session = get_settings('running_session');
         $school_id = school_id();
-        $syllabuses = Syllabus::where(['section_id' => $section_id, 'class_id' => $class_id, 'session' => $running_session, 'school_id' => $school_id])->paginate(10);
+        $syllabuses = Syllabus::where(['section_id' => $section_id, 'class_id' => $class_id, 'session' => $running_session, 'school_id' => $school_id])->get();
         return view('backend.'.Auth::user()->role.'.syllabus.list', compact('syllabuses'))->render();
     }
 
