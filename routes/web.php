@@ -80,6 +80,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('syllabus', 'SyllabusController');
     Route::get('download_syllabus/{file}', 'SyllabusController@download')->name('syllabus.download');
 
+    Route::resource('event_calender', 'EventCalendarController');
 });
 
 Auth::routes();

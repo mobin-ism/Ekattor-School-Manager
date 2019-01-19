@@ -13,10 +13,10 @@
     </thead>
     <tbody>
         @php
-            $invoices = App\Invoice::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->get();
+            $invoices = App\Invoice::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->where('created_at', '>=', date('Y-m-d h:i:s', $date_from))->where('created_at', '<=', date('Y-m-d h:i:s', $date_to))->get();
         @endphp
     @foreach ($invoices as $invoice)
-        @if (strtotime($invoice->created_at) >= $date_from && strtotime($invoice->created_at) <= $date_to)
+        {{-- @if (strtotime($invoice->created_at) >= $date_from && strtotime($invoice->created_at) <= $date_to) --}}
             <tr>
                 <td>{{ $invoice->student->user->name }}</td>
                 <td>
@@ -44,7 +44,7 @@
                     </div>
                 </td>
             </tr>
-        @endif
+        {{-- @endif --}}
     @endforeach
     @if (sizeof(App\Invoice::where(['school_id'=> school_id(), 'session' => get_settings('running_session')])->get()) == 0)
         <tr>

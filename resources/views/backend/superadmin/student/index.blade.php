@@ -73,6 +73,7 @@
                     url: url,
                     success : function(response) {
                         $('#student_content').html(response);
+                        initDataTable("basic-datatable");
                     }
                 });
               }
