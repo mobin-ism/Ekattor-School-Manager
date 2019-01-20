@@ -25,6 +25,7 @@
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                             <select class="form-control" name="section_id" id="section_id">
                                 <option value="all">Select A Section</option>

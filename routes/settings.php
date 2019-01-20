@@ -15,4 +15,5 @@
     Route::post('logo_update', 'SettingsController@logo_update')->name('logo.update');
     Route::get('sms_settings', 'SettingsController@sms')->name('sms.settings');
     Route::get('payment_settings', 'SettingsController@payment')->name('payment.settings');
+    Route::patch('payment_update/{type}', 'SettingsController@payment_update')->name('payment.update');
     Route::get('language_settings', 'SettingsController@language')->name('language.settings');

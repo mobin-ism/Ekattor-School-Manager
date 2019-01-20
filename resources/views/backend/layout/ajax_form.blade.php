@@ -18,7 +18,9 @@
                 {
                     (response.status === true) ? toastr.success(response.notification) : toastr.error(response.notification);
                     callBackFunction();
-                    form.trigger("reset");
+                    if(form.attr('id') != 'paypal_settings' && form.attr('id') != 'stripe_settings') {
+                        form.trigger("reset");
+                    }
                 }
             });
         }else {

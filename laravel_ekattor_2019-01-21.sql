@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.23)
 # Database: laravel_ekattor
-# Generation Time: 2019-01-19 21:56:01 +0000
+# Generation Time: 2019-01-20 19:53:01 +0000
 # ************************************************************
 
 
@@ -265,7 +265,38 @@ VALUES
 	(33,'1547510400',1,48,6,1,1,'2019-01-16 12:56:08','2019-01-16 12:56:12'),
 	(34,'1547683200',1,48,1,1,1,'2019-01-17 06:18:36','2019-01-17 06:18:42'),
 	(35,'1547683200',1,48,2,0,1,'2019-01-17 06:18:36','2019-01-17 06:20:11'),
-	(36,'1547683200',1,48,6,1,1,'2019-01-17 06:18:36','2019-01-17 06:18:42');
+	(36,'1547683200',1,48,6,1,1,'2019-01-17 06:18:36','2019-01-17 06:18:42'),
+	(37,'1547920800',1,48,1,1,1,'2019-01-20 16:31:52','2019-01-20 16:31:56'),
+	(38,'1547920800',1,48,2,0,1,'2019-01-20 16:31:52','2019-01-20 16:35:19'),
+	(39,'1547920800',1,48,6,1,1,'2019-01-20 16:31:52','2019-01-20 16:31:56'),
+	(40,'1547920800',2,23,4,NULL,1,'2019-01-20 16:50:10','2019-01-20 16:50:10'),
+	(41,'1547920800',2,23,22,NULL,1,'2019-01-20 16:50:10','2019-01-20 16:50:10'),
+	(42,'1547920800',2,23,23,NULL,1,'2019-01-20 16:50:10','2019-01-20 16:50:10'),
+	(43,'1547920800',15,46,3,1,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(44,'1547920800',15,46,12,0,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(45,'1547920800',15,46,13,1,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(46,'1547920800',15,46,16,0,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(47,'1547920800',15,46,17,1,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(48,'1547920800',15,46,19,0,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(49,'1547920800',15,46,20,1,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(50,'1547920800',15,46,21,0,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(51,'1547920800',15,46,24,1,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(52,'1547920800',15,46,25,0,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(53,'1547920800',15,46,26,1,1,'2019-01-20 16:50:15','2019-01-20 18:24:53'),
+	(54,'1547920800',3,33,14,NULL,1,'2019-01-20 16:50:23','2019-01-20 16:50:23'),
+	(55,'1547920800',3,33,15,NULL,1,'2019-01-20 16:50:23','2019-01-20 16:50:23'),
+	(56,'1547920800',1,49,5,1,1,'2019-01-20 16:50:57','2019-01-20 17:06:11'),
+	(57,'1547920800',1,49,7,0,1,'2019-01-20 16:50:57','2019-01-20 17:06:43'),
+	(58,'1547920800',1,49,8,1,1,'2019-01-20 16:50:57','2019-01-20 17:06:11'),
+	(59,'1547920800',1,49,9,0,1,'2019-01-20 16:50:57','2019-01-20 17:06:43'),
+	(62,'1547920800',1,54,10,NULL,1,'2019-01-20 16:55:57','2019-01-20 16:55:57'),
+	(63,'1547920800',1,54,11,NULL,1,'2019-01-20 16:55:57','2019-01-20 16:55:57'),
+	(64,'1547575200',1,48,1,1,1,'2019-01-20 17:36:18','2019-01-20 17:36:21'),
+	(65,'1547575200',1,48,2,0,1,'2019-01-20 17:36:18','2019-01-20 17:36:37'),
+	(66,'1547575200',1,48,6,1,1,'2019-01-20 17:36:18','2019-01-20 17:36:21'),
+	(67,'1547488800',1,48,1,1,1,'2019-01-20 17:47:00','2019-01-20 17:47:04'),
+	(68,'1547488800',1,48,2,0,1,'2019-01-20 17:47:00','2019-01-20 17:47:04'),
+	(69,'1547488800',1,48,6,1,1,'2019-01-20 17:47:00','2019-01-20 17:47:04');
 
 /*!40000 ALTER TABLE `daily_attendances` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1553,6 +1584,46 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table marks
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `marks`;
+
+CREATE TABLE `marks` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `student_id` int(11) DEFAULT NULL,
+  `subject_id` int(11) DEFAULT NULL,
+  `class_id` int(11) DEFAULT NULL,
+  `section_id` int(11) DEFAULT NULL,
+  `exam_id` int(11) DEFAULT NULL,
+  `mark_obtained` int(11) DEFAULT NULL,
+  `comment` longtext COLLATE utf8_unicode_ci,
+  `session` int(11) DEFAULT NULL,
+  `school_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `marks` WRITE;
+/*!40000 ALTER TABLE `marks` DISABLE KEYS */;
+
+INSERT INTO `marks` (`id`, `student_id`, `subject_id`, `class_id`, `section_id`, `exam_id`, `mark_obtained`, `comment`, `session`, `school_id`, `created_at`, `updated_at`)
+VALUES
+	(1,1,3,1,48,3,45,'Bad',5,1,'2019-01-20 23:34:21','2019-01-21 00:53:25'),
+	(2,2,3,1,48,3,89,'Good',5,1,'2019-01-20 23:34:21','2019-01-21 00:53:39'),
+	(3,6,3,1,48,3,99,'Best',5,1,'2019-01-20 23:34:21','2019-01-21 00:53:47'),
+	(4,5,3,1,49,3,100,'Shera',5,1,'2019-01-20 23:34:46','2019-01-21 00:54:50'),
+	(5,7,3,1,49,3,89,'Good',5,1,'2019-01-20 23:34:46','2019-01-21 00:54:51'),
+	(6,8,3,1,49,3,80,'Good',5,1,'2019-01-20 23:34:46','2019-01-21 00:54:51'),
+	(7,9,3,1,49,3,70,'So so',5,1,'2019-01-20 23:34:46','2019-01-21 00:54:52'),
+	(8,10,3,1,54,3,96,'Best',5,1,'2019-01-21 00:54:59','2019-01-21 00:55:18'),
+	(9,11,3,1,54,3,79,'Good',5,1,'2019-01-21 00:54:59','2019-01-21 00:55:17');
+
+/*!40000 ALTER TABLE `marks` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table menus
 # ------------------------------------------------------------
 
@@ -1597,8 +1668,8 @@ VALUES
 	(21,'exam',NULL,0,0,1,'dripicons-music','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 	(22,'exam','exam.index',21,20,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
 	(23,'grades','grade.index',21,30,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
-	(24,'marks',NULL,21,10,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
-	(25,'tabulation_sheet',NULL,21,40,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
+	(24,'marks','mark.index',21,10,1,NULL,'2019-01-20 18:45:11','0000-00-00 00:00:00'),
+	(25,'tabulation_sheet',NULL,21,40,0,NULL,'2019-01-20 18:47:21','0000-00-00 00:00:00'),
 	(27,'accounting',NULL,0,0,1,'dripicons-jewel','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 	(28,'student_fee_manager','invoice.index',27,10,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
 	(29,'student_fee_report',NULL,27,20,0,NULL,'2019-01-17 11:44:11','0000-00-00 00:00:00'),
@@ -1619,8 +1690,8 @@ VALUES
 	(44,'addon_manager','addon_manager.index',31,0,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
 	(45,'assignment',NULL,11,90,0,NULL,'2019-01-16 19:45:09','0000-00-00 00:00:00'),
 	(46,'event_calender','event_calender.index',11,100,1,NULL,'2019-01-19 14:03:15','0000-00-00 00:00:00'),
-	(47,'online_exam',NULL,21,50,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
-	(48,'certificate',NULL,21,60,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
+	(47,'online_exam',NULL,21,50,0,NULL,'2019-01-20 18:48:01','0000-00-00 00:00:00'),
+	(48,'certificate',NULL,21,60,0,NULL,'2019-01-20 18:48:04','0000-00-00 00:00:00'),
 	(49,'teacher_permission','permission.index',3,40,1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
 	(50,'messaging',NULL,3,110,0,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
 	(51,'role_permission','role.index',3,100,0,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -1882,15 +1953,25 @@ CREATE TABLE `settings` (
   `address` longtext,
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
+  `paypal_active` varchar(255) DEFAULT NULL,
+  `paypal_mode` varchar(255) DEFAULT NULL,
+  `paypal_client_id_sandbox` varchar(255) DEFAULT NULL,
+  `paypal_client_id_production` varchar(255) DEFAULT NULL,
+  `stripe_active` varchar(255) DEFAULT NULL,
+  `stripe_mode` varchar(255) DEFAULT NULL,
+  `stripe_test_secret_key` varchar(255) DEFAULT NULL,
+  `stripe_test_public_key` varchar(255) DEFAULT NULL,
+  `stripe_live_secret_key` varchar(255) DEFAULT NULL,
+  `stripe_live_public_key` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 
-INSERT INTO `settings` (`id`, `system_name`, `system_title`, `system_email`, `selected_branch`, `running_session`, `phone`, `purchase_code`, `address`, `updated_at`, `created_at`)
+INSERT INTO `settings` (`id`, `system_name`, `system_title`, `system_email`, `selected_branch`, `running_session`, `phone`, `purchase_code`, `address`, `updated_at`, `created_at`, `paypal_active`, `paypal_mode`, `paypal_client_id_sandbox`, `paypal_client_id_production`, `stripe_active`, `stripe_mode`, `stripe_test_secret_key`, `stripe_test_public_key`, `stripe_live_secret_key`, `stripe_live_public_key`)
 VALUES
-	(1,'Ekattor Govt. Hight School','Ekattor Govt. Hight School','xotetocah@mailinator.com',1,'5','1234567890','12345678910','Dhaka','2019-01-17 07:48:56','2018-11-17 19:20:01');
+	(1,'Ekattor Govt. Hight School','Ekattor Govt. Hight School','xotetocah@mailinator.com',1,'5','1234567890','12345678910','Dhaka','2019-01-21 01:52:18','2018-11-17 19:20:01','yes','sandbox','123456152','12345678910101010','yes','off','12','32sa','436','5567');
 
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -14,10 +14,12 @@
                                     <option value="{{ $session->id }}" @if($session->id == get_settings('running_session')) selected @php $current_session = $session->name; @endphp @endif>{{ $session->name }}</option>
                                 @endforeach
                             </select>
-                            <small id="" class="form-text text-muted">Active Session {{ $current_session }}.</small>
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12" style="float: left;">
                             <button type="button" class="btn btn-icon btn-secondary" onclick="makeSessionActive()"> <i class="mdi mdi-check"></i> Activate</button>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 mt-1">
+                            <div class="alert alert-info" role="alert">Active Session {{ $current_session }}</div>
                         </div>
                     </div>
                 </div>

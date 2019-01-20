@@ -13,7 +13,8 @@
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', function () {
-        return view('backend.'.Auth::user()->role.'.dashboard.dashboard');
+        $title = "Dashboard";
+        return view('backend.'.Auth::user()->role.'.dashboard.dashboard', compact('title'));
     })->name('dashboard');
 
     Route::resource('session_manager', 'SessionManagerController');
@@ -73,6 +74,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('grade', 'GradeController');
     Route::get('grade_list', 'GradeController@list')->name('grade.list');
+
+    Route::resource('mark', 'MarkController');
+    Route::post('mark_list', 'MarkController@list')->name('mark.list');
 
     Route::resource('syllabus', 'SyllabusController');
     Route::get('download_syllabus/{file}', 'SyllabusController@download')->name('syllabus.download');

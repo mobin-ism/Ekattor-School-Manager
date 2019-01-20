@@ -35,7 +35,10 @@
     </div>
 
 
-    <div class="form-group  col-md-12">
+    <div class="form-group col-md-12" id="showStudentDiv">
+        <a class="btn btn-block btn-secondary" onclick="getStudentList()" style="color: #fff;">Show Student List</a>
+    </div>
+    <div class="form-group col-md-12" id = "updateAttendanceDiv" style="display: none;">
         <button class="btn btn-block btn-primary" type="submit">Update Attendance</button>
     </div>
 </form>
@@ -49,6 +52,7 @@
 </script>
 
 <script>
+    var section_id;
     $(document).ready(function() {
         $('#date').daterangepicker();
     });
@@ -62,22 +66,37 @@
             url: url,
             success : function(response) {
                 $('#section_content_2').html(response);
+                $('#student_content').html("");
+                $('#showStudentDiv').show();
+                $('#updateAttendanceDiv').hide();
             }
         });
     }
 
-    function onChangeSection(section_id) {
+    function onChangeSection(param) {
+        section_id = param;
+        $('#student_content').html("");
+        $('#showStudentDiv').show();
+        $('#updateAttendanceDiv').hide();
+    }
+
+    function getStudentList() {
+        if(section_id === ""){
+            console.log(123);
+        }
         if(section_id > 0) {
-        var url = '{{ route("daily_attendance.students") }}';
-        var date = $('#date').val();
-        $.ajax({
-            type : 'POST',
-            url: url,
-            data : { section_id : section_id, date : date, _token : '{{ @csrf_token() }}' },
-            success : function(response) {
-                $('#student_content').html(response);
-            }
-        });
+            var url = '{{ route("daily_attendance.students") }}';
+            var date = $('#date').val();
+            $.ajax({
+                type : 'POST',
+                url: url,
+                data : { section_id : section_id, date : date, _token : '{{ @csrf_token() }}' },
+                success : function(response) {
+                    $('#student_content').html(response);
+                    $('#showStudentDiv').hide();
+                    $('#updateAttendanceDiv').show();
+                }
+            });
         }
     }
 </script>

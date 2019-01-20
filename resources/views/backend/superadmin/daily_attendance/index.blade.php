@@ -32,7 +32,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
+                    <div class="row justify-content-md-center d-print-none" style="margin-bottom: 10px;">
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select name="month" id="month" class="form-control">
                                 <option value="">Select Month</option>

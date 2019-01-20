@@ -30,12 +30,12 @@
 
 
 @section('scripts')
-    <script>            
+    <script>
             function updateSystemInfo(system_name) {
                 $(".systemAjaxForm").validate({});
                 $(".systemAjaxForm").submit(function(e) {
                     var form = $(this);
-                    ajaxSubmit(e, form, 'settings_content');
+                    ajaxSubmit(e, form, reload);
                 });
                 $('#school_name').text(system_name);
             }
@@ -44,8 +44,33 @@
                 $(".systemLogoAjaxForm").validate({});
                 $(".systemLogoAjaxForm").submit(function(e) {
                     var form = $(this);
-                    ajaxSubmit(e, form, 'settings_content');
+                    ajaxSubmit(e, form, reload);
                 });
+            }
+
+
+            function updatePaypalInfo() {
+                $(".paypalAjaxForm").validate({});
+                $(".paypalAjaxForm").submit(function(e) {
+                    var form = $(this);
+                    ajaxSubmit(e, form, reload);
+                });
+            }
+
+            function updateStripeInfo() {
+                $(".stripeAjaxForm").validate({});
+                $(".stripeAjaxForm").submit(function(e) {
+                    var form = $(this);
+                    ajaxSubmit(e, form, reload);
+                });
+            }
+
+            function reload() {
+                setTimeout(
+                    function()
+                    {
+                        location.reload();
+                    }, 1000);
             }
     </script>
 @endsection

@@ -9,7 +9,7 @@
 |
 |
 */
-Route::get('invoice/{param?}', 'InvoiceController@index')->name('invoice.index');
+Route::get('invoice', 'InvoiceController@index')->name('invoice.index');
 Route::get('invoice_list', 'InvoiceController@list')->name('invoice.list');
 
 Route::get('single_invoice_create', 'InvoiceController@single_invoice_create')->name('invoice.single.create');

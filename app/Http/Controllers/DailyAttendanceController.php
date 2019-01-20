@@ -16,7 +16,7 @@ class DailyAttendanceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $title = "Daily Attendance";
         return view('backend.'.Auth::user()->role.'.daily_attendance.index', compact('title'));
     }

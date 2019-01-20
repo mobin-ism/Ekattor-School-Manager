@@ -1,7 +1,9 @@
 @if (isset($entries))
 
-<button class="btn btn-secondary col-5" onclick="mark_all_present(event)">Mark As Present</button>
-<button class="btn btn-secondary col-5" onclick="mark_all_absent(event)">Mark As Absent</button>
+<div class="row" style="margin-bottom: 10px; width: 100%;">
+    <div class="col-6"><button class="btn btn-secondary" onclick="mark_all_present(event)">Mark As Present</button></div>
+    <div class="col-6"><button class="btn btn-secondary" onclick="mark_all_absent(event)" style="float: right;">Mark As Absent</button></div>
+</div>
 
 <div class="table-responsive-sm row col-md-12" style="padding-right: 0px;">
     <table class="table table-bordered table-centered mb-0">
