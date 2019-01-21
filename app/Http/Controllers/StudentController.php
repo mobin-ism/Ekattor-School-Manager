@@ -360,4 +360,32 @@ class StudentController extends Controller
         $student_details = Student::find($student_id);
         return view('backend.'.Auth::user()->role.'.student.profile', compact('student_details'));
     }
+
+
+    function promotion() {
+        return view('backend.'.Auth::user()->role.'.promotion.index');
+    }
+
+    function student_to_promote(Request $request) {
+        $class_id_to = $request->class_id_to;
+        $class_id_from = $request->class_id_from;
+        $session_to = $request->session_to;
+        $session_from = $request->session_from;
+        $school_id = school_id();
+        $students = Enroll::where(['class_id' => $class_id_from, 'session' => $session_from, 'school_id' => $school_id])->get();
+        return view('backend.'.Auth::user()->role.'.promotion.student', compact('class_id_to', 'class_id_from', 'session_to', 'session_from', 'students'))->render();
+    }
+
+    function promote($promotion_data) {
+        $promotion_data = explode('-', $promotion_data);
+        $enroll_id = $promotion_data[0];
+        $class_id = $promotion_data[1];
+        $session_id = $promotion_data[2];
+        $enroll = Enroll::find($enroll_id);
+        $enroll->class_id = $class_id;
+        $enroll->session = $session_id;
+        $section_id = Section::where('class_id', $class_id)->pluck('id')->first();
+        $enroll->section_id = $section_id;
+        $enroll->save();
+    }
 }

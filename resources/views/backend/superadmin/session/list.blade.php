@@ -7,6 +7,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 mt-1">
+                            <div class="alert alert-info" role="alert">Active Session 2018-2019</div>
+                        </div>
                         <div class="col-md-8 col-sm-12 col-xs-12">
                             <select class="form-control select2" data-toggle="select2" id = "session_dropdown">
                                 <option value = "0">Session List</option>
@@ -17,9 +20,6 @@
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12" style="float: left;">
                             <button type="button" class="btn btn-icon btn-secondary" onclick="makeSessionActive()"> <i class="mdi mdi-check"></i> Activate</button>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 mt-1">
-                            <div class="alert alert-info" role="alert">Active Session {{ $current_session }}</div>
                         </div>
                     </div>
                 </div>

@@ -26,7 +26,7 @@ class EventCalendarController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.'.Auth::user()->role.'.event_calendar.create');
     }
 
     /**
@@ -37,7 +37,22 @@ class EventCalendarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = new EventCalendar;
+        $event->title = $request->title;
+        $starting_date = strtotime($request->starting_date);
+        $event->starting_date = date('Y-m-d',$starting_date).' 00:00:01';
+        $ending_date = strtotime($request->ending_date);
+        $event->ending_date = date('Y-m-d', $ending_date).' 23:59:59';
+        $event->school_id = school_id();
+        $event->session = get_settings('running_session');
+        if($event->save()) {
+            $data = array(
+                'status' => true,
+                'view' => "",
+                'notification' =>"Event Has Been Created Successfully"
+            );
+        }
+        return $data;
     }
 
     /**
@@ -57,9 +72,10 @@ class EventCalendarController extends Controller
      * @param  \App\EventCalendar  $eventCalendar
      * @return \Illuminate\Http\Response
      */
-    public function edit(EventCalendar $eventCalendar)
+    public function edit($id)
     {
-        //
+        $event = EventCalendar::find($id);
+        return view('backend.'.Auth::user()->role.'.event_calendar.edit', compact('event'));
     }
 
     /**
@@ -69,9 +85,24 @@ class EventCalendarController extends Controller
      * @param  \App\EventCalendar  $eventCalendar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EventCalendar $eventCalendar)
+    public function update(Request $request, $id)
     {
-        //
+        $event = EventCalendar::find($id);
+        $event->title = $request->title;
+        $starting_date = strtotime($request->starting_date);
+        $event->starting_date = date('Y-m-d',$starting_date).' 00:00:01';
+        $ending_date = strtotime($request->ending_date);
+        $event->ending_date = date('Y-m-d', $ending_date).' 23:59:59';
+        $event->school_id = school_id();
+        $event->session = get_settings('running_session');
+        if($event->save()) {
+            $data = array(
+                'status' => true,
+                'view' => "",
+                'notification' =>"Event Has Been Updated Successfully"
+            );
+        }
+        return $data;
     }
 
     /**
@@ -80,8 +111,25 @@ class EventCalendarController extends Controller
      * @param  \App\EventCalendar  $eventCalendar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EventCalendar $eventCalendar)
+    public function destroy($id)
     {
-        //
+        $event = EventCalendar::find($id);
+        $event->delete();
+        return array(
+            'status' => true,
+            'view' => "",
+            'notification' =>"Event has been deleted successfully"
+        );
+    }
+
+    public function list()
+    {
+        return view('backend.'.Auth::user()->role.'.event_calendar.list')->render();
+    }
+
+    public function all()
+    {   
+        $query = EventCalendar::where('school_id', school_id())->where('session', get_settings('running_session'))->get();
+        return $query;
     }
 }

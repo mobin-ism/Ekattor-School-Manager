@@ -4,61 +4,63 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-file-document-box title_icon"></i> Event Calendar</h4>
+                <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> Event Calendar
+                <button type="button" class="btn btn-icon btn-success btn-rounded mb-1 alignToTitle" onclick="showAjaxModal('{{ route('event_calendar.create') }}', 'Create New Event')"> <i class="mdi mdi-plus"></i> Add New Event</button>
+            </h4>
             </div>
         </div>
     </div>
     <!-- end page title -->
+
     <div class="row ">
         <div class="col-xl-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row justify-content-md-center" style="margin-bottom: 10px;">
-                        <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <div id="calendar"></div>
-                        </div>
-                        <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            
-                        </div>
-                    </div>
-                </div> <!-- end card body-->
-            </div> <!-- end card -->
+            <div id = "event_content">
+                @include('backend.'.Auth::user()->role.'.event_calendar.list')
+            </div> <!-- end table-responsive-->
         </div><!-- end col-->
     </div>
 @endsection
 
-
 @section('scripts')
 <script>
-    // var showAllInvoices = function () {
-    //     var url = '{{ route("invoice.list") }}';
-    //     console.log($('#selectedValue').text());
-    //     $.ajax({
-    //         type : 'GET',
-    //         url: url,
-    //         data : {date : $('#selectedValue').text()},
-    //         success : function(response) {
-    //             $('#invoice_content').html(response);
-    //             initDataTable("basic-datatable");
-    //         }
-    //     });
-    // }
-
-    $('#calendar').fullCalendar({
-        eventClick: function(calEvent, jsEvent, view) {
-
-            alert('Event: ' + calEvent.title);
-            alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-            alert('View: ' + view.name);
-
-            // change the border color just for fun
-            $(this).css('border-color', 'red');
-
-        }
+    $(document).ready(function() {
+        refreshEventCalendar();
     });
+    var showAllEvents = function () {
+        var url = '{{ route("event_calendar.list") }}';
 
-    $('#calendar').fullCalendar({
-    disableDragging: true
-});
+        $.ajax({
+            type : 'GET',
+            url: url,
+            success : function(response) {
+                $('#event_content').html(response);
+                initDataTable("basic-datatable");
+                refreshEventCalendar();
+            }
+        });
+    }
+    var refreshEventCalendar = function () {
+        var url = '{{ route("event_calendar.all") }}';
+
+        $.ajax({
+            type : 'GET',
+            url: url,
+            success : function(response) {
+                    //var events = [{title  : 'event2' ,start  : '2019-01-06 ', end    : '2019-01-07 23:59:59'}, {title  : 'event3' ,start  : '2019-01-16 ', end    : '2019-01-17 23:59:59'}]
+                    var event_calendar = [];
+                    for(let i = 0; i < response.length; i++) {
+                        var obj;
+                        obj  = {"title" : response[i].title, "start" : response[i].starting_date, "end" : response[i].ending_date};
+                        event_calendar.push(obj);
+                    }
+                    
+                    $('#calendar').fullCalendar({
+                    disableDragging: true,
+                    events: event_calendar,
+                    displayEventTime: false
+                });
+            }
+        });
+    }
 </script>
 @endsection

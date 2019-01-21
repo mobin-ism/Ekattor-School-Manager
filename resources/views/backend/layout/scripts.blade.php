@@ -19,7 +19,7 @@
     <script src="{{ asset('backend/js/pages/demo.form-wizard.js') }}"></script>
     <script src="{{ asset('backend/js/vendor/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('backend/js/vendor/fullcalendar.min.js') }}"></script>
-    <script src="{{ asset('backend/js/pages/demo.calendar.js') }}"></script>
+    {{-- <script src="{{ asset('backend/js/pages/demo.calendar.js') }}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>

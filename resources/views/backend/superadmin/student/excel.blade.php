@@ -40,7 +40,7 @@
             <div class="form-group row mb-3">
                 <label class="col-md-3 col-form-label" for="name"> Upload CSV</label>
                 <div class="col-md-9">
-                    <input type="file" name="csv_file" class="form-control" data-label="Select CSV File" data-validate="required" data-message-required="Required" accept="text/csv, .csv" />
+                    <input type="file" name="csv_file" class="form-control-file" data-label="Select CSV File" data-validate="required" data-message-required="Required" accept="text/csv, .csv" />
                 </div>
             </div>
             <a href="" download="bulk_student.csv" style="display: none;" id = "bulk">Download</a>

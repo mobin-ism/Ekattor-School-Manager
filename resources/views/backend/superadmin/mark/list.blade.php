@@ -1,5 +1,23 @@
 @if (isset($students))
     @if (count($students) > 0)
+        @php
+            $section = \App\Section::find($section_id);
+            $subject = \App\Subject::find($subject_id);
+        @endphp
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 mt-2">
+                <div class="card text-white bg-secondary">
+                    <div class="card-body">
+                        <div class="toll-free-box text-center">
+                            <h4> <i class="mdi mdi-chart-bar-stacked"></i> Manage Marks</h4>
+                            <h5>Class: {{ $section->class->name }}</h5>
+                            <h5>Section: {{ $section->name }}</h5>
+                            <h5>Subject: {{ $subject->name }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="table-responsive-sm">
             <table class="table table-bordered table-sm " width="100%">
                 <thead class="thead-dark">

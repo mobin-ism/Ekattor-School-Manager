@@ -81,7 +81,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('syllabus', 'SyllabusController');
     Route::get('download_syllabus/{file}', 'SyllabusController@download')->name('syllabus.download');
 
-    Route::resource('event_calender', 'EventCalendarController');
+    Route::resource('event_calendar', 'EventCalendarController');
+    Route::get('event_calendar_list', 'EventCalendarController@list')->name('event_calendar.list');
+    Route::get('event_calendar_all', 'EventCalendarController@all')->name('event_calendar.all');
 
     Route::resource('profile', 'ProfileController');
 });
