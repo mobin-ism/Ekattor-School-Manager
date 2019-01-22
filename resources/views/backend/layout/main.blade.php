@@ -54,5 +54,12 @@
 @include('backend.layout.modal')
 @include('backend.layout.ajax_form')
 @yield('scripts')
+<script>
+function switchLanguage(language_code) {
+    $.post('{{ route('language.switch') }}',{_token:'{{ csrf_token() }}', locale:language_code}, function(data){
+        location.reload();
+    });
+}
+</script>
 </body>
 </html>

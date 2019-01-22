@@ -17,7 +17,7 @@ class AccountantController extends Controller
      */
     public function index()
     {
-        $title = "Accountant";
+        $title = __('accountant');
         return view('backend.'.Auth::user()->role.'.accountant.index', compact('title'));
     }
 
@@ -54,14 +54,14 @@ class AccountantController extends Controller
                 $data = array(
                     'status' => true,
                     'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
-                    'notification' =>"Accountant Added Successfully"
+                    'notification' => __('accountant_added_successfully')
                 );
             }
         }else {
             $data = array(
                 'status' => false,
                 'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
-                'notification' =>"Email Duplication"
+                'notification' => __('email_duplication')
             );
         }
 

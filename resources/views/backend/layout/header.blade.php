@@ -10,6 +10,35 @@
         </div>
         <div class="col-md-4 col-6">
             <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="mdi mdi-translate noti-icon"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="m-0">
+                                <span class="float-right">
+                                </span>Language
+                            </h5>
+                        </div>
+
+                        <div class="slimscroll" style="max-height: 230px;">
+                            @foreach (\App\Language::all() as $key => $language)
+                                <a href="javascript:void(0);" class="dropdown-item notify-item" onclick="switchLanguage('{{ $language->code }}')">
+                                    @if (Session::get('locale', Config::get('app.locale')) == $language->code)
+                                        <span class="badge badge-light"><p class="notify-details" style="margin-left: 0px;">{{ $language->name }}</p></span>
+                                    @else
+                                        <p class="notify-details" style="margin-left: 0px;">{{ $language->name }}</p>
+                                    @endif
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </li>
+
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                         aria-expanded="false">
@@ -61,18 +90,5 @@
             </ul>
         </div>
     </div>
-
-
-    {{-- <div class="app-search">
-        <form>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search...">
-                <span class="mdi mdi-magnify"></span>
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </div>
-            </div>
-        </form>
-    </div> --}}
 </div>
     <!-- end Topbar -->

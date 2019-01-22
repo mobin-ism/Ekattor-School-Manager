@@ -68,42 +68,42 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapInstallRoutes()
     {
-        Route::middleware('install')
+        Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/install.php'));
     }
 
     protected function mapAddonRoutes()
     {
-        Route::middleware('addon')
+        Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/addon.php'));
     }
 
     protected function mapStudentRoutes()
     {
-        Route::middleware('student')
+        Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/student.php'));
     }
 
     protected function mapSettingsRoutes()
     {
-        Route::middleware('settings')
+        Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/settings.php'));
     }
 
     protected function mapAccountingRoutes()
     {
-        Route::middleware('settings')
+        Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/accounting.php'));
     }
 
     protected function mapMultiSchoolRoutes()
     {
-        Route::middleware('school')
+        Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/school.php'));
     }

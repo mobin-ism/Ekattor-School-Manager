@@ -16,4 +16,10 @@
     Route::get('sms_settings', 'SettingsController@sms')->name('sms.settings');
     Route::get('payment_settings', 'SettingsController@payment')->name('payment.settings');
     Route::patch('payment_update/{type}', 'SettingsController@payment_update')->name('payment.update');
-    Route::get('language_settings', 'SettingsController@language')->name('language.settings');
+    Route::resource('language', 'LanguageController');
+    Route::get('language_list', 'LanguageController@list')->name('language.list');
+    Route::get('phrase/{language_id}', 'LanguageController@phrase')->name('language.phrase');
+    Route::post('key_value_store', 'LanguageController@key_value_store')->name('phrase.update');
+    Route::post('language_switch', 'LanguageController@changeLanguage')->name('language.switch');
+    
+

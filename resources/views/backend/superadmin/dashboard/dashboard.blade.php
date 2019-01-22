@@ -125,61 +125,8 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Recent Events</h4>
-                            <div class="slimscroll" style="max-height: 171px;">
-                                <div class="timeline-alt pb-0">
-                                    <div class="timeline-item">
-                                        <i class="mdi mdi-upload bg-info-lighten text-info timeline-icon"></i>
-                                        <div class="timeline-item-info">
-                                            <a href="#" class="text-info font-weight-bold mb-1 d-block">You sold an item</a>
-                                            <small>Paul Burgess just purchased “Hyper - Admin Dashboard”!</small>
-                                            <p>
-                                                <small class="text-muted">5 minutes ago</small>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="timeline-item">
-                                        <i class="mdi mdi-airplane bg-primary-lighten text-primary timeline-icon"></i>
-                                        <div class="timeline-item-info">
-                                            <a href="#" class="text-primary font-weight-bold mb-1 d-block">Product on the Bootstrap Market</a>
-                                            <small>Dave Gamache added
-                                                <span class="font-weight-bold">Admin Dashboard</span>
-                                            </small>
-                                            <p>
-                                                <small class="text-muted">30 minutes ago</small>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="timeline-item">
-                                        <i class="mdi mdi-microphone bg-info-lighten text-info timeline-icon"></i>
-                                        <div class="timeline-item-info">
-                                            <a href="#" class="text-info font-weight-bold mb-1 d-block">Robert Delaney</a>
-                                            <small>Send you message
-                                                <span class="font-weight-bold">"Are you there?"</span>
-                                            </small>
-                                            <p>
-                                                <small class="text-muted">2 hours ago</small>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="timeline-item">
-                                        <i class="mdi mdi-upload bg-primary-lighten text-primary timeline-icon"></i>
-                                        <div class="timeline-item-info">
-                                            <a href="#" class="text-primary font-weight-bold mb-1 d-block">Audrey Tobey</a>
-                                            <small>Uploaded a photo
-                                                <span class="font-weight-bold">"Error.jpg"</span>
-                                            </small>
-                                            <p>
-                                                <small class="text-muted">14 hours ago</small>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end timeline -->
-                            </div>
+                            <h4 class="header-title">Recent Events <a href="{{ route('event_calendar.index') }}" style="color: #6c757d;"><i class = "mdi mdi-export"></i></a></h4>
+                            @include('backend.'.Auth::user()->role.'.dashboard.events')
                         </div>
                     </div>
                 </div>

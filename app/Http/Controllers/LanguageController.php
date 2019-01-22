@@ -1,0 +1,117 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Session;
+use File;
+use Auth;
+use App\Language;
+
+class LanguageController extends Controller
+{
+    public function changeLanguage(Request $request)
+    {
+    	$request->session()->put('locale', $request->locale);
+    	flash('Language changed to '.$request->locale)->success();
+    }
+
+    public function index(Request $request)
+    {   
+        $title = __('language_manager');
+        return view('backend.'.Auth::user()->role.'.language.index', compact('title'));
+    }
+
+    public function create(Request $request)
+    {
+        return view('backend.'.Auth::user()->role.'.language.create');
+    }
+
+
+    public function edit($id)
+    {   
+        $language = Language::find($id);
+        return view('backend.'.Auth::user()->role.'.language.edit', compact('language'));
+    }
+
+    public function store(Request $request)
+    {
+        $language = new Language;
+        $language->name = $request->name;
+        $language->code = $request->code;
+        $language->school_id = school_id();
+        if($language->save()){
+            $data = array(
+                'status' => true,
+                'view' => "",
+                'notification' => "Language Added Successfully",
+            );
+        }
+        else{
+            $data = array(
+                'status' => false,
+                'view' => "",
+                'notification' => "An Error Occured When Adding Language",
+            );
+        }
+
+        return $data;
+    }
+
+    public function update(Request $request, $id){
+        $language = Language::find($id);
+        $language->name = $request->name;
+        $language->code = $request->code;
+        $language->school_id = school_id();
+        if($language->save()){
+            $data = array(
+                'status' => true,
+                'view' => "",
+                'notification' => "Language Added Successfully",
+            );
+        }
+        else{
+            $data = array(
+                'status' => false,
+                'view' => "",
+                'notification' => "An Error Occured When Adding Language",
+            );
+        }
+
+        return $data;
+    }
+
+    public function phrase($language_id)
+    {
+        $language = Language::findOrFail($language_id);
+        return view('backend.'.Auth::user()->role.'.language.phrase', compact('language'))->render();
+    }
+
+    public function key_value_store(Request $request)
+    {
+        $language = Language::findOrFail($request->id);
+        // echo $language->code.'-'.$request->key.'-'.$request->value;
+        saveJSONFile($language->code, $request->key, $request->value);
+    }
+
+    function list() {
+        return view('backend.'.Auth::user()->role.'.language.list')->render();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Parent  $parent
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $language = Language::find($id);
+        $language->delete();
+        return array(
+            'status' => true,
+            'view' => view('backend.'.Auth::user()->role.'.language.list')->render(),
+            'notification' =>"Language has been deleted successfully"
+        );
+    }
+}

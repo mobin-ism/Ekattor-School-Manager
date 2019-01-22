@@ -125,10 +125,6 @@ class SettingsController extends Controller
     {
         //
     }
-    public function language()
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
