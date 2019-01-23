@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> Event Calendar
-                <button type="button" class="btn btn-icon btn-success btn-rounded mb-1 alignToTitle" onclick="showAjaxModal('{{ route('event_calendar.create') }}', 'Create New Event')"> <i class="mdi mdi-plus"></i> Add New Event</button>
+                <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> {{ translate('event_calendar') }}
+                <button type="button" class="btn btn-icon btn-success btn-rounded mb-1 alignToTitle" onclick="showAjaxModal('{{ route('event_calendar.create') }}', '{{ translate('create_new_event') }}')"> <i class="mdi mdi-plus"></i> {{ translate('add_new_event') }}</button>
             </h4>
             </div>
         </div>

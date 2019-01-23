@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-account-search title_icon"></i> Manage Marks
+                <h4 class="page-title"> <i class="mdi mdi-account-search title_icon"></i> {{ translate('_manage_marks') }}
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
                     <div class="row justify-content-md-center d-print-none" style="margin-bottom: 10px;">
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="exam_id" id="exam_id">
-                                <option value="all">Select A Exam</option>
+                                <option value="all">{{ translate('select_a_exam') }}</option>
                                 @foreach (App\Exam::where('school_id', school_id())->where('session', get_settings('running_session'))->get() as $exam)
                                     <option value="{{ $exam->id }}">{{ $exam->name }}</option>
                                 @endforeach
@@ -27,7 +27,7 @@
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
-                                <option value="all">Select A Class</option>
+                                <option value="all">{{ translate('select_a_class') }}</option>
                                 @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                                 @endforeach
@@ -36,18 +36,18 @@
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                             <select class="form-control" name="section_id" id="section_id">
-                                <option value="all">Select A Section</option>
+                                <option value="all">{{ translate('select_a_section') }}</option>
                             </select>
                         </div>
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select name="subject_id" id = "subject_content" class="form-control" required>
-                                <option value="">Select A Subject</option>
+                                <option value="">{{ translate('select_a_subject') }}</option>
                             </select>
                         </div>
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="manageMarks()">Filter</button>
+                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="manageMarks()">{{ translate('filter') }}</button>
                         </div>
                     </div>
 
@@ -110,7 +110,7 @@
                     }
                 });
             }else {
-                toastr.error('Please make sure to fill all the necessary fields');
+                toastr.error('{{ translate('please_make_sure_to_fill_all_the_necessary_fields') }}');
             }
         }
 
@@ -124,7 +124,7 @@
                 url: url,
                 data : { mark : mark, comment : comment, _token : '{{ @csrf_token() }}', _method: "PATCH" },
                 success : function(response) {
-                    toastr.success('Mark has been updated successfully');
+                    toastr.success('{{ translate('mark_has_been_updated_successfully') }}');
                 }
             });
         }

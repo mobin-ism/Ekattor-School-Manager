@@ -6,12 +6,12 @@
         <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
             <tr>
-                <th>Grade Name</th>
-                <th>Grade Point</th>
-                <th>Mark From</th>
-                <th>Mark Upto</th>
-                <th>Comment</th>
-                <th>Option</th>
+                <th>{{ translate('grade_name') }}</th>
+                <th>{{ translate('grade_point') }}</th>
+                <th>{{ translate('mark_from') }}</th>
+                <th>{{ translate('mark_upto') }}</th>
+                <th>{{ translate('comment') }}</th>
+                <th>{{ translate('option') }}</th>
             </tr>
             </thead>
             <tbody>
@@ -24,8 +24,9 @@
                     <td>{{ $grade->comment }}</td>
                     <td>
                         <div class="btn-group mb-2">
-                            <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('grade.edit', $grade->id) }}', 'Update Grade')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Grade info"> <i class="mdi mdi-wrench"></i> </button>
-                            <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('grade.destroy', $grade->id) }}', showAllGrades )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Grade"> <i class="mdi mdi-window-close"></i> </button>
+                            <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('grade.edit', $grade->id) }}', '{{ translate('update_grade') }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_grade_info') }}"> <i class="mdi mdi-wrench"></i> </button>
+                            
+                            <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('grade.destroy', $grade->id) }}', showAllGrades )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_grade') }}"> <i class="mdi mdi-window-close"></i> </button>
                         </div>
                     </td>
                 </tr>

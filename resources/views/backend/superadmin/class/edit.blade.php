@@ -3,13 +3,13 @@
         @method('PATCH')
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label for="name">Class name</label>
+                <label for="name">{{ translate('class_name') }}</label>
                 <input type="text" class="form-control" id="name" name = "name" value="{{ $classes->name }}" required>
-                <small id="name_help" class="form-text text-muted">Provide Class Name.</small>
+                <small id="name_help" class="form-text text-muted">{{ translate('provide_class_name') }}.</small>
             </div>
 
             <div class="form-group  col-md-12">
-                <button class="btn btn-block btn-primary" type="submit">Update Class</button>
+                <button class="btn btn-block btn-primary" type="submit">{{ translate('update_class') }}</button>
             </div>
         </div>
     </form>

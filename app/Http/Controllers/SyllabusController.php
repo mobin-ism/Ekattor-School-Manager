@@ -17,7 +17,7 @@ class SyllabusController extends Controller
      */
     public function index()
     {
-        $title = "Syllabus";
+        $title = translate('syllabus');
         return view('backend.'.Auth::user()->role.'.syllabus.index', compact('title'));
     }
 
@@ -56,14 +56,12 @@ class SyllabusController extends Controller
             $syllabus->save();
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Syllabus Uploaded Successfully"
+                'notification' => translate('syllabus_uploaded_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Uploading Syllabus"
+                'notification' => translate('an_error_occured_when_uploading_syllabus')
             );
         }
 
@@ -121,8 +119,7 @@ class SyllabusController extends Controller
         $syllabus->delete();
         return array(
             'status' => true,
-            'view' => "",
-            'notification' =>"Syllabus has been deleted successfully"
+            'notification' => translate('syllabus_has_been_deleted_successfully')
         );
     }
 

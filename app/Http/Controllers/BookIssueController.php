@@ -16,7 +16,7 @@ class BookIssueController extends Controller
      */
     public function index()
     {
-        $title     = "Book Issue";
+        $title     = translate('book_issue');
         $date_from = strtotime(date('d-M-Y', strtotime(' -30 day')).' 00:00:00');
         $date_to   = strtotime(date('d-M-Y').' 23:59:59');
         return view('backend.'.Auth::user()->role.'.book_issue.index', compact('title', 'date_from', 'date_to'));
@@ -51,14 +51,12 @@ class BookIssueController extends Controller
         if($book_issue->save()){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Book Issued Successfully"
+                'notification' => translate('book_issued_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Issuing Book"
+                'notification' => translate('an_error_occured_when_issuing_book')
             );
         }
 
@@ -108,14 +106,12 @@ class BookIssueController extends Controller
         if($book_issue->save()){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Book Issued Successfully"
+                'notification' => translate('book_issued_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Issuing Book"
+                'notification' => translate('an_error_occured_when_issuing_book')
             );
         }
         return $data;
@@ -132,14 +128,12 @@ class BookIssueController extends Controller
         if(BookIssue::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Book Issue Info Deleted Successfully"
+                'notification' => translate('book_issue_info_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Deleting Book Issue Info"
+                'notification' => translate('an_error_occured_when_deleting_book_issue_info')
             );
         }
         return $data;
@@ -152,14 +146,12 @@ class BookIssueController extends Controller
         if($book_issue->save()){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Book Returned Successfully"
+                'notification' => translate('book_returned_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Returning Book"
+                'notification' => translate('an_error_occured_when_returning_book')
             );
         }
         return $data;

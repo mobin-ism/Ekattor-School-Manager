@@ -8,8 +8,8 @@
         <table class="table table-striped table-centered table-bordered mb-0 table-responsive">
             <thead>
             <tr>
-                <th width = "60%">Expense</th>
-                <th width = "40%">Amount</th>
+                <th width = "60%">{{ translate('expense') }}</th>
+                <th width = "40%">{{ translate('amount') }}</th>
             </tr>
             </thead>
             <tbody>

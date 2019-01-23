@@ -14,10 +14,10 @@
         <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
             <tr>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Expense Category</th>
-                <th>Option</th>
+                <th>{{ translate('date') }}</th>
+                <th>{{ translate('amount') }}</th>
+                <th>{{ translate('expense_category') }}</th>
+                <th>{{ translate('option') }}</th>
             </tr>
             </thead>
             <tbody>
@@ -30,8 +30,8 @@
                     <td>{{ $expense->expense_category->name }}</td>
                     <td>
                         <div class="btn-group mb-2">
-                            <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('expense.edit', $expense->id) }}', 'Update Expense')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Expense info"> <i class="mdi mdi-wrench"></i> </button>
-                            <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('expense.destroy', $expense->id) }}', showAllExpenses )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Expense"> <i class="mdi mdi-window-close"></i> </button>
+                            <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('expense.edit', $expense->id) }}', '{{ translate('update_expense') }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_expense_info') }}"> <i class="mdi mdi-wrench"></i> </button>
+                            <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('expense.destroy', $expense->id) }}', showAllExpenses )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_expense') }}"> <i class="mdi mdi-window-close"></i> </button>
                         </div>
                     </td>
                 </tr>

@@ -17,7 +17,7 @@ class DailyAttendanceController extends Controller
      */
     public function index()
     {
-        $title = "Daily Attendance";
+        $title = translate('daily_attendance');
         return view('backend.'.Auth::user()->role.'.daily_attendance.index', compact('title'));
     }
 
@@ -57,8 +57,7 @@ class DailyAttendanceController extends Controller
 
         $data = array(
             'status' => true,
-            'view' => view('backend.'.Auth::user()->role.'.daily_attendance.list')->render(),
-            'notification' =>"Attendance updated successfully"
+            'notification' => translate('attendance_updated_successfully')
         );
 
         return $data;

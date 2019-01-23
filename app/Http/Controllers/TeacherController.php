@@ -18,7 +18,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $title = "Teacher";
+        $title = translate('teacher');
         return view('backend.'.Auth::user()->role.'.teacher.index', compact('title'));
     }
 
@@ -65,15 +65,13 @@ class TeacherController extends Controller
 
                 $data = array(
                     'status' => true,
-                    'view' => "",
-                    'notification' =>"Teacher Added Successfully"
+                    'notification' => translate('teacher_added_successfully')
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"Email Duplication"
+                'notification' => translate('email_duplication')
             );
         }
 
@@ -130,15 +128,13 @@ class TeacherController extends Controller
 
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.'.Auth::user()->role.'.teacher.list')->render(),
-                    'notification' =>"Teacher Updated Successfully"
+                    'notification' => translate('teacher_updated_successfully')
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.teacher.list')->render(),
-                'notification' =>"Email Duplication"
+                'notification' => translate('email_duplication')
             );
         }
 
@@ -158,8 +154,7 @@ class TeacherController extends Controller
         $teacher->user->delete();
         return array(
             'status' => true,
-            'view' => view('backend.'.Auth::user()->role.'.teacher.list')->render(),
-            'notification' =>"Teacher has been deleted successfully"
+            'notification' => translate('teacher_has_been_deleted_successfully')
         );
     }
 

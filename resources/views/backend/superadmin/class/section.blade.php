@@ -30,10 +30,10 @@
 
     <div class="row no-gutters">
         <div class="form-group  col-md-12 p-0">
-            <button class="btn btn-block btn-success" type="button" onclick="appendSection()">Add New Section</button>
+            <button class="btn btn-block btn-success" type="button" onclick="appendSection()">{{ translate('add_new_section') }}</button>
         </div>
         <div class="form-group  col-md-12 p-0">
-            <button class="btn btn-block btn-primary" type="submit">Update</button>
+            <button class="btn btn-block btn-primary" type="submit">{{ translate('update') }}</button>
         </div>
     </div>
 </form>

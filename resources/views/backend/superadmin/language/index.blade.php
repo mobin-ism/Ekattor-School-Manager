@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="page-title-box">
                 <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> {{ __('language_manager') }}
-                <button type="button" class="btn btn-icon btn-success btn-rounded mb-1 alignToTitle" onclick="showAjaxModal('{{ route('language.create') }}', 'Create New Language')"> <i class="mdi mdi-plus"></i> Add Language</button>
+                <button type="button" class="btn btn-icon btn-success btn-rounded mb-1 alignToTitle" onclick="showAjaxModal('{{ route('language.create') }}', '{{ translate('create_new_language') }}')"> <i class="mdi mdi-plus"></i> {{ translate('add_language') }}</button>
             </h4>
             </div>
         </div>
@@ -49,7 +49,7 @@
                 data : {id : language_id, key : key, value : value, _token : '{{ @csrf_token() }}' },
                 url: url,
                 success : function(response) {
-                    toastr.success('Phrase Has been Updated Successfully, Please reload the browser.');
+                    toastr.success('{{ translate('phrase_has_been_updated_successfully._please_reload_the_browser') }}');
                 }
             });
         }

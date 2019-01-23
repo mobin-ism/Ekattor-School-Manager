@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-calendar-today title_icon"></i> Class Routine
-                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('routine.create') }}', 'Add Routine')"> <i class="mdi mdi-plus"></i>Add Routine</button></h4>
+                <h4 class="page-title"> <i class="mdi mdi-calendar-today title_icon"></i> {{ translate('class_routine') }}
+                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('routine.create') }}', '{{ translate('add_routine') }}')"> <i class="mdi mdi-plus"></i>{{ translate('add_routine') }}</button></h4>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
                     <div class="row justify-content-md-center" style="margin-bottom: 10px;">
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
-                                <option value="all">Class</option>
+                                <option value="all">{{ translate('select_class') }}</option>
                                 @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                                 @endforeach
@@ -27,12 +27,12 @@
 
                         <div id = "section_content" class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="section_id" id="section_id">
-                                <option value="all">Select Class First</option>
+                                <option value="all">{{ translate('select_class_first') }}</option>
                             </select>
                         </div>
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                                <button type="button" class="btn btn-icon btn-secondary form-control" onclick="getClassRoutine()">Filter</button>
+                                <button type="button" class="btn btn-icon btn-secondary form-control" onclick="getClassRoutine()">{{ translate('filter') }}</button>
                         </div>
                     </div>
 

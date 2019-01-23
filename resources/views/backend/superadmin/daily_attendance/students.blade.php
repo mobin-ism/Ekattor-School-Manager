@@ -1,16 +1,16 @@
 @if (isset($entries))
 
 <div class="row" style="margin-bottom: 10px; width: 100%;">
-    <div class="col-6"><button class="btn btn-secondary" onclick="mark_all_present(event)">Mark As Present</button></div>
-    <div class="col-6"><button class="btn btn-secondary" onclick="mark_all_absent(event)" style="float: right;">Mark As Absent</button></div>
+    <div class="col-6"><button class="btn btn-secondary" onclick="mark_all_present(event)">{{ translate('mark_as_present') }}</button></div>
+    <div class="col-6"><button class="btn btn-secondary" onclick="mark_all_absent(event)" style="float: right;">{{ translate('mark_as_absent') }}</button></div>
 </div>
 
 <div class="table-responsive-sm row col-md-12" style="padding-right: 0px;">
     <table class="table table-bordered table-centered mb-0">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Status</th>
+                <th>{{ translate('name') }}</th>
+                <th>{{ translate('status') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +23,8 @@
                         <div class="custom-control custom-radio">
                             {{--  <input type="radio" id="{{ 'status_'.$entry->id }}" name="{{ 'status_'.$entry->id }}" value="1" class="custom-control-input">
                             <label class="custom-control-label" for="{{ 'status_'.$entry->id }}">Present</label>  --}}
-                            <input type="radio" id="" name="{{ 'status_'.$entry->id }}" value="1" class="" @if ($entry->status == 1) checked @endif > Present &nbsp;
-                            <input type="radio" id="" name="{{ 'status_'.$entry->id }}" value="0" class="" @if ($entry->status == 0) checked @endif> Absent &nbsp;
+                            <input type="radio" id="" name="{{ 'status_'.$entry->id }}" value="1" class="" @if ($entry->status == 1) checked @endif > {{ translate('present') }} &nbsp;
+                            <input type="radio" id="" name="{{ 'status_'.$entry->id }}" value="0" class="" @if ($entry->status == 0) checked @endif> {{ translate('absent') }} &nbsp;
                         </div>
                     </td>
                 </tr>

@@ -2,17 +2,17 @@
     @csrf
 
     <div class="form-group row mb-3">
-        <label class="col-md-3 col-form-label" for="date">Date</label>
+        <label class="col-md-3 col-form-label" for="date">{{ translate('date') }}</label>
         <div class="col-md-9">
             <input type="text" class="form-control date" id="date" data-toggle="date-picker" data-single-date-picker="true" name = "date" value="" required>
         </div>
     </div>
 
     <div class="form-group row mb-3">
-        <label class="col-md-3 col-form-label" for="class_id"> Class</label>
+        <label class="col-md-3 col-form-label" for="class_id"> {{ translate('class') }}</label>
         <div class="col-md-9">
             <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
-                <option value="">Class</option>
+                <option value="">{{ translate('select_class') }}</option>
                 @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                 @endforeach
@@ -21,10 +21,10 @@
     </div>
 
     <div class="form-group row mb-3">
-        <label class="col-md-3 col-form-label" for="section_id"> Section</label>
+        <label class="col-md-3 col-form-label" for="section_id"> {{ translate('section') }} </label>
         <div class="col-md-9" id = "section_content_2">
             <select name="section_id" id="section_id" class="form-control" required >
-                <option value="">Select A Class First</option>
+                <option value="">{{ translate('select_a_class_first') }}</option>
             </select>
         </div>
     </div>
@@ -36,10 +36,10 @@
 
 
     <div class="form-group col-md-12" id="showStudentDiv">
-        <a class="btn btn-block btn-secondary" onclick="getStudentList()" style="color: #fff;">Show Student List</a>
+        <a class="btn btn-block btn-secondary" onclick="getStudentList()" style="color: #fff;">{{ translate('show_student_list') }}</a>
     </div>
     <div class="form-group col-md-12" id = "updateAttendanceDiv" style="display: none;">
-        <button class="btn btn-block btn-primary" type="submit">Update Attendance</button>
+        <button class="btn btn-block btn-primary" type="submit">{{ translate('update_attendance') }}</button>
     </div>
 </form>
 

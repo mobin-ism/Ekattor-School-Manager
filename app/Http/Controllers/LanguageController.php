@@ -18,7 +18,7 @@ class LanguageController extends Controller
 
     public function index(Request $request)
     {   
-        $title = __('language_manager');
+        $title = translate('language_manager');
         return view('backend.'.Auth::user()->role.'.language.index', compact('title'));
     }
 
@@ -43,15 +43,13 @@ class LanguageController extends Controller
         if($language->save()){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' => "Language Added Successfully",
+                'notification' => translate('language_added_successfully'),
             );
         }
         else{
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' => "An Error Occured When Adding Language",
+                'notification' => translate('an_error_occured_when_adding_language'),
             );
         }
 
@@ -66,15 +64,13 @@ class LanguageController extends Controller
         if($language->save()){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' => "Language Added Successfully",
+                'notification' => translate('language_added_successfully'),
             );
         }
         else{
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' => "An Error Occured When Adding Language",
+                'notification' => translate('an_error_occured_when_adding_language'),
             );
         }
 
@@ -110,8 +106,7 @@ class LanguageController extends Controller
         $language->delete();
         return array(
             'status' => true,
-            'view' => view('backend.'.Auth::user()->role.'.language.list')->render(),
-            'notification' =>"Language has been deleted successfully"
+            'notification' => translate('language_has_been_deleted_successfully')
         );
     }
 }

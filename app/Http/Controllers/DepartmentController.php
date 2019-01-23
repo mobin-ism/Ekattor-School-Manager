@@ -15,7 +15,7 @@ class DepartmentController extends Controller
  */
     public function index()
     {
-        $title = "Department";
+        $title = translate('department');
         return view('backend.' . Auth::user()->role . '.department.index', compact('title'));
     }
 
@@ -43,14 +43,12 @@ class DepartmentController extends Controller
         if ($department->save()) {
             $data = array(
                 'status' => true,
-                'view' => view('backend.' . Auth::user()->role . '.department.list')->render(),
-                'notification' => "Department Added Successfully",
+                'notification' => translate('department_added_successfully'),
             );
         } else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.' . Auth::user()->role . '.department.list')->render(),
-                'notification' => "An Error Occured When Adding Department",
+                'notification' => translate('an_error_occurred_when_adding_department'),
             );
         }
         return $data;
@@ -99,14 +97,12 @@ class DepartmentController extends Controller
         if ($department->save()) {
             $data = array(
                 'status' => true,
-                'view' => view('backend.' . Auth::user()->role . '.department.list')->render(),
-                'notification' => "Department Updated Successfully",
+                'notification' => translate('department_updated_successfully'),
             );
         } else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.' . Auth::user()->role . '.department.list')->render(),
-                'notification' => "An Error Occured When Updating Department",
+                'notification' => translate('an_error_occurred_when_adding_department'),
             );
         }
         return $data;
@@ -123,14 +119,12 @@ class DepartmentController extends Controller
         if (Department::destroy($id)) {
             $data = array(
                 'status' => true,
-                'view' => view('backend.' . Auth::user()->role . '.department.list')->render(),
-                'notification' => "Department Deleted Successfully",
+                'notification' => translate('department_deleted_successfully'),
             );
         } else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.' . Auth::user()->role . '.department.list')->render(),
-                'notification' => "An Error Occured When Deleting Department",
+                'notification' => translate('an_error_occurred_when_deleting_department'),
             );
         }
         return $data;

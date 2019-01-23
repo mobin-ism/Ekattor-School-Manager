@@ -19,7 +19,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $title = "Student List";
+        $title = translate('student_list');
         return view('backend.'.Auth::user()->role.'.student.index', compact('title'));
     }
 
@@ -30,21 +30,21 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $title = "Student Admission";
+        $title = translate('student_admission');
         $type = 'single';
         return view('backend.'.Auth::user()->role.'.student.create', compact('type', 'title'));
     }
 
     public function bulk_student_create()
     {
-        $title = "Student Admission";
+        $title = translate('student_admission');
         $type = 'bulk';
         return view('backend.'.Auth::user()->role.'.student.create', compact('type', 'title'));
     }
 
     public function excel_student_create()
     {
-        $title = "Student Admission";
+        $title = translate('student_admission');
         $type = 'excel';
         return view('backend.'.Auth::user()->role.'.student.create', compact('type', 'title'));
     }
@@ -109,14 +109,12 @@ class StudentController extends Controller
 
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Student Added Successfully"
+                'notification' => translate('student_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"Email Duplication"
+                'notification' => translate('email_duplication')
             );
         }
 
@@ -163,8 +161,7 @@ class StudentController extends Controller
 
         $data = array(
             'status' => true,
-            'view' => "",
-            'notification' =>"Student Added Successfully"
+            'notification' => translate('student_added_successfully')
         );
         return $data;
     }
@@ -228,14 +225,13 @@ class StudentController extends Controller
             }
         $data = array(
             'status' => true,
-            'view' => "",
-            'notification' =>"Student Added Successfully"
+            'notification' => translate('student_added_successfully')
         );
         }else {
             $data = array(
                 'status' => false,
                 'view' => "",
-                'notification' =>"You must have to select class and section"
+                'notification' => translate('you_must_have_to_select_class_and_section')
             );
         }
         return $data;
@@ -321,14 +317,12 @@ class StudentController extends Controller
             $student = Student::find($id);
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.student.update', compact('student'))->render(),
-                'notification' =>"Student Updated Successfully"
+                'notification' => translate('student_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.student.update', compact('student'))->render(),
-                'notification' =>"Email Duplication"
+                'notification' => translate('email_duplication')
             );
         }
 
@@ -351,8 +345,7 @@ class StudentController extends Controller
         $enroll->delete();
         return array(
             'status' => true,
-            'view' => "",
-            'notification' =>"Student has been deleted successfully"
+            'notification' => translate('student_has_been_deleted_successfully')
         );
     }
 

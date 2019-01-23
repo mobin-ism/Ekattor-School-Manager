@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-calendar-range title_icon"></i> Session
-                    <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('session_manager.create') }}', 'Create New Session')"> <i class="mdi mdi-plus"></i> Add Session</button>
+                <h4 class="page-title"> <i class="mdi mdi-calendar-range title_icon"></i> {{ translate('session') }}
+                    <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('session_manager.create') }}', '{{ translate('create_new_session') }}')"> <i class="mdi mdi-plus"></i> {{ translate('add_session') }}</button>
                 </h4>
             </div>
         </div>
@@ -38,8 +38,23 @@
                     }
             });
         }else {
-            toastr.error('No Session has been selected');
+            toastr.error('{{ translate('no_session_has_been_selected') }}');
         }
+
+        showAllSessions();
+    }
+
+    var showAllSessions = function () {
+        var url = '{{ route("session.list") }}';
+
+        $.ajax({
+            type : 'GET',
+            url: url,
+            success : function(response) {
+                $('#session_content').html(response);
+                initDataTable("basic-datatable");
+            }
+        });
     }
 </script>
 @endsection

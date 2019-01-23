@@ -17,7 +17,7 @@ class ParentController extends Controller
      */
     public function index()
     {
-        $title = "Parent";
+        $title = translate('parent');
         return view('backend.'.Auth::user()->role.'.parent.index', compact('title'));
     }
 
@@ -53,15 +53,13 @@ class ParentController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.'.Auth::user()->role.'.parent.list')->render(),
-                    'notification' =>"Parent Added Successfully"
+                    'notification' => translate('parent_added_successfully')
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.parent.list')->render(),
-                'notification' =>"Email Duplication"
+                'notification' => translate('email_duplication')
             );
         }
 
@@ -118,15 +116,13 @@ class ParentController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.'.Auth::user()->role.'.parent.list')->render(),
-                    'notification' =>"Parent Updated Successfully"
+                    'notification' => translate('parent_updated_successfully')
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.parent.list')->render(),
-                'notification' =>"Email Duplication"
+                'notification' => translate('email_duplication')
             );
         }
         return $data;
@@ -144,8 +140,7 @@ class ParentController extends Controller
         $user->delete();
         return array(
             'status' => true,
-            'view' => view('backend.'.Auth::user()->role.'.parent.list')->render(),
-            'notification' =>"Parent has been deleted successfully"
+            'notification' => translate('parent_has_been_deleted_successfully')
         );
     }
 }

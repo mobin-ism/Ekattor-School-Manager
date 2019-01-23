@@ -15,7 +15,7 @@ class ExpenseCategoryController extends Controller
      */
     public function index()
     {   
-        $title = "Expense Category";
+        $title = translate('expense_category');
         return view('backend.'.Auth::user()->role.'.expense_category.index', compact('title'));
     }
 
@@ -45,14 +45,12 @@ class ExpenseCategoryController extends Controller
         if($expense_category->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.expense_category.list')->render(),
-                'notification' =>"Expense Category Added Successfully"
+                'notification' => translate('expense_category_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.expense_category.list')->render(),
-                'notification' =>"An Error Occured When Adding Expense Category"
+                'notification' => translate('an_error_occured_when_adding_expense_category')
             );
         }
         return $data;
@@ -102,14 +100,12 @@ class ExpenseCategoryController extends Controller
         if($expense_category->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.expense_category.list')->render(),
-                'notification' =>"Expense Category Updated Successfully"
+                'notification' => translate('expense_category_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.expense_category.list')->render(),
-                'notification' =>"An Error Occured When Updating Expense Category"
+                'notification' => translate('an_error_occured_when_updating_expense_category')
             );
         }
         return $data;
@@ -126,14 +122,12 @@ class ExpenseCategoryController extends Controller
         if(ExpenseCategory::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.expense_category.list')->render(),
-                'notification' =>"Expense Category Deleted Successfully"
+                'notification' => translate('expense_category_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.expense_category.list')->render(),
-                'notification' =>"An Error Occured When Deleting Expense Category"
+                'notification' => translate('an_error_occured_when_deleting_expense_category')
             );
         }
         return $data;

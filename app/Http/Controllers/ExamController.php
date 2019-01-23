@@ -15,7 +15,7 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $title = "Exam";
+        $title = translate('exam');
         return view('backend.'.Auth::user()->role.'.exam.index', compact('title'));
     }
 
@@ -47,14 +47,12 @@ class ExamController extends Controller
         if($exam->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.exam.list')->render(),
-                'notification' =>"Exam Added Successfully"
+                'notification' => translate('exam_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.exam.list')->render(),
-                'notification' =>"An Error Occured When Adding Exam"
+                'notification' => translate('an_error_occured_when_adding_exam')
             );
         }
         return $data;
@@ -106,14 +104,12 @@ class ExamController extends Controller
         if($exam->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.exam.list')->render(),
-                'notification' =>"Exam Updated Successfully"
+                'notification' => translate('exam_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.exam.list')->render(),
-                'notification' =>"An Error Occured When Updating Exam"
+                'notification' => translate('an_error_occured_when_updating_exam')
             );
         }
         return $data;
@@ -132,14 +128,12 @@ class ExamController extends Controller
         if(Exam::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.exam.list')->render(),
-                'notification' =>"Exam Deleted Successfully"
+                'notification' => translate('exam_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.exam.list')->render(),
-                'notification' =>"An Error Occured When Deleting Exam"
+                'notification' => translate('an_error_occured_when_deleting_exam')
             );
         }
         return $data;

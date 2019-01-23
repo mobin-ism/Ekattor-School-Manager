@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-settings title_icon"></i>Manage Profile</h4>
+                <h4 class="page-title"> <i class="mdi mdi-settings title_icon"></i>{{ translate('manage_profile') }}</h4>
             </div>
         </div>
     </div>

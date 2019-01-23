@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box ">
-                <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> Teacher
-                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('teacher.create') }}', 'Create New Teacher')"> <i class="mdi mdi-plus"></i> Add New Teacher</button>
+                <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> {{ translate('teacher') }}
+                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('teacher.create') }}', '{{ translate('create_new_teacher') }}')"> <i class="mdi mdi-plus"></i> {{ translate('add_new_teacher') }}</button>
                 </h4>
             </div>
         </div>
@@ -20,14 +20,14 @@
                         <div class="row justify-content-md-center">
                             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                                 <select class="form-control select2" data-toggle="select2" name="department_id" id="department_id">
-                                    <option value="all">All Department</option>
+                                    <option value="all">{{ translate('all_department') }}</option>
                                     @foreach (App\Department::where('school_id', school_id())->get() as $department)
                                         <option value="{{ $department->id }}">{{ $department->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                                <button type="button" class="btn btn-icon btn-secondary form-control" onclick="departmentWiseFilter()">Filter</button>
+                                <button type="button" class="btn btn-icon btn-secondary form-control" onclick="departmentWiseFilter()">{{ translate('filter') }}</button>
                             </div>
                         </div>
                     </div>

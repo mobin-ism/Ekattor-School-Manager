@@ -15,8 +15,8 @@ class EventCalendarController extends Controller
      */
     public function index()
     {
-        $title = "Event Calendar";
-        return view('backend.'.Auth::user()->role.'.event_calendar.index');
+        $title = translate('event_calendar');
+        return view('backend.'.Auth::user()->role.'.event_calendar.index', compact('title'));
     }
 
     /**
@@ -48,8 +48,7 @@ class EventCalendarController extends Controller
         if($event->save()) {
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Event Has Been Created Successfully"
+                'notification' => translate('event_has_been_created_successfully')
             );
         }
         return $data;
@@ -98,8 +97,7 @@ class EventCalendarController extends Controller
         if($event->save()) {
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Event Has Been Updated Successfully"
+                'notification' => translate('event_has_been_updated_successfully')
             );
         }
         return $data;
@@ -117,8 +115,7 @@ class EventCalendarController extends Controller
         $event->delete();
         return array(
             'status' => true,
-            'view' => "",
-            'notification' =>"Event has been deleted successfully"
+            'notification' => translate('event_has_been_deleted_successfully')
         );
     }
 

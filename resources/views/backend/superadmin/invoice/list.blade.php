@@ -1,14 +1,14 @@
 <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
     <thead class="thead-dark">
     <tr>
-        <th>Student</th>
-        <th>Class</th>
-        <th>Invoice Title</th>
-        <th>Total amount</th>
-        <th>Paid amount</th>
-        <th>Status</th>
-        <th>Creation Date</th>
-        <th>Option</th>
+        <th>{{ translate('student') }}</th>
+        <th>{{ translate('class') }}</th>
+        <th>{{ translate('invoice_title') }}</th>
+        <th>{{ translate('total_amount') }}</th>
+        <th>{{ translate('paid_amount') }}</th>
+        <th>{{ translate('status') }}</th>
+        <th>{{ translate('creation_date') }}</th>
+        <th>{{ translate('option') }}</th>
     </tr>
     </thead>
     <tbody>
@@ -39,8 +39,9 @@
                 </td>
                 <td>
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('invoice.single.edit', $invoice->id) }}', 'Update invoice')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update invoice info"> <i class="mdi mdi-wrench"></i> </button>
-                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('invoice.destroy', $invoice->id) }}', showAllInvoices )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete invoice"> <i class="mdi mdi-window-close"></i> </button>
+                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('invoice.single.edit', $invoice->id) }}', '{{ translate('update_invoice') }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_invoice_info') }}"> <i class="mdi mdi-wrench"></i> </button>
+
+                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('invoice.destroy', $invoice->id) }}', showAllInvoices )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_invoice') }}"> <i class="mdi mdi-window-close"></i> </button>
                     </div>
                 </td>
             </tr>

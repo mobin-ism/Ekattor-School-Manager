@@ -2,54 +2,54 @@
         @csrf
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label for="class">Class</label>
+                <label for="class">{{ translate('class') }}</label>
                 <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
-                    <option value="">Class</option>
+                    <option value="">{{ translate('class') }}</option>
                     @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                         <option value="{{ $class->id }}">{{ $class->name }}</option>
                     @endforeach
                 </select>
-                <small id="class_help" class="form-text text-muted">Select Class.</small>
+                <small id="class_help" class="form-text text-muted">{{ translate('select_class') }}.</small>
             </div>
 
             <div class="form-group col-md-12">
-                <label for="section_content_2">Section</label>
+                <label for="section_content_2">{{ translate('section') }}</label>
                 <select name="section_id" id = "section_content_2" class="form-control" required>
-                    <option value="">Select A Section</option>
+                    <option value="">{{ translate('select_a_section') }}</option>
                 </select>
-                <small id="student_help" class="form-text text-muted">Select Section.</small>
+                <small id="student_help" class="form-text text-muted">{{ translate('select_a_section') }}.</small>
             </div>
 
             <div class="form-group col-md-12">
-                <label for="title">Invoice Title</label>
+                <label for="title">{{ translate('invoice_title') }}</label>
                 <input type="text" class="form-control" id="title" name = "title" required>
-                <small id="title_help" class="form-text text-muted">Provide Invoice Title.</small>
+                <small id="title_help" class="form-text text-muted">{{ translate('provide_invoice_title') }}.</small>
             </div>
 
             <div class="form-group col-md-12">
-                <label for="total_amount">Total Amount</label>
+                <label for="total_amount">{{ translate('total_amount') }}</label>
                 <input type="text" class="form-control" id="total_amount" name = "total_amount" required>
-                <small id="amount_help" class="form-text text-muted">Provide Total Amount.</small>
+                <small id="amount_help" class="form-text text-muted">{{ translate('provide_total_amount') }}.</small>
             </div>
 
             <div class="form-group col-md-12">
-                <label for="paid_amount">Paid Amount</label>
+                <label for="paid_amount">{{ translate('paid_amount') }}</label>
                 <input type="text" class="form-control" id="paid_amount" name = "paid_amount" required>
-                <small id="paid_amount_help" class="form-text text-muted">Provide Paid Amount.</small>
+                <small id="paid_amount_help" class="form-text text-muted">{{ translate('provide_paid_amount') }}.</small>
             </div>
 
             <div class="form-group col-md-12">
-                <label for="status">Status</label>
+                <label for="status">{{ translate('status') }}</label>
                 <select name="status" id="status" class="form-control" required >
-                    <option value="">Select A Status</option>
-                    <option value="paid">Paid</option>
-                    <option value="unpaid">Unpaid</option>
+                    <option value="">{{ translate('select_a_status') }}</option>
+                    <option value="paid">{{ translate('paid') }}</option>
+                    <option value="unpaid">{{ translate('unpaid') }}</option>
                 </select>
-                <small id="status_help" class="form-text text-muted">Select Invoice Status.</small>
+                <small id="status_help" class="form-text text-muted">{{ translate('select_invoice_status') }}.</small>
             </div>
         </div>
         <div class="form-group  col-md-12">
-            <button class="btn btn-block btn-primary" type="submit">Create Invoice</button>
+            <button class="btn btn-block btn-primary" type="submit">{{ translate('create_invoice') }}</button>
         </div>
     </form>
 

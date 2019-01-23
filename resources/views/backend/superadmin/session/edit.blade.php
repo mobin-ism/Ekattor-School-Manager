@@ -3,13 +3,13 @@
     @method('PATCH')
     <div class="form-row">
         <div class="form-group col-md-12">
-            <label for="session_title">Session Title</label>
+            <label for="session_title">{{ translate('session_title') }}</label>
             <input type="text" class="form-control" id="session_title" name = "session_title" value="{{ $session->name }}" required>
-            <small id="session_title_help" class="form-text text-muted">Provide Session Title.</small>
+            <small id="session_title_help" class="form-text text-muted">{{ translate('provide_session_title') }}.</small>
         </div>
 
         <div class="form-group  col-md-12">
-            <button class="btn btn-block btn-primary" type="submit">Create session</button>
+            <button class="btn btn-block btn-primary" type="submit">{{ translate('update_session') }}</button>
         </div>
     </div>
 </form>
@@ -18,7 +18,7 @@
     $(".ajaxForm").validate({});
     $(".ajaxForm").submit(function(e) {
         var form = $(this);
-        ajaxSubmit(e, form, 'session_content');
+        ajaxSubmit(e, form, showAllSessions);
     });
 </script>
 

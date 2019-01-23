@@ -11,9 +11,9 @@
                 <div class="card text-white bg-secondary">
                     <div class="card-body">
                         <div class="toll-free-box text-center">
-                            <h4> <i class="mdi mdi-chart-bar-stacked"></i> Promote Student</h4>
-                            <h5>From: {{ $class_from->name }} To {{ $class_to->name }}</h5>
-                            <h5>From Session: {{ $session_from_info->name }} To {{ $session_to_info->name }}</h5>
+                            <h4> <i class="mdi mdi-chart-bar-stacked"></i> {{ translate('promote_student') }}</h4>
+                            <h5>{{ translate('from') }}: {{ $class_from->name }} To {{ $class_to->name }}</h5>
+                            <h5>{{ translate('from_session') }}: {{ $session_from_info->name }} To {{ $session_to_info->name }}</h5>
                         </div>
                     </div>
                 </div>
@@ -25,11 +25,11 @@
                     <table class="table table-bordered table-striped dt-responsive nowrap" width="100%">
                         <thead class="thead-dark">
                         <tr>
-                            <th>Student Name</th>
-                            <th>Section</th>
-                            <th>Code</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>{{ translate('student_name') }}</th>
+                            <th>{{ translate('section') }}</th>
+                            <th>{{ translate('code') }}</th>
+                            <th>{{ translate('status') }}</th>
+                            <th>{{ translate('action') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -40,11 +40,11 @@
                                     <td>{{ $student->student->code }}</td>
                                     <td style="text-align: center;">
                                         <span class="badge badge-info-lighten" id = "success_{{ $student->id }}" style="display: none;">Promoted</span>
-                                        <span class="badge badge-light"  id = "danger_{{ $student->id }}">Not Promoted Yet</span>
+                                        <span class="badge badge-light"  id = "danger_{{ $student->id }}">{{ translate('not_promoted_yet') }}</span>
                                     </td>
                                     <td style="text-align: center;">
-                                        <button type="button" class="btn btn-icon btn-success btn-sm" onclick="enrollStudent('{{ $student->id.'-'.$class_id_to.'-'.$session_to }}', {{ $student->id }})"> Enroll To <strong> {{ $class_to->name }} </strong> </button>
-                                        <button type="button" class="btn btn-icon btn-secondary btn-sm" onclick="enrollStudent('{{ $student->id.'-'.$class_id_from.'-'.$session_to }}')"> Enroll To <strong> {{ $class_from->name }} </strong> </button>
+                                        <button type="button" class="btn btn-icon btn-success btn-sm" onclick="enrollStudent('{{ $student->id.'-'.$class_id_to.'-'.$session_to }}', {{ $student->id }})"> {{ translate('enroll_to') }} <strong> {{ $class_to->name }} </strong> </button>
+                                        <button type="button" class="btn btn-icon btn-secondary btn-sm" onclick="enrollStudent('{{ $student->id.'-'.$class_id_from.'-'.$session_to }}')"> {{ translate('enroll_to') }} <strong> {{ $class_from->name }} </strong> </button>
                                     </td>
                                 </tr>
                             @endforeach

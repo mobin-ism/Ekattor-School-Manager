@@ -15,7 +15,7 @@ class GradeController extends Controller
      */
     public function index()
     {   
-        $title = "Exam Grade";
+        $title = translate('exam_grade');
         return view('backend.'.Auth::user()->role.'.grade.index', compact('title'));
     }
 
@@ -48,14 +48,13 @@ class GradeController extends Controller
         if($grade->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.grade.list')->render(),
-                'notification' =>"Grade Added Successfully"
+                'notification' => translate('grade_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
                 'view' => view('backend.'.Auth::user()->role.'.grade.list')->render(),
-                'notification' =>"An Error Occured When Adding Grade"
+                'notification' => translate('an_error_occured_when_adding_grade')
             );
         }
         return $data;
@@ -109,14 +108,12 @@ class GradeController extends Controller
         if($grade->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.grade.list')->render(),
-                'notification' =>"Grade Updated Successfully"
+                'notification' => translate('grade_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.grade.list')->render(),
-                'notification' =>"An Error Occured When Updating Grade"
+                'notification' => translate('an_error_occured_when_updating_grade')
             );
         }
         return $data;
@@ -133,14 +130,12 @@ class GradeController extends Controller
         if(Grade::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.grade.list')->render(),
-                'notification' =>"Grade Deleted Successfully"
+                'notification' => translate('grade_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.grade.list')->render(),
-                'notification' =>"An Error Occured When Deleting Grade"
+                'notification' => translate('an_error_occured_when_deleting_grade')
             );
         }
         return $data;

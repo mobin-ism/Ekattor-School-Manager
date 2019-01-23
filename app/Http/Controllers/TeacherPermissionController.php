@@ -16,7 +16,7 @@ class TeacherPermissionController extends Controller
      */
     public function index()
     {
-        $title = "Teacher's Permission";
+        $title = translate('teachers_permissions');
         return view('backend.'.Auth::user()->role.'.permission.index', compact('title'));
     }
 

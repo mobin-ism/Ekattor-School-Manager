@@ -17,7 +17,7 @@ class MarkController extends Controller
      */
     public function index()
     {
-        $title = "Marks";
+        $title = translate('marks');
         return view('backend.'.Auth::user()->role.'.mark.index');
     }
 

@@ -7,9 +7,9 @@
         <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
                 <tr>
-                    <th>{{ __('name') }}</th>
-                    <th>Code</th>
-                    <th>Option</th>
+                    <th>{{ translate('name') }}</th>
+                    <th>{{ translate('code') }}</th>
+                    <th>{{ translate('option') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,9 +19,9 @@
                         <td> {{ $language->code }} </td>
                         <td>
                             <div class="btn-group mb-2">
-                                <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('language.phrase', $language->id) }}', 'Update Phrases For {{ $language->name }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Phrases"> <i class="mdi mdi-update"></i> </button>
-                                <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('language.edit', $language->id) }}', 'Update Language')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Language info"> <i class="mdi mdi-wrench"></i> </button>
-                                <button type="button" class="btn btn-icon btn-dark btn-sm"      style="margin-right:5px;" onclick="confirm_modal('{{ route('language.destroy', $language->id) }}', showAllLanguages )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Language"> <i class="mdi mdi-window-close"></i> </button>
+                                <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('language.phrase', $language->id) }}', '{{ translate('update_phrases_for') }} {{ $language->name }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_phrases') }}"> <i class="mdi mdi-update"></i> </button>
+                                <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('language.edit', $language->id) }}', '{{ translate('edit') }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_language_info') }}"> <i class="mdi mdi-wrench"></i> </button>
+                                <button type="button" class="btn btn-icon btn-dark btn-sm"      style="margin-right:5px;" onclick="confirm_modal('{{ route('language.destroy', $language->id) }}', showAllLanguages )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_language') }}"> <i class="mdi mdi-window-close"></i> </button>
                             </div>
                         </td>
                     </tr>

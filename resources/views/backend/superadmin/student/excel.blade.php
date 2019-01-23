@@ -3,7 +3,7 @@
         <div class="row justify-content-md-center">
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                 <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
-                    <option value="all">Select A Class</option>
+                    <option value="all">{{ translate('select_a_class') }}</option>
                     @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                         <option value="{{ $class->id }}">{{ $class->name }}</option>
                     @endforeach
@@ -11,7 +11,7 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                 <select name="section_id" id="section_id" class="form-control" required >
-                    <option value="">Select A Section</option>
+                    <option value="">{{ translate('select_a_section') }}</option>
                 </select>
             </div>
         </div>
@@ -20,10 +20,10 @@
             <div class="form-group row mb-3">
                 <label class="col-md-3 col-form-label" for="name"></label>
                 <div class="col-md-9">
-                    <button type="button" class="btn btn-primary" name="generate_csv" id="generate_csv">Generate CSV File</button>
+                    <button type="button" class="btn btn-primary" name="generate_csv" id="generate_csv">{{ translate('generate_csv_file') }}</button>
                 </div>
             </div>
-            <a href="" download="bulk_student.csv" style="display: none;" id = "bulk">Download</a>
+            <a href="" download="bulk_student.csv" style="display: none;" id = "bulk">{{ translate('download') }}</a>
         </div>
 
         {{-- <div class="form-group mb-0">
@@ -38,16 +38,16 @@
 
         <div class="col-12">
             <div class="form-group row mb-3">
-                <label class="col-md-3 col-form-label" for="name"> Upload CSV</label>
+                <label class="col-md-3 col-form-label" for="name"> {{ translate('upload_csv') }}</label>
                 <div class="col-md-9">
                     <input type="file" name="csv_file" class="form-control-file" data-label="Select CSV File" data-validate="required" data-message-required="Required" accept="text/csv, .csv" />
                 </div>
             </div>
-            <a href="" download="bulk_student.csv" style="display: none;" id = "bulk">Download</a>
+            <a href="" download="bulk_student.csv" style="display: none;" id = "bulk">{{ translate('download') }}</a>
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-secondary col-md-4 col-sm-12">Save Student</button>
+            <button type="submit" class="btn btn-secondary col-md-4 col-sm-12">{{ translate('save_student') }}</button>
         </div>
 </form>
 

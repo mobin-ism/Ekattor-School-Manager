@@ -17,7 +17,7 @@ class AddonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $title = "Addon Manager";
+    {   $title = translate('addon_manager');
         return view('backend.'.Auth::user()->role.'.addon.index', compact('title'));
     }
 
@@ -95,7 +95,7 @@ class AddonController extends Controller
                             }
                             fclose($handle);
                         } else {
-                            flash('Can not read the file')->error();
+                            flash(translate('can_not_read_the_file'))->error();
                             return redirect()->route('addon_manager.index');
                         }
                     }else {
@@ -111,12 +111,12 @@ class AddonController extends Controller
 
                 
 
-                flash('Addon installed Successfully')->success();
+                flash(translate('addon_installed_successfully'))->success();
                 return redirect()->route('addon_manager.index');
 
             }else {
 
-                flash('This addon is already installed')->error();
+                flash(translate('this_addon_is_already_installed'))->error();
                 return redirect()->route('addon_manager.index');
             }
         }
@@ -184,8 +184,7 @@ class AddonController extends Controller
 
         $data = array(
             'status' => true,
-            'view' => view('backend.'.Auth::user()->role.'.addon.list')->render(),
-            'notification' =>"Addon Status Updated Successfully"
+            'notification' => translate('addon_status_updated_successfully')
         );
         return $data;
     }

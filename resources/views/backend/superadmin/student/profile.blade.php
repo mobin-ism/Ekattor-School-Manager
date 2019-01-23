@@ -14,17 +14,17 @@
                 @else
                     <img src="{{ asset('backend/images/student_image/preview.jpg') }}" alt="" height="150" width="150">
                 @endif
-                <div> <span style="font-weight: bold;">Name: </span> {{ $student_details->user->name }} </div>
-                <div> <span style="font-weight: bold;">Student Code: </span> {{ $student_details->code }} </div>
+                <div> <span style="font-weight: bold;">{{ translate('name') }}: </span> {{ $student_details->user->name }} </div>
+                <div> <span style="font-weight: bold;">{{ translate('student_code') }}: </span> {{ $student_details->code }} </div>
             </div>
         </div>
         <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">{{ translate('profile') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="parent-tab" data-toggle="tab" href="#parent_info" role="tab" aria-controls="parent_info" aria-selected="false">Parent Info</a>
+                    <a class="nav-link" id="parent-tab" data-toggle="tab" href="#parent_info" role="tab" aria-controls="parent_info" aria-selected="false">{{ translate('parent_info') }}</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -32,17 +32,17 @@
                     <table class="table table-centered mb-0">
                         <tbody>
                             <tr>
-                                <td style="font-weight: bold;">Name:</td>
+                                <td style="font-weight: bold;">{{ translate('name') }}:</td>
                                 <td>{{ $student_details->user->name }}</td>
                             </tr>
                             <tr>
-                                <td style="font-weight: bold;">Class:</td>
+                                <td style="font-weight: bold;">{{ translate('class') }}:</td>
                                 <td>
                                     {{ $class_details->name }}
                                 </td>
                             </tr>
                             <tr>
-                                <td style="font-weight: bold;">Section:</td>
+                                <td style="font-weight: bold;">{{ translate('section') }}:</td>
                                 <td>
                                     {{ $section_details->name }}
                                 </td>
@@ -54,17 +54,17 @@
                     <table class="table table-centered mb-0">
                         <tbody>
                             <tr>
-                                <td style="font-weight: bold;">Parent Name:</td>
+                                <td style="font-weight: bold;">{{ translate('parent_name') }}:</td>
                                 <td>{{ $parent_info->name }}</td>
                             </tr>
                             <tr>
-                                <td style="font-weight: bold;">Parent Email:</td>
+                                <td style="font-weight: bold;">{{ translate('parent_email') }}:</td>
                                 <td>
                                     {{ $parent_info->email }}
                                 </td>
                             </tr>
                             <tr>
-                                <td style="font-weight: bold;">Parent Phone Number:</td>
+                                <td style="font-weight: bold;">{{ translate('parent_phone_number') }}:</td>
                                 <td>
                                     {{ $parent_info->phone }}
                                 </td>

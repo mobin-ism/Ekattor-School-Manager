@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-power-plug title_icon"></i> Manage Addons
-                    <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('addon_manager.create') }}', 'Add New Addon')"> <i class="mdi mdi-plus"></i> Add New Addon</button>
+                <h4 class="page-title"> <i class="mdi mdi-power-plug title_icon"></i> {{ translate('manage_addons') }} 
+                    <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('addon_manager.create') }}', '{{ translate('add_new_addon') }}')"> <i class="mdi mdi-plus"></i> {{ translate('add_new_addon') }}</button>
                 </h4>
             </div>
         </div>
@@ -16,7 +16,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title mt-3">Installed Addons</h4>
+                    <h4 class="header-title mt-3">{{ translate('installed_addons') }}</h4>
                     <div class="table-responsive-sm" id = "addon_content">
                         @include('backend.'.Auth::user()->role.'.addon.list')
                     </div> <!-- end table-responsive-->

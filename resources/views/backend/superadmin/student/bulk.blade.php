@@ -4,7 +4,7 @@
         <div class="row justify-content-md-center">
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                 <select name="class_id" id="class_id" class="form-control" onchange="classWiseSection(this.value)" required>
-                    <option value="all">Select A Class</option>
+                    <option value="all">{{ translate('select_a_class') }}</option>
                     @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                         <option value="{{ $class->id }}">{{ $class->name }}</option>
                     @endforeach
@@ -12,7 +12,7 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                 <select name="section_id" id="section_id" class="form-control" required >
-                    <option value="">Select A Section</option>
+                    <option value="">{{ translate('select_a_section') }}</option>
                 </select>
             </div>
         </div>
@@ -32,10 +32,10 @@
                         </div>
                         <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <select name="gender[]" class="form-control" required>
-                                <option value="">Select Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="others">Others</option>
+                                <option value="">{{ translate('select_gender') }}</option>
+                                <option value="male">{{ translate('male') }}</option>
+                                <option value="female">{{ translate('female') }}</option>
+                                <option value="others">{{ translate('others') }}</option>
                             </select>
                         </div>
                         {{-- <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
@@ -43,7 +43,7 @@
                         </div> --}}
                         <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <select name="parent_id[]" class="form-control" required >
-                                <option value="">Select Parent</option>
+                                <option value="">{{ translate('select_parent') }}</option>
                                 @foreach (\App\User::where('school_id', school_id())->where('role', 'parent')->get() as $parent)
                                     <option value="{{ $parent->id }}">{{ $parent->name }}</option>
                                 @endforeach
@@ -77,10 +77,10 @@
 
                         <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <select name="gender[]" class="form-control">
-                                <option value="">Select Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="others">Others</option>
+                                <option value="">{{ translate('select_gender') }}</option>
+                                <option value="male">{{ translate('male') }}</option>
+                                <option value="female">{{ translate('female') }}</option>
+                                <option value="others">{{ translate('others') }}</option>
                             </select>
                         </div>
                         {{-- <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
@@ -88,7 +88,7 @@
                         </div> --}}
                         <div class="form-group col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-1 mb-lg-0">
                             <select name="parent_id[]" class="form-control" required >
-                                <option value="">Select Parent</option>
+                                <option value="">{{ translate('select_parent') }}</option>
                                 @foreach (\App\User::where('school_id', school_id())->where('role', 'parent')->get() as $parent)
                                     <option value="{{ $parent->id }}">{{ $parent->name }}</option>
                                 @endforeach
@@ -107,7 +107,7 @@
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-secondary col-md-4 col-sm-12">Save Student</button>
+            <button type="submit" class="btn btn-secondary col-md-4 col-sm-12">{{ translate('save_student') }}</button>
         </div>
 </form>
 

@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-database title_icon"></i> Expense
-                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('expense.create') }}', 'Create New Expense')"> <i class="mdi mdi-plus"></i> Add Expense</button></h4>
+                <h4 class="page-title"> <i class="mdi mdi-database title_icon"></i> {{ translate('expense') }}
+                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('expense.create') }}', '{{ translate('create_new_expense') }}')"> <i class="mdi mdi-plus"></i> {{ translate('add_expense') }}</button></h4>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
 
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="expense_category_id" id="expense_category_id">
-                                <option value="all">Expense Category</option>
+                                <option value="all">{{ translate('expense_category') }}</option>
                                 @foreach (App\ExpenseCategory::where(['school_id' => school_id(), 'session' => get_settings('running_session')])->get() as $expense_category)
                                     <option value="{{ $expense_category->id }}">{{ $expense_category->name }}</option>
                                 @endforeach
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="showAllExpenses()">Filter</button>
+                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="showAllExpenses()">{{ translate('filter') }}</button>
                         </div>
                     </div>
                     <div id = "expense_content">

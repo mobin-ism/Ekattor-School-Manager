@@ -20,8 +20,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-account-search title_icon"></i> Daily Attendance
-                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('daily_attendance.create') }}', 'Take Attendance')"> <i class="mdi mdi-plus"></i>Take Attendance</button></h4>
+                <h4 class="page-title"> <i class="mdi mdi-account-search title_icon"></i> {{ translate('daily_attendance') }}
+                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('daily_attendance.create') }}', '{{ translate('take_attendance') }}')"> <i class="mdi mdi-plus"></i> {{ translate('take_attendance') }}</button></h4>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                     <div class="row justify-content-md-center d-print-none" style="margin-bottom: 10px;">
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select name="month" id="month" class="form-control">
-                                <option value="">Select Month</option>
+                                <option value="">{{ translate('select_month') }}</option>
                                 @foreach ($month_array as $key=>$value)
                                 <option value="{{ $value }}" @if (date('M') == $value) selected @endif>{{ $key }}</option>
                                 @endforeach
@@ -44,7 +44,7 @@
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select name="year" id="year" class="form-control">
-                                <option value="">Select Year</option>
+                                <option value="">{{ translate('select_year') }}</option>
                                 @for ($i = 2016; $i <= 2118; $i++)
                                     <option value="{{ $i }}" @if(date('Y') == $i) selected @endif>{{ $i }}</option>
                                 @endfor
@@ -53,7 +53,7 @@
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
-                                <option value="all">Select Class</option>
+                                <option value="all">{{ translate('select_a_class') }}</option>
                                 @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                                 @endforeach
@@ -61,11 +61,11 @@
                         </div>
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                             <select class="form-control" name="section_id" id="section_id">
-                                <option value="all">Select Class First</option>
+                                <option value="all">{{ translate('select_a_section') }}</option>
                             </select>
                         </div>
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="getDailtyAttendance()">Filter</button>
+                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="getDailtyAttendance()">{{ translate('filter') }}</button>
                         </div>
                     </div>
 

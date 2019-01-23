@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box">
-            <h4 class="page-title">Student Update Form</h4>
+            <h4 class="page-title">{{ translate('student_update_form') }}</h4>
         </div>
     </div>
 </div>
@@ -18,7 +18,7 @@
                         <li class="nav-item" data-target-form="#accountForm">
                             <a href="#" class="nav-link rounded-0 pt-2 pb-2 active show">
                                 <i class="mdi mdi-account-circle mr-1"></i>
-                                <span class="d-none d-sm-inline">Update Student Information</span>
+                                <span class="d-none d-sm-inline">{{ translate('update_student_information') }}</span>
                             </a>
                         </li>
                     </ul>

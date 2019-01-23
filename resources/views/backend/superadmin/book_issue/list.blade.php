@@ -5,12 +5,12 @@
 <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
         <thead class="thead-dark">
         <tr>
-            <th>Book Name</th>
-            <th>Issue Date</th>
-            <th>Student</th>
-            <th>Class</th>
-            <th>Status</th>
-            <th>Option</th>
+            <th>{{ translate('book_name') }}</th>
+            <th>{{ translate('issue_date') }}</th>
+            <th>{{ translate('student') }}</th>
+            <th>{{ translate('class') }}</th>
+            <th>{{ translate('status') }}</th>
+            <th>{{ translate('option') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -21,23 +21,25 @@
                     {{ date('D, d/M/Y', $book_issue->issue_date) }}
                 </td>
                 <td>
-                    {{ $book_issue->student->user->name}} <br> <small style="font-size: 10px; color: #9E9E9E;">Student Code: {{ $book_issue->student->code }}</small>
+                    {{ $book_issue->student->user->name}} <br> <small style="font-size: 10px; color: #9E9E9E;">{{ translate('student_code') }}: {{ $book_issue->student->code }}</small>
                 </td>
                 <td>
                     {{ $book_issue->class->name }}
                 </td>
                 <td>
                     @if ($book_issue->status)
-                        <i class="mdi mdi-circle text-success"></i> Returned
+                        <i class="mdi mdi-circle text-success"></i> {{ translate('returned') }}
                     @else
-                        <i class="mdi mdi-circle text-disable"></i> Pending
+                        <i class="mdi mdi-circle text-disable"></i> {{ translate('pending') }}
                     @endif
                 </td>
                 <td>
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('book_issue.edit', $book_issue->id) }}', 'Update Book Issue Information')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Book Issue info"> <i class="mdi mdi-wrench"></i> </button>
-                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('book_issue.return', $book_issue->id) }}', showAllBookIssues )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Return this issued book"> <i class="mdi mdi-checkbox-marked-circle-outline"></i> </button>
-                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('book_issue.destroy', $book_issue->id) }}', showAllBookIssues )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Book Issue Info"> <i class="mdi mdi-window-close"></i> </button>
+                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('book_issue.edit', $book_issue->id) }}', '{{ translate('update_book_issue_information') }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_book_issue_information') }}"> <i class="mdi mdi-wrench"></i> </button>
+
+                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('book_issue.return', $book_issue->id) }}', showAllBookIssues )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('return_this_issued_book') }}"> <i class="mdi mdi-checkbox-marked-circle-outline"></i> </button>
+
+                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('book_issue.destroy', $book_issue->id) }}', showAllBookIssues )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_book_issue_info') }}"> <i class="mdi mdi-window-close"></i> </button>
                     </div>
                 </td>
             </tr>

@@ -10,10 +10,10 @@
     <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
         <thead class="thead-dark">
             <tr>
-                <th>Name</th>
-                <th>Department</th>
-                <th>Designation</th>
-                <th>Option</th>
+                <th>{{ translate('name') }}</th>
+                <th>{{ translate('department') }}</th>
+                <th>{{ translate('designation') }}</th>
+                <th>{{ translate('option') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -24,12 +24,12 @@
                     <td> {{ $teacher->designation }} </td>
                     <td>
                         <div class="btn-group mb-2">
-                            <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('teacher.permission', $teacher->id) }}', 'Assigned Permissions')"
-                                data-toggle="tooltip" data-placement="top" title="" data-original-title="Assign permission for teachers"> <i class="dripicons-checklist"></i> </button>
-                            <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('teacher.edit', $teacher->id) }}', 'Update Teacher')"
-                                data-toggle="tooltip" data-placement="top" title="" data-original-title="Update teacher"> <i class="mdi mdi-wrench"></i> </button>
+                            <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('teacher.permission', $teacher->id) }}', '{{ translate('assigned_permissions') }}')"
+                                data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('assign_permission_for_teachers') }}"> <i class="dripicons-checklist"></i> </button>
+                            <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('teacher.edit', $teacher->id) }}', '{{ translate('update_teacher') }}')"
+                                data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_teacher') }}"> <i class="mdi mdi-wrench"></i> </button>
                             <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('teacher.destroy', $teacher->id) }}', departmentWiseFilter )"
-                                data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Teacher"> <i class="mdi mdi-window-close"></i> </button>
+                                data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_teacher') }}"> <i class="mdi mdi-window-close"></i> </button>
                         </div>
                     </td>
                 </tr>

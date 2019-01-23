@@ -18,7 +18,7 @@ class RoutineController extends Controller
      */
     public function index()
     {   
-        $title = "Class Routine";
+        $title = translate('class_routine');
         return view('backend.'.Auth::user()->role.'.routine.index', compact('title'));
     }
 
@@ -58,14 +58,12 @@ class RoutineController extends Controller
         if($routine->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.routine.list', compact('class_id', 'section_id'))->render(),
-                'notification' =>"Class Routine Added Successfully"
+                'notification' => translate('class_routine_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.routine.list', compact('class_id', 'section_id'))->render(),
-                'notification' =>"An Error Occured When Adding Class Routine"
+                'notification' => translate('an_error_occured_when_adding_class_routine')
             );
         }
         return $data;
@@ -122,14 +120,13 @@ class RoutineController extends Controller
         if($routine->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.routine.list', compact('class_id', 'section_id'))->render(),
-                'notification' =>"Class Routine Updated Successfully"
+                'notification' => translate('class_routine_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
                 'view' => view('backend.'.Auth::user()->role.'.routine.list', compact('class_id', 'section_id'))->render(),
-                'notification' =>"An Error Occured When Updating Class Routine"
+                'notification' => translate('an_error_occured_when_updating_class_routine')
             );
         }
         return $data;
@@ -149,14 +146,12 @@ class RoutineController extends Controller
         if(Routine::destroy($routine_id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.routine.list', compact('class_id', 'section_id'))->render(),
-                'notification' =>"Class Routine Deleted Successfully"
+                'notification' => translate('class_routine_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.routine.list', compact('class_id', 'section_id'))->render(),
-                'notification' =>"An Error Occured When Deleting Class Routine"
+                'notification' => translate('an_error_occured_when_deleting_class_routine')
             );
         }
         return $data;

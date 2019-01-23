@@ -6,10 +6,10 @@
     <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
         <thead class="thead-dark">
         <tr>
-            <th>Name</th>
-            <th>Starting Date</th>
-            <th>Ending Date</th>
-            <th>Option</th>
+            <th>{{ translate('name') }}</th>
+            <th>{{ translate('starting_date') }}</th>
+            <th>{{ translate('ending_date') }}</th>
+            <th>{{ translate('option') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
                 </td>
                 <td>
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('exam.edit', $exam->id) }}', 'Update Exam')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Exam info"> <i class="mdi mdi-wrench"></i> </button>
-                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('exam.destroy', $exam->id) }}', showAllExams )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Exam"> <i class="mdi mdi-window-close"></i> </button>
+                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('exam.edit', $exam->id) }}', '{{ translate('Update Exam') }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('Update Exam info') }}"> <i class="mdi mdi-wrench"></i> </button>
+                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('exam.destroy', $exam->id) }}', showAllExams )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('Delete Exam') }}"> <i class="mdi mdi-window-close"></i> </button>
                     </div>
                 </td>
             </tr>

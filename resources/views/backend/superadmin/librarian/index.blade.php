@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"><i class="mdi mdi-account-circle title_icon"></i> Librarian
-                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('librarian.create') }}', 'Create Librarian')"> <i class="mdi mdi-plus"></i> Add New Librarian</button></h4>
+                <h4 class="page-title"><i class="mdi mdi-account-circle title_icon"></i> {{ translate('librarian') }}
+                <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('librarian.create') }}', '{{ translate('create_librarian') }}')"> <i class="mdi mdi-plus"></i> {{ translate('add_new_librarian') }}</button></h4>
             </div>
         </div>
     </div>

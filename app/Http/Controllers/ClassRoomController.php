@@ -15,7 +15,7 @@ class ClassRoomController extends Controller
      */
     public function index()
     {   
-        $title = "Class Room";
+        $title = translate('class_room');
         return view('backend.'.Auth::user()->role.'.class_room.index', compact('title'));
     }
 
@@ -43,14 +43,12 @@ class ClassRoomController extends Controller
         if($room->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.class_room.list')->render(),
-                'notification' =>"Class Room Added Successfully"
+                'notification' => translate('class_room_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
-                'notification' =>"An Error Occured When Adding Class Room"
+                'notification' => translate('an_error_occurred_when_adding_class_room')
             );
         }
         return $data;
@@ -99,14 +97,12 @@ class ClassRoomController extends Controller
         if($room->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.class_room.list')->render(),
-                'notification' =>"Class Room Updated Successfully"
+                'notification' => translate('class_room_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.session.list')->render(),
-                'notification' =>"An Error Occured When Updating Class Room"
+                'notification' => translate('an_error_occured_when_updating_class_room')
             );
         }
         return $data;
@@ -123,14 +119,12 @@ class ClassRoomController extends Controller
         if(ClassRoom::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.class_room.list')->render(),
-                'notification' =>"Class Room Deleted Successfully"
+                'notification' => translate('class_room_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.class_room.list')->render(),
-                'notification' =>"An Error Occured When Deleting Class Room"
+                'notification' => translate('an_error_occured_when_deleting_class_room')
             );
         }
         return $data;

@@ -13,8 +13,8 @@
         <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
                 <tr>
-                    <th>Name</th>
-                    <th>Option</th>
+                    <th>{{ translate('name') }}</th>
+                    <th>{{ translate('option') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,10 +23,10 @@
                         <td> {{ $subject->name }} </td>
                         <td>
                             <div class="btn-group mb-2">
-                                <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('subject.edit', $subject->id) }}', 'Update subject')"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Update subject"> <i class="mdi mdi-wrench"></i> </button>
+                                <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('subject.edit', $subject->id) }}', '{{ translate('update_subject') }}')"
+                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_subject') }}"> <i class="mdi mdi-wrench"></i> </button>
                                 <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('subject.destroy', $subject->id) }}', classWiseSubject )"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete subject"> <i class="mdi mdi-window-close"></i> </button>
+                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_subject') }}"> <i class="mdi mdi-window-close"></i> </button>
                             </div>
                         </td>
                     </tr>

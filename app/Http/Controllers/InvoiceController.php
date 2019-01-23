@@ -18,7 +18,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $title = "Student Fee Manager";
+        $title = translate('student_fee_manager');
         $date_from = strtotime(date('d-M-Y', strtotime(' -30 day')).' 00:00:00');
         $date_to   = strtotime(date('d-M-Y').' 23:59:59');
         return view('backend.'.Auth::user()->role.'.invoice.index', compact('title', 'date_from', 'date_to'));
@@ -60,14 +60,12 @@ class InvoiceController extends Controller
         if($invoice->save()){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Invoice Added Successfully"
+                'notification' => translate('invoice_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Adding Invoice"
+                'notification' => translate('an_error_occured_when_adding_invoice')
             );
         }
         return $data;
@@ -95,8 +93,7 @@ class InvoiceController extends Controller
 
         $data = array(
             'status' => true,
-            'view' => "",
-            'notification' =>"Invoice Added Successfully"
+            'notification' => translate('invoice_added_successfully')
         );
         return $data;
     }
@@ -140,14 +137,12 @@ class InvoiceController extends Controller
         if($invoice->save()){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Invoice Updated Successfully"
+                'notification' => translate('invoice_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Updating Invoice"
+                'notification' => translate('an_error_occured_when_updating_invoice')
             );
         }
         return $data;
@@ -170,8 +165,7 @@ class InvoiceController extends Controller
         $invoice->delete();
         return array(
             'status' => true,
-            'view' => "",
-            'notification' =>"Invoice has been deleted successfully"
+            'notification' => translate('invoice_has_been_deleted_successfully')
         );
     }
 

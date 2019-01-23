@@ -2,30 +2,30 @@
     @csrf
 
     <div class="form-group col-md-12">
-        <label for="date">Date</label>
+        <label for="date">{{ translate('date') }}</label>
         <input type="text" class="form-control date" id="date" data-toggle="date-picker" data-single-date-picker="true" name = "date" value="" required>
-        <small id="date_help" class="form-text text-muted">Select A Date.</small>
+        <small id="date_help" class="form-text text-muted">{{ translate('select_a_date') }}.</small>
     </div>
 
     <div class="form-group col-md-12">
-        <label for="amount">Amount</label>
+        <label for="amount">{{ translate('amount') }}</label>
         <input type="text" class="form-control" id="amount" name = "amount" required>
-        <small id="amount_help" class="form-text text-muted">Provide An Amount.</small>
+        <small id="amount_help" class="form-text text-muted">{{ translate('provide_an_amount') }}.</small>
     </div>
 
     <div class="form-group col-md-12">
-        <label for="expense_category_id">Expense Category</label>
+        <label for="expense_category_id">{{ translate('expense_category') }}</label>
         <select class="form-control" name="expense_category_id" id="expense_category_id" required>
-            <option value="">Select An Expense Category</option>
+            <option value="">{{ translate('select_an_expense_category') }}</option>
             @foreach (App\ExpenseCategory::where(['school_id' => school_id(), 'session' => get_settings('running_session')])->get() as $expense_category)
                 <option value="{{ $expense_category->id }}">{{ $expense_category->name }}</option>
             @endforeach
         </select>
-        <small id="expense_category_id_help" class="form-text text-muted">Select an expense category.</small>
+        <small id="expense_category_id_help" class="form-text text-muted">{{ translate('select_an_expense_category') }}.</small>
     </div>
 
     <div class="form-group  col-md-12">
-        <button class="btn btn-block btn-primary" type="submit">Create Expense</button>
+        <button class="btn btn-block btn-primary" type="submit">{{ translate('create_expense') }}</button>
     </div>
 </form>
 

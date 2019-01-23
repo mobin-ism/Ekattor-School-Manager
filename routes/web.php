@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('session_manager', 'SessionManagerController');
     Route::get('session_activate/{id}', 'SessionManagerController@active')->name('session.active');
+    Route::get('session_list', 'SessionManagerController@list')->name('session.list');
 
     Route::resource('class', 'ClassController');
     Route::get('class_list', 'ClassController@list')->name('class.list');

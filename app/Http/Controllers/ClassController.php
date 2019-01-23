@@ -16,7 +16,7 @@ class ClassController extends Controller
      */
     public function index()
     {
-        $title = "Class";
+        $title = translate('class');
         return view('backend.'.Auth::user()->role.'.class.index', compact('title'));
     }
 
@@ -48,14 +48,12 @@ class ClassController extends Controller
             $this->createSection($class->id);
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
-                'notification' =>"Class Added Successfully"
+                'notification' => translate('class_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
-                'notification' =>"An Error Occured When Adding Class"
+                'notification' => translate('an_error_occured_when_adding_class')
             );
         }
         return $data;
@@ -106,14 +104,12 @@ class ClassController extends Controller
         if($classes->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
-                'notification' =>"Class Updated Successfully"
+                'notification' => translate('class_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
-                'notification' =>"An Error Occured When Updating Class"
+                'notification' => translate('an_error_occured_when_updating_class')
             );
         }
         return $data;
@@ -130,14 +126,13 @@ class ClassController extends Controller
         if(Classes::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
-                'notification' =>"Class Deleted Successfully"
+                'notification' => translate('class_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
                 'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
-                'notification' =>"An Error Occured When Deleting Class"
+                'notification' => translate('an_error_occured_when_deleting_class')
             );
         }
         return $data;

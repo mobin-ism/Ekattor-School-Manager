@@ -15,7 +15,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        $title = "Expense";
+        $title = translate('expense');
         $date_from = strtotime(date('d-M-Y', strtotime(' -30 day')).' 00:00:00');
         $date_to   = strtotime(date('d-M-Y').' 23:59:59');
         return view('backend.'.Auth::user()->role.'.expense.index', compact('title', 'date_from', 'date_to'));
@@ -48,14 +48,12 @@ class ExpenseController extends Controller
         if($expense->save()){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Expense Added Successfully"
+                'notification' => translate('expense_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Adding Expense"
+                'notification' => translate('an_error_occured_when_adding_expense')
             );
         }
         return $data;
@@ -102,14 +100,12 @@ class ExpenseController extends Controller
         if($expense->save()){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Expense Updated Successfully"
+                'notification' => translate('expense_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Updating Expense"
+                'notification' => translate('an_error_occured_when_updating_expense')
             );
         }
         return $data;
@@ -126,14 +122,13 @@ class ExpenseController extends Controller
         if(Expense::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Expense Deleted Successfully"
+                'notification' => translate('expense_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
                 'view' => "",
-                'notification' =>"An Error Occured When Deleting Expense"
+                'notification' => translate('an_error_occured_when_deleting_expense')
             );
         }
         return $data;

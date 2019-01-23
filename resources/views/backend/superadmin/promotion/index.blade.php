@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-account-search title_icon"></i> Student Promotion
+                <h4 class="page-title"> <i class="mdi mdi-account-search title_icon"></i> {{ translate('student_promotion') }}
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
 
                     <div class="row justify-content-md-center d-print-none" style="margin-bottom: 10px;">
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <label for="session_from">Current Session</label>
+                            <label for="session_from">{{ __('current_session') }}</label>
                             <select class="form-control" id = "session_from" name="session_from">
                                 @foreach (App\Session::where('school_id', school_id())->get() as $session)
                                     <option value="{{ $session->id }}" @if($session->id == get_settings('running_session')) selected @endif>{{ $session->name }}</option>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <label for="session_to">Promote To Session</label>
+                            <label for="session_to">{{ __('next_session') }}</label>
                             <select class="form-control" id = "session_to" name="session_to">
                                 @foreach (App\Session::where('school_id', school_id())->get() as $session)
                                     <option value="{{ $session->id }}">{{ $session->name }}</option>
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <label for="class_id_from">Promotion From Class</label>
+                            <label for="class_id_from">{{ __('promoting_from') }}</label>
                             <select name="class_id_from" id="class_id_from" class="form-control" required>
                                 <option value="">Class</option>
                                 @foreach (App\Classes::where('school_id', school_id())->get() as $class)
@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <label for="class_id_to">Promotion To Class</label>
+                            <label for="class_id_to">{{ __('promoting_to') }}</label>
                             <select name="class_id_to" id="class_id_to" class="form-control" required>
                                 <option value="">Class</option>
                                 @foreach (App\Classes::where('school_id', school_id())->get() as $class)
@@ -56,7 +56,7 @@
 
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <label for="manage_student" style="color: white;">Manage Button</label>
-                            <button type="button" class="btn btn-icon btn-secondary form-control" id = "manage_student" onclick="manageStudent()">Manage Student</button>
+                            <button type="button" class="btn btn-icon btn-secondary form-control" id = "manage_student" onclick="manageStudent()">{{ __('manage_promotion') }}</button>
                         </div>
                     </div>
 
@@ -87,7 +87,7 @@
                     }
                 });
             }else {
-                toastr.error('Please make sure to fill all the necessary fields');
+                toastr.error('{{ translate('please_make_sure_to_fill_all_the_necessary_fields') }}');
             }
         }
 
@@ -100,7 +100,7 @@
                     success : function(response) {
                         $("#success_"+enroll_id).show();
                         $("#danger_"+enroll_id).hide();
-                        toastr.success('Student Has been Promoted Successfully');
+                        toastr.success('{{ translate('student_has_been_promoted_successfully') }}');
                     }
                 });
         }

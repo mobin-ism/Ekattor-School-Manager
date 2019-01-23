@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 21, 2019 at 12:23 PM
+-- Generation Time: Jan 23, 2019 at 01:15 PM
 -- Server version: 8.0.12
 -- PHP Version: 7.2.13
 
@@ -190,7 +190,7 @@ CREATE TABLE `class_rooms` (
 --
 
 INSERT INTO `class_rooms` (`id`, `name`, `school_id`, `created_at`, `updated_at`) VALUES
-(1, '101', 1, '2018-12-07 13:19:18', '2019-01-16 23:32:02'),
+(1, '101', 1, '2018-12-07 13:19:18', '2019-01-23 06:08:15'),
 (2, '102', 1, '2018-12-07 13:19:36', '2018-12-07 13:19:36'),
 (4, '103', 1, '2018-12-07 15:41:52', '2018-12-07 15:41:52');
 
@@ -280,7 +280,9 @@ INSERT INTO `daily_attendances` (`id`, `timestamp`, `class_id`, `section_id`, `s
 (66, '1547575200', 1, 48, 6, 1, 1, '2019-01-20 11:36:18', '2019-01-20 11:36:21'),
 (67, '1547488800', 1, 48, 1, 1, 1, '2019-01-20 11:47:00', '2019-01-20 11:47:04'),
 (68, '1547488800', 1, 48, 2, 0, 1, '2019-01-20 11:47:00', '2019-01-20 11:47:04'),
-(69, '1547488800', 1, 48, 6, 1, 1, '2019-01-20 11:47:00', '2019-01-20 11:47:04');
+(69, '1547488800', 1, 48, 6, 1, 1, '2019-01-20 11:47:00', '2019-01-20 11:47:04'),
+(70, '1548180000', 1, 48, 2, NULL, 1, '2019-01-23 12:16:11', '2019-01-23 12:16:11'),
+(71, '1548180000', 1, 48, 6, NULL, 1, '2019-01-23 12:16:11', '2019-01-23 12:16:11');
 
 -- --------------------------------------------------------
 
@@ -307,7 +309,8 @@ INSERT INTO `departments` (`id`, `name`, `school_id`, `created_at`, `updated_at`
 (4, 'Chemistry', 1, '2018-11-17 04:11:46', '2018-11-17 04:11:46'),
 (5, 'Computer Science', 1, '2018-11-17 04:12:08', '2018-11-17 04:12:08'),
 (6, 'Math', 1, '2018-11-17 13:50:16', '2018-11-17 13:50:25'),
-(7, 'Accounting', 1, '2018-12-08 05:24:04', '2018-12-08 05:24:04');
+(7, 'Accounting', 1, '2018-12-08 05:24:04', '2018-12-08 05:24:04'),
+(8, 'English', 1, '2019-01-22 07:09:05', '2019-01-22 07:09:05');
 
 -- --------------------------------------------------------
 
@@ -1575,6 +1578,30 @@ INSERT INTO `invoices` (`id`, `title`, `total_amount`, `class_id`, `student_id`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `languages`
+--
+
+DROP TABLE IF EXISTS `languages`;
+CREATE TABLE `languages` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL,
+  `updated_at` timestamp NOT NULL,
+  `school_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `languages`
+--
+
+INSERT INTO `languages` (`id`, `name`, `code`, `created_at`, `updated_at`, `school_id`) VALUES
+(3, 'English', 'en', '2019-01-22 07:25:16', '2019-01-22 07:25:16', 1),
+(6, 'Bangla', 'bn', '2019-01-22 10:58:10', '2019-01-22 10:58:10', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `marks`
 --
 
@@ -1669,7 +1696,7 @@ INSERT INTO `menus` (`id`, `displayed_name`, `route_name`, `parent`, `sort_order
 (37, 'system_settings', 'system.settings', 36, 10, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (38, 'sms_settings', 'sms.settings', 36, 40, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (39, 'payment_settings', 'payment.settings', 36, 20, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(40, 'language_settings', 'language.settings', 36, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(40, 'language_settings', 'language.index', 36, 30, 1, NULL, '2019-01-22 06:27:08', '0000-00-00 00:00:00'),
 (41, 'session_manager', 'session_manager.index', 31, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (42, 'department', 'department.index', 11, 70, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (43, 'admission', 'student.create', 3, 20, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
@@ -1690,7 +1717,8 @@ INSERT INTO `menus` (`id`, `displayed_name`, `route_name`, `parent`, `sort_order
 (60, 'ex', NULL, NULL, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (61, 'income_expense_category', NULL, NULL, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (62, 'expense_category', 'expense_category.index', 27, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(78, 'alumni', 'alumni.index', 3, 91, 1, NULL, '2019-01-21 07:30:00', '2019-01-21 07:30:00');
+(78, 'alumni', 'alumni.index', 3, 91, 1, NULL, '2019-01-21 07:30:00', '2019-01-21 07:30:00'),
+(79, 'SMTP_settings', 'smtp.settings', 36, 50, 1, NULL, '2019-01-23 12:41:17', '2019-01-22 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -1895,7 +1923,8 @@ CREATE TABLE `sessions` (
 
 INSERT INTO `sessions` (`id`, `name`, `school_id`, `status`, `created_at`, `updated_at`) VALUES
 (1, '2017-2018', 1, 0, '2018-11-15 03:39:09', '2018-11-15 03:39:09'),
-(5, '2018-2020', 1, 0, '2018-12-10 00:02:02', '2018-12-10 00:02:02');
+(5, '2018-2020', 1, 0, '2018-12-10 00:02:02', '2018-12-10 00:02:02'),
+(6, '1998-1999', 1, 0, '2019-01-23 11:29:04', '2019-01-23 11:29:04');
 
 -- --------------------------------------------------------
 
@@ -1925,15 +1954,21 @@ CREATE TABLE `settings` (
   `stripe_test_secret_key` varchar(255) DEFAULT NULL,
   `stripe_test_public_key` varchar(255) DEFAULT NULL,
   `stripe_live_secret_key` varchar(255) DEFAULT NULL,
-  `stripe_live_public_key` varchar(255) DEFAULT NULL
+  `stripe_live_public_key` varchar(255) DEFAULT NULL,
+  `mail_driver` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `mail_host` longtext,
+  `mail_port` longtext,
+  `mail_username` longtext,
+  `mail_password` longtext,
+  `mail_encryption` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `system_name`, `system_title`, `system_email`, `selected_branch`, `running_session`, `phone`, `purchase_code`, `address`, `updated_at`, `created_at`, `paypal_active`, `paypal_mode`, `paypal_client_id_sandbox`, `paypal_client_id_production`, `stripe_active`, `stripe_mode`, `stripe_test_secret_key`, `stripe_test_public_key`, `stripe_live_secret_key`, `stripe_live_public_key`) VALUES
-(1, 'Ekattor Govt. Hight School', 'Ekattor Govt. Hight School', 'xotetocah@mailinator.com', 1, '5', '1234567890', '12345678910', 'Dhaka', '2019-01-21 12:20:28', '2018-11-17 13:20:01', 'yes', 'sandbox', '123456152', '12345678910101010', 'yes', 'off', '12', '32sa', '436', '5567');
+INSERT INTO `settings` (`id`, `system_name`, `system_title`, `system_email`, `selected_branch`, `running_session`, `phone`, `purchase_code`, `address`, `updated_at`, `created_at`, `paypal_active`, `paypal_mode`, `paypal_client_id_sandbox`, `paypal_client_id_production`, `stripe_active`, `stripe_mode`, `stripe_test_secret_key`, `stripe_test_public_key`, `stripe_live_secret_key`, `stripe_live_public_key`, `mail_driver`, `mail_host`, `mail_port`, `mail_username`, `mail_password`, `mail_encryption`) VALUES
+(1, 'Ekattor Govt. Hight School', 'Ekattor Govt. Hight School', 'xotetocah@mailinator.com', 1, '5', '1234567890', '12345678910', 'Dhaka', '2019-01-23 13:14:31', '2018-11-17 13:20:01', 'yes', 'sandbox', '123456152', '12345678910101010', 'yes', 'off', '12', '32sa', '436', '5567', 'smtp', 'smtp.gmail.com', '587', 'admin@example.com', '123456', 'tls');
 
 -- --------------------------------------------------------
 
@@ -2093,7 +2128,7 @@ CREATE TABLE `teacher_permissions` (
 --
 
 INSERT INTO `teacher_permissions` (`id`, `class_id`, `section_id`, `teacher_id`, `marks`, `assignment`, `attendance`, `online_exam`, `created_at`, `updated_at`) VALUES
-(1, 1, 48, 5, 1, 1, 1, 0, '2018-11-28 00:25:28', '2019-01-17 03:15:18'),
+(1, 1, 48, 5, 1, 1, 1, 0, '2018-11-28 00:25:28', '2019-01-23 12:15:26'),
 (2, 1, 48, 6, 1, 0, 0, 0, '2018-11-28 00:25:37', '2019-01-13 02:38:22'),
 (3, 1, 48, 7, 0, 0, 1, 0, '2019-01-02 04:21:12', '2019-01-02 04:21:16');
 
@@ -2127,7 +2162,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phone`, `remember_token`, `birthday`, `gender`, `blood_group`, `school_id`, `authentication_key`, `created_at`, `updated_at`) VALUES
-(1, 'Mr. Admin', 'admin@example.com', '$2y$10$rqglVusfzcGwpzWVABevjeneBPjZdkBSqLZ4m59VZoJUQFTvoaTaW', 'superadmin', 'Sit quod et eiusmod asperiores consequat Rerum qui eius nesciunt quia corporis expedita exercitationem dolorem qui', '+641-30-5228192', 'sq3PHZ3GjViuqJKyDojpMqGLAIQlieMTIpJMZIPkmMDeqRlcbi53TEMGsJkb', NULL, NULL, NULL, 0, NULL, NULL, '2019-01-19 21:54:25'),
+(1, 'Mr. Admin', 'admin@example.com', '$2y$10$rqglVusfzcGwpzWVABevjeneBPjZdkBSqLZ4m59VZoJUQFTvoaTaW', 'superadmin', 'Sit quod et eiusmod asperiores consequat Rerum qui eius nesciunt quia corporis expedita exercitationem dolorem qui', '+641-30-5228192', '82DUaZO9k7jBauOeq4HYmYZfPaYBW9JOMQfUbB3uEwaPDW21vsvts3PQ6Y9Y', NULL, NULL, NULL, 0, NULL, NULL, '2019-01-19 21:54:25'),
 (3, 'Scarlet Patterson', 'parent@example.com', '$2y$10$gvCDdhUvi/0N0cKo3pWrdOyx46qzfOLCJ/6D8TkADgChDEDlI7RHm', 'parent', 'Sit quod et eiusmod asperiores consequat Rerum qui eius nesciunt quia corporis expedita exercitationem dolorem qui', '+641-30-5228192', 'd6lkEluPfHGvkMQbixkMmbA41QNDORCEhgYpiNNtkdorUHTEyRWjTX63JlrN', NULL, 'others', 'a-', 1, NULL, '2018-11-26 04:15:26', '2018-11-26 04:15:26'),
 (7, 'Maite Carr', 'teacher1@example.com', '$2y$10$59wEfxAnEukVm8vNAvCId.z3nRnI1by7Bu4k15ql./gmP9KApZtQ2', 'teacher', 'Amet quibusdam aut necessitatibus illo consectetur consequatur impedit lorem atque neque id voluptas harum maiores sequi qui laboris minus', '+326-35-8982049', NULL, NULL, 'others', 'b+', 1, NULL, '2018-11-28 00:24:26', '2018-11-28 00:24:26'),
 (8, 'Pamela Rosa', 'teacher2@example.com', '$2y$10$9wdGlizUMy3sw5WgfqnPROItnPGce.MESgvqmzIwblhyMm/oTHsiu', 'teacher', 'Voluptas maiores est et quae eligendi temporibus fugiat architecto dolor quia error dicta est provident atque voluptas dolore', '+437-77-1377404', NULL, NULL, 'female', 'b+', 1, NULL, '2018-11-28 00:24:39', '2018-11-28 00:24:39'),
@@ -2157,7 +2192,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phon
 (34, 'Jane Doe', 'jane@example.com', '$2y$10$9xTFrpJhgCcempl6SIGNSellCCzDeskbwRyM4pJkmnDPJCMv/022.', 'student', NULL, '1234', NULL, NULL, 'male', NULL, 1, NULL, '2019-01-14 02:35:19', '2019-01-14 02:35:19'),
 (41, 'Test Student 001', 'test001@example.com', '$2y$10$y5DspYua1Nl8Ez3do/wiPuZq1zmVedCE.U8PTjkn163n2BSXifzWq', 'student', 'An Address', '789', NULL, '1547683200', 'others', NULL, 1, NULL, '2019-01-17 00:49:08', '2019-01-17 00:49:08'),
 (42, 'Test Student 002', 'test002@example.com', '$2y$10$LAlg.22KELlnaROiHENnzeLpsNPeXRoe.T.5qxJvKI1Py9DC6sdbi', 'student', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, '1547683200', 'others', NULL, 1, NULL, '2019-01-17 00:51:36', '2019-01-17 00:51:36'),
-(46, 'Accountant', 'acctest@example.com', '$2y$10$mRUxHFCF/cG4/poUlWAeeOPe7HZjK6nYM9RssvdLxySh3asX1m8HS', 'accountant', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, NULL, 'male', 'a-', 1, NULL, '2019-01-17 01:10:18', '2019-01-17 01:10:18'),
+(46, 'Accountant', 'acctest@example.com', '$2y$10$mRUxHFCF/cG4/poUlWAeeOPe7HZjK6nYM9RssvdLxySh3asX1m8HS', 'accountant', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, NULL, 'male', 'a-', 1, NULL, '2019-01-17 01:10:18', '2019-01-23 04:58:19'),
 (47, 'TestLibrarian', 'testlib@example.com', '$2y$10$EFZ1Zf/nd5OCGpylqRSGdu5gGet3mHvVzibllQfiMvfirDiE97xOG', 'librarian', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, NULL, 'male', 'a-', 1, NULL, '2019-01-17 01:10:46', '2019-01-17 01:10:46'),
 (48, 'Test Student 1', 'test1@example.com', '$2y$10$a7ZYmb2bBkb7G6z/9/Ed.uo1SpBmGbIEn1HloJO0/4CLyeuzq2d/W', 'student', NULL, '0123456789', NULL, NULL, 'male', NULL, 1, NULL, '2019-01-17 03:32:50', '2019-01-17 03:32:50'),
 (49, 'Test Student 2', 'test2@example.com', '$2y$10$uNferx179CqfMqAXsyOegOjCxBf0dYUR9ML9We9Iesb4jHGzJ6k.i', 'student', NULL, '07766275331', NULL, NULL, 'female', NULL, 1, NULL, '2019-01-17 03:32:50', '2019-01-17 03:32:50'),
@@ -2167,7 +2202,11 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phon
 (53, 'Raju', 'raju@example.com', '$2y$10$HnhZk8D/atXJr.gtHFt3LO/XdDQcM890ay9h8Rub7sCanjZXWdix2', 'student', NULL, NULL, NULL, NULL, 'female', NULL, 1, NULL, '2019-01-17 03:44:27', '2019-01-17 03:44:27'),
 (54, 'Navy', 'navy@example.com', '$2y$10$b//XYqRufwueU7MjJwoF0.eTXm9BYCArgGpsQE3y/yGnmmktT3Os2', 'student', NULL, NULL, NULL, NULL, 'male', NULL, 1, NULL, '2019-01-17 03:44:27', '2019-01-17 03:44:27'),
 (55, 'Sakha', 'sakh@example.com', '$2y$10$xqWLPkKbgXL.fSCgn.Z6AuUYvVPfHhVaMuJvaW1Or5BxoeeldTmOq', 'student', NULL, NULL, NULL, NULL, 'female', NULL, 1, NULL, '2019-01-17 03:44:27', '2019-01-17 03:44:27'),
-(56, 'Chemistry Teacher', 'chem@example.com', '$2y$10$Y6zVa9Y0hWTMeJajDkFOP./zmbVzCK1kkI7j1YOmQSDuoCIPDc6gO', 'teacher', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, NULL, 'male', 'a+', 1, NULL, '2019-01-19 18:32:27', '2019-01-19 18:32:27');
+(56, 'Chemistry Teacher', 'chem@example.com', '$2y$10$Y6zVa9Y0hWTMeJajDkFOP./zmbVzCK1kkI7j1YOmQSDuoCIPDc6gO', 'teacher', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, NULL, 'male', 'a+', 1, NULL, '2019-01-19 18:32:27', '2019-01-19 18:32:27'),
+(57, 'Test Accountant', 'limon@example.com', '$2y$10$3Q7giPYIFO5SJtsBIyQeueNiQvKRf0kHAYHUZohOz9VJeXuaUZ9lW', 'accountant', 'Babor\r\nroad', '123456', NULL, NULL, 'male', 'a-', 1, NULL, '2019-01-22 11:27:55', '2019-01-22 11:27:55'),
+(58, 'Nola Griffin', 'lol@example.com', '$2y$10$S59PP1j1Zq.gAdFXvHdLpuyqWeyWRAemjQHEXri.Oud216kPhz2/u', 'accountant', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, NULL, 'male', 'a+', 1, NULL, '2019-01-22 11:30:25', '2019-01-22 11:30:25'),
+(59, 'Bonya Apu', 'bonya@example.com', '$2y$10$baRmkkAP9NCPQksUjHMcL.DD974a9Zd7knfSY1A7XmaBTk4QTe26u', 'accountant', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331', NULL, NULL, 'female', 'a-', 1, NULL, '2019-01-23 05:02:36', '2019-01-23 05:02:36'),
+(60, 'Test Parent', 'tester@example.com', '$2y$10$tYEG4DZd6rAOZkUam58iEeC21wme1145hbwN1Ct5SGfUr45dDhXcq', 'parent', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '1234567890', NULL, NULL, 'male', 'a-', 1, NULL, '2019-01-23 11:30:33', '2019-01-23 11:30:33');
 
 --
 -- Indexes for dumped tables
@@ -2267,6 +2306,12 @@ ALTER TABLE `grades`
 -- Indexes for table `invoices`
 --
 ALTER TABLE `invoices`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `languages`
+--
+ALTER TABLE `languages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2416,19 +2461,19 @@ ALTER TABLE `classes`
 -- AUTO_INCREMENT for table `class_rooms`
 --
 ALTER TABLE `class_rooms`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `daily_attendances`
 --
 ALTER TABLE `daily_attendances`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `enrolls`
@@ -2473,6 +2518,12 @@ ALTER TABLE `invoices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4877;
 
 --
+-- AUTO_INCREMENT for table `languages`
+--
+ALTER TABLE `languages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `marks`
 --
 ALTER TABLE `marks`
@@ -2482,7 +2533,7 @@ ALTER TABLE `marks`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -2524,7 +2575,7 @@ ALTER TABLE `sections`
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -2566,7 +2617,7 @@ ALTER TABLE `teacher_permissions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $title = "Manage Profile";
+        $title = translate('manage_profile');
         return view('backend.'.Auth::user()->role.'.profile.index', compact('title'));
     }
 
@@ -87,14 +87,12 @@ class ProfileController extends Controller
                 $user->save();
                 $data = array(
                     'status' => true,
-                    'view' => "",
-                    'notification' =>"Profile Has Been Successfully"
+                    'notification' => translate('profile_has_been_successfully')
                 );
             }else {
                 $data = array(
                     'status' => false,
-                    'view' => "",
-                    'notification' =>"Email Duplication"
+                    'notification' => translate('email_duplication')
                 );
             }
         }elseif($type == 'password') {
@@ -105,21 +103,18 @@ class ProfileController extends Controller
                     $user->save();
                     $data = array(
                         'status' => true,
-                        'view' => "",
-                        'notification' =>"Password Has Been Updated Successfully"
+                        'notification' => translate('password_has_been_updated_successfully')
                     );
                 }else {
                     $data = array(
                         'status' => false,
-                        'view' => "",
-                        'notification' =>"Password mismatched"
+                        'notification' => translate('password_mismatched')
                     );
                 }
             }else {
                 $data = array(
                     'status' => false,
-                    'view' => "",
-                    'notification' =>"Password mismatched"
+                    'notification' => translate('password_mismatched')
                 );
             }
         }

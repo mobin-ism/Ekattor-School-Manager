@@ -22,4 +22,6 @@
     Route::post('key_value_store', 'LanguageController@key_value_store')->name('phrase.update');
     Route::post('language_switch', 'LanguageController@changeLanguage')->name('language.switch');
     
+    Route::get('smtp_settings', 'SettingsController@smtp')->name('smtp.settings');
+    Route::patch('smtp_update', 'SettingsController@smtpUpdate')->name('smtp.update');
 

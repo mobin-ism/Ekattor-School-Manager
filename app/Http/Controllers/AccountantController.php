@@ -17,7 +17,7 @@ class AccountantController extends Controller
      */
     public function index()
     {
-        $title = __('accountant');
+        $title = translate('accountant');
         return view('backend.'.Auth::user()->role.'.accountant.index', compact('title'));
     }
 
@@ -53,14 +53,12 @@ class AccountantController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
                     'notification' => __('accountant_added_successfully')
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
                 'notification' => __('email_duplication')
             );
         }
@@ -117,15 +115,13 @@ class AccountantController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
-                    'notification' =>"Accountant Updated Successfully"
+                    'notification' => translate('accountant_updated_successfully')
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
-                'notification' =>"Email Duplication"
+                'notification' => translate('email_duplication')
             );
         }
         return $data;
@@ -143,8 +139,7 @@ class AccountantController extends Controller
         $user->delete();
         return array(
             'status' => true,
-            'view' => view('backend.'.Auth::user()->role.'.accountant.list')->render(),
-            'notification' =>"accountant has been deleted successfully"
+            'notification' => translate('accountant_has_been_deleted_successfully')
         );
     }
 }

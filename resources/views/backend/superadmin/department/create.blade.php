@@ -2,13 +2,13 @@
     @csrf
     <div class="form-row">
         <div class="form-group col-md-12">
-            <label for="name">Department Name</label>
+            <label for="name">{{ translate('department_name') }}</label>
             <input type="text" class="form-control" id="name" name = "name" required>
-            <small id="department_name_help" class="form-text text-muted">Provide Department Title.</small>
+            <small id="department_name_help" class="form-text text-muted">{{ translate('provide_department_title') }}.</small>
         </div>
 
         <div class="form-group  col-md-12">
-            <button class="btn btn-block btn-primary" type="submit">Create New Department</button>
+            <button class="btn btn-block btn-primary" type="submit">{{ translate('create_new_department') }}</button>
         </div>
     </div>
 </form>

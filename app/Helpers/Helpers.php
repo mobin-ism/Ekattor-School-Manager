@@ -44,3 +44,17 @@ function saveJSONFile($language_code, $updating_key, $updating_value){
     $jsonData = json_encode($jsonString, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
     file_put_contents(base_path('resources/lang/'.$language_code.'.json'), stripslashes($jsonData));
 }
+
+function translate($phrase) {
+    $language_code = "en";
+    $langArray = openJSONFile($language_code);
+    if (array_key_exists($phrase, $langArray)){
+    }
+    else{
+        $langArray[$phrase] = ucfirst(str_replace('_', ' ', $phrase));
+        $jsonData = json_encode($langArray, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+        file_put_contents(base_path('resources/lang/'.$language_code.'.json'), stripslashes($jsonData));
+    }
+
+    return __($phrase);
+}

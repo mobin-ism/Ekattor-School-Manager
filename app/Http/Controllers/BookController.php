@@ -15,7 +15,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $title = "Book";
+        $title = translate('book');
         return view('backend.'.Auth::user()->role.'.book.index', compact('title'));
     }
 
@@ -47,14 +47,12 @@ class BookController extends Controller
         if($book->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.book.list')->render(),
-                'notification' =>"Book Added Successfully"
+                'notification' => translate('book_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.book.list')->render(),
-                'notification' =>"An Error Occured When Adding Book"
+                'notification' => translate('an_error_occured_when_adding_book')
             );
         }
         return $data;
@@ -107,14 +105,12 @@ class BookController extends Controller
         if($book->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.book.list')->render(),
-                'notification' =>"Book Updated Successfully"
+                'notification' => translate('book_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.book.list')->render(),
-                'notification' =>"An Error Occured When Updating Book"
+                'notification' => translate('an_error_occured_when_updating_book')
             );
         }
         return $data;
@@ -131,14 +127,12 @@ class BookController extends Controller
         if(Book::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.book.list')->render(),
-                'notification' =>"Book Deleted Successfully"
+                'notification' => translate('book_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.book.list')->render(),
-                'notification' =>"An Error Occured When Deleting Book"
+                'notification' => translate('an_error_occured_when_deleting_book')
             );
         }
         return $data;

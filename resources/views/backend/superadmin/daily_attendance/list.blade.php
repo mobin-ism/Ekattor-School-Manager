@@ -10,9 +10,9 @@
             <div class="card text-white bg-secondary">
                 <div class="card-body">
                     <div class="toll-free-box text-center">
-                        <h5>Attendance Report</h5>
-                        <h6>Class: {{ $class_name }}</h6>
-                        <h6>Section: {{ $section_name }}</h6>
+                        <h5>{{ translate('attendance_report') }}</h5>
+                        <h6> {{ translate('class') }} : {{ $class_name }}</h6>
+                        <h6> {{ translate('section') }} : {{ $section_name }}</h6>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
     <table class="table table-bordered table-sm " width="100%">
         <thead class="thead-dark">
             <tr style="font-size: 12px;">
-                <th width = "40px">Student <i class="mdi mdi-arrow-down"></i> Date <i class="mdi mdi-arrow-right"></i></th>
+                <th width = "40px">{{ translate('student') }} <i class="mdi mdi-arrow-down"></i> {{ translate('date') }} <i class="mdi mdi-arrow-right"></i></th>
                 @for ($i = 1; $i <= $number_of_days; $i++)
                     <th>{{$i}}</th>
                 @endfor

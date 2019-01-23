@@ -14,12 +14,12 @@
             @endphp
             <tr>
                 @if ($attribute == 'class_id')
-                    <td style="font-weight: bold;">Class</td>
+                    <td style="font-weight: bold;">{{ translate('class') }}</td>
                     <td style="font-weight: bold;">
                         {{ \App\Classes::find($permission[$attribute])->name }}
                     </td>
                 @elseif ($attribute == 'section_id')
-                    <td style="font-weight: bold;">Section</td>
+                    <td style="font-weight: bold;">{{ translate('section') }}</td>
                     <td style="font-weight: bold;">
                         {{ \App\Section::find($permission[$attribute])->name }}
                     </td>
@@ -39,7 +39,7 @@
 </table>
 @endforeach
 @if (count($permissions) == 0)
-    <p class = "text-center">No permission assigned yet</p>
+    <p class = "text-center">{{ translate('no_permission_assigned_yet') }}</p>
 @endif
-<a href="{{ route('permission.index') }}" class="btn btn-info btn-block">Update Permissions</a>
+<a href="{{ route('permission.index') }}" class="btn btn-info btn-block">{{ translate('update_permissions') }}</a>
 

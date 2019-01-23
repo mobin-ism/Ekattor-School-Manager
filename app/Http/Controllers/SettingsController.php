@@ -15,7 +15,7 @@ class SettingsController extends Controller
      */
     public function system()
     {
-        $title = "System Settings";
+        $title = translate('system_settings');
         $settings_type = "system";
         return view('backend.'.Auth::user()->role.'.settings.index', compact('settings_type', 'title'));
     }
@@ -33,14 +33,12 @@ class SettingsController extends Controller
         if($settings->save()){
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"System Updated Successfully"
+                'notification' => translate('system_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Updating System"
+                'notification' => translate('an_error_occured_when_updating_system')
             );
         }
         return $data;
@@ -53,14 +51,12 @@ class SettingsController extends Controller
             $logo->move($dir, 'logo-dark.png');
             $data = array(
                 'status' => true,
-                'view' => "",
-                'notification' =>"Please reload the browser to load the image"
+                'notification' => translate('please_reload_the_browser_to_load_the_image')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => "",
-                'notification' =>"An Error Occured When Updating System"
+                'notification' => translate('an_error_occured_when_updating_system')
             );
         }
         return $data;
@@ -68,7 +64,7 @@ class SettingsController extends Controller
 
     public function payment()
     {
-        $title = "Payment Settings";
+        $title = translate('payment_settings');
         $settings_type = "payment";
         return view('backend.'.Auth::user()->role.'.settings.index', compact('settings_type', 'title'));
     }
@@ -88,14 +84,12 @@ class SettingsController extends Controller
             if($settings->save()){
                 $data = array(
                     'status' => true,
-                    'view' => "",
-                    'notification' =>"Stripe Settings Updated Successfully"
+                    'notification' => translate('stripe_settings_updated_successfully')
                 );
             }else {
                 $data = array(
                     'status' => false,
-                    'view' => "",
-                    'notification' =>"An Error Occured When Updating Stripe Settings"
+                    'notification' => translate('an_error_occured_when_updating_stripe_settings')
                 );
             }
         }elseif($type == 'paypal'){
@@ -108,14 +102,12 @@ class SettingsController extends Controller
             if($settings->save()){
                 $data = array(
                     'status' => true,
-                    'view' => "",
-                    'notification' =>"Paypal Settings Updated Successfully"
+                    'notification' => translate('paypal_settings_updated_successfully')
                 );
             }else {
                 $data = array(
                     'status' => false,
-                    'view' => "",
-                    'notification' =>"An Error Occured When Updating Paypal Settings"
+                    'notification' => translate('an_error_occured_when_updating_paypal_settings')
                 );
             }
         }
@@ -136,5 +128,45 @@ class SettingsController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function smtp()
+    {
+        $title = translate('smtp_settings');
+        $settings_type = "smtp";
+        return view('backend.'.Auth::user()->role.'.settings.index', compact('settings_type', 'title'));
+    }
+
+    function smtpUpdate(Request $request) {
+        
+        $path = base_path('.env');
+            if (file_exists($path)) {
+                foreach ($request->types as $type) {
+                    file_put_contents($path, str_replace(
+                        $type.'='.env($type), $type.'='.$request[$type], file_get_contents($path)
+                    ));
+                }
+            }
+
+            $settings = Setting::find(1);
+            $settings->mail_driver = $request->MAIL_DRIVER;
+            $settings->mail_host = $request->MAIL_HOST;
+            $settings->mail_port = $request->MAIL_PORT;
+            $settings->mail_username = $request->MAIL_USERNAME;
+            $settings->mail_password = $request->MAIL_PASSWORD;
+            $settings->mail_encryption = $request->MAIL_ENCRYPTION;
+            $settings->save();
+
+            if($settings->save()){
+                $data = array(
+                    'status' => true,
+                    'notification' => translate('SMTP_settings_updated_successfully')
+                );
+            }else {
+                $data = array(
+                    'status' => false,
+                    'notification' => translate('an_error_occured_when_updating_SMTP_settings')
+                );
+            }
     }
 }

@@ -15,7 +15,8 @@ class SchoolController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $title = translate('schools');
         return view('backend.'.Auth::user()->role.'.school.index');
     }
 
@@ -42,15 +43,13 @@ class SchoolController extends Controller
         if($school->save()) {
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.school.list')->render(),
-                'notification' =>"School Added Successfully"
+                'notification' => translate('school_added_successfully')
             );
         }
         else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.school.list')->render(),
-                'notification' =>"An Error Occured When Adding School"
+                'notification' => translate('an_error_occured_when_adding_school')
             );
         }
         return $data;
@@ -94,14 +93,12 @@ class SchoolController extends Controller
         if($school->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.school.list')->render(),
-                'notification' =>"School Updated Successfully"
+                'notification' => translate('school_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.school.list')->render(),
-                'notification' =>"An Error Occured When Updating School"
+                'notification' => translate('an_error_occured_when_updating_school')
             );
         }
         return $data;
@@ -118,15 +115,13 @@ class SchoolController extends Controller
         if(School::destroy($id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.school.list')->render(),
-                'notification' =>"School Deleted Successfully"
+                'notification' => translate('school_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.school.list')->render(),
-                'notification' =>"An Error Occured When Deleting School"
-            );
+                'notification' => translate('an_error_occured_when_deleting_school')
+            ); 
         }
         return $data;
     }
@@ -140,14 +135,12 @@ class SchoolController extends Controller
         if($setting->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.school.list')->render(),
-                'notification' =>"School Switched Successfully"
+                'notification' => translate('school_switched_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.school.list')->render(),
-                'notification' =>"An Error Occured When Switching School"
+                'notification' => translate('an_error_occured_when_switching_school')
             );
         }
         return $data;

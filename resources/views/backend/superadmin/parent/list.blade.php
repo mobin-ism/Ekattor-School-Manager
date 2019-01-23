@@ -7,10 +7,10 @@
         <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
             <thead class="thead-dark">
                 <tr>
-                    <th>Parent Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Option</th>
+                    <th>{{ translate('parent_id') }}</th>
+                    <th>{{ translate('name') }}</th>
+                    <th>{{ translate('email') }}</th>
+                    <th>{{ translate('option') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,8 +22,8 @@
                         <td>
                             <div class="btn-group mb-2">
                                 {{-- <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('parent.show', $parent->id) }}', '')" data-toggle="tooltip" data-placement="top" title="" data-original-title=""> <i class="dripicons-checklist"></i> </button> --}}
-                                <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('parent.edit', $parent->id) }}', 'Update Parent')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Parent info"> <i class="mdi mdi-wrench"></i> </button>
-                                <button type="button" class="btn btn-icon btn-dark btn-sm"      style="margin-right:5px;" onclick="confirm_modal('{{ route('parent.destroy', $parent->id) }}', showAllParents )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Parent"> <i class="mdi mdi-window-close"></i> </button>
+                                <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('parent.edit', $parent->id) }}', '{{ translate('update_parent') }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_parent_info') }}"> <i class="mdi mdi-wrench"></i> </button>
+                                <button type="button" class="btn btn-icon btn-dark btn-sm"      style="margin-right:5px;" onclick="confirm_modal('{{ route('parent.destroy', $parent->id) }}', showAllParents )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_parent') }}"> <i class="mdi mdi-window-close"></i> </button>
                             </div>
                         </td>
                     </tr>

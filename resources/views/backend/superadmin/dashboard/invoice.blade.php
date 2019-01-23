@@ -5,12 +5,12 @@
 <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
         <thead>
         <tr>
-            <th>Student</th>
-            <th>Class</th>
-            <th>Invoice Title</th>
-            <th>Total amount</th>
-            <th>Paid amount</th>
-            <th>Status</th>
+            <th>{{ translate('student') }}</th>
+            <th>{{ translate('class') }}</th>
+            <th>{{ translate('invoice_title') }}</th>
+            <th>{{ translate('total_amount') }}</th>
+            <th>{{ translate('paid_amount') }}</th>
+            <th>{{ translate('status') }}</th>
             {{--  <th>Creation Date</th>  --}}
         </tr>
         </thead>

@@ -7,8 +7,8 @@
     <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
         <thead class="thead-dark">
         <tr>
-            <th>Name</th>
-            <th>Option</th>
+            <th>{{ translate('name') }}</th>
+            <th>{{ translate('option') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -17,8 +17,8 @@
                 <td>{{ $expense_category->name }}</td>
                 <td>
                     <div class="btn-group mb-2">
-                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('expense_category.edit', $expense_category->id) }}', 'Update Expense Category')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Expense Category info"> <i class="mdi mdi-wrench"></i> </button>
-                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('expense_category.destroy', $expense_category->id) }}', showAllExpenseCategories )" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Expense Category"> <i class="mdi mdi-window-close"></i> </button>
+                        <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('expense_category.edit', $expense_category->id) }}', '{{ translate('update_expense_category') }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_expense_category') }}"> <i class="mdi mdi-wrench"></i> </button>
+                        <button type="button" class="btn btn-icon btn-dark btn-sm" style="margin-right:5px;" onclick="confirm_modal('{{ route('expense_category.destroy', $expense_category->id) }}', showAllExpenseCategories )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_expense_category') }}"> <i class="mdi mdi-window-close"></i> </button>
                     </div>
                 </td>
             </tr>

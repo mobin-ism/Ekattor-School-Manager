@@ -17,7 +17,7 @@ class LibrarianController extends Controller
      */
     public function index()
     {
-        $title = "Librarian";
+        $title = translate('librarian');
         return view('backend.'.Auth::user()->role.'.librarian.index', compact('title'));
     }
 
@@ -53,15 +53,13 @@ class LibrarianController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.'.Auth::user()->role.'.librarian.list')->render(),
-                    'notification' =>"Librarian Added Successfully"
+                    'notification' => translate('librarian_added_successfully')
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.librarian.list')->render(),
-                'notification' =>"Email Duplication"
+                'notification' => translate('email_duplication')
             );
         }
 
@@ -117,15 +115,13 @@ class LibrarianController extends Controller
             if($user->save()) {
                 $data = array(
                     'status' => true,
-                    'view' => view('backend.'.Auth::user()->role.'.librarian.list')->render(),
-                    'notification' =>"Librarian Updated Successfully"
+                    'notification' => translate('librarian_updated_successfully')
                 );
             }
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.librarian.list')->render(),
-                'notification' =>"Email Duplication"
+                'notification' => translate('email_duplication')
             );
         }
         return $data;
@@ -143,8 +139,7 @@ class LibrarianController extends Controller
         $user->delete();
         return array(
             'status' => true,
-            'view' => view('backend.'.Auth::user()->role.'.librarian.list')->render(),
-            'notification' =>"Librarian has been deleted successfully"
+            'notification' => translate('librarian_has_been_deleted_successfully')
         );
     }
 }

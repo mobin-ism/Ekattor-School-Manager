@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-account-multiple-check title_icon"></i> Assigned Permission For Teacher</h4>
+                <h4 class="page-title"> <i class="mdi mdi-account-multiple-check title_icon"></i> {{ translate('assigned_permission_for_teacher') }}</h4>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
                     <div class="row justify-content-md-center" style="margin-bottom: 10px;">
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <select class="form-control" name="class_id" id="class_id" onchange="classWiseSection(this.value)">
-                                <option value="all">Select A Class</option>
+                                <option value="all">{{ translate('select_a_class') }}</option>
                                 @foreach (App\Classes::where('school_id', school_id())->get() as $class)
                                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                                 @endforeach
@@ -25,11 +25,11 @@
                         </div>
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0" id = "section_content">
                             <select class="form-control" name="section_id" id="section_id">
-                                <option value="all">Select A Section</option>
+                                <option value="all">{{ translate('select_a_section') }}</option>
                             </select>
                         </div>
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="showTeachersPermission()">Filter</button>
+                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="showTeachersPermission()">{{ translate('filter') }}</button>
                         </div>
                     </div>
                     <div id = "teacher_permission_content">
@@ -74,7 +74,7 @@
                 }
             });
           }else {
-            toastr.error('Select a section');
+            toastr.error('{{ translate('select_a_section') }}');
           }
         }
 
@@ -89,7 +89,7 @@
             url : url,
             data: {_token: CSRF_TOKEN, class_id : class_id, section_id : section_id, task_teacherId : task_teacherId, isChecked : isChecked},
             success : function(response) {
-              toastr.success('Permission updated successfully');
+              toastr.success('{{ translate('permission_updated_successfully') }}');
             }
           });
         }

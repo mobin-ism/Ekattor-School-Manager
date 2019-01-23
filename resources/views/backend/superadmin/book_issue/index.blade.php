@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-book-open title_icon"></i> Books Issue
-                    <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('book_issue.create') }}', 'Issue A Book')"> <i class="mdi mdi-plus"></i> Issue Book</button>
+                <h4 class="page-title"> <i class="mdi mdi-book-open title_icon"></i> {{ translate('books_issue') }}
+                    <button type="button" class="btn btn-icon btn-success btn-rounded alignToTitle" onclick="showAjaxModal('{{ route('book_issue.create') }}', '{{ translate('issue_a_book') }}')"> <i class="mdi mdi-plus"></i> {{ translate('issue_book') }}</button>
                 </h4>
             </div>
         </div>
@@ -16,7 +16,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title mt-3">Issues Book List</h4>
+                    <h4 class="header-title mt-3">{{ translate('issues_book_list') }}</h4>
                     <div class="row justify-content-md-center" style="margin-bottom: 10px;">
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3 mb-lg-0">
                             <div class="form-group">
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 mb-3 mb-lg-0">
-                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="showAllBookIssues()">Filter</button>
+                            <button type="button" class="btn btn-icon btn-secondary form-control" onclick="showAllBookIssues()">{{ translate('filter') }}</button>
                         </div>
                     </div>
 

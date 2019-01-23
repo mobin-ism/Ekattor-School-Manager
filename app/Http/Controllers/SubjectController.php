@@ -16,7 +16,7 @@ class SubjectController extends Controller
      */
     public function index()
     {   
-        $title = "Subject";
+        $title = translate('subject');
         return view('backend.'.Auth::user()->role.'.subject.index', compact('title'));
     }
 
@@ -47,14 +47,12 @@ class SubjectController extends Controller
         if($subject->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.subject.list')->render(),
-                'notification' =>"Subject Added Successfully"
+                'notification' => translate('subject_added_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.subject.list')->render(),
-                'notification' =>"An Error Occured When Adding Subject"
+                'notification' => translate('an_error_occured_when_adding_subject')
             );
         }
         return $data;
@@ -110,14 +108,12 @@ class SubjectController extends Controller
         if($subject->save()){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.subject.list')->render(),
-                'notification' =>"Subject Updated Successfully"
+                'notification' => translate('subject_updated_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.subject.list')->render(),
-                'notification' =>"An Error Occured When Updating Subject"
+                'notification' => translate('an_error_occured_when_updating_subject')
             );
         }
         return $data;
@@ -135,14 +131,12 @@ class SubjectController extends Controller
         if(Subject::destroy($subject_id)){
             $data = array(
                 'status' => true,
-                'view' => view('backend.'.Auth::user()->role.'.subject.list')->render(),
-                'notification' =>"Subject Deleted Successfully"
+                'notification' => translate('subject_deleted_successfully')
             );
         }else {
             $data = array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.subject.list')->render(),
-                'notification' =>"An Error Occured When Deleting Subject"
+                'notification' => translate('an_error_occured_when_deleting_subject')
             );
         }
         return $data;

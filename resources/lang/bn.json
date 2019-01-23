@@ -3,5 +3,11 @@
     "accountant": "হিসাবরক্ষক",
     "name": "নাম",
     "accountant_added_successfully": "হিসাবরক্ষক সফলভাবে যোগ করা হয়েছে",
-    "email_duplication": "ইমেল অনুলিপি"
+    "email_duplication": "ইমেল অনুলিপি",
+    "current_session": "বর্তমান অধিবেশন",
+    "next_session": "পরবর্তী অধিবেশন",
+    "manage_promotion": "প্রচার পরিচালনা",
+    "promoting_to": "উন্নীত করা",
+    "promoting_from": "থেকে প্রচার",
+    "student_fee_manager": "ছাত্র ফি ম্যানেজার"
 }

@@ -85,8 +85,7 @@ class SectionController extends Controller
 
         return array(
             'status' => true,
-            'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
-            'notification' => 'Section Updated Successfully'
+            'notification' => translate('section_updated_successfully')
         );
     }
 
@@ -104,15 +103,14 @@ class SectionController extends Controller
         if(sizeof($sections_for_that_class) == 1){
             return array(
                 'status' => false,
-                'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
-                'notification' => 'Every Class Should Have At least One Section'
+                'notification' => translate('every_class_should_have_at_least_one_section')
             );
         }else {
             Section::destroy($section_id);
             return array(
                 'status' => true,
                 'view' => view('backend.'.Auth::user()->role.'.class.list')->render(),
-                'notification' => 'Section Deleted Successfully'
+                'notification' => translate('section_deleted_successfully')
             );
         }
     }

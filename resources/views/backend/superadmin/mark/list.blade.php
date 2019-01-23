@@ -9,10 +9,10 @@
                 <div class="card text-white bg-secondary">
                     <div class="card-body">
                         <div class="toll-free-box text-center">
-                            <h4> <i class="mdi mdi-chart-bar-stacked"></i> Manage Marks</h4>
-                            <h5>Class: {{ $section->class->name }}</h5>
-                            <h5>Section: {{ $section->name }}</h5>
-                            <h5>Subject: {{ $subject->name }}</h5>
+                            <h4> <i class="mdi mdi-chart-bar-stacked"></i> {{ translate('manage_marks') }}</h4>
+                            <h5>{{ translate('class') }}: {{ $section->class->name }}</h5>
+                            <h5>{{ translate('section') }}: {{ $section->name }}</h5>
+                            <h5>{{ translate('subject') }}: {{ $subject->name }}</h5>
                         </div>
                     </div>
                 </div>
@@ -22,10 +22,10 @@
             <table class="table table-bordered table-sm " width="100%">
                 <thead class="thead-dark">
                 <tr>
-                    <th>Student Name</th>
-                    <th>Mark</th>
-                    <th>Comment</th>
-                    <th>Action</th>
+                    <th>{{ translate('student_name') }}</th>
+                    <th>{{ translate('mark') }}</th>
+                    <th>{{ translate('comment') }}</th>
+                    <th>{{ translate('action') }}</th>
                 </tr>
                 </thead>
                 <tbody>

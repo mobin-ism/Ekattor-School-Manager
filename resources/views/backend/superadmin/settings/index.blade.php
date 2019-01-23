@@ -7,6 +7,8 @@
         $class = 'col-xl-10 offset-xl-1';
     else if($settings_type == 'sms')
         $class = 'col-xl-10 offset-xl-1';
+    else if($settings_type == 'smtp')
+        $class = 'col-xl-10 offset-xl-1';
 @endphp
 
 @extends('backend.layout.main')
@@ -15,7 +17,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-settings title_icon"></i>{{ ucfirst($settings_type) }} Settings</h4>
+                <h4 class="page-title"> <i class="mdi mdi-settings title_icon"></i>{{ ucfirst($settings_type) }} {{ translate('settings') }}</h4>
             </div>
         </div>
     </div>
@@ -60,6 +62,14 @@
             function updateStripeInfo() {
                 $(".stripeAjaxForm").validate({});
                 $(".stripeAjaxForm").submit(function(e) {
+                    var form = $(this);
+                    ajaxSubmit(e, form, reload);
+                });
+            }
+
+            function updateSmtpInfo() {
+                $(".stripeSmtpForm").validate({});
+                $(".stripeSmtpForm").submit(function(e) {
                     var form = $(this);
                     ajaxSubmit(e, form, reload);
                 });
