@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Setting;
+use App\School;
 use Auth;
 
 class SettingsController extends Controller
@@ -24,10 +25,10 @@ class SettingsController extends Controller
         $settings = Setting::find(1);
         $settings->system_name = $request->system_name;
         $settings->system_email = $request->system_email;
+        $settings->system_title = $request->system_title;
         $settings->phone = $request->phone;
         $settings->purchase_code = $request->purchase_code;
         $settings->address = $request->address;
-
         $settings_type = "system";
 
         if($settings->save()){
@@ -41,6 +42,10 @@ class SettingsController extends Controller
                 'notification' => translate('an_error_occured_when_updating_system')
             );
         }
+        
+        $this->writeEnvironmentFile('APP_NAME',$settings->system_name);
+        // Auth::logout();
+        // return redirect('/login');
         return $data;
     }
 
@@ -131,7 +136,7 @@ class SettingsController extends Controller
     }
 
     public function smtp()
-    {
+    {   
         $title = translate('smtp_settings');
         $settings_type = "smtp";
         return view('backend.'.Auth::user()->role.'.settings.index', compact('settings_type', 'title'));
@@ -142,31 +147,47 @@ class SettingsController extends Controller
         $path = base_path('.env');
             if (file_exists($path)) {
                 foreach ($request->types as $type) {
-                    file_put_contents($path, str_replace(
-                        $type.'='.env($type), $type.'='.$request[$type], file_get_contents($path)
-                    ));
+                    $this->writeEnvironmentFile($type, $request[$type]);
+                    // file_put_contents($path, str_replace(
+                    //     $type.'='.env($type), $type.'='.$request[$type], file_get_contents($path)
+                    // ));
                 }
             }
+            $data = array(
+                'status' => true,
+                'notification' => translate('SMTP_settings_updated_successfully')
+            );
+            return $data;
+    }
 
-            $settings = Setting::find(1);
-            $settings->mail_driver = $request->MAIL_DRIVER;
-            $settings->mail_host = $request->MAIL_HOST;
-            $settings->mail_port = $request->MAIL_PORT;
-            $settings->mail_username = $request->MAIL_USERNAME;
-            $settings->mail_password = $request->MAIL_PASSWORD;
-            $settings->mail_encryption = $request->MAIL_ENCRYPTION;
-            $settings->save();
+    public function school_settings() {
+        $title = translate('school_settings');
+        $settings_type = "school";
+        $school_data = School::find(get_settings('selected_branch'));
+        return view('backend.'.Auth::user()->role.'.settings.index', compact('settings_type', 'title', 'school_data'));
+    }
 
-            if($settings->save()){
-                $data = array(
-                    'status' => true,
-                    'notification' => translate('SMTP_settings_updated_successfully')
-                );
-            }else {
-                $data = array(
-                    'status' => false,
-                    'notification' => translate('an_error_occured_when_updating_SMTP_settings')
-                );
+    public function school_settings_update(Request $request, $id) {
+        $school = School::find($id);
+        $school->name = $request->school_name;
+        $school->phone = $request->phone;
+        $school->address = $request->address;
+        
+        $school->save();
+        $data = array(
+            'status' => true,
+            'notification' => translate('school_settings_updated_successfully')
+        );
+        return $data;
+    }
+
+    public function writeEnvironmentFile($type, $val) {
+        $val = '"'.trim($val).'"';
+        $path = base_path('.env');
+            if (file_exists($path)) {
+                file_put_contents($path, str_replace(
+                    $type.'="'.env($type).'"', $type.'='.$val, file_get_contents($path)
+                ));
             }
     }
 }

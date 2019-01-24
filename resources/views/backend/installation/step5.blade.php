@@ -23,6 +23,12 @@
         </div>
 
         <div class="form-group">
+            <label for="running_session">Running Session</label>
+            <input type="text" class="form-control" id="running_session" name = "running_session">
+            <small id="running_session_help" class="form-text text-muted">Provide Running Session here.</small>
+        </div>
+
+        <div class="form-group">
             <label for="admin_email">Admin Email</label>
             <input type="email" class="form-control" id="admin_email" name = "admin_email">
             <small id="admin_email_help" class="form-text text-muted">Provide Admin email here.</small>

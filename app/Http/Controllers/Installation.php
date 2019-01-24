@@ -7,11 +7,14 @@ use Artisan;
 use DB;
 use App\User;
 use App\Setting;
-use App\Branch;
+use App\School;
+use App\Session;
 use Hash;
+use URL;
 class Installation extends Controller
 {
     public function step0() {
+        $this->writeEnvironmentFile('APP_URL', URL::to('/'));
         return view('backend.installation.step0');
     }
 
@@ -47,23 +50,41 @@ class Installation extends Controller
         return view('backend.installation.step6');
     }
 
+    public function purchase_code(Request $request) {
+        $request->session()->put('purchase_code', $request->purchase_code);
+        return redirect('step3');
+    }
+
+
     public function system_settings(Request $request) {
         $settings = new Setting;
-        $branch = new Branch;
-        $user = new User;
+        $school   = new School;
+        $user     = new User;
+        $session  = new Session;
 
-        $branch->name = $request->school_name;
-        $branch->save();
+        $school->name = $request->school_name;
+        $school->save();
 
-        $settings->system_name = $request->system_name;
-        $settings->system_email = $request->system_email;
-        $settings->selected_branch = $branch->id;
+        $session->name      = $request->running_session;
+        $session->status    = 1;
+        $session->school_id = $school->id;
+        $session->save();
+
+        $this->writeEnvironmentFile('APP_NAME', $request->system_name);
+        $settings->system_name     = $request->system_name;
+        $settings->system_email    = $request->system_email;
+        $settings->selected_branch = $school->id;
+        $settings->running_session = $session->id;
+        $settings->purchase_code   = $request->session()->get('purchase_code');
         $settings->save();
 
-        $user->name = $request->admin_name;
-        $user->email = $request->admin_email;
+        $user->name     = $request->admin_name;
+        $user->email    = $request->admin_email;
         $user->password = Hash::make($request->admin_password);
+        $user->role     = 'superadmin';
         $user->save();
+
+        
 
         return redirect('step6');
     }
@@ -87,7 +108,6 @@ class Installation extends Controller
     }
 
     public function import_sql() {
-        //Artisan::call('migrate:fresh', array('--path' => 'database/migrations', '--force' => true));
         $sql_path = base_path('install.sql');
         DB::unprepared(file_get_contents($sql_path));
         return redirect('step5');
@@ -102,7 +122,21 @@ class Installation extends Controller
         }
     }
 
-    function proceedToLogin() {
+    function login() {
+        $previousRouteServiceProvier = base_path('app/Providers/RouteServiceProvider.php');
+        $newRouteServiceProvier      = base_path('RouteServiceProvider.txt');
+        copy($newRouteServiceProvier, $previousRouteServiceProvier);
+        sleep(5);
+        return redirect('login');
+    }
 
+    public function writeEnvironmentFile($type, $val) {
+        $val = '"'.trim($val).'"';
+        $path = base_path('.env');
+            if (file_exists($path)) {
+                file_put_contents($path, str_replace(
+                    $type.'="'.env($type).'"', $type.'='.$val, file_get_contents($path)
+                ));
+            }
     }
 }

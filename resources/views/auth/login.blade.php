@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>School Management System</title>
+        <title>{{ get_settings('system_name') }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -41,7 +41,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="emailaddress"></label>
+                                <label for="emailaddress">Email</label>
                                 <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email" name="email">
                             </div>
                             <div class="form-group">

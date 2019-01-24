@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title"> <i class="mdi mdi-account-circle title_icon"></i> {{ __('language_manager') }}
+                <h4 class="page-title"> <i class="mdi mdi-translate title_icon"></i> {{ __('language_manager') }}
                 <button type="button" class="btn btn-icon btn-success btn-rounded mb-1 alignToTitle" onclick="showAjaxModal('{{ route('language.create') }}', '{{ translate('create_new_language') }}')"> <i class="mdi mdi-plus"></i> {{ translate('add_language') }}</button>
             </h4>
             </div>

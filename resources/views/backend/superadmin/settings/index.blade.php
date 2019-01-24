@@ -9,6 +9,8 @@
         $class = 'col-xl-10 offset-xl-1';
     else if($settings_type == 'smtp')
         $class = 'col-xl-10 offset-xl-1';
+    else if($settings_type == 'school')
+        $class = 'col-xl-10 offset-xl-1';
 @endphp
 
 @extends('backend.layout.main')
@@ -70,6 +72,14 @@
             function updateSmtpInfo() {
                 $(".stripeSmtpForm").validate({});
                 $(".stripeSmtpForm").submit(function(e) {
+                    var form = $(this);
+                    ajaxSubmit(e, form, reload);
+                });
+            }
+
+            function updateSchoolInfo() {
+                $(".schoolForm").validate({});
+                $(".schoolForm").submit(function(e) {
                     var form = $(this);
                     ajaxSubmit(e, form, reload);
                 });

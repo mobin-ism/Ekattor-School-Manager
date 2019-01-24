@@ -21,7 +21,9 @@
                             <div class="btn-group mb-2">
                                 <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('language.phrase', $language->id) }}', '{{ translate('update_phrases_for') }} {{ $language->name }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_phrases') }}"> <i class="mdi mdi-update"></i> </button>
                                 <button type="button" class="btn btn-icon btn-secondary btn-sm" style="margin-right:5px;" onclick="showAjaxModal('{{ route('language.edit', $language->id) }}', '{{ translate('edit') }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('update_language_info') }}"> <i class="mdi mdi-wrench"></i> </button>
-                                <button type="button" class="btn btn-icon btn-dark btn-sm"      style="margin-right:5px;" onclick="confirm_modal('{{ route('language.destroy', $language->id) }}', showAllLanguages )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_language') }}"> <i class="mdi mdi-window-close"></i> </button>
+                                @if ($language->code != 'en')
+                                    <button type="button" class="btn btn-icon btn-dark btn-sm"      style="margin-right:5px;" onclick="confirm_modal('{{ route('language.destroy', $language->id) }}', showAllLanguages )" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ translate('delete_language') }}"> <i class="mdi mdi-window-close"></i> </button>    
+                                @endif
                             </div>
                         </td>
                     </tr>

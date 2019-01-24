@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use Auth;
-use App\Profile;
 use App\User;
 use Hash;
 use Illuminate\Http\Request;
@@ -72,9 +71,9 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $type)
     {
-        $user = User::find(Auth::user()->id);
+        $user = Auth::user();
         if($type == 'profile') {
-            if(count(User::where('email', $request->email)->where('id', '!=', $id)->get()) == 0) {
+            
                 $user->name = $request->name;
                 $user->email = $request->email;
                 $user->phone = $request->phone;
@@ -89,12 +88,6 @@ class ProfileController extends Controller
                     'status' => true,
                     'notification' => translate('profile_has_been_successfully')
                 );
-            }else {
-                $data = array(
-                    'status' => false,
-                    'notification' => translate('email_duplication')
-                );
-            }
         }elseif($type == 'password') {
             $hasher = app('hash');
             if ($hasher->check($request->old_password, $user->password)) {

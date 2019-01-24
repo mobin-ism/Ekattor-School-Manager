@@ -25,3 +25,7 @@
     Route::get('smtp_settings', 'SettingsController@smtp')->name('smtp.settings');
     Route::patch('smtp_update', 'SettingsController@smtpUpdate')->name('smtp.update');
 
+
+    Route::get('school_settings', 'SettingsController@school_settings')->name('school.settings');
+    Route::patch('school_update/{id}', 'SettingsController@school_settings_update')->name('school.update');
+

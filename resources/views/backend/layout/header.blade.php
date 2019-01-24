@@ -6,7 +6,11 @@
             </button>
         </div>
         <div class="col-md-8 font-weight-bold h4 d-none d-md-block" id = "school_name">
-            {{ get_settings('system_name') }}
+            @php
+                $selected_branch_id = get_settings('selected_branch');
+                $selected_branch = \App\School::find($selected_branch_id);
+                echo $selected_branch->name;
+            @endphp
         </div>
         <div class="col-md-4 col-6">
             <ul class="list-unstyled topbar-right-menu float-right mb-0">

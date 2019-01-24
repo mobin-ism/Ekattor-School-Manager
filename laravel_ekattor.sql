@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 24, 2019 at 08:33 AM
+-- Generation Time: Jan 24, 2019 at 10:59 AM
 -- Server version: 8.0.12
 -- PHP Version: 7.2.13
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel_ekattor`
+-- Database: `laravel_ekattor_2`
 --
 
 -- --------------------------------------------------------
@@ -307,7 +307,9 @@ CREATE TABLE `languages` (
 
 INSERT INTO `languages` (`id`, `name`, `code`, `created_at`, `updated_at`, `school_id`) VALUES
 (3, 'English', 'en', '2019-01-22 07:25:16', '2019-01-22 07:25:16', 1),
-(6, 'Bangla', 'bn', '2019-01-22 10:58:10', '2019-01-22 10:58:10', 1);
+(6, 'Bangla', 'bn', '2019-01-22 10:58:10', '2019-01-22 10:58:10', 1),
+(7, 'English', 'en', '2019-01-24 09:14:11', '2019-01-24 09:14:11', 4),
+(8, 'Bangla', 'bn', '2019-01-24 09:15:13', '2019-01-24 09:15:13', 4);
 
 -- --------------------------------------------------------
 
@@ -408,11 +410,12 @@ INSERT INTO `menus` (`id`, `displayed_name`, `route_name`, `parent`, `sort_order
 (55, 'book_issue_report', 'book_issue.index', 32, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (57, 'room_manager', NULL, 34, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (58, 'student_report', NULL, 34, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(59, 'school_manager', 'school.index', 31, 0, 1, NULL, '2019-01-24 08:32:30', '0000-00-00 00:00:00'),
+(59, 'school_manager', 'school.index', 31, 0, 0, NULL, '2019-01-24 10:37:50', '0000-00-00 00:00:00'),
 (60, 'ex', NULL, NULL, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (61, 'income_expense_category', NULL, NULL, 0, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (62, 'expense_category', 'expense_category.index', 27, 30, 1, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(79, 'SMTP_settings', 'smtp.settings', 36, 50, 1, NULL, '2019-01-23 12:41:17', '2019-01-22 18:00:00');
+(79, 'SMTP_settings', 'smtp.settings', 36, 50, 1, NULL, '2019-01-23 12:41:17', '2019-01-22 18:00:00'),
+(80, 'school_settings', 'school.settings', 36, 11, 1, NULL, '2019-01-23 18:00:00', '2019-01-23 18:00:00');
 
 -- --------------------------------------------------------
 
@@ -530,8 +533,20 @@ CREATE TABLE `schools` (
   `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `address` longtext COLLATE utf8_unicode_ci,
+  `phone` longtext COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `schools`
+--
+
+INSERT INTO `schools` (`id`, `name`, `created_at`, `updated_at`, `address`, `phone`) VALUES
+(1, 'Rangpur Cadet College', '2019-01-24 08:59:28', '2019-01-24 08:59:28', NULL, NULL),
+(2, 'Police Line School', '2019-01-24 09:00:52', '2019-01-24 09:00:52', NULL, NULL),
+(3, 'Police Line School', '2019-01-24 09:01:23', '2019-01-24 09:01:23', NULL, NULL),
+(4, 'Gausia Madrasha', '2019-01-24 09:01:44', '2019-01-24 10:59:14', '42 West New Court, Exercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '7766275331');
 
 -- --------------------------------------------------------
 
@@ -565,6 +580,13 @@ CREATE TABLE `sessions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `name`, `school_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, '2018-2019', 4, 1, '2019-01-24 09:01:44', '2019-01-24 09:01:44');
+
 -- --------------------------------------------------------
 
 --
@@ -595,6 +617,13 @@ CREATE TABLE `settings` (
   `stripe_live_secret_key` varchar(255) DEFAULT NULL,
   `stripe_live_public_key` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `system_name`, `system_title`, `system_email`, `selected_branch`, `running_session`, `phone`, `purchase_code`, `address`, `updated_at`, `created_at`, `paypal_active`, `paypal_mode`, `paypal_client_id_sandbox`, `paypal_client_id_production`, `stripe_active`, `stripe_mode`, `stripe_test_secret_key`, `stripe_test_public_key`, `stripe_live_secret_key`, `stripe_live_public_key`) VALUES
+(1, 'qwe qwe', 'Academy Learning Club', 'sup@example.com', 4, '1', '7766275331', '762bb7d6-526e-4bb6-afec-5da5abacec7a', '42 West New Court\r\nExercitationem quasi proident eum ullamco maiores excepteur velit labore cupiditate autem provident minus eaque ad aliqua Ex', '2019-01-24 09:45:48', '2019-01-24 09:01:44', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -711,6 +740,14 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `address`, `phone`, `remember_token`, `birthday`, `gender`, `blood_group`, `school_id`, `authentication_key`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'almobin777@gmail.com', '$2y$10$D/okXszRglT9bVGrXLt.QuHgtPorYc2EJly5Ygy8k6mOB1vSS5OUi', 'superadmin', '213', '12321321312313121', 'PAxwRPJTHPKK1gc0OtvLNSp4A6ZovcIjMHpbbbDDVNsfpOkaUtwXHfaRD1k6', NULL, NULL, NULL, NULL, NULL, '2019-01-24 08:59:28', '2019-01-24 10:33:38'),
+(2, 'Admin Miahs', 'sup@example.com', '$2y$10$XUozW8hsD5Esg2f8Xcm/Tui8RPycZ.nPDYG8LFBhVJyAhW1nYBIuq', 'superadmin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-01-24 09:01:44', '2019-01-24 09:01:44');
 
 --
 -- Indexes for dumped tables
@@ -1013,7 +1050,7 @@ ALTER TABLE `invoices`
 -- AUTO_INCREMENT for table `languages`
 --
 ALTER TABLE `languages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `marks`
@@ -1025,7 +1062,7 @@ ALTER TABLE `marks`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1055,7 +1092,7 @@ ALTER TABLE `routines`
 -- AUTO_INCREMENT for table `schools`
 --
 ALTER TABLE `schools`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sections`
@@ -1067,13 +1104,13 @@ ALTER TABLE `sections`
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `students`
@@ -1109,7 +1146,7 @@ ALTER TABLE `teacher_permissions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

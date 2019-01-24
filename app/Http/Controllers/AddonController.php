@@ -77,7 +77,7 @@ class AddonController extends Controller
                         if (!is_dir(base_path($directory['name']))){
                             mkdir(base_path($directory['name']), 0777, true);
                         }else {
-                            echo "erro on creating directory";
+                            echo "error on creating directory";
                         }
                     }
                 }

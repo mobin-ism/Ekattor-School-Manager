@@ -8,7 +8,7 @@
                     @method('PATCH')
                     <div class="col-12">
                         <div class="form-group row mb-3">
-                            <label class="col-md-3 col-form-label" for="system_name"> {{ translate('school_name') }}</label>
+                            <label class="col-md-3 col-form-label" for="system_name"> {{ translate('system_name') }}</label>
                             <div class="col-md-9">
                                 <input type="text" id="system_name" name="system_name" class="form-control"  value="{{ get_settings('system_name') }}" required>
                             </div>
